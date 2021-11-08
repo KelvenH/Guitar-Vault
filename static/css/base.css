@@ -1,0 +1,22 @@
+html {
+    height: 100%;
+}
+
+body {
+    height:90vh;
+    background-color: tomato;
+}
+
+.top-nav {
+    height:10vh;
+    color:red;
+    background-color: blue;  
+}
+
+.header-container {
+    padding-top:10vh;
+}
+
+.main-content-col {
+    background-color: yellow;
+}

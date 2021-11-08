@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block page_header %}
+    <!--empty container to space page content below base.html nav-->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <h1>index.html content</h1>
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col main-content-col my-auto">
+                <h1>Welcome to the Guitar Vault</h1>
+            </div>
+        </div>
+    </div>
 {% endblock %}
