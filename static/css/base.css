@@ -1,22 +1,50 @@
+/* Root variables & imports */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+:root {
+
+    /* convert 1 rem to 10px for easier management of font sizing */
+    font-size: 62.5%;
+    
+    /* Typography */
+    --logo-text: 'Lobster', cursive;
+
+
+    /* Color Palette */
+    
+
+}
+
+/*--Global Classes --*/
+
+.logo-txt {
+    font-family: 'Lobster', cursive;
+    font-size:10rem;
+    color:#c3a343; /*- backup font color if text mask fails -*/
+    /* Gold text mask */
+    background: url('/media/shutterstock_1476756539.jpg');
+    background-size: cover;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip:text;
+    background-clip:text; 
+}
+
+
 html {
     height: 100%;
 }
 
 body {
-    height:90vh;
-    background-color: tomato;
+    height:80vh;
+    background-color: rgb(3, 3, 3);
 }
 
-.top-nav {
-    height:10vh;
-    color:red;
-    background-color: blue;  
+/*---------------------------------------*/
+
+.base-nav {
+    height:20vh;
+    background: url('/media/Banner-img.jpeg') no-repeat center bottom;
+    background-size: cover;
 }
 
-.header-container {
-    padding-top:10vh;
-}
-
-.main-content-col {
-    background-color: yellow;
-}
