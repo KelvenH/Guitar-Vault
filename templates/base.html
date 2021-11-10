@@ -39,23 +39,31 @@
   </head>
 
   <body>
-    <header class="base-nav container-fluid fixed-top">
-      <div class="row">
-        <div class="col align-self-start">
-          <!--EMPTY BY DESIGN - POSSIBLE FUTURE USEAGE-->
-        </div>
-        <div class="col align-self-center text-center">
-          <h1 class="logo-txt">Guitar Vault</h1>
-        </div>
-        <div class="col align-self-end text-end">
-          <a href="">Join</a>
-          <a href="">Log In</a>
-        </div>
-      </div> <!--close base-nav row -->
-    </header><!--close base-nav container -->
+    <header class="nav-banner container-fluid fixed-top">
+      <!--Nested container to allow full width banner but constrain max width of content-->
+      <div class="container-lg">
+      <!--Top Row (Logo, Title and Profile / LogIn / Join)-->
+        <div class="row">
+          <div class="col-0 col-md-3 align-self-start my-auto py-2">
+            <img class="navbar-logo" src="/media/GV-Logo.png" href="#"/>
+          </div>
+          <div class="col-7 col-md-6 align-self-center text-center my-auto">
+            <h1 class="logo-txt gold-txt display-1" href="#">Guitar Vault</h1>
+          </div>
+          <div class="col-5 col-md-3 align-self-end text-end my-auto">
+            <ul class="list-inline list-unstyled">
+              <li class="list-inline-item" href="#">Join</li>
+              <li class="list-inline-item" href="#">Log In</li>
+            </ul>
+          </div>
+        </div>  <!--close base-nav row -->
+      </div>    <!--close lg-container -->
+    </header>   <!--close nav-banner container -->
    
     {% if messages %}
-        <div class="message-container"></div>
+        <div class="message-container">
+
+        </div>
     {% endif %}
 
     {% block page_header %}

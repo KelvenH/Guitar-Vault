@@ -2,49 +2,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 :root {
-
-    /* convert 1 rem to 10px for easier management of font sizing */
-    font-size: 62.5%;
     
     /* Typography */
     --logo-text: 'Lobster', cursive;
 
-
     /* Color Palette */
+    --primary-txt: rgb(255, 255, 240);
     
-
 }
 
 /*--Global Classes --*/
 
 .logo-txt {
     font-family: 'Lobster', cursive;
-    font-size:10rem;
+}
+
+
+
+/* Gold text mask */
+.gold-txt {
     color:#c3a343; /*- backup font color if text mask fails -*/
-    /* Gold text mask */
-    background: url('/media/shutterstock_1476756539.jpg');
+    background: url('/media/gold-texture.jpg');
     background-size: cover;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip:text;
-    background-clip:text; 
+    background-clip:text;
 }
-
 
 html {
     height: 100%;
 }
 
 body {
-    height:80vh;
+    color:var(--primary-txt);
     background-color: rgb(3, 3, 3);
 }
 
-/*---------------------------------------*/
+/*-----Nav Bar----------------------------------*/
 
-.base-nav {
-    height:20vh;
+.nav-banner {
+    
     background: url('/media/Banner-img.jpeg') no-repeat center bottom;
     background-size: cover;
 }
 
+.navbar-logo {
+    height:100%;
+}
+
+/*----Footer----------------------------------*/
+
+/*--Media Queries-----------------------------*/
+
+/* Small devices */
+@media (max-width: 575px) {
+    /* hide logo */
+    .navbar-logo {
+        display:none;
+    }
+}
