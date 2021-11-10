@@ -43,12 +43,21 @@ body {
 
 .nav-banner {
     
-    background: url('/media/Banner-img.jpeg') no-repeat center bottom;
+    background: url('/media/Banner-img.jpeg') no-repeat center bottom fixed;
     background-size: cover;
 }
 
 .navbar-logo {
     height:100%;
+}
+
+.nav-link {
+    color:var(--primary-txt);
+}
+
+/* relocate dropdown icon below text */
+.dropdown .dropdown-toggle::after {
+    transform: translate(-35px, 16px);
 }
 
 /*----Footer----------------------------------*/

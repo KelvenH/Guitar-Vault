@@ -42,7 +42,7 @@
     <header class="nav-banner container-fluid fixed-top">
       <!--Nested container to allow full width banner but constrain max width of content-->
       <div class="container-lg">
-      <!--Top Row (Logo, Title and Profile / LogIn / Join)-->
+      <!--Top Nav Row (Logo, Title and Profile / LogIn / Join)-->
         <div class="row">
           <div class="col-0 col-md-3 align-self-start my-auto py-2">
             <img class="navbar-logo" src="/media/GV-Logo.png" href="#"/>
@@ -56,7 +56,20 @@
               <li class="list-inline-item" href="#">Log In</li>
             </ul>
           </div>
-        </div>  <!--close base-nav row -->
+        </div>  <!--close Top Nav row -->
+
+        <!--Lower Nav Row -->
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            {% include 'includes/main-nav.html' %}
+
+          </div>
+        </nav><!--close Lower Nav row -->
+
       </div>    <!--close lg-container -->
     </header>   <!--close nav-banner container -->
    
