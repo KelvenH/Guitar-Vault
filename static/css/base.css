@@ -7,7 +7,10 @@
     --logo-text: 'Lobster', cursive;
 
     /* Color Palette */
-    --primary-txt: rgb(255, 255, 240);
+    --ivory: rgb(255, 255, 240);
+    --black: rgb(0,0,0);
+    --off-black: rgb(65,74,76);
+    --off-gold: rgb(195, 163, 67);
     
 }
 
@@ -17,11 +20,13 @@
     font-family: 'Lobster', cursive;
 }
 
-
+.ivory-txt {
+    color:var(--ivory);
+}
 
 /* Gold text mask */
 .gold-txt {
-    color:#c3a343; /*- backup font color if text mask fails -*/
+    color:var(--off-gold); /*- backup font color if text mask fails -*/
     background: url('/media/gold-texture.jpg');
     background-size: cover;
     -webkit-text-fill-color: transparent;
@@ -35,29 +40,62 @@ html {
 }
 
 body {
-    color:var(--primary-txt);
-    background-color: rgb(3, 3, 3);
+    color:var(--ivory);
+    background-color: var(--black);
 }
 
 /*-----Nav Bar----------------------------------*/
 
 .nav-banner {
-    
     background: url('/media/Banner-img.jpeg') no-repeat center bottom fixed;
     background-size: cover;
+    border-bottom: 5px solid transparent;
+    /*--border-color: var(--off-gold);--*/
+    border-image: url('/media/gold-texture.jpg') 30% stretch;
 }
 
 .navbar-logo {
     height:100%;
 }
 
-.nav-link {
-    color:var(--primary-txt);
+.nav-link, .dropdown-item {
+    color:var(--ivory);
 }
 
 /* relocate dropdown icon below text */
 .dropdown .dropdown-toggle::after {
     transform: translate(-35px, 16px);
+}
+
+.dropdown .dropdown-toggle:hover,
+.dropdown .dropdown-toggle:focus, 
+.dropdown .dropdown-toggle:active  {
+    color:var(--ivory);
+    font-weight: bold;
+    background-color: black;
+    background: url('/media/gold-texture.jpg');
+    background-size: cover;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip:text;
+    background-clip:text;
+}
+
+.dropdown-menu {
+    background-color: var(--black);
+    border: 1px solid;
+}
+
+/*--Buttons --*/
+.btn-search {
+    border: 3px solid var(--ivory);
+}
+
+.btn-search:hover,
+.btn-search:focus,
+.btn-search:active {
+    border: 3px solid var(--off-gold);
+    color: var(--off-gold);
 }
 
 /*----Footer----------------------------------*/
