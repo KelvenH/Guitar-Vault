@@ -76,10 +76,10 @@ body {
     border: 1px solid var(--off-gold);
 }
 
-/* relocate dropdown icon below text */
+/* relocate dropdown icon below text 
 .dropdown .dropdown-toggle::after {
     transform: translate(-35px, 16px);
-}
+}*/
 
 .dropdown .dropdown-toggle:hover,
 .dropdown .dropdown-toggle:focus, 
@@ -102,7 +102,7 @@ body {
     border: 2px solid var(--off-gold);
 }
 
-/*--Buttons --*/
+/*--Buttons ---------------------------------*/
 .btn-search {
     border: 3px solid var(--ivory);
 }
@@ -118,10 +118,10 @@ body {
 
 /*--Media Queries-----------------------------*/
 
-/* Small devices */
-@media (max-width: 575px) {
-    /* hide logo */
-    .navbar-logo {
-        display:none;
+/*- Nav Small Screen --*/
+@media (max-width: 767px) {
+    /* align nav dropdown items to left */
+    .nav-link {
+        text-align:left;
     }
 }
