@@ -28,6 +28,11 @@
     {% endblock %}
 
     {% block corejs %}
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/d01fd203b5.js" crossorigin="anonymous"></script>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     {% endblock %}
 
@@ -45,10 +50,11 @@
       <!--Top Nav Row (Logo, Title and Profile / LogIn / Join)-->
         <div class="row">
           <div class="col-0 col-md-3 align-self-start my-auto py-2 d-none d-md-block">
-            <img class="navbar-logo" src="/media/GV-Logo.png" href="#"/>
+            <img class="navbar-logo" src="/media/GV-Logo.png"/>
           </div>
           <div class="col-12 col-md-6 align-self-center text-center my-auto">
-            <h1 class="logo-txt gold-txt display-1" href="#">Guitar Vault</h1>
+            <h1 class="logo-txt gold-txt display-1">
+              <a href="{% url 'home' %}">Guitar Vault</a></h1>
           </div>
           <div class="col-0 col-md-3 align-self-end text-end my-auto d-none d-md-block">
             <ul class="list-inline list-unstyled">

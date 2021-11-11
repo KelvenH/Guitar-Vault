@@ -70,8 +70,16 @@
     </ul> <!--Close Nav Dropdown Menus-->
 
     <!--Search Form-->
-    <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-search ivory-txt" type="submit">Search</button>
+    <form class="d-flex" method="GET" action="">
+        <div class="input-group">
+            <input class="form-control search-input me-1" type="text" name="q" placeholder="Search the vault" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-search ivory-txt" type="submit">
+                    <span class="icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
     </form> <!--Close Search Form-->
 </div> <!--Close Search Form-->
