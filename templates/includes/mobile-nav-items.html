@@ -1,6 +1,55 @@
 <div class="col-6 align-self-end text-end my-auto d-block d-md-none">
-    <ul class="list-inline list-unstyled">
-      <li class="list-inline-item" href="#">Join</li>
-      <li class="list-inline-item" href="#">Log In</li>
-    </ul>
-  </div>
+    {% if request.user.is_authenticated %}
+        <div class="d-flex">  
+            <div class="dropdown" id="user-profile-dropdown">
+                <a class="nav-link" href="#" id="user-profile-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="text-center">
+                        <div><i class="fas fa-user fa-lg"></i></div>
+                        <h5 class="my-0">My Account</h5>
+                    </div>
+                </a>
+                <!--Embedded dropdown menu-->
+                <div class="dropdown-menu" aria-labelledby="user-profile-options">
+                {% if request.user.is_superuser %}
+                    <a class="dropdown-item gold-accent-txt" href="#">
+                        <h4> Site Admin</h4>
+                    </a>
+                {% endif %}  
+                <a class="dropdown-item gold-accent-txt" href="#">
+                    <h4>My Profile</h4>
+                </a>
+                <a class="dropdown-item gold-accent-txt" href="#">
+                    <h4>Log Out</h4>
+                </a>
+                </div> <!--Close Embedded dropdown menu-->
+            </div>
+            
+            <div class="mt-0">
+                
+                <!--Temporary icon to be replaced with icon identifying user's membership tier-->
+                <i class="fas fa-certificate"></i>
+                
+            </div>
+        </div> 
+                
+    {% else %}
+        <ul class="list-inline list-unstyled">
+            <li class="list-inline-item gold-accent-txt" href="#"><h4>Join</h4></li>
+            <li class="vr"></li>
+            <li class="list-inline-item gold-accent-txt" href="#"><h4>Log In</h4></li>
+        </ul>
+    {% endif %}
+</div> <!--close Profile col-->
+
+
+
+
+
+
+  
+  
+  
+ 
+ 
+
+  

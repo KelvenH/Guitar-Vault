@@ -1,80 +1,95 @@
 <!--Appends to BaseNav (base.html)-->
-<div class="collapse navbar-collapse " id="main-nav-items">
-    <ul class="navbar-nav mb-2 mb-lg-0 nav-fill w-100">
+<div class="collapse navbar-collapse" id="main-nav">
+    <ul class="navbar-nav mb-2 mb-lg-0 nav-fill w-100" id="main-nav-items">
         
         <!--About Dropdown Menu-->
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            About
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Item 1</a></li>
-            <li><a class="dropdown-item" href="#">Item 2</a></li>
-            <li><a class="dropdown-item" href="#">Item 3</a></li>
-        </ul>
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <h4 class="mb-0">About</h4>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Guitar Vault Explained</a></li>
+                <li><a class="dropdown-item" href="#">Join</a></li>
+                <li><a class="dropdown-item" href="#">FAQ</a></li>
+                <li><a class="dropdown-item" href="#">Contact Us</a></li>
+            </ul>
         </li>  <!--Close About Menu-->
 
 
         <!--Guitars Dropdown Menu-->
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Guitars
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Electric</a></li>
-            <li><a class="dropdown-item" href="#">Bass</a></li>
-        </ul>
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <h4 class="mb-0">Guitars</h4>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">All Guitars</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Electric</a></li>
+                <li><a class="dropdown-item" href="#">Bass</a></li>
+                <li><a class="dropdown-item" href="#">Acoustic</a></li>
+            </ul>
         </li> <!--Close Guitars Menu-->
  
         <!--Amps Dropdown Menu-->
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Amps
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Amp Cat 1</a></li>
-            <li><a class="dropdown-item" href="#">Amp Cat 2</a></li>
-            <li><a class="dropdown-item" href="#">Amp Cat 3</a></li>
-        </ul>
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <h4 class="mb-0">Amps</h4>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">All Amps</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Practice Amps (&lt;50Watts)</a></li>
+                <li><a class="dropdown-item" href="#">Heads</a></li>
+                <li><a class="dropdown-item" href="#">Combos</a></li>
+            </ul>
         </li> <!--Close Amps Menu-->
 
         <!--Pedals Dropdown Menu-->
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Pedals
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Overdive</a></li>
-            <li><a class="dropdown-item" href="#">Item 2</a></li>
-            <li><a class="dropdown-item" href="#">Item 3</a></li>
-        </ul>
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <h4 class="mb-0">Pedals</h4>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">All Pedals</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Pre-Amps</a></li>
+                <li><a class="dropdown-item" href="#">Drive / Distortion</a></li>
+                <li><a class="dropdown-item" href="#">Delay</a></li>
+                <li><a class="dropdown-item" href="#">Compression / Noise Gate</a></li>
+                <li><a class="dropdown-item" href="#">Filter</a></li>
+                <li><a class="dropdown-item" href="#">Modulation</a></li>
+                <li><a class="dropdown-item" href="#">Pitch</a></li>
+                <li><a class="dropdown-item" href="#">Reverb</a></li>
+                <li><a class="dropdown-item" href="#">Tremolo / Vibrato</a></li>
+                <li><a class="dropdown-item" href="#">Multi-FX</a></li>
+                <li><a class="dropdown-item" href="#">Utility (Expression, Volume, Buffers)</a></li>
+            </ul>
         </li> <!--Close Pedals Menu-->
 
         <!--Brands Dropdown Menu-->
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Brands
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Item 1</a></li>
-            <li><a class="dropdown-item" href="#">Item 2</a></li>
-            <li><a class="dropdown-item" href="#">Item 3</a></li>
-        </ul>
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <h4 class="mb-0">Brands</h4>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">All Brands</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Gibson</a></li>
+                <li><a class="dropdown-item" href="#">Fender</a></li>
+                <li><a class="dropdown-item" href="#">Gretsch</a></li>
+                <li><a class="dropdown-item" href="#">Ibanez</a></li>
+            </ul>
         </li> <!--Close Brands Menu-->
 
     </ul> <!--Close Nav Dropdown Menus-->
 
     <!--Search Form-->
     <form class="d-flex" method="GET" action="">
-        <div class="input-group">
-            <input class="form-control search-input me-1" type="text" name="q" placeholder="Search the vault" aria-label="Search">
+        <div class="input-group gold-accent-outline">
+            <input class="form-control search-input gold-accent-outline me-1" type="text" name="q" placeholder="Search the vault" aria-label="Search">
             <div class="input-group-append">
-                <button class="btn btn-search ivory-txt" type="submit">
+                <button class="btn btn-search gold-accent-outline ivory-txt" type="submit">
                     <span class="icon">
                         <i class="fas fa-search"></i>
                     </span>

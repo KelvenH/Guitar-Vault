@@ -10,7 +10,7 @@
     --ivory: rgb(255, 255, 240);
     --black: rgb(0,0,0);
     --off-black: rgb(65,74,76);
-    --off-gold: rgb(195, 163, 67);
+    --off-gold: rgb(238,204,102);
     --transp: rgba(0,0,0,0);
     
 }
@@ -36,6 +36,19 @@
     background-clip:text;
 }
 
+.gold-accent-txt:hover,
+.gold-accent-txt:focus,
+.gold-accent-txt:active {
+    color: var(--off-gold);
+}
+
+.gold-accent-outline:hover,
+.gold-accent-outline:focus,
+.gold-accent-outline:active {
+    border: 3px solid var(--off-gold);
+    color: var(--off-gold);
+}
+
 html {
     height: 100%;
 }
@@ -59,7 +72,8 @@ body {
     height:100%;
 }
 
-.nav-link, .dropdown-item {
+/* override default anchor tag style */ 
+.nav-link, .dropdown-item, .dropdown-toggle {
     color:var(--ivory);
 }
 
@@ -77,26 +91,15 @@ body {
     border: 1px solid var(--off-gold);
 }
 
-/* relocate dropdown icon below text 
-.dropdown .dropdown-toggle::after {
-    transform: translate(-35px, 16px);
-}*/
-
-.dropdown .dropdown-toggle:hover,
-.dropdown .dropdown-toggle:focus, 
-.dropdown .dropdown-toggle:active  {
-    color:var(--ivory);
+#main-nav-items .nav-link:focus, 
+#main-nav-items .nav-link:hover, 
+#main-nav-items .nav-link:active,
+.nav-link:focus,
+.nav-link:hover,
+.nav-link:active { 
+    color: var(--off-gold);
     font-weight: bold;
-    background-color: var(--black);
-    background: url('/media/gold-texture.jpg');
-    background-size: cover;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -moz-background-clip:text;
-    background-clip:text;
 }
-
-
 
 .dropdown-menu {
     background-color: var(--black);
@@ -104,6 +107,7 @@ body {
 }
 
 /*--Buttons ---------------------------------*/
+
 .btn-search,
 .search-input {
     border: 3px solid var(--ivory);
@@ -115,19 +119,6 @@ body {
 
 .input-group {
     border: 3px solid var(--transp);
-}
-
-.input-group:hover,
-.input-group:focus,
-.input-group:active,
-.btn-search:hover,
-.btn-search:focus,
-.btn-search:active,
-.search-input:hover,
-.search-input:focus,
-.search-input:active {
-    border: 3px solid var(--off-gold);
-    color: var(--off-gold);
 }
 
 
@@ -142,3 +133,4 @@ body {
         text-align:left;
     }
 }
+
