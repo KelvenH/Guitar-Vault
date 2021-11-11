@@ -77,7 +77,7 @@
                     {% endif %}  
                     <li><a class="dropdown-item gold-accent-txt" href="#">
                       My Profile</a></li>
-                    <li><a class="dropdown-item gold-accent-txt" href="#">
+                    <li><a class="dropdown-item gold-accent-txt" href="{% url 'account_logout' %}">
                       Log Out</a></li>
                   </ul>
                 </div> <!--Close Embedded dropdown menu-->
@@ -92,9 +92,9 @@
                       
             {% else %}
               <ul class="list-inline list-unstyled">
-                <li class="list-inline-item gold-accent-txt" href="#"><h4>Join</h4></li>
+                <li class="list-inline-item gold-accent-txt" href="{% url 'account_signup' %}"><h4>Join</h4></li>
                 <li class="vr"></li>
-                <li class="list-inline-item gold-accent-txt" href="#"><h4>Log In</h4></li>
+                <li class="list-inline-item gold-accent-txt" href="{% url 'account_login' %}"><h4>Log In</h4></li>
               </ul>
             {% endif %}
           </div> <!--close Profile col-->

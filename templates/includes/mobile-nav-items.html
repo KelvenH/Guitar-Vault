@@ -18,7 +18,7 @@
                 <a class="dropdown-item gold-accent-txt" href="#">
                     <h4>My Profile</h4>
                 </a>
-                <a class="dropdown-item gold-accent-txt" href="#">
+                <a class="dropdown-item gold-accent-txt" href="{% url 'account_logout' %}">
                     <h4>Log Out</h4>
                 </a>
                 </div> <!--Close Embedded dropdown menu-->
@@ -33,11 +33,11 @@
         </div> 
                 
     {% else %}
-        <ul class="list-inline list-unstyled">
-            <li class="list-inline-item gold-accent-txt" href="#"><h4>Join</h4></li>
-            <li class="vr"></li>
-            <li class="list-inline-item gold-accent-txt" href="#"><h4>Log In</h4></li>
-        </ul>
+    <ul class="list-inline list-unstyled">
+        <li class="list-inline-item gold-accent-txt" href="{% url 'account_signup' %}"><h4>Join</h4></li>
+        <li class="vr"></li>
+        <li class="list-inline-item gold-accent-txt" href="{% url 'account_login' %}"><h4>Log In</h4></li>
+      </ul>
     {% endif %}
 </div> <!--close Profile col-->
 
