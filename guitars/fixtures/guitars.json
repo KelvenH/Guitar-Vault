@@ -1,0 +1,31 @@
+[
+  {
+    "pk": 1, "model": "guitars.guitar", "fields":{
+      "category": 1,
+      "brand": "PRS",
+      "guitar_model": "Silver Sky",
+      "tier": "Gold",
+      "status": "Available",
+      "owner": "user1",
+      "handed": "right",
+      "no_strings": 6,
+      "approx_age_years": 3,
+      "condition": "Excellent",
+      "construction": "Solid",
+      "body_wood": "Alder",
+      "body_top": "Alder",
+      "tuners": "vintage-style, locking",
+      "frets": 22,
+      "scale_length": "25.5\"",
+      "neck_wood": "Maple",
+      "neck_profile": "7.25\" radius",
+      "no_pickups": 3,
+      "pickups_desc": "635JM pickups in bass, middle and treble positions",
+      "controls": "One Volume and Two Tone Controls with a 5-Way Blade Switch",
+      "owners_additional_comments": "The John Mayer Silver Sky is a great guitar, PRS's attempt at a modern day strat!",
+      "rating_condition": 5,
+      "rating_overall": 4,
+      "image_id": "gv1.png"
+    }
+  }
+]

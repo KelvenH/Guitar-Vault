@@ -1,6 +1,6 @@
 [
   {
-    "pk": 1, "model": "gear.guitar", "fields":{
+    "pk": 1, "model": "guitars.guitar", "fields":{
       "category": 1,
       "brand": "PRS",
       "guitar_model": "Silver Sky",
@@ -29,7 +29,7 @@
     }
   },
   {
-    "pk": 2, "model": "gear.guitar", "fields":{
+    "pk": 2, "model": "guitars.guitar", "fields":{
       "category": 1,
       "brand": "Gibson",
       "guitar_model": "Les Paul Standard",
@@ -58,8 +58,7 @@
     }
   },
   {
-    "pk": 3, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 3, "model": "guitars.guitar", "fields":{
       "category": 1,
       "brand": "PRS",
       "guitar_model": "Custom 24",
@@ -88,8 +87,7 @@
     }
   },
   {
-    "pk": 4, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 4, "model": "guitars.guitar", "fields":{
       "category": 1,
       "brand": "Gibson",
       "guitar_model": "Les Paul Tribute",
@@ -118,8 +116,7 @@
     }
   },
   {
-    "pk": 5, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 5, "model": "guitars.guitar", "fields":{
       "category": 1,
       "brand": "Gibson",
       "guitar_model": "SG (61 Re-issue)",
@@ -148,8 +145,7 @@
     }
   },
   {
-    "pk": 6, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 6, "model": "guitars.guitar", "fields":{
       "category": 1,
       "brand": "Duesenberg",
       "guitar_model": "Gran Majesto",
@@ -178,8 +174,7 @@
     }
   },
   {
-    "pk": 7, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 7, "model": "guitars.guitar", "fields":{
       "category": 2,
       "brand": "Rickenbacker",
       "guitar_model": "4003 Fireglo",
@@ -208,8 +203,7 @@
     }
   },
   {
-    "pk": 8, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 8, "model": "guitars.guitar", "fields":{
       "category": 2,
       "brand": "Fender",
       "guitar_model": "Custom Shop 75 Jazz Bass",
@@ -238,8 +232,7 @@
     }
   },
   {
-    "pk": 9, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 9, "model": "guitars.guitar", "fields":{
       "category": 2,
       "brand": "Ernie Ball Musicman",
       "guitar_model": "Stingray Special",
@@ -268,8 +261,7 @@
     }
   },
   {
-    "pk": 10, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 10, "model": "guitars.guitar", "fields":{
       "category": 2,
       "brand": "Spector",
       "guitar_model": "Euro LT",
@@ -298,8 +290,7 @@
     }
   },
   {
-    "pk": 11, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 11, "model": "guitars.guitar", "fields":{
       "category": 3,
       "brand": "Gibson",
       "guitar_model": "Montana 1960 Hummingbird",
@@ -328,8 +319,7 @@
     }
   },
   {
-    "pk": 12, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 12, "model": "guitars.guitar", "fields":{
       "category": 3,
       "brand": "Martin",
       "guitar_model": "HD12-28",
@@ -358,8 +348,7 @@
     }
   },
   {
-    "pk": 13, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 13, "model": "guitars.guitar", "fields":{
       "category": 3,
       "brand": "Taylor",
       "guitar_model": "K22CE KOA",
@@ -388,8 +377,7 @@
     }
   },
   {
-    "pk": 14, "model": "gear.guitar", "fields":{
-      "model": "gear.guitar",
+    "pk": 14, "model": "guitars.guitar", "fields":{
       "category": 3,
       "brand": "Fender",
       "guitar_model": "Acoustasonic",
@@ -411,7 +399,7 @@
       "no_pickups": 3,
       "pickups_desc": "3-pickup configuration: Under-Saddle Piezo/Internal Body Sensor/N4 Magnetic",
       "controls": null,
-      "owners_additional_comments": "This overcomes the typical electro/acoustic feedback problems with a unique designed smaller body shape and  Fender/Fishman-designed acoustic engine to cut out unwanted noise",
+      "owners_additional_comments": "This overcomes the typical electro/acoustic feedback problems with a unique designed smaller body shape and Fender/Fishman-designed acoustic engine to cut out unwanted noise",
       "rating_condition": 5,
       "rating_overall": 4,
       "image_id": "gv14.png"
