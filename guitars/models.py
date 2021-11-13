@@ -4,25 +4,22 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
-        
+
     name = models.CharField(max_length=50)
     friendly_name = models.CharField(max_length=50, null=True, blank=True)
 
-    """
-    String method
-    """
+    # String method
     def __str__(self):
         return self.name
 
     
-    """
-    Model method
-    """
+    # Model method
     def get_friendly_name(self):
         return self.get_friendly_name
 
 
 class Guitar(models.Model):
+    # Choices to create dropdown selection for users
     ELECTRIC = '1'
     BASS = '2'
     ACOUSTIC = '3'
@@ -42,7 +39,6 @@ class Guitar(models.Model):
     no_strings = models.DecimalField(max_digits=2, decimal_places=0, null=True, blank=True)
     approx_age_years = models.DecimalField(max_digits=2, decimal_places=0, null=True, blank=True)
 
-    """ Choices to create dropdown selection for users """
     EXCELLENT = 'Excellent'
     GOOD = 'Good'
     COSMETIC = 'Cosmetic'

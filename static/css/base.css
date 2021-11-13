@@ -106,6 +106,12 @@ body {
     border: 2px solid var(--off-gold);
 }
 
+/*--Header Container------------------------*/
+
+.header-container {
+    padding-top:25vh;
+}
+
 /*--Buttons ---------------------------------*/
 
 .btn-search,
@@ -131,6 +137,10 @@ body {
     /* align nav dropdown items to left */
     .nav-link {
         text-align:left;
+    }
+
+    .header-container {
+        padding-top:15vh;
     }
 }
 
