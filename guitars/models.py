@@ -26,7 +26,7 @@ class Guitar(models.Model):
     status = models.CharField(max_length=25, null=True, blank=True)
     owner = models.CharField(max_length=25, null=True, blank=True)
     handed = models.CharField(max_length=25, null=True, blank=True)
-    no_strings = models.DecimalField(max_digits=1, decimal_places=0, null=True, blank=True)
+    no_strings = models.DecimalField(max_digits=2, decimal_places=0, null=True, blank=True)
     approx_age_years = models.DecimalField(max_digits=2, decimal_places=0, null=True, blank=True)
     condition = models.CharField(max_length=25, null=True, blank=True)
     construction = models.CharField(max_length=25, null=True, blank=True)
@@ -46,4 +46,4 @@ class Guitar(models.Model):
     image_id = models.ImageField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.guitar_model
