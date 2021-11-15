@@ -28,7 +28,16 @@
                             <div class="card bg-dark guitar-card h-100">
 
                                 <!--card image -->
-                                <img src="{{ guitar.image_id.url }}" class="card-img-top " alt="guitar image">
+                                {% if guitar.image_id %}
+                                <a href="">
+                                    <img src="{{ guitar.image_id.url }}" class="card-img-top " alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                </a>
+
+                                {% else %}
+                                <a href="">
+                                    <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top " alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                </a>
+                                {% endif %}
 
                                 <!-- tier pendant (overlays image)-->
                                 <div class="card-img-overlay pt-0">
