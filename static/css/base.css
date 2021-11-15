@@ -127,6 +127,16 @@ body {
     border: 3px solid var(--transp);
 }
 
+/*----Guitar Card----------------------------------*/
+
+.guitar-card {
+    border: 3px solid var(--ivory);
+    padding: 2px;
+}
+
+.guitar-card-list {
+    background-color: var(--transp);
+}
 
 /*----Footer----------------------------------*/
 
