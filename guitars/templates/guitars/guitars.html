@@ -23,13 +23,16 @@
                 <div class="row">
 
                     <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card bg-dark guitar-card">
-                            <h3 class="card-header text-center">
-                                Gold
-                            </h3>
-                            <img src="/media/gv1.png" class="card-img-top" alt="...">
+                        <div class="card bg-dark guitar-card mb-4">
+                            <img src="/media/gv1.png" class="card-img-top" alt="guitar image">
+                            <div class="card-img-overlay pt-0">
 
-                            <h5 class="card-title text-center">PRS Silver Sky</h5>
+                                <span class="fa-layers fa-fw tier-band">
+                                    <i class="fas fa-bookmark fa-6x tb-gold"></i>
+                                    <span class="fa-layers-text fa-inverse tb-text" data-fa-transform="rotate--270 right-27 up-7">GOLD</span>
+                                  </span>
+                            </div>
+                            <h5 class="card-title text-center pt-2">PRS Silver Sky</h5>
                             <div class="row card-body">
                                 <div class="col">
                                     <div class="guitar-card-list">
@@ -63,8 +66,26 @@
                             </div>
                             <div class="card-footer text-muted">
                                 <ul class="list-inline list-unstyled text-center">
-                                    <li class="list-inline-item">Favourite</li>
-                                    <li class="list-inline-item">Loan</li>
+                                    <li class="list-inline-item">
+                                        <!--Reminder - once profiles created add JS to toggle display of favourite / remove favourite button-->
+                                        <btn type="button" class="btn btn-outline-info btn-sm d-none">
+                                            <i class="fas fa-heart"></i>
+                                            <span class="ps-3">Already Favourited</span>
+                                            <small class="ps-3">(Click to Remove)</small>
+                                        </btn>
+                                        <!--favourite toggle option B-->
+                                        <btn type="button" class="btn btn-outline-success btn-sm">
+                                            <i class="far fa-heart"></i>
+                                            <span class="ps-3">Add to Favourites</span>
+                                        </btn>
+                                    </li>
+
+                                    <li class="list-inline-item">
+                                        <btn type="button" class="btn btn-sm btn-take">
+                                            <i class="fas fa-cart-arrow-down"></i>
+                                            <span class="ps-3">Loan Guitar</span>
+                                        </btn>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

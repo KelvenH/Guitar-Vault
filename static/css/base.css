@@ -112,7 +112,7 @@ body {
     padding-top:25vh;
 }
 
-/*--Buttons ---------------------------------*/
+/*--Buttons & Search Field ---------------------------------*/
 
 .btn-search,
 .search-input {
@@ -127,6 +127,15 @@ body {
     border: 3px solid var(--transp);
 }
 
+.btn-take {
+    border: 3px solid var(--off-gold);
+    color:var(--off-gold);
+}
+
+.btn-take:hover {
+    background-color:var(--off-gold);
+}
+
 /*----Guitar Card----------------------------------*/
 
 .guitar-card {
@@ -135,8 +144,22 @@ body {
 }
 
 .guitar-card-list {
-    background-color: var(--transp);
+    background-color: var(--transp);   
 }
+
+.tier-band {
+   transform: translateY(1.5rem); /*--adjust top alignment of FontAwesome resizing --*/
+   
+}
+
+.tb-text {
+    font-weight:900;
+}
+
+.tb-gold {
+    color:var(--off-gold);
+}
+
 
 /*----Footer----------------------------------*/
 
