@@ -106,7 +106,7 @@ body {
     border: 2px solid var(--off-gold);
 }
 
-/*--Header Container------------------------*/
+/*--Header Container---*/
 
 .header-container {
     padding-top:25vh;
@@ -136,7 +136,7 @@ body {
     background-color:var(--off-gold);
 }
 
-/*----Guitar Card----------------------------------*/
+/*----Guitar Card---------------------------------------------*/
 
 .guitar-card {
     border: 3px solid var(--ivory);
@@ -147,19 +147,27 @@ body {
     background-color: var(--transp);   
 }
 
-.tier-band {
+.tier-pendant {
    transform: translateY(1.5rem); /*--adjust top alignment of FontAwesome resizing --*/
    
 }
 
-.tb-text {
+.card-img-top {
+    max-height: 40vh;
+    width:auto;
+}
+
+.tp-text {
     font-weight:900;
 }
 
-.tb-gold {
+.tp-gold {
     color:var(--off-gold);
 }
 
+.card-footer {
+    position:relative; /*-- prevents card footer / buttons from being layered beneath the image overlay text */
+}
 
 /*----Footer----------------------------------*/
 

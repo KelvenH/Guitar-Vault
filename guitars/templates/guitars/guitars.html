@@ -21,193 +21,91 @@
         <div class="row h-100">
             <div class="col main-content-col my-auto">
                 <div class="row">
+                    
+                    {% for guitar in guitars %}
 
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card bg-dark guitar-card mb-4">
-                            <img src="/media/gv1.png" class="card-img-top" alt="guitar image">
-                            <div class="card-img-overlay pt-0">
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+                            <div class="card bg-dark guitar-card h-100">
 
-                                <span class="fa-layers fa-fw tier-band">
-                                    <i class="fas fa-bookmark fa-6x tb-gold"></i>
-                                    <span class="fa-layers-text fa-inverse tb-text" data-fa-transform="rotate--270 right-27 up-7">GOLD</span>
-                                  </span>
-                            </div>
-                            <h5 class="card-title text-center pt-2">PRS Silver Sky</h5>
-                            <div class="row card-body">
-                                <div class="col">
-                                    <div class="guitar-card-list">
-                                        <div class="d-flex flex-row">
-                                            <p class="col-6">Category</p>
-                                            <p class="col-6">Electric</p>
-                                        </div>
-                                        <div class="d-flex flex-row">
-                                            <p class="col-6">Status</p>
-                                            <p class="col-6">Available</p>
-                                        </div>
-                                        <div class="d-flex flex-row">
-                                            <p class="col-6">Handed</p>
-                                            <p class="col-6">Right Handed</p>
-                                        </div>
-                                        <div class="d-flex flex-row">
-                                            <p class="col-6">Condition</p>
-                                            <p class="col-6">Excellent</p>
-                                        </div>
-                                        <div class="d-flex flex-row">
-                                            <p class="col-6">Condition Rating</p>
-                                            <p class="col-6">5</p>
-                                        </div>
-                                        <div class="d-flex flex-row">
-                                            <p class="col-6">Overall Rating</p>
-                                            <p class="col-6">4</p>
-                                        </div>
+                                <!--card image -->
+                                <img src="{{ guitar.image_id.url }}" class="card-img-top " alt="guitar image">
+
+                                <!-- tier pendant (overlays image)-->
+                                <div class="card-img-overlay pt-0">
+                                    <div class="fa-layers fa-fw tier-pendant">
+                                        <i class="fas fa-bookmark fa-6x tp-gold"></i>
+                                        <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27 up-7">{{ guitar.tier }}</span>
                                     </div>
                                 </div>
+
+                                <!-- card content -->
+                                <h5 class="card-title text-center pt-2">{{ guitar.brand }} - {{ guitar.guitar_model }}</h5>
+                                <div class="row card-body">
+                                    <div class="col">
+                                        <div class="guitar-card-list">
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Category</p>
+                                                <p class="col-6">{{ guitar.category }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Status</p>
+                                                <p class="col-6">{{ guitar.status }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Handed</p>
+                                                <p class="col-6">{{ guitar.handed }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Condition</p>
+                                                <p class="col-6">{{ guitar.condition }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Condition Rating</p>
+                                                <p class="col-6">{{ guitar.rating_condition }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Overall Rating</p>
+                                                <p class="col-6">{{ guitar.rating_overall }}</p>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div> <!--close card body -->
                                 
-                            </div>
-                            <div class="card-footer text-muted">
-                                <ul class="list-inline list-unstyled text-center">
-                                    <li class="list-inline-item">
-                                        <!--Reminder - once profiles created add JS to toggle display of favourite / remove favourite button-->
-                                        <btn type="button" class="btn btn-outline-info btn-sm d-none">
-                                            <i class="fas fa-heart"></i>
-                                            <span class="ps-3">Already Favourited</span>
-                                            <small class="ps-3">(Click to Remove)</small>
-                                        </btn>
-                                        <!--favourite toggle option B-->
-                                        <btn type="button" class="btn btn-outline-success btn-sm">
-                                            <i class="far fa-heart"></i>
-                                            <span class="ps-3">Add to Favourites</span>
-                                        </btn>
-                                    </li>
+                                <!--card footer-->
+                                <div class="card-footer text-muted">
+                                    <ul class="list-inline list-unstyled text-center">
+                                        <li class="list-inline-item w-45">
+                                            <!--Reminder - once profiles created add JS to toggle display of favourite / remove favourite button-->
+                                            <btn type="button" class="btn btn-outline-info btn-sm d-none">
+                                                <i class="fas fa-heart"></i>
+                                                <span class=""></span>
+                                            </btn>
+                                            <!--favourite toggle option B-->
+                                            <btn type="button" class="btn btn-sm btn-outline-success">
+                                                <i class="far fa-heart"></i>
+                                                <span class=""></span>
+                                            </btn>
+                                        </li>
 
-                                    <li class="list-inline-item">
-                                        <btn type="button" class="btn btn-sm btn-take">
-                                            <i class="fas fa-cart-arrow-down"></i>
-                                            <span class="ps-3">Loan Guitar</span>
-                                        </btn>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                                        <li class="list-inline-item w-45">
+                                            <btn type="button" class="btn btn-sm btn-take">
+                                                <i class="fas fa-cart-arrow-down"></i>
+                                                <span class="ps-3">Loan Guitar</span>
+                                            </btn>
+                                        </li>
+                                    </ul>
+                                </div>      <!--close card footer -->
+                            </div>          <!--close card  -->
+                        </div>              <!--close card col -->
 
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Featured
-                            </div>
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Featured
-                            </div>
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Featured
-                            </div>
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Featured
-                            </div>
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Featured
-                            </div>
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+                    
 
 
 
 
-                </div>
-
-                
-            </div>
-        </div>
-    </div>
+                </div>  <!--close sub-parent card row-->
+            </div>      <!--close parent card col-->
+        </div>          <!--close parent card row-->
+    </div>              <!--close conainer-->
 {% endblock %}
