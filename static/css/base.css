@@ -151,10 +151,6 @@ body {
     line-height:0.75rem;   
 }
 
-.tier-pendant {
-   transform: translate(12rem, 1.5rem); /*--adjust top alignment of FontAwesome resizing --*/
-}
-
 .card-img-top {
     max-height: 35vh;
     display: block;
@@ -166,6 +162,10 @@ body {
 .tp-text {
     font-weight:900;
 }
+
+.tier-pendant {
+    transform: translate(20rem, 1.5rem); 
+ }
 
 .tp-platinum {
     color: var(--purple);
@@ -186,6 +186,32 @@ body {
 
 .card-footer {
     position:relative; /*-- prevents card footer / buttons from being layered beneath the image overlay text */
+}
+
+/*---Media Queries for tier pendant placement --*/
+
+@media (min-width:768px) {
+    .tier-pendant {
+        transform: translate(14rem, 1.5rem); 
+    }
+}
+
+@media (min-width:992px) {
+    .tier-pendant {
+        transform: translate(12rem, 1.5rem); 
+    }
+}
+
+@media (min-width:1200px) {
+    .tier-pendant {
+        transform: translate(10rem, 1.5rem); 
+    }
+}
+
+@media (min-width:1400px) {
+    .tier-pendant {
+        transform: translate(12rem, 1.5rem); 
+    }
 }
 
 /*----Footer----------------------------------*/
