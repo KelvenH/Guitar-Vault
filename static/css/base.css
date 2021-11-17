@@ -109,11 +109,30 @@ body {
     border: 2px solid var(--off-gold);
 }
 
+/*--Nav Media Queries-----------------------------*/
+
+/*- Nav Small Screen --*/
+@media (max-width: 767px) {
+    /* align nav dropdown items to left */
+    .nav-link {
+        text-align:left;
+    }
+
+    .header-container {
+        padding-top:15vh;
+    }
+}
+
+
+
+
 /*--Header Container---*/
 
 .header-container {
     padding-top:25vh;
 }
+
+
 
 /*--Buttons & Search Field ---------------------------------*/
 
@@ -138,6 +157,8 @@ body {
 .btn-take:hover {
     background-color:var(--off-gold);
 }
+
+
 
 /*----Guitar Card---------------------------------------------*/
 
@@ -216,17 +237,25 @@ body {
 
 /*----Footer----------------------------------*/
 
-/*--Media Queries-----------------------------*/
 
-/*- Nav Small Screen --*/
-@media (max-width: 767px) {
-    /* align nav dropdown items to left */
-    .nav-link {
-        text-align:left;
-    }
 
-    .header-container {
-        padding-top:15vh;
-    }
+/*---Index.html-----*/
+
+.main-content {
+
+    min-height:20vh;
+    text-align: center;
+    border:2px solid var(--off-gold);
 }
 
+/*---Index.html Media Queries-----*/
+
+/*--BUG FIX: Split columns were not applying central gutter, addressed with unique styling at medium breakpoint --*/
+@media (min-width:768px) {
+    .col-md-guttered {
+        width: 48%; 
+    }
+    .col-md-gutter {
+        width: 4%;
+    }
+}
