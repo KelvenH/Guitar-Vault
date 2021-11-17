@@ -11,6 +11,9 @@
     --black: rgb(0,0,0);
     --off-black: rgb(65,74,76);
     --off-gold: rgb(238,204,102);
+    --silver: rgb(187, 194, 204);
+    --bronze: rgb(205, 127, 50);
+    --purple: rgb(116,116,219); /*- used for platinum backgrounds */
     --transp: rgba(0,0,0,0);
     
 }
@@ -144,16 +147,16 @@ body {
 }
 
 .guitar-card-list {
-    background-color: var(--transp);   
+    background-color: var(--transp);
+    line-height:0.75rem;   
 }
 
 .tier-pendant {
-   transform: translateY(1.5rem); /*--adjust top alignment of FontAwesome resizing --*/
-   
+   transform: translate(12rem, 1.5rem); /*--adjust top alignment of FontAwesome resizing --*/
 }
 
 .card-img-top {
-    max-height: 30vh;
+    max-height: 35vh;
     display: block;
     object-fit: contain;
     aspect-ratio: 3 / 2;
@@ -164,8 +167,21 @@ body {
     font-weight:900;
 }
 
+.tp-platinum {
+    color: var(--purple);
+    transform: translateY(1.5rem) scale(1,1.5);
+}
+
 .tp-gold {
     color:var(--off-gold);
+}
+
+.tp-silver {
+    color:var(--silver);
+}
+
+.tp-bronze {
+    color:var(--bronze);
 }
 
 .card-footer {

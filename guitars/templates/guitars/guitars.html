@@ -30,7 +30,7 @@
                                 <!--card image -->
                                 {% if guitar.image_id %}
                                 <a href="">
-                                    <img src="{{ guitar.image_id.url }}" class="card-img-top " alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                    <img src="{{ guitar.image_id.url }}" class="card-img-top" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
                                 </a>
 
                                 {% else %}
@@ -42,8 +42,24 @@
                                 <!-- tier pendant (overlays image)-->
                                 <div class="card-img-overlay pt-0">
                                     <div class="fa-layers fa-fw tier-pendant">
-                                        <i class="fas fa-bookmark fa-6x tp-gold"></i>
-                                        <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27 up-7">{{ guitar.tier }}</span>
+                                        {% if guitar.tier %}
+                                            {% if guitar.tier == 'Platinum' %}
+                                                <i class="fas fa-bookmark fa-6x tp-platinum"></i>
+                                                <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27 ">{{ guitar.tier }}</span>
+                                            {% else %}    
+                                                {% if guitar.tier == 'Gold' %}
+                                                    <i class="fas fa-bookmark fa-6x tp-gold"></i>
+                                                    
+                                                {% elif guitar.tier == 'Silver'%}
+                                                    <i class="fas fa-bookmark fa-6x tp-silver"></i>
+                                                
+                                                {% elif guitar.tier == 'Bronze'%}
+                                                    <i class="fas fa-bookmark fa-6x tp-bronze"></i>
+                                                
+                                                {% endif %}
+                                                <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27 up-7">{{ guitar.tier }}</span>
+                                            {% endif %}
+                                        {% endif %}
                                     </div>
                                 </div>
 
