@@ -3,7 +3,7 @@
         "pk": 1, 
         "model": "guitars.category", 
         "fields": {
-            "name": "electric", 
+            "name": "Electric", 
             "friendly_name": "Electric"
         }
     },
@@ -11,7 +11,7 @@
         "pk": 2,
         "model": "guitars.category",
         "fields": {
-            "name": "acoustic",
+            "name": "Acoustic",
             "friendly_name": "Acoustic"
         }
     },
@@ -19,7 +19,7 @@
         "pk": 3,
         "model": "guitars.category",
         "fields": {
-            "name": "bass",
+            "name": "Bass",
             "friendly_name": "Bass"
         }
     }

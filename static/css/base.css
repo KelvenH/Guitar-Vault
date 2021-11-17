@@ -153,8 +153,11 @@ body {
 }
 
 .card-img-top {
-    max-height: 50vh;
-    object-fit: cover;
+    max-height: 30vh;
+    display: block;
+    object-fit: contain;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
 }
 
 .tp-text {

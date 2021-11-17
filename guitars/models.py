@@ -19,7 +19,7 @@ class Category(models.Model):
 
 
 class Guitar(models.Model):
-    # Choices to create dropdown selection for users
+    # Category (with choices to create dropdown selection for users)
     ELECTRIC = '1'
     BASS = '2'
     ACOUSTIC = '3'
@@ -30,15 +30,44 @@ class Guitar(models.Model):
         (ACOUSTIC, 'Acoustic'),
     ]
     category = models.ForeignKey('Category', choices=CATEGORY_CHOICES, default=ELECTRIC, on_delete=models.PROTECT) # PROTECT prevents deletion of the primary key (categories)
+    
+    # Brand & Model
     brand = models.CharField(max_length=25)
     guitar_model = models.CharField(max_length=25)
-    tier = models.CharField(max_length=25, null=True, blank=True)
+
+    # Tier
+    PLATINUM = 'Platinum'
+    GOLD = 'Gold'
+    SILVER = 'Silver'
+    BRONZE = 'Bronze'
+
+    TIER_CHOICES = [
+        (PLATINUM, 'Platinum'),
+        (GOLD, 'Gold'),
+        (SILVER, 'Silver'),
+        (BRONZE, 'Bronze'),
+    ]
+    tier = models.CharField(max_length=10, choices=TIER_CHOICES, default=BRONZE)
+    
+    # Tier and Owner
     status = models.CharField(max_length=25, null=True, blank=True)
     owner = models.CharField(max_length=25, null=True, blank=True)
-    handed = models.CharField(max_length=25, null=True, blank=True)
+    
+    # Right / Left Handed
+    RIGHT = 'Right'
+    LEFT = 'Left'
+
+    HANDED_CHOICES = [
+        (RIGHT, 'Right'),
+        (LEFT, 'Left'),
+    ]
+    handed = models.CharField(max_length=5, choices=HANDED_CHOICES, default=RIGHT)
+
+    # No. Strings and Age
     no_strings = models.DecimalField(max_digits=2, decimal_places=0, null=True, blank=True)
     approx_age_years = models.DecimalField(max_digits=2, decimal_places=0, null=True, blank=True)
 
+    # Condition
     EXCELLENT = 'Excellent'
     GOOD = 'Good'
     COSMETIC = 'Cosmetic'
@@ -55,6 +84,7 @@ class Guitar(models.Model):
     body_top = models.CharField(max_length=25, null=True, blank=True)
     tuners = models.CharField(max_length=25, null=True, blank=True)
     
+    # No. Frets
     FRETS_20 = '20'
     FRETS_22 = '22'
     FRETS_24 = '24'
@@ -64,6 +94,8 @@ class Guitar(models.Model):
         (FRETS_24, '24'),
         ]
     frets = models.DecimalField(max_digits=2, decimal_places=0, choices=FRETS_CHOICES, default=FRETS_22)
+
+    # Additional Info
     scale_length = models.CharField(max_length=25, null=True, blank=True)
     neck_wood = models.CharField(max_length=25, null=True, blank=True)
     neck_profile = models.CharField(max_length=25, null=True, blank=True)
