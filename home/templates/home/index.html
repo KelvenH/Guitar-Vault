@@ -19,46 +19,31 @@
                 <div class="d-flex">
                     <a href="{% url 'guitars' %}" class="btn btn-lg btn-take ms-auto">Take a peek inside the vault!</a>
                 </div>
-            </div>
-        </div>
+            </div>      
+        </div>          <!--Close Welcome row-->
+
+
         <div class="row">
             <div class="col main-content mt-2">
                 <h1 class="gold-txt">Featured Guitars</h1>
-                
-                <div id="carousel-featured-guitars" class="carousel slide h-100" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carousel-featured-guitars" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carousel-featured-guitars" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carousel-featured-guitars" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner text-center">
+                        <div class="carousel-item active">
+                            <img src="{{ MEDIA_URL }}gv3.png" class="d-block" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/media/gv6.png" class="d-block" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/media/gv12.png" class="d-block" alt="...">
+                        </div>
                     </div>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        {% if guitar.pk == '1' %}
-                            <img src="{{ guitar.image_id.url }}" class="d-block w-100" alt="">
-                        {% endif %}
-                      </div>
-                      <div class="carousel-item">
-                        {% if guitar.pk == '2' %}
-                            <img src="{{ guitar.image_id.url }}" class="d-block w-100" alt="">
-                        {% endif %}
-                      </div>
-                      <div class="carousel-item">
-                        {% if guitar.pk == '3' %}
-                            <img src="{{ guitar.image_id.url }}" class="d-block w-100" alt="">
-                        {% endif %}
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-featured-guitars" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel-featured-guitars" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-            </div>
-        </div>
+               
+            </div> 
+        </div>          <!--Close Featured row-->
+
 
         <div class="row">
             <div class="col-12 col-md-guttered main-content mt-2">

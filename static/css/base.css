@@ -248,8 +248,11 @@ body {
     border:2px solid var(--off-gold);
 }
 
-.carousel-item {
-    min-height: 10vh;
+.carousel-item img {
+    object-position: center;
+    object-fit: cover;
+    overflow: hidden;
+    height:25vh;
 }
 
 /*---Index.html Media Queries-----*/
