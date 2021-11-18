@@ -18,7 +18,17 @@
     
 }
 
-/*--Global Classes --*/
+html {
+    height: 100%;
+}
+
+body {
+    color:var(--ivory);
+    background-color: var(--black);
+}
+
+
+/*-- Text Classes --*/
 
 .logo-txt {
     font-family: 'Lobster', cursive;
@@ -28,8 +38,8 @@
     color:var(--ivory);
 }
 
-/* Gold text mask */
-.gold-txt {
+/* Gold textured mask */
+.gold-special-txt {
     color:var(--off-gold); /*- backup font color if text mask fails -*/
     background: url('/media/gold-texture.jpg');
     background-size: cover;
@@ -39,6 +49,12 @@
     background-clip:text;
 }
 
+/* standard gold text */
+.gold-txt {
+    color: var(--off-gold);
+}
+
+/* gold on hover txt */
 .gold-accent-txt:hover,
 .gold-accent-txt:focus,
 .gold-accent-txt:active {
@@ -52,14 +68,6 @@
     color: var(--off-gold);
 }
 
-html {
-    height: 100%;
-}
-
-body {
-    color:var(--ivory);
-    background-color: var(--black);
-}
 
 /*-----Nav Bar----------------------------------*/
 
@@ -160,6 +168,32 @@ body {
 
 
 
+
+
+
+
+/*----Footer----------------------------------*/
+
+
+
+/*---Index.html-----*/
+
+.main-content {
+
+    min-height:20vh;
+    text-align: center;
+    border:2px solid var(--off-gold);
+}
+
+.carousel-item img {
+    object-position: center;
+    object-fit: cover;
+    overflow: hidden;
+    height:25vh;
+}
+
+
+
 /*----Guitar Card---------------------------------------------*/
 
 .guitar-card {
@@ -178,6 +212,10 @@ body {
     object-fit: contain;
     aspect-ratio: 3 / 2;
     overflow: hidden;
+    
+}
+.card-img-top> img {
+    box-shadow: 0 0 8px 8px white inset;
 }
 
 .tp-text {
@@ -207,30 +245,6 @@ body {
     color:var(--bronze);
 }
 
-
-
-/*----Footer----------------------------------*/
-
-
-
-/*---Index.html-----*/
-
-.main-content {
-
-    min-height:20vh;
-    text-align: center;
-    border:2px solid var(--off-gold);
-}
-
-.carousel-item img {
-    object-position: center;
-    object-fit: cover;
-    overflow: hidden;
-    height:25vh;
-}
-
-/*---Index.html Media Queries-----*/
-
 /*--BUG FIX: Split columns were not applying central gutter, addressed with unique styling at medium breakpoint --*/
 @media (min-width:768px) {
     .col-md-guttered {
@@ -239,4 +253,11 @@ body {
     .col-md-gutter {
         width: 4%;
     }
+}
+
+
+/*--Guitar_Details.html ---*/
+
+.guitar-specs {
+    border: 3px solid var(--off-gold);
 }

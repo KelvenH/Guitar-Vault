@@ -15,7 +15,7 @@
     <div class="container h-100">
         <div class="row">
             <div class="col main-content mt-2">
-                <h1 class="gold-txt">Welcome to the Guitar Vault</h1>
+                <h1 class="gold-special-txt">Welcome to the Guitar Vault</h1>
                 <div class="d-flex">
                     <a href="{% url 'guitars' %}" class="btn btn-lg btn-take ms-auto">Take a peek inside the vault!</a>
                 </div>
@@ -25,7 +25,7 @@
 
         <div class="row">
             <div class="col main-content mt-2">
-                <h1 class="gold-txt">Featured Guitars</h1>
+                <h1 class="gold-special-txt">Featured Guitars</h1>
 
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner text-center">
@@ -48,17 +48,17 @@
         <div class="row">
             <div class="col-12 col-md-guttered main-content mt-2">
                 <div class="col-12">
-                    <h1 class="gold-txt">About Guitar Vault</h1>
+                    <h1 class="gold-special-txt">About Guitar Vault</h1>
                 </div>
             </div>
             <div class="d-none d-md-block col-md-gutter"><!--Empty column to add gutter - see bug fix in related CSS--></div>
             <div class="col-12 col-md-guttered main-content mt-2">
                 <div class="col-12">
                     {% if request.user.is_authenticated %}
-                        <h1 class="gold-txt">How Are We Doing?</h1>
-                        <h4 class="gold-txt">We want your Feedback - please spare 5 minutes to complete this questionnaire and help shape the future of our service</h4>
+                        <h1 class="gold-special-txt">How Are We Doing?</h1>
+                        <h4 class="gold-special-txt">We want your Feedback - please spare 5 minutes to complete this questionnaire and help shape the future of our service</h4>
                     {% else %}
-                        <h1 class="gold-txt">Members Feedback</h1>
+                        <h1 class="gold-special-txt">Members Feedback</h1>
                     {% endif %}
                 </div>
             </div>
