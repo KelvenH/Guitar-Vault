@@ -248,6 +248,10 @@ body {
     border:2px solid var(--off-gold);
 }
 
+.carousel-item {
+    min-height: 10vh;
+}
+
 /*---Index.html Media Queries-----*/
 
 /*--BUG FIX: Split columns were not applying central gutter, addressed with unique styling at medium breakpoint --*/
