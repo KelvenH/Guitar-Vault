@@ -184,9 +184,11 @@ body {
     font-weight:900;
 }
 
-.tier-pendant {
-    transform: translate(20rem, 1.5rem); 
- }
+.card-custom-overlay {
+    position:absolute;
+    top: 5%;
+    right: 25%;
+}
 
 .tp-platinum {
     color: var(--purple);
@@ -205,35 +207,7 @@ body {
     color:var(--bronze);
 }
 
-.card-footer {
-    position:relative; /*-- prevents card footer / buttons from being layered beneath the image overlay text */
-}
 
-/*---Media Queries for tier pendant placement --*/
-
-@media (min-width:768px) {
-    .tier-pendant {
-        transform: translate(14rem, 1.5rem); 
-    }
-}
-
-@media (min-width:992px) {
-    .tier-pendant {
-        transform: translate(12rem, 1.5rem); 
-    }
-}
-
-@media (min-width:1200px) {
-    .tier-pendant {
-        transform: translate(10rem, 1.5rem); 
-    }
-}
-
-@media (min-width:1400px) {
-    .tier-pendant {
-        transform: translate(12rem, 1.5rem); 
-    }
-}
 
 /*----Footer----------------------------------*/
 

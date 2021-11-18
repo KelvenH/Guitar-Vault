@@ -29,23 +29,23 @@
 
                                 <!--card image -->
                                 {% if guitar.image_id %}
-                                <a href="">
+                                <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
                                     <img src="{{ guitar.image_id.url }}" class="card-img-top" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
                                 </a>
 
                                 {% else %}
-                                <a href="">
+                                <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
                                     <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top " alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
                                 </a>
                                 {% endif %}
 
                                 <!-- tier pendant (overlays image)-->
-                                <div class="card-img-overlay pt-0">
+                                <div class="card-custom-overlay pt-0">
                                     <div class="fa-layers fa-fw tier-pendant">
                                         {% if guitar.tier %}
                                             {% if guitar.tier == 'Platinum' %}
                                                 <i class="fas fa-bookmark fa-6x tp-platinum"></i>
-                                                <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27 ">{{ guitar.tier }}</span>
+                                                <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27">{{ guitar.tier }}</span>
                                             {% else %}    
                                                 {% if guitar.tier == 'Gold' %}
                                                     <i class="fas fa-bookmark fa-6x tp-gold"></i>

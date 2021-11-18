@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <!--Empty container to push body content below nav bars-->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="row">
+            <div class="col text-center logo-txt gold-txt display-4 mt-5 mb-5">
+                Guitars
+            </div>
+        </div>
+        <div class="row h-100">
+            <div class="col main-content-col my-auto">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4 offset-lg 2 mb-4">
+                        <div class="guitar-image-container">
+                            {% if guitar.image_id %}
+                                <a href="{{ guitar.image_id.url }}" target="_blank">
+                                    <img src="{{ guitar.image_id.url }}" class="card-img-top" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                </a>
+
+                                {% else %}
+                                <a href="">
+                                    <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top " alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 mb-4">
+                        <div class="guitar-details-container">
+                            <div>{{ guitar.brand }} - {{ guitar.guitar_model }}</div>
+                            <div>{{ guitar.category }}</div>
+                            <div>{{ guitar.tier }}</div>
+                            <div>{{ guitar.status }}</div>
+                            <div>{{ guitar.handed }}</div>
+                            <div>{{ guitar.no_strings }}</div>
+                            <div>{{ guitar.approx_age_years }}</div>
+                            <div>{{ guitar.condition }}</div>
+                            <div>{{ guitar.construction }}</div>
+                            <div>{{ guitar.body_wood }}</div>
+                            <div>{{ guitar.body_top }}</div>
+                            <div>{{ guitar.tuners }}</div>
+                            <div>{{ guitar.frets }}</div>
+                            <div>{{ guitar.scale_length }}</div>
+                            <div>{{ guitar.neck_wood }}</div>
+                            <div>{{ guitar.neck_profile }}</div>
+                            <div>{{ guitar.no_pickups }}</div>
+                            <div>{{ guitar.pickups_desc }}</div>
+                            <div>{{ guitar.controls }}</div>
+                            <div>{{ guitar.owners_additional_comments }}</div>
+                            <div>{{ guitar.rating_condition }}</div>
+                            <div>{{ guitar.rating_overall }}</div>
+                        </div>
+                    </div>
+                        
+                </div>  <!--close sub-parent row-->
+            </div>      <!--close parent col-->
+        </div>          <!--close parent row-->
+    </div>              <!--close conainer-->
+{% endblock %}
