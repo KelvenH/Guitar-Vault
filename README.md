@@ -34,5 +34,6 @@ FUTURE FEATURES
 DEPLOYMENT
 
 ACKNOWLEDGEMENTS
+- https://svgontheweb.com/ : SVG creation and styling 
 
 DISCLAIMER

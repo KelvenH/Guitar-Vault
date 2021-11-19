@@ -7,15 +7,18 @@
     --logo-text: 'Lobster', cursive;
 
     /* Color Palette */
+    /* primary colours */
     --ivory: rgb(255, 255, 240);
     --black: rgb(0,0,0);
     --off-black: rgb(65,74,76);
-    --off-gold: rgb(238,204,102);
+    --off-gold: rgb(238,204,102);  /* HEX value #EECC66 */
+
+    /* button and icons */
     --silver: rgb(187, 194, 204);
     --bronze: rgb(205, 127, 50);
-    --purple: rgb(116,116,219); /*- used for platinum backgrounds */
+    --purple: rgb(116, 116, 219);  /*- used for platinum backgrounds */
+    --green: rgb(25, 135, 84);     /* HEX value #198754 */
     --transp: rgba(0,0,0,0);
-    
 }
 
 html {
@@ -68,6 +71,22 @@ body {
     color: var(--off-gold);
 }
 
+/*-- SVG Icons --------------------------------*/
+.guitar-svg {
+    height:3rem;
+}
+
+.add-black {
+    display:none;
+}
+
+.btn-take:hover .add-black {
+    display:inline;
+}
+
+.btn-take:hover .add-gold {
+    display:none;
+}
 
 /*-----Nav Bar----------------------------------*/
 
@@ -157,8 +176,10 @@ body {
     border: 3px solid var(--transp);
 }
 
+
+
 .btn-take {
-    border: 3px solid var(--off-gold);
+    
     color:var(--off-gold);
 }
 
@@ -166,9 +187,15 @@ body {
     background-color:var(--off-gold);
 }
 
+.btn-add-fav {
+    
+    color:var(--green);
+}
 
-
-
+.btn-add-fav:hover {
+    background-color:var(--green);
+    color: var(--ivory);
+}
 
 
 
