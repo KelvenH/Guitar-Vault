@@ -9,12 +9,34 @@ def all_guitars(request):
     guitars = Guitar.objects.all()
     query = None
     categories = None
+    tier = None
+    query_tier = None
+    sort = None
+    direction = None
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                guitars = guitars.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            guitars = guitars.order_by(sortkey)
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             guitars = guitars.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
+
+            if 'tier' in request.GET:
+                query_tier = request.GET['tier']
+                tier = guitars.filter(tier__in=query_tier)
 
 
         if 'q' in request.GET:
@@ -26,10 +48,14 @@ def all_guitars(request):
             queries = Q(brand__icontains=query) | Q(guitar_model__icontains=query)
             guitars = guitars.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'guitars': guitars,
         'search_term': query,
         'current_categories': categories,
+        'tier': query_tier,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'guitars/guitars.html', context)

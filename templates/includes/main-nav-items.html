@@ -23,15 +23,15 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">By Tier</a></li>
-                <li><a class="dropdown-item" href="#">By Overall Rating</a></li>
-                <li><a class="dropdown-item" href="#">By Status</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?sort=tier&direction=asc">By Tier</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?sort=rating_overall&direction=desc">By Overall Rating</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?sort=status&direction=asc">By Status</a></li>
             </ul>
 
         </li>  <!--Close About Menu-->
 
 
-        <!--Guitars Dropdown Menu-->
+        <!--Electric Guitars Dropdown Menu-->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">Electric</h4>
@@ -39,14 +39,14 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric">All Electric Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Platinum</a></li>
-                <li><a class="dropdown-item" href="#">Gold</a></li>
-                <li><a class="dropdown-item" href="#">Silver</a></li>
-                <li><a class="dropdown-item" href="#">Bronze</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric&tier=Platinum">Platinum</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric&tier=Gold">Gold</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric&tier=Silver">Silver</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric&tier=Bronze">Bronze</a></li>
             </ul>
         </li> <!--Close Guitars Menu-->
  
-        <!--Amps Dropdown Menu-->
+        <!--Bass Guitars Dropdown Menu-->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">Bass</h4>
@@ -54,14 +54,14 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Bass">All Bass Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Platinum</a></li>
-                <li><a class="dropdown-item" href="#">Gold</a></li>
-                <li><a class="dropdown-item" href="#">Silver</a></li>
-                <li><a class="dropdown-item" href="#">Bronze</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Bass&tier=Platinum">Platinum</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Bass&tier=Gold">Gold</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Bass&tier=Silver">Silver</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Bass&tier=Bronze">Bronze</a></li>
             </ul>
-        </li> <!--Close Amps Menu-->
+        </li> <!--Close Bass Menu-->
 
-        <!--Pedals Dropdown Menu-->
+        <!--Acoustic Guitars Dropdown Menu-->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">Acoustic</h4>
@@ -69,12 +69,12 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Acoustic">All Acoustic Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Platinum</a></li>
-                <li><a class="dropdown-item" href="#">Gold</a></li>
-                <li><a class="dropdown-item" href="#">Silver</a></li>
-                <li><a class="dropdown-item" href="#">Bronze</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Acoustic&tier=Platinum">Platinum</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Acoustic&tier=Gold">Gold</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Acoustic&tier=Silver">Silver</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Acoustic&tier=Bronze">Bronze</a></li>
             </ul>
-        </li> <!--Close Pedals Menu-->
+        </li> <!--Close Acoustic Menu-->
 
         <!--Brands Dropdown Menu-->
         <li class="nav-item dropdown">
