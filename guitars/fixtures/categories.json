@@ -11,16 +11,17 @@
         "pk": 2,
         "model": "guitars.category",
         "fields": {
-            "name": "Acoustic",
-            "friendly_name": "Acoustic"
+            "name": "Bass",
+            "friendly_name": "Bass"
         }
     },
     {
         "pk": 3,
         "model": "guitars.category",
         "fields": {
-            "name": "Bass",
-            "friendly_name": "Bass"
+            "name": "Acoustic",
+            "friendly_name": "Acoustic"
+       
         }
     }
 ]
