@@ -14,17 +14,17 @@
 {% block content %}
     <div class="container h-100">
         <div class="row">
-            <div class="col text-center logo-txt gold-special-txt display-4 mt-5 mb-5">
+            <div class="col text-center logo-txt gold-special-txt display-4 mb-4">
                 {{ guitar.brand }} - {{ guitar.guitar_model }}
             </div>
         </div>
         <div class="row h-100">
-            <div class="col main-content-col my-auto">
+            <div class="col-12 main-content-col">
                 <div class="row">
 
                     <!-- Guitar image -->
-                    <div class="col-12 col-md-4 mb-4">
-                        <div class="guitar-image-container">
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="guitar-image-container d-flex justify-content-center mx-auto">
                             {% if guitar.image_id %}
                                 <a href="{{ guitar.image_id.url }}" target="_blank">
                                     <img src="{{ guitar.image_id.url }}" class="guitar-detail-image" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
@@ -39,7 +39,7 @@
                     </div>
 
                     <!-- Guitar Details-->
-                    <div class="col-12 col-md-8 mb-4">
+                    <div class="col-12 col-md-6 mb-4">
                         <div class="row guitar-details-container">
                         
                             <!-- Main Details -->
@@ -121,12 +121,14 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="mt-2">Words from the owner;</div>
-                                    
-                                    <div class="gold-txt lg-txt">
-                                        <i class="gold-txt fas fa-quote-left" data-fa-transform="up-5"></i>
-                                        <em>{{ guitar.owners_additional_comments }}</em>
-                                        <i class="gold-txt fas fa-quote-right align-self-end" data-fa-transform="up-5"></i>
+                                    <div class="col-12 ms-2">
+                                        <div class="my-2">Words from the owner;</div>
+                                        
+                                        <div class="gold-txt lg-txt">
+                                            <i class="gold-txt fas fa-quote-left" data-fa-transform="up-5"></i>
+                                            <em>{{ guitar.owners_additional_comments }}</em>
+                                            <i class="gold-txt fas fa-quote-right align-self-end" data-fa-transform="up-5"></i>
+                                        </div>
                                     </div>
                             </div>
                         </div>
@@ -134,7 +136,7 @@
                             
                         <!--Additional Specs -->
                         <div class="col-12 guitar-specs p-3">
-                            <h3 class="ms-5">Additional Specs</h3>
+                            <h3 class="ms-4 gold-txt">Additional Specs</h3>
                             <div class="row">
                                 <!--left col-->
                                 <div class="col-6">

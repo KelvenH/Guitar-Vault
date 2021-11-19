@@ -92,6 +92,7 @@ body {
     display:none;
 }
 
+
 /*-----Nav Bar----------------------------------*/
 
 .nav-banner {
@@ -140,29 +141,25 @@ body {
     border: 2px solid var(--off-gold);
 }
 
-/*--Nav Media Queries-----------------------------*/
+/*--Nav Media Queries (adjustable header container)-----------------------------*/
 
-/*- Nav Small Screen --*/
 @media (max-width: 767px) {
     /* align nav dropdown items to left */
     .nav-link {
         text-align:left;
     }
+}
 
+/*- Header Container --*/
+.header-container {
+    padding-top:175px;
+}
+
+@media (min-width: 768px) {
     .header-container {
-        padding-top:15vh;
+        padding-top:300px;
     }
 }
-
-
-
-
-/*--Header Container---*/
-
-.header-container {
-    padding-top:25vh;
-}
-
 
 
 /*--Buttons & Search Field ---------------------------------*/
@@ -289,6 +286,20 @@ body {
 
 /*--Guitar_Details.html ---*/
 
+.guitar-detail-image {
+    
+    display: block;
+    object-fit: contain;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+}
+
 .guitar-specs {
     border: 3px solid var(--off-gold);
+}
+
+@media (min-width:768px) and (max-width:991px){
+    .guitar-details-container {
+        margin-left:10px;
+    }
 }
