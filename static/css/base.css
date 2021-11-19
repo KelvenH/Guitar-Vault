@@ -33,6 +33,10 @@ body {
 
 /*-- Text Classes --*/
 
+.lg-txt {
+    font-size:1.5rem;
+}
+
 .logo-txt {
     font-family: 'Lobster', cursive;
 }

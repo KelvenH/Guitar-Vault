@@ -61,6 +61,10 @@
                                     <p class="col-6">{{ guitar.handed }}</p>
                                 </div>
                                 <div class="d-flex flex-row">
+                                    <p class="col-6">Approx. Age</p>
+                                    <p class="col-6">{{ guitar.approx_age_years }} (years)</p>
+                                </div>
+                                <div class="d-flex flex-row">
                                     <p class="col-6">Condition</p>
                                     <p class="col-6">{{ guitar.condition }}</p>
                                 </div>
@@ -74,8 +78,62 @@
                                 </div>
                             </div> <!-- close main details -->
 
+                            <!-- Actions -->
+                            <div class="col-6">
+                                <div class="row">
+                                    <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-baseline">
+                                        <li class="list-inline-item w-20 pb-0 ">
+                                            <!--Reminder - once profiles created add JS to toggle display of favourite / remove favourite button-->
+                                            
+                                            <!--option A : Add Favourite -->
+                                            <btn type="button" class="btn btn-sm btn-add-fav align-baseline">
+                                                <i class="far fa-heart fa-2x"></i>
+                                                <p class="pb-0"><small>Add Favourite</small></p>
+                                            </btn>
+                                            
+                                            <!--option B : Remove Favourite -->
+                                            <btn type="button" class="btn btn-sm d-none btn-remove-fav align-baseline">
+                                                <i class="fas fa-heart fa-2x"></i>
+                                                <p class="ps-2"><small>Remove Favourite</small></p>
+                                            </btn>
+                                        </li>
+
+                                        <li class="list-inline-item w-20 pb-0 align-baseline">
+                                            <!--REMINDER - once profile complete switch between add / remove icon-->
+
+                                            <!--option A : Add to Rack -->
+                                            <btn type="button" class="btn btn-sm btn-take align-baseline">
+                                                <!--Temporary image src to be updated with correct Media links-->
+                                                <img src="/media/Guitar_gold_add.svg" class="guitar-svg add-gold">
+                                                <img src="/media/Guitar_black_add.svg" class="guitar-svg add-black">
+                                                <p class=""><small>Add to Rack</small></p>
+                                            </btn>
+
+                                            <!--option B : Remove from Rack -->
+                                            <btn type="button" class="btn btn-sm btn-take d-none align-baseline">
+                                                <!--Temporary image src to be updated with correct Media links-->
+                                                <img src="/media/Guitar_gold_remove.svg" class="guitar-svg add-gold">
+                                                <img src="/media/Guitar_black_remove.svg" class="guitar-svg add-black">
+                                                <p class="ps-2"><small>Remove from Rack</small></p>
+                                            </btn>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="row">
+                                    <div class="mt-2">Words from the owner;</div>
+                                    
+                                    <div class="gold-txt lg-txt">
+                                        <i class="gold-txt fas fa-quote-left" data-fa-transform="up-5"></i>
+                                        <em>{{ guitar.owners_additional_comments }}</em>
+                                        <i class="gold-txt fas fa-quote-right align-self-end" data-fa-transform="up-5"></i>
+                                    </div>
+                            </div>
+                        </div>
+                                
+                            
                         <!--Additional Specs -->
-                        <div class="col-12 guitar-specs">
+                        <div class="col-12 guitar-specs p-3">
                             <h3 class="ms-5">Additional Specs</h3>
                             <div class="row">
                                 <!--left col-->
@@ -100,9 +158,7 @@
                                     <div>Pick-ups: {{ guitar.pickups_desc }}</div>
                                     <div>Controls: {{ guitar.controls }}</div>
                                     
-                                    <div class="gold-txt mt-2">Words from the owner:</div>
-                                    <div>Approx. Age: {{ guitar.approx_age_years }} (years)</div>
-                                    <div>Owners Comments - <em class="gold-txt">{{ guitar.owners_additional_comments }}</em></div>
+                                    
                                 </div> 
                             </div>        
                         </div> <!--close Additional Specs -->
