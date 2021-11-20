@@ -11,10 +11,17 @@ def all_guitars(request):
     categories = None
     tier = None
     query_tier = None
+    query_brand = None
     sort = None
     direction = None
 
     if request.GET:
+
+        if 'brand' in request.GET:
+            query_brand = request.GET['brand']
+            guitars = guitars.filter(brand=query_brand)
+            print('brand=', query_brand) 
+
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -38,9 +45,8 @@ def all_guitars(request):
             if 'tier' in request.GET:
                 query_tier = request.GET['tier']
                 guitars = guitars.filter(tier=query_tier)
-                print('tier=', query_tier)
-            
-        
+                print('tier=', query_tier)       
+
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -58,10 +64,12 @@ def all_guitars(request):
         'search_term': query,
         'current_categories': categories,
         'tier': query_tier,
+        'brand': query_brand,
         'current_sorting': current_sorting,
     }
 
     return render(request, 'guitars/guitars.html', context)
+
 
 
 def guitar_detail(request, guitar_id):

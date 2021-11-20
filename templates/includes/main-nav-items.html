@@ -82,12 +82,11 @@
                 <h4 class="mb-0">Brands</h4>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">All Brands</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?sort=brand&direction=asc">All Brands</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Gibson</a></li>
-                <li><a class="dropdown-item" href="#">Fender</a></li>
-                <li><a class="dropdown-item" href="#">Gretsch</a></li>
-                <li><a class="dropdown-item" href="#">Ibanez</a></li>
+                {% for guitar in guitars %}
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?brand={{ guitar.brand }}">{{ guitar.brand }}</a></li>
+                {% endfor %}
             </ul>
         </li> <!--Close Brands Menu-->
 
