@@ -34,10 +34,13 @@ def all_guitars(request):
             guitars = guitars.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
+
             if 'tier' in request.GET:
                 query_tier = request.GET['tier']
-                tier = guitars.filter(tier__in=query_tier)
-
+                guitars = guitars.filter(tier=query_tier)
+                print('tier=', query_tier)
+            
+        
 
         if 'q' in request.GET:
             query = request.GET['q']
