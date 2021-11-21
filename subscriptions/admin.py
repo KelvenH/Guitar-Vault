@@ -5,7 +5,10 @@ from .models import Subscription
 class SubsAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'price'
+        'price',
+        'delivery',
+        're_stringed',
+        'set_up'
     )
 
     ordering = ('-price',)

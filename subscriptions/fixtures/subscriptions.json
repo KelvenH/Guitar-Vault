@@ -4,7 +4,10 @@
         "model": "subscriptions.subscription", 
         "fields": {
             "name": "Platinum", 
-            "price": 50.00
+            "price": 50.00,
+            "delivery": "Next Day (AM)",
+            "re_stringed": "True",
+            "set_up": "True" 
         }
     },
     {
@@ -12,7 +15,10 @@
         "model": "subscriptions.subscription",
         "fields": {
             "name": "Gold",
-            "price": 35.00
+            "price": 35.00,
+            "delivery": "Next Day (by 5pm)",
+            "re_stringed": "True",
+            "set_up": "False" 
         }
     },
     {
@@ -20,7 +26,10 @@
         "model": "subscriptions.subscription",
         "fields": {
             "name": "Silver",
-            "price": 20.00
+            "price": 20.00,
+            "delivery": "48 hours",
+            "re_stringed": "False",
+            "set_up": "False"
         }
     },
     {
@@ -28,7 +37,10 @@
         "model": "subscriptions.subscription",
         "fields": {
             "name": "Bronze",
-            "price": 10.00
+            "price": 10.00,
+            "delivery": "48 hours",
+            "re_stringed": "False",
+            "set_up": "False" 
         }
     }
 ]
