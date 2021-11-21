@@ -309,7 +309,6 @@ body {
 .subs-card {
     border: 3px solid var(--ivory);
     text-shadow: -2px 2px var(--off-black);
-   
     padding: 2px;
 }
 
@@ -319,6 +318,7 @@ body {
 
 .gold-subs-card {
     background-color: var(--off-gold);
+
 }
 
 .silver-subs-card {
@@ -327,4 +327,13 @@ body {
 
 .bronze-subs-card {
     background-color: var(--bronze);
+}
+
+/*----Subscription Card Media Queries ------*/
+
+/* adjust title size for large screens */
+@media (min-width:992px) and (max-width:1199px){
+    .subs-card > .card-body{
+        padding:5px;
+    }
 }
