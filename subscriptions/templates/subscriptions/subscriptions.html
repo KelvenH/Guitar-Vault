@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <!--Empty container to push body content below nav bars-->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="row">
+            <div class="col text-center logo-txt gold-special-txt display-4 mt-5 mb-5">
+                Subscriptions
+            </div>
+        </div>
+        <div class="row h-100">
+            <div class="col main-content-col my-auto">
+                <div class="row">
+                    
+                    {% for subscription in subscriptions %}
+                        
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <h3>{{ subscription.name }}</h3>
+                            <p>{{ subscription.price }}</p>
+                        </div>
+                       
+                    {% endfor %}
+
+                </div>  <!--close sub-parent card row-->
+            </div>      <!--close parent card col-->
+        </div>          <!--close parent card row-->
+    </div>              <!--close conainer-->
+{% endblock %}

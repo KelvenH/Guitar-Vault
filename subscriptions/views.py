@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Subscription
 
-def all_subs(request):
+def all_subscriptions(request):
 
-    sub = Subsciption.objects.all()
+    subscriptions = Subscription.objects.all()
 
-return render(request, 'subscriptions/subscriptions.html')
+    context = {
+        'subscriptions': subscriptions,
+    }
+
+    return render(request, 'subscriptions/subscriptions.html', context)
