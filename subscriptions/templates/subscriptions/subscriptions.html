@@ -25,8 +25,22 @@
                     {% for subscription in subscriptions %}
                         
                         <div class="col-12 col-md-6 col-lg-3">
-                            <h3>{{ subscription.name }}</h3>
-                            <p>{{ subscription.price }}</p>
+                            
+                            <div class="card subs-card 
+                            {% if subscription.name == 'Platinum' %}plat-subs-card
+                            {% elif subscription.name == 'Gold' %}gold-subs-card
+                            {% elif subscription.name == 'Silver' %}silver-subs-card
+                            {% elif subscription.name == 'Bronze' %}bronze-subs-card
+                            {% endif %}">
+                                <div class="card-body">
+                                    <h5 class="card-title display-6"><strong>{{ subscription.name|upper }}</strong></h5>
+                                    <p class="card-text">{{ subscription.price }}</p>
+                                    <p class="card-text">{{ subscription.delivery }}</p>
+                                    <!--'yesno' django template feature to convert boolean True/False value-->
+                                    <p class="card-text">{{ subscription.re_stringed|yesno:"Yes,No" }}</p>
+                                    <p class="card-text">{{ subscription.set_up|yesno:"Yes,No" }}</p>
+                                </div>
+                            </div>
                         </div>
                        
                     {% endfor %}
@@ -36,3 +50,9 @@
         </div>          <!--close parent card row-->
     </div>              <!--close conainer-->
 {% endblock %}
+
+{% with v.release.version as version %}
+<div class="pkg-buildinfo 
+            {% if version == pkg.b.release.version %}active{% else %}inactive{% endif %} 
+            {% if version == project.latest.version %}latest{% else %}notlatest{% endif %}">
+{% endwith %}

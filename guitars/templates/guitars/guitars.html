@@ -45,6 +45,7 @@
                                         {% if guitar.tier %}
                                             {% if guitar.tier == 'Platinum' %}
                                                 <i class="fas fa-bookmark fa-6x tp-platinum"></i>
+                                                <!--Longer tier requires different transform adjustments for Platinum -->
                                                 <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27">{{ guitar.tier }}</span>
                                             {% else %}    
                                                 {% if guitar.tier == 'Gold' %}

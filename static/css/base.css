@@ -284,7 +284,7 @@ body {
 }
 
 
-/*--Guitar_Details.html ---*/
+/*--Guitar_Details.html -----------------------------------*/
 
 .guitar-detail-image {
     
@@ -302,4 +302,29 @@ body {
     .guitar-details-container {
         margin-left:10px;
     }
+}
+
+/*----Subscription Card---------------------------------------------*/
+
+.subs-card {
+    border: 3px solid var(--ivory);
+    text-shadow: -2px 2px var(--off-black);
+   
+    padding: 2px;
+}
+
+.plat-subs-card {
+    background-color: var(--purple);
+}
+
+.gold-subs-card {
+    background-color: var(--off-gold);
+}
+
+.silver-subs-card {
+    background-color: var(--silver);
+}
+
+.bronze-subs-card {
+    background-color: var(--bronze);
 }
