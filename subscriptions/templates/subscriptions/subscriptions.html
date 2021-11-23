@@ -28,7 +28,7 @@
                             We offer 4 subscription plans. Primarily, these plans provide you access to guitars at that tier. But in addition, we also bundle in some extra nice features including, express delivery, new strings and a complete set-up!
                         </p>
                         <p class="text-center mb-3 gold-txt display-6">    
-                            Click on the package which suits your needs to sign-up.
+                            Select the package which suits your needs to sign-up.
                         </p>
                     </div>
                 </div>
@@ -62,6 +62,17 @@
                                         <p class="col-6">Set-Up:</p>
                                         <p class="card-text">{{ subscription.set_up|yesno:"Yes,No" }}</p>
                                     </div>
+                                    
+                                    <!--Add subscription package to bag-->
+                                    <form class="form" action="" method="POST">
+                                        {% csrf_token %}
+                                        <input type="submit" class="rounded-pill btn-gold-outline text-center mx-auto w-100
+                                        {% if subscription.name == 'Platinum' %}plat-sub-btn
+                                        {% elif subscription.name == 'Gold' %}gold-sub-btn
+                                        {% elif subscription.name == 'Silver' %}silver-sub-btn
+                                        {% elif subscription.name == 'Bronze' %}bronze-sub-btn
+                                        {% endif %}" value="Purchase {{ subscription.name }} Plan">
+                                    </form>
 
                                 </div> <!--close card body-->
                             </div> <!-- close card -->

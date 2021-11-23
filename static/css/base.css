@@ -15,10 +15,16 @@
     --off-gold2: rgba(238,404,102,0.65); /*used for Gold sub card to darken background for better text visibility*/
 
     /* button and icons */
+    --gold:rgb(207, 166, 41);
+    --gold-dark: rgb(175, 140, 34);
     --silver: rgb(187, 194, 204);
+    --silver-dark: rgb(151, 152, 155);
     --bronze: rgb(205, 127, 50);
+    --bronze-dark: rgb(160, 93, 26);
     --purple: rgb(116, 116, 219);  /*- used for platinum backgrounds */
+    --purple-dark: rgb(85, 85, 170);
     --green: rgb(25, 135, 84);     /* HEX value #198754 */
+    --green-dark: rgb(19, 105, 65);
     --transp: rgba(0,0,0,0);
 }
 
@@ -76,22 +82,7 @@ body {
     color: var(--off-gold);
 }
 
-/*-- SVG Icons --------------------------------*/
-.guitar-svg {
-    height:3rem;
-}
 
-.add-black {
-    display:none;
-}
-
-.btn-take:hover .add-black {
-    display:inline;
-}
-
-.btn-take:hover .add-gold {
-    display:none;
-}
 
 
 /*-----Nav Bar----------------------------------*/
@@ -178,11 +169,26 @@ body {
     border: 3px solid var(--transp);
 }
 
+/*-- SVG Icons ----*/
+.guitar-svg {
+    height:3rem;
+}
 
+.add-black {
+    display:none;
+}
 
-.btn-take {
-    
+.btn-take {    
     color:var(--off-gold);
+}
+
+/* switch display / hide for reverse image on hover */
+.btn-take:hover .add-black {
+    display:inline;
+}
+
+.btn-take:hover .add-gold {
+    display:none;
 }
 
 .btn-take:hover {
@@ -190,7 +196,6 @@ body {
 }
 
 .btn-add-fav {
-    
     color:var(--green);
 }
 
@@ -199,13 +204,23 @@ body {
     color: var(--ivory);
 }
 
+.btn-gold-outline {
+    color:var(--off-gold);
+    border: 3px solid var(--off-gold);
+    background-color: var(--transp); /* prevents default white background */
+}
+
+.btn-gold-outline:hover {
+    background-color:var(--off-gold);
+    color:var(--off-black);
+}
 
 
-/*----Footer----------------------------------*/
+/*----Footer---------------------------------------------*/
 
 
 
-/*---Index.html-----*/
+/*---Index.html-------------------------------------------*/
 
 .main-content {
 
@@ -263,7 +278,7 @@ body {
 }
 
 .tp-gold {
-    color:var(--off-gold);
+    color:var(--gold);
 }
 
 .tp-silver {
@@ -324,16 +339,9 @@ body {
 }
 
 .gold-subs-card {
-    background-color: var(--off-gold2);
+    background-color: var(--gold);
 }
 
-.gold-subs-card:hover,
-.gold-subs-card:focus,
-.gold-subs-card:active {
-   
-    color: var(--off-gold);
-    box-shadow: 0 0 5px 5px var(--off-gold);
-}
 
 .silver-subs-card {
     background-color: var(--silver);
@@ -343,6 +351,22 @@ body {
     background-color: var(--bronze);
 }
 
+/* Darker background applied to subscription button */
+.plat-sub-btn {
+    background-color: var(--purple-dark);
+}
+
+.gold-sub-btn {
+    background-color: var(--gold-dark);
+}
+
+.silver-sub-btn {
+    background-color: var(--silver-dark);
+}
+
+.bronze-sub-btn {
+    background-color: var(--bronze-dark);
+}
 
 
 
