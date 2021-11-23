@@ -15,24 +15,41 @@
     <div class="container h-100">
         <div class="row">
             <div class="col mt-2">
-                <h1 class="gold-special-txt text-center">Shopping Bag</h1>
+                <h1 class="gold-special-txt text-center mb-3">Shopping Bag</h1>
             </div>      
         </div>          <!--Close Welcome row-->
 
         <div class="row">
-            <div class="col main-content mt-2">
+            <div class="col-6 offset-3 main-content mt-2 my-auto">
+
                 {% if bag_items %}
-                    <div class="table-responsive">
-                        {{ bag_items }}
+                    <p class="mt-3 lead">Thank you for choosing to join Guitar Vault.</p>
+                    <p>Your chosen plan is shown below;</p>     
+                    {% for item in bag_items %}
+                        
+                        <div class="d-flex flex-row">
+                            <p class="col-6">Subscription Tier:</p>
+                            <p class="col-6">{{ item.subscription }}</p>
+                        </div>
+                        <div class="d-flex flex-row">
+                            <p class="col-6">Monthly Fee:</p>
+                            <p class="col-6">£{{ item.subscription.price }}</p>
+                        </div>  
+                    {% endfor %}
+                    
+                    <div class="d-flex justify-content-evenly mt-2 pb-3">
+                        <a class="btn btn-outline-secondary" type="button" href="{% url 'subscriptions' %}"><i class="fas fa-angle-left"></i>
+                            <span class="ms-2">Switch to Another Plan</span>
+                        </a>
+                        
+                        <btn class="btn btn-gold-outline" type="button" href="">Proceed to Payment</btn>
                     </div>
-               {% else %}
+
+                {% else %}
                     <p class="lead mt-5"> You have not added anything to your bag</p>
                     <a href="{% url 'subscriptions' %}" class="btn btn-gold-outline">View our subscription plans</a>
                 {% endif %}
             </div> 
-        </div>         
-
-
-        
+        </div>                 
     </div> <!--close main container-->
 {% endblock %}
