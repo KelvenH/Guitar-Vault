@@ -12,6 +12,7 @@
     --black: rgb(0,0,0);
     --off-black: rgb(65,74,76);
     --off-gold: rgb(238,204,102);  /* HEX value #EECC66 */
+    --off-gold2: rgba(238,404,102,0.65); /*used for Gold sub card to darken background for better text visibility*/
 
     /* button and icons */
     --silver: rgb(187, 194, 204);
@@ -308,8 +309,14 @@ body {
 
 .subs-card {
     border: 3px solid var(--ivory);
-    text-shadow: -2px 2px var(--off-black);
+    text-shadow: 
+        -2px 2px var(--off-black);
     padding: 2px;
+}
+
+.subs-card:hover {
+    color: var(--off-gold);
+    box-shadow: 0 0 5px 5px var(--off-gold);
 }
 
 .plat-subs-card {
@@ -317,8 +324,15 @@ body {
 }
 
 .gold-subs-card {
-    background-color: var(--off-gold);
+    background-color: var(--off-gold2);
+}
 
+.gold-subs-card:hover,
+.gold-subs-card:focus,
+.gold-subs-card:active {
+   
+    color: var(--off-gold);
+    box-shadow: 0 0 5px 5px var(--off-gold);
 }
 
 .silver-subs-card {
@@ -328,6 +342,9 @@ body {
 .bronze-subs-card {
     background-color: var(--bronze);
 }
+
+
+
 
 /*----Subscription Card Media Queries ------*/
 
