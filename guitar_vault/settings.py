@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'home',
     'guitars',
     'subscriptions',
+    'bag',
 ]
 
 

@@ -52,54 +52,88 @@
         <div class="container-lg">
         <!--Top Nav Row (Logo, Title and Profile / LogIn / Join)-->
           <div class="row">
+
+            <!--Logo-->
             <div class="col-0 col-md-3 align-self-start my-auto py-2 d-none d-md-block">
               <img class="navbar-logo" src="/media/GV-Logo.png"/>
             </div>
-            <div class="col-12 col-md-6 align-self-center text-center my-auto">
+
+            <!--Site Title-->
+            <div class="col-12 col-md-5 align-self-center text-center my-auto">
               <h1 class="logo-txt gold-special-txt display-1">
                 <a href="{% url 'home' %}">Guitar Vault</a></h1>
             </div>
 
-            <!--Profile -->
-            <div class="col-0 d-none col-md-3 d-md-block align-self-end text-end my-auto mb-5">
-              
-              {% if request.user.is_authenticated %}
-                <div class="d-flex">  
-                  <div class="dropdown" id="user-profile-dropdown">
-                    <a class="dropdown-toggle gold-accent-txt" href="#" role="button" id="user-profile-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="text-center">
-                            <div><i class="fas fa-user fa-lg"></i></div>
-                            <h5 class="my-0">My Account</h5>
-                        </div>
-                    </a>
-                    <!--Embedded dropdown menu-->
-                    <ul class="dropdown-menu" aria-labelledby="user-profile-options">
-                      {% if request.user.is_superuser %}
+            <!--Profile & Shopping Bag -->
+            <div class="col-0 d-none col-md-4 d-md-block align-self-end text-end">
+              <ul class="list-inline list-unstyled">
+
+                <!--Profile (only visible to logged in users)-->
+                {% if request.user.is_authenticated %}
+                  <li class="list-inline-item pt-5">  
+                    <div class="dropdown" id="user-profile-dropdown">
+                      <a class="ivory-txt gold-accent-txt" href="#" role="button" id="user-profile-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="text-center">
+                              <div><i class="fas fa-user fa-lg"></i></div>
+                              <h5 class="my-0">My Account</h5>
+                          </div>
+                      </a>
+                      <!--Embedded dropdown menu-->
+                      <ul class="dropdown-menu" aria-labelledby="user-profile-options">
+                        {% if request.user.is_superuser %}
+                          <li><a class="dropdown-item gold-accent-txt" href="">
+                            Site Admin</a></li>
+                        {% endif %}  
                         <li><a class="dropdown-item gold-accent-txt" href="#">
-                          Site Admin</a></li>
-                      {% endif %}  
-                      <li><a class="dropdown-item gold-accent-txt" href="#">
-                        My Profile</a></li>
-                      <li><a class="dropdown-item gold-accent-txt" href="{% url 'account_logout' %}">
-                        Log Out</a></li>
-                    </ul>
-                  </div> <!--Close Embedded dropdown menu-->
+                          My Profile</a></li>
+                        <li><a class="dropdown-item gold-accent-txt" href="{% url 'account_logout' %}">
+                          Log Out</a></li>
+                      </ul>
+                    </div> <!--Close Embedded dropdown menu-->
+                  </li> 
                 
-                  <div class="mt-0">
-                    
-                    <!--Temporary icon to be replaced with icon identifying user's membership tier-->
-                    <i class="fas fa-certificate"></i>
-                    
-                  </div>
-                </div> 
-                        
-              {% else %}
-                <ul class="list-inline list-unstyled">
-                  <li class="list-inline-item gold-accent-txt" href="{% url 'account_signup' %}"><h4>Join</h4></li>
-                  <li class="vr"></li>
-                  <li class="list-inline-item gold-accent-txt" href="{% url 'account_login' %}"><h4>Log In</h4></li>
-                </ul>
-              {% endif %}
+                <!--Non-Logged in Users (Join / Log-In)-->
+                {% else %}
+                  <li class="list-inline-item">
+                    <ul class="list-inline list-unstyled">
+                      <li class="list-inline-item"><a class="ivory-txt gold-accent-txt" href="{% url 'subscriptions' %}"><h4>Join</h4></a></li>
+                      <li class="vr"></li>
+                      <li class="list-inline-item ps-2"><a class="ivory-txt gold-accent-txt" href="{% url 'account_login' %}"><h4> Log In</h4></a></li>
+                    </ul>
+                  </li>
+                {% endif %}
+                
+                <li class="list-inline-item">
+                  <ul class="list-inline list-unstyled">
+                    <!--Shopping Bag (all users)-->
+                    <li class="list-inline-item ">
+                      <a class="ivory-txt gold-accent-txt" href="">
+                        <div class="text-center">
+                          <i class="fas fa-shopping-bag fa-2x"></i>
+                        </div>
+                        <p class="my-0">
+
+                        </p>
+                      </a>
+                    </li>
+
+                    {% if request.user.is_authenticated %}
+                      <!--Picks to Spend (logged in users)-->
+                      <li class="list-inline-item">
+                        <a class="ivory-txt gold-accent-txt" href="">
+                          <div class="text-center">
+                            <!--Temporary icon - to be replaced with SVG matching membership tier + counter for picks available-->
+                            <i class="fas fa-map-marker fa-2x"></i>
+                          </div>
+                          <p class="my-0">
+
+                          </p>
+                        </a>
+                      </li>
+                    {% endif %}
+                  </ul> <!--close Shopping Bag and Picks-->
+                </li>
+              </ul> <!-- close all Profile and Shopping / Pick list items -->
             </div> <!--close Profile col-->
 
           </div>  <!--close Top Nav row -->

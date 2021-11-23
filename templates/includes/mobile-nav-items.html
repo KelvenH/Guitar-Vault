@@ -1,49 +1,75 @@
+
+<!--Profile & Shopping Bag -->
 <div class="col-6 align-self-end text-end my-auto d-block d-md-none">
-    {% if request.user.is_authenticated %}
-        <div class="d-flex">  
-            <div class="dropdown" id="user-profile-dropdown">
-                <a class="nav-link" href="#" id="user-profile-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="text-center">
-                        <div><i class="fas fa-user fa-lg"></i></div>
-                        <h5 class="my-0">My Account</h5>
-                    </div>
-                </a>
-                <!--Embedded dropdown menu-->
-                <div class="dropdown-menu" aria-labelledby="user-profile-options">
-                {% if request.user.is_superuser %}
-                    <a class="dropdown-item gold-accent-txt" href="#">
-                        <h4> Site Admin</h4>
-                    </a>
-                {% endif %}  
-                <a class="dropdown-item gold-accent-txt" href="#">
-                    <h4>My Profile</h4>
-                </a>
-                <a class="dropdown-item gold-accent-txt" href="{% url 'account_logout' %}">
-                    <h4>Log Out</h4>
-                </a>
-                </div> <!--Close Embedded dropdown menu-->
-            </div>
-            
-            <div class="mt-0">
-                
-                <!--Temporary icon to be replaced with icon identifying user's membership tier-->
-                <i class="fas fa-certificate"></i>
-                
-            </div>
-        </div> 
-                
-    {% else %}
     <ul class="list-inline list-unstyled">
-        <li class="list-inline-item gold-accent-txt" href="{% url 'account_signup' %}">
-            <h4>Join</h4>
+
+      <!--Profile (only visible to logged in users)-->
+      {% if request.user.is_authenticated %}
+        <li class="list-inline-item">  
+          <div class="dropdown" id="user-profile-dropdown">
+            <a class="ivory-txt gold-accent-txt" href="#" role="button" id="user-profile-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="text-center">
+                    <div><i class="fas fa-user fa-lg"></i></div>
+                    <h5 class="my-0">My Account</h5>
+                </div>
+            </a>
+            <!--Embedded dropdown menu-->
+            <ul class="dropdown-menu" aria-labelledby="user-profile-options">
+              {% if request.user.is_superuser %}
+                <li><a class="dropdown-item gold-accent-txt" href="">
+                  Site Admin</a></li>
+              {% endif %}  
+              <li><a class="dropdown-item gold-accent-txt" href="#">
+                My Profile</a></li>
+              <li><a class="dropdown-item gold-accent-txt" href="{% url 'account_logout' %}">
+                Log Out</a></li>
+            </ul>
+          </div> <!--Close Embedded dropdown menu-->
+        </li> 
+      
+      <!--Non-Logged in Users (Join / Log-In)-->
+      {% else %}
+        <li class="list-inline-item">
+          <ul class="list-inline list-unstyled">
+            <li class="list-inline-item"><a class="ivory-txt gold-accent-txt" href="{% url 'subscriptions' %}"><h4>Join</h4></a></li>
+            <li class="vr"></li>
+            <li class="list-inline-item ps-2"><a class="ivory-txt gold-accent-txt" href="{% url 'account_login' %}"><h4> Log In</h4></a></li>
+          </ul>
         </li>
-        <li class="vr"></li>
-        <li class="list-inline-item gold-accent-txt" href="{% url 'account_login' %}">
-            <h4>Log In</h4>
-        </li>
-      </ul>
-    {% endif %}
-</div> <!--close Profile col-->
+      {% endif %}
+      
+      <li class="list-inline-item">
+        <ul class="list-inline list-unstyled">
+          <!--Shopping Bag (all users)-->
+          <li class="list-inline-item ">
+            <a class="ivory-txt gold-accent-txt" href="">
+              <div class="text-center">
+                <i class="fas fa-shopping-bag fa-2x"></i>
+              </div>
+              <p class="my-0">
+
+              </p>
+            </a>
+          </li>
+
+          {% if request.user.is_authenticated %}
+            <!--Picks to Spend (logged in users)-->
+            <li class="list-inline-item">
+              <a class="ivory-txt gold-accent-txt" href="">
+                <div class="text-center">
+                  <!--Temporary icon - to be replaced with SVG matching membership tier + counter for picks available-->
+                  <i class="fas fa-map-marker fa-2x"></i>
+                </div>
+                <p class="my-0">
+
+                </p>
+              </a>
+            </li>
+          {% endif %}
+        </ul> <!--close Shopping Bag and Picks-->
+      </li>
+    </ul> <!-- close all Profile and Shopping / Pick list items -->
+  </div> <!--close Profile col-->
 
 
 
