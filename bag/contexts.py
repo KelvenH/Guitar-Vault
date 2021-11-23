@@ -1,16 +1,27 @@
 from decimal import Decimal
 from django.conf import settings
+from django.shortcuts import get_object_or_404
+from subscriptions.models import Subscription
 
 def bag_contents(request):
 
     bag_items = []
-    total = 0
+    bag_total = 0
+    bag = request.session.get('bag', {})
+
+    for subscription_id, quantity in bag.items():
+        subscription = get_object_or_404(Subscription, pk=subscription_id)
+        bag_total = subscription.price
+        bag_items.append({
+            'subscription_id': subscription_id,
+            'subscription': subscription
+        })
     
-    total_VAT = total * Decimal(settings.VAT_PERCENTAGE/100)
+    total_VAT = bag_total * Decimal(settings.VAT_PERCENTAGE/100)
 
     context = {
         'bag_items': bag_items,
-        'total': total,
+        'bag_total': bag_total,
         'total_VAT': total_VAT,
     }
 
