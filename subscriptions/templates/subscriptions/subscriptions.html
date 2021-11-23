@@ -64,7 +64,7 @@
                                     </div>
                                     
                                     <!--Add subscription package to bag-->
-                                    <form class="form" action="" method="POST">
+                                    <form class="form" action="{% url 'add_to_bag' subscription.id %}" method="POST">
                                         {% csrf_token %}
                                         <input type="submit" class="rounded-pill btn-gold-outline text-center mx-auto w-100
                                         {% if subscription.name == 'Platinum' %}plat-sub-btn
@@ -72,6 +72,7 @@
                                         {% elif subscription.name == 'Silver' %}silver-sub-btn
                                         {% elif subscription.name == 'Bronze' %}bronze-sub-btn
                                         {% endif %}" value="Purchase {{ subscription.name }} Plan">
+                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                     </form>
 
                                 </div> <!--close card body-->

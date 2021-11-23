@@ -4,6 +4,7 @@ from .models import Subscription
 
 class SubsAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'name',
         'price',
         'delivery',
