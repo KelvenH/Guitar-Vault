@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'guitars',
     'subscriptions',
     'bag',
+    'checkout',
 ]
 
 
