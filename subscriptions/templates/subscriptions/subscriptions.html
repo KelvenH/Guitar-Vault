@@ -72,7 +72,7 @@
                                         {% elif subscription.name == 'Silver' %}silver-sub-btn
                                         {% elif subscription.name == 'Bronze' %}bronze-sub-btn
                                         {% endif %}" value="Purchase {{ subscription.name }} Plan">
-                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                        <input type="hidden" name="redirect_url" value="{% url 'view_bag' %}">
                                     </form>
 
                                 </div> <!--close card body-->
