@@ -20,16 +20,7 @@ class Category(models.Model):
 
 class Guitar(models.Model):
     # Category (with choices to create dropdown selection for users)
-    ELECTRIC = '1'
-    BASS = '2'
-    ACOUSTIC = '3'
-
-    CATEGORY_CHOICES = [
-        (ELECTRIC, 'Electric'),
-        (BASS, 'Bass'),
-        (ACOUSTIC, 'Acoustic'),
-    ]
-    category = models.ForeignKey('Category', choices=CATEGORY_CHOICES, default=ELECTRIC, on_delete=models.PROTECT) # PROTECT prevents deletion of the primary key (categories)
+    category = models.ForeignKey(Category, null=False, blank=False, on_delete=models.PROTECT) # PROTECT prevents deletion of the primary key (categories)
     
     # Brand & Model
     brand = models.CharField(max_length=25)
@@ -85,13 +76,13 @@ class Guitar(models.Model):
     tuners = models.CharField(max_length=25, null=True, blank=True)
     
     # No. Frets
-    FRETS_20 = '20'
-    FRETS_22 = '22'
-    FRETS_24 = '24'
+    FRETS_20 = 20
+    FRETS_22 = 22
+    FRETS_24 = 24
     FRETS_CHOICES = [
-        (FRETS_20, '20'),
-        (FRETS_22, '22'),
-        (FRETS_24, '24'),
+        (FRETS_20, 20),
+        (FRETS_22, 22),
+        (FRETS_24, 24),
         ]
     frets = models.DecimalField(max_digits=2, decimal_places=0, choices=FRETS_CHOICES, default=FRETS_22)
 

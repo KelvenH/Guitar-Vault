@@ -8,8 +8,7 @@ from subscriptions.models import Subscription
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    subscription = models.ForeignKey(Subscription, null=False, blank=False, on_delete=models.PROTECT)
-    subscription_plan = models.CharField(max_length=12, null=False, blank=False)
+    subscription_plan = models.ForeignKey(Subscription, null=False, blank=False, on_delete=models.PROTECT)
     subscription_price = models.DecimalField(max_digits=4, decimal_places=2, null=False, default=0)
     #user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      #null=True, blank=True, related_name='orders')
