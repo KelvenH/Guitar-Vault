@@ -25,7 +25,8 @@
       "owners_additional_comments": "The John Mayer Silver Sky is a great guitar, PRS's attempt at a modern day strat!",
       "rating_condition": 5,
       "rating_overall": 4,
-      "image_id": "gv1.png"
+      "image_id": "gv1.png",
+      "featured": "False"
     }
   },
   {
@@ -54,7 +55,8 @@
       "owners_additional_comments": "A real workhorse with classic Les Paul tones we all adore!",
       "rating_condition": 4,
       "rating_overall": 5,
-      "image_id": "gv2.png"
+      "image_id": "gv2.png",
+      "featured": "False"
     }
   },
   {
@@ -83,7 +85,8 @@
       "owners_additional_comments": "Neck shape is a comfortable modern profile. Looks gorgeous and has great warm clean tones which break up crisp.",
       "rating_condition": 5,
       "rating_overall": 5,
-      "image_id": "gv3.png"
+      "image_id": "gv3.png",
+      "featured": "True"
     }
   },
   {
@@ -112,7 +115,8 @@
       "owners_additional_comments": "Features the ultra-modern weight relief - good for long sessions! In my view matches the tones of the more expensive LP models.",
       "rating_condition": 4,
       "rating_overall": 3,
-      "image_id": "gv4.png"
+      "image_id": "gv4.png",
+      "featured": "False"
     }
   },
   {
@@ -141,7 +145,8 @@
       "owners_additional_comments": "Gibson Sg 61 reissue with vibrola maestro trem",
       "rating_condition": 4,
       "rating_overall": 4,
-      "image_id": "gv5.png"
+      "image_id": "gv5.png",
+      "featured": "True"
     }
   },
   {
@@ -170,7 +175,8 @@
       "owners_additional_comments": "One for us south-paws! Distinctive Duesenburg tones - highly recommend but you won;t want to return it!",
       "rating_condition": 5,
       "rating_overall": 5,
-      "image_id": "gv6.png"
+      "image_id": "gv6.png",
+      "featured": "True"
     }
   },
   {
@@ -199,7 +205,8 @@
       "owners_additional_comments": "A left handed bass - great 4 string from the best in bass brands!",
       "rating_condition": 4,
       "rating_overall": 4,
-      "image_id": "gv7.png"
+      "image_id": "gv7.png",
+      "featured": "False"
     }
   },
   {
@@ -228,7 +235,8 @@
       "owners_additional_comments": "A bass beast! Young guitar with an old soul and relic'd looks to match",
       "rating_condition": 5,
       "rating_overall": 5,
-      "image_id": "gv8.png"
+      "image_id": "gv8.png",
+      "featured": "True"
     }
   },
   {
@@ -257,7 +265,8 @@
       "owners_additional_comments": "Great player! The neodymium pickups deliver more power and range of sounds.",
       "rating_condition": 4,
       "rating_overall": 4,
-      "image_id": "gv9.png"
+      "image_id": "gv9.png",
+      "featured": "False"
     }
   },
   {
@@ -286,7 +295,8 @@
       "owners_additional_comments": "Weight relief wings (solid body center), inbuilt custom voiced Darkglass pre-amp.",
       "rating_condition": 5,
       "rating_overall": 5,
-      "image_id": "gv10.png"
+      "image_id": "gv10.png",
+      "featured": "False"
     }
   },
   {
@@ -315,7 +325,8 @@
       "owners_additional_comments": "Dreadnought body, a real singer!",
       "rating_condition": 5,
       "rating_overall": 5,
-      "image_id": "gv11.png"
+      "image_id": "gv11.png",
+      "featured": "True"
     }
   },
   {
@@ -344,7 +355,8 @@
       "owners_additional_comments": "A classic herringbone dreadnought with exuberant tone.",
       "rating_condition": 4,
       "rating_overall": 4,
-      "image_id": "gv12.png"
+      "image_id": "gv12.png",
+      "featured": "False"
     }
   },
   {
@@ -373,7 +385,8 @@
       "owners_additional_comments": "Grand concert guitar - great volume and sustain which lasts forever!",
       "rating_condition": 5,
       "rating_overall": 5,
-      "image_id": "gv13.png"
+      "image_id": "gv13.png",
+      "featured": "False"
     }
   },
   {
@@ -402,7 +415,8 @@
       "owners_additional_comments": "This overcomes the typical electro/acoustic feedback problems with a unique designed smaller body shape and Fender/Fishman-designed acoustic engine to cut out unwanted noise",
       "rating_condition": 5,
       "rating_overall": 4,
-      "image_id": "gv14.png"
+      "image_id": "gv14.png",
+      "featured": "False"
     }
   }
 ]

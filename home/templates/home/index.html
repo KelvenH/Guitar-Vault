@@ -14,9 +14,9 @@
 {% block content %}
     <div class="container h-100">
         <div class="row">
-            <div class="col main-content mt-2">
-                <h1 class="gold-special-txt">Welcome to the Guitar Vault</h1>
-                <div class="d-flex">
+            <div class="col main-content mt-1">
+                <h1 class="gold-special-txt mb-5">Welcome to the Guitar Vault</h1>
+                <div class="d-flex pb-2">
                     <a href="{% url 'subscriptions' %}" class="btn btn-lg btn-gold-outline">New? View our subscription plans</a>
                     <a href="{% url 'guitars' %}" class="btn btn-lg btn-gold-outline ms-auto">Take a peek inside the vault!</a>
                 </div>
@@ -25,26 +25,30 @@
 
 
         <div class="row">
-            <div class="col main-content mt-2">
+            <div class="col-12 main-content mt-2">
                 <h1 class="gold-special-txt">Featured Guitars</h1>
-
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner text-center">
-                        <div class="carousel-item active">
-                            <!--Temporary image src to be updated with correct Media links-->
-                            <img src="/media/gv3.png" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/media/gv6.png" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/media/gv12.png" class="d-block" alt="...">
+                <div class="row">
+                    <div class="col-12 col-md-6 offset-md-3">
+                        <div id="featured-carousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner text-center py-2">
+                                {% for guitar in guitars %}
+                                    {% if guitar.featured %}
+                                        <!-- BUG: guitar.id hard-coded to apply 'active' class to first instance. See README Bugs for more details -->
+                                        {% if guitar.id == 3 %}
+                                            <div class="carousel-item active">
+                                        {% else %}
+                                            <div class="carousel-item">
+                                        {% endif %}
+                                                <img src="{{ guitar.image_id.url }}" class="mx-auto rounded d-block" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                            </div> <!--close carousel item-->
+                                    {% endif %}
+                                {% endfor %}
+                            </div> <!--close carousel inner -->
                         </div>
                     </div>
-                </div>
-               
-            </div> 
-        </div>          <!--Close Featured row-->
+                </div>  <!--close carousel -->
+            </div>      <!--close main content col -->
+        </div>          <!--close Featured row -->
 
 
         <div class="row">

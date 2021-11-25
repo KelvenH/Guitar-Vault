@@ -144,12 +144,13 @@ body {
 
 /*- Header Container --*/
 .header-container {
-    padding-top:175px;
+    padding-top:200px;
 }
+
 
 @media (min-width: 768px) {
     .header-container {
-        padding-top:300px;
+        padding-top:280px;
     }
 }
 
@@ -232,10 +233,9 @@ body {
 .carousel-item img {
     object-position: center;
     object-fit: cover;
-    overflow: hidden;
+    
     height:25vh;
 }
-
 
 
 /*----Guitar Card---------------------------------------------*/

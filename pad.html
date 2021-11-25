@@ -1,0 +1,12 @@
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner text-center">
+        {% for guitar in guitars %}
+            {% if guitar.featured == 'True' %}
+                <!--apply 'active' class to first item in loop only-->
+                <div class="carousel-item {% if forloop.first %} active{% endif %}"> 
+                    <img src="{{ guitar.image_id.url }}" class="d-block" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>  <!-- close carousel -->

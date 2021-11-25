@@ -1,6 +1,6 @@
 
 <!--Profile & Shopping Bag -->
-<div class="col-6 align-self-end text-end my-auto d-block d-md-none">
+<div class="col-8 align-self-end text-end my-auto d-block d-md-none">
     <ul class="list-inline list-unstyled">
 
       <!--Profile (only visible to logged in users)-->
@@ -10,7 +10,7 @@
             <a class="ivory-txt gold-accent-txt" href="#" role="button" id="user-profile-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="text-center">
                     <div><i class="fas fa-user fa-lg"></i></div>
-                    <h5 class="my-0">My Account</h5>
+                    <h6 class="my-0">My Account</h6>
                 </div>
             </a>
             <!--Embedded dropdown menu-->
@@ -31,9 +31,9 @@
       {% else %}
         <li class="list-inline-item">
           <ul class="list-inline list-unstyled">
-            <li class="list-inline-item"><a class="ivory-txt gold-accent-txt" href="{% url 'subscriptions' %}"><h4>Join</h4></a></li>
+            <li class="list-inline-item"><a class="ivory-txt gold-accent-txt" href="{% url 'subscriptions' %}"><h6>Join</h6></a></li>
             <li class="vr"></li>
-            <li class="list-inline-item ps-2"><a class="ivory-txt gold-accent-txt" href="{% url 'account_login' %}"><h4> Log In</h4></a></li>
+            <li class="list-inline-item ps-2"><a class="ivory-txt gold-accent-txt" href="{% url 'account_login' %}"><h6> Log In</h6></a></li>
           </ul>
         </li>
       {% endif %}
@@ -64,7 +64,7 @@
                   <!--Temporary icon - to be replaced with SVG matching membership tier + counter for picks available-->
                   <i class="fas fa-map-marker fa-2x"></i>
                 </div>
-                <p class="my-0">
+                <p class="my-0 text-center">
                   {% if picks_total %}
                     {{ picks_total }}
                   {% else %}
