@@ -12,8 +12,7 @@
     --black: rgb(0,0,0);
     --off-black: rgb(65,74,76);
     --off-gold: rgb(238,204,102);  /* HEX value #EECC66 */
-    --off-gold2: rgba(238,404,102,0.65); /*used for Gold sub card to darken background for better text visibility*/
-
+ 
     /* button and icons */
     --gold:rgb(207, 166, 41);
     --gold-dark: rgb(175, 140, 34);
@@ -26,6 +25,7 @@
     --green: rgb(25, 135, 84);     /* HEX value #198754 */
     --green-dark: rgb(19, 105, 65);
     --transp: rgba(0,0,0,0);
+
 }
 
 html {
@@ -217,8 +217,6 @@ body {
 }
 
 
-/*----Footer---------------------------------------------*/
-
 
 
 /*---Index.html-------------------------------------------*/
@@ -376,4 +374,11 @@ body {
     .subs-card > .card-body{
         padding:5px;
     }
+}
+
+/*----Checkout.html--------------------------*/
+
+/*calculated font-size to match sizing of crispy form legend field*/
+.checkout-label {
+    font-size: calc(1.275rem + .3vw);
 }
