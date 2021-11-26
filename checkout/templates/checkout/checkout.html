@@ -24,46 +24,49 @@
         </div>          
 
         <div class="row">
-            <div class="col-12 col-md-6 offset-md-3 main-content mt-2 my-auto py-2">
+            <div class="col-12 col-md-8 offset-md-2 main-content mt-2 my-auto py-2">
                 {% if request.user.is_authenticated %}
                     <!--REMINDER: After creating profile add section to offer change subscription plan if existing user-->
                     <h4 class="gold-txt">Welcome back [USERNAME]<!--REMINDER: insert django tag to insert username here-->!</h4>
-                                        
-                    <!--Subscription Plan-->
-                    <div class="row">
-                        <div class="col-12">
-                            <hr>
-                            <div class="row">
-                                <div class="col-4">
-                                    <p class="checkout-label">Your Order</p>
-                                </div>
-                                <div class="col-8">
-                                    {% for item in bag_items %}
-                                        <div class="d-flex flex-row">
-                                            <p class="col-6 text-end">Subscription Tier:</p>
-                                            <p class="col-6 text-start ps-2">{{ item.subscription }}</p>
-                                        </div>
-                                        <div class="d-flex flex-row">
-                                            <p class="col-6 text-end">Monthly Fee:</p>
-                                            <p class="col-6 text-start ps-2">£{{ item.subscription.price }}</p>
-                                        </div>
-                                    {% endfor %}
+
+                    <!-- Payment Form -->
+                    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                        {% csrf_token %}                    
+                    
+                        <!--Subscription Plan-->
+                        <div class="row">
+                            <div class="col-12">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="checkout-label">Your Order</p>
+                                    </div>
+                                    <div class="col-8 pe-4">
+                                        {% for item in bag_items %}
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6 text-end">Subscription Tier:</p>
+                                                <p class="col-6 text-start ps-2">{{ item.subscription | upper }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6 text-end">Monthly Fee:</p>
+                                                <p class="col-6 text-start ps-2">£{{ item.subscription.price }}</p>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <p>Please complete your subscription details below</p>
-                    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-                        {% csrf_token %}
+                        <hr>
+                        <p class="py-2 gold-txt">Please complete your subscription details below</p>
                         
+                            
                         <!--User's Details-->
                         <div class="row">
                             <div class="col-4">
                                 <fieldset class="px-2 mx-2">
                                     <legend class="fieldset-label">Your Details</legend>
                             </div>
-                            <div class="col-8">
+                            <div class="col-8 pe-4">
                                     {{ order_form.full_name | as_crispy_field }}
                                     {{ order_form.email | as_crispy_field }}
                                     {{ order_form.phone_number | as_crispy_field }}
@@ -79,7 +82,7 @@
                                 <fieldset class="px-2 mx-2">
                                     <legend class="fieldset-label">Address</legend>
                             </div>
-                            <div class="col-8">
+                            <div class="col-8 pe-4">
                                     {{ order_form.street_address1 | as_crispy_field }}
                                     {{ order_form.street_address2 | as_crispy_field }}
                                     {{ order_form.town_or_city | as_crispy_field }}
@@ -91,7 +94,46 @@
                                 </fieldset>
                             </div>
                         </div>
+
+                        <hr>
+
+                        <!--Payment-->
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="px-2 mx-2">
+                                    <p class="checkout-label">Payment</p>
+                                </div>
+                            </div>
+                            <div class="col-8 pe-4">
+                                <!-- Stripe field -->
+                                <div id="card-element"></div>
+                                <!-- Payment Error messages -->
+                                <div id="card-erros text-danger" role="alert">
+                                </div>
+
+                                <!--Form Action Buttons-->
+                                <div class="row d-flex justify-content-evenly">
+                                    <!-- Cancel Button -->
+                                    <div class="col-10 offset-1 col-md-6 offset-md-0 mb-2">
+                                        <a class="btn btn-danger btn-lg w-100" type="button" href="{% url 'home' %}">
+                                            <span class="">Cancel</span>
+                                        </a>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <div class="col-10 offset-1 col-md-6 offset-md-0">
+                                        <button id="submit-button" class="btn btn-success btn-lg w-100" type="button" href="{% url 'checkout' %}">
+                                            <span>Submit</span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                               
+                        </div> <!-- close Payment section-->
                     </form>
+
+                <!--Sign-Up / Login links for non-logged in users-->    
                 {% else %}
                     <div class="row pt-2">
                         <div class="col-6 d-flex flex-column">
@@ -109,7 +151,6 @@
                         </div>
                     </div>
                 {% endif %}
-                    
                
             </div> 
         </div>                 
