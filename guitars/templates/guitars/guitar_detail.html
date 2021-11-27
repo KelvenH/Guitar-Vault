@@ -23,7 +23,7 @@
                 <div class="row">
 
                     <!-- Guitar image -->
-                    <div class="col-12 col-md-6 mb-4">
+                    <div class="col-12 col-md-5 d-flex align-items-center">
                         <div class="guitar-image-container d-flex justify-content-center mx-auto">
                             {% if guitar.image_id %}
                                 <a href="{{ guitar.image_id.url }}" target="_blank">
@@ -39,7 +39,7 @@
                     </div>
 
                     <!-- Guitar Details-->
-                    <div class="col-12 col-md-6 mb-4">
+                    <div class="col-12 col-md-7 mb-4">
                         <div class="row guitar-details-container">
                         
                             <!-- Main Details -->
@@ -123,10 +123,10 @@
                                 </div>
                             
                                 <div class="row">
-                                    <div class="col-12 ms-2">
+                                    <div class="col-12 ms-2 mb-2">
                                         <div class="my-2">What we love;</div>
                                         
-                                        <div class="gold-txt lg-txt">
+                                        <div class="guitar-comments gold-txt lg-txt">
                                             <i class="gold-txt fas fa-quote-left" data-fa-transform="up-5"></i>
                                             <em>{{ guitar.owners_additional_comments }}</em>
                                             <i class="gold-txt fas fa-quote-right align-self-end" data-fa-transform="up-5"></i>

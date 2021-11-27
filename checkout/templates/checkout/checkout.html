@@ -108,11 +108,11 @@
                                 <!-- Stripe field -->
                                 <div id="card-element"></div>
                                 <!-- Payment Error messages -->
-                                <div id="card-erros text-danger" role="alert">
+                                <div id="card-errors text-danger" role="alert">
                                 </div>
 
                                 <!--Form Action Buttons-->
-                                <div class="row d-flex justify-content-evenly">
+                                <div class="row d-flex justify-content-evenly mt-2">
                                     <!-- Cancel Button -->
                                     <div class="col-10 offset-1 col-md-6 offset-md-0 mb-2">
                                         <a class="btn btn-danger btn-lg w-100" type="button" href="{% url 'home' %}">
@@ -161,5 +161,5 @@
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

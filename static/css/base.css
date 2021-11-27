@@ -1,10 +1,12 @@
 /* Root variables & imports */
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varta&family=Lobster&display=swap');
+
 
 :root {
     
     /* Typography */
     --logo-text: 'Lobster', cursive;
+    --standard-text: 'Varta', sans-serif;
 
     /* Color Palette */
     /* primary colours */
@@ -35,6 +37,7 @@ html {
 body {
     color:var(--ivory);
     background-color: var(--black);
+    font-family: var(--standard-text);
 }
 
 
@@ -300,16 +303,25 @@ body {
 
 /*--Guitar_Details.html -----------------------------------*/
 
-.guitar-detail-image {
-    
+.guitar-detail-image { 
     display: block;
-    object-fit: contain;
-    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    
     overflow: hidden;
+    width: 100%;
 }
 
 .guitar-specs {
     border: 3px solid var(--off-gold);
+}
+
+@media (max-width:767px){
+    .guitar-image-container {
+        margin-bottom:50px;
+    }
+    .guitar-comments {
+        font-size: 18px;
+    }
 }
 
 @media (min-width:768px) and (max-width:991px){
@@ -387,15 +399,16 @@ body {
 /* Stripe Elements */
 .StripeElement,
 .stripe-style-input {
-  box-sizing: border-box;
-  height: 40px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  background-color: white;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
+    font-family:var(--standard-text);
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
 }
 
 .StripeElement--focus,
