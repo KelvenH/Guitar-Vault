@@ -13,6 +13,7 @@ var style = {
     base: {
         color: '#000',
         fontSmoothing: 'antialiased',
+        fontFamily: 'Varta',
         fontSize: '16px',
         '::placeholder': {
             color: '#aab7c4'
