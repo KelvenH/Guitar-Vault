@@ -16,7 +16,7 @@ class OrderForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'subscription_plan': 'Subscription Plan',
+            'subscription_plan': 'subscription_plan',
             'full_name': 'Full Name',
             'email': 'Email',
             'phone_number': 'Phone No.',
@@ -28,6 +28,7 @@ class OrderForm(forms.ModelForm):
             'country': 'Country',
         }
 
+        self.fields['subscription_plan'].widget = forms.HiddenInput()
         # On page load, cursor placed in full name field
         self.fields['full_name'].widget.attrs['autofocus'] = True
         # Add asterisk to any fields set as required /mandatory

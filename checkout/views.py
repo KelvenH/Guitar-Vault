@@ -17,10 +17,11 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
+        # get the chosen subscription from the bag
         bag = request.session.get('bag', {})
+        # also get the form input values
         form_data = {
-            #'subscription_plan': request.POST['subscription_plan'],
-            #'subscription_price': request.POST['subscription_price'],
+            'subscription_plan': request.POST['subscription_plan'],
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
@@ -30,19 +31,21 @@ def checkout(request):
             'county': request.POST['county'],
             'postcode': request.POST['postcode'],
             'country': request.POST['country'],
-            #'date': request.POST['date'],
         }
         order_form = OrderForm(form_data)
+        print("Order before save", order_form)
+        print("errors", order_form.errors)
         
         if order_form.is_valid():
             order = order_form.save()
-            print(order_form)
+            print("Order after save", order_form)
             
-            return redirect(reverse('checkout-success', args=[order.order_number]))
+            return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form \
                 Please check your information')
-                        
+            print(order_form.errors)
+                
     else:
         bag = request.session.get('bag', {})
         if not bag:
