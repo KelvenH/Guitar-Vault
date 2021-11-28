@@ -45,7 +45,7 @@
                                         {% for item in bag_items %}
                                             <div class="d-flex flex-row">
                                                 <p class="col-6 text-end">Subscription Tier:</p>
-                                                <p class="col-6 text-start ps-2">{{ item.subscription | upper }}</p>
+                                                <p class="col-6 text-start ps-2">{{ item.subscription.name | upper }}</p>
                                                 
                                             </div>
                                             
