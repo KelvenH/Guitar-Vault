@@ -22,6 +22,7 @@ def checkout(request):
         # also get the form input values
         form_data = {
             'subscription_plan': request.POST['subscription_plan'],
+            'subscription_price': request.POST['subscription_price'],
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],

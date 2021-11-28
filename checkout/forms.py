@@ -5,7 +5,7 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('subscription_plan', 'full_name', 'email',
+        fields = ('subscription_plan', 'subscription_price', 'full_name', 'email',
                   'phone_number', 'street_address1',
                   'street_address2', 'town_or_city', 'postcode',
                   'county', 'country',)
@@ -16,6 +16,7 @@ class OrderForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
+            'subscription_price': 'subscription_price',
             'subscription_plan': 'subscription_plan',
             'full_name': 'Full Name',
             'email': 'Email',
@@ -28,6 +29,11 @@ class OrderForm(forms.ModelForm):
             'country': 'Country',
         }
 
+        """ 
+        Subscription plan and price set as hidden fields, these will take
+        their input values from the bag in the front end
+        """
+        self.fields['subscription_price'].widget = forms.HiddenInput()
         self.fields['subscription_plan'].widget = forms.HiddenInput()
         # On page load, cursor placed in full name field
         self.fields['full_name'].widget.attrs['autofocus'] = True

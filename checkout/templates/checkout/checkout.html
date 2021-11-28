@@ -49,12 +49,15 @@
                                                 
                                             </div>
                                             
-                                            <input type="hidden" name="subscription_plan" value="{{ item.subscription_id }}"></input>
-
                                             <div class="d-flex flex-row">
                                                 <p class="col-6 text-end">Monthly Fee:</p>
                                                 <p class="col-6 text-start ps-2">£{{ item.subscription.price }}</p>
                                             </div>
+                                            
+                                            <!-- Hidden input fields which take their values from the bag for inclusion in the form submission / order -->
+                                            <input type="hidden" name="subscription_plan" value="{{ item.subscription_id }}"></input>
+                                            
+                                            <input type="hidden" name="subscription_price" value="{{ item.subscription.price }}"></input>
                                         {% endfor %}
                                     </div>
                                 </div>
