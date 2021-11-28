@@ -8,6 +8,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/png" href="{{ MEDIA_URL }}favicon.ico"/>
     {% endblock %}
 
     {% block extra_meta %}
@@ -59,7 +61,7 @@
 
             <!--Logo-->
             <div class="col-0 col-md-3 align-self-start my-auto py-2 d-none d-md-block">
-              <img class="navbar-logo" src="/media/GV-Logo.png"/>
+              <img class="navbar-logo" src="{{ MEDIA_URL }}GV-Logo.png"/>
             </div>
 
             <!--Site Title-->
