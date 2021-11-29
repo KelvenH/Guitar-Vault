@@ -76,17 +76,18 @@
             </ul>
         </li> <!--Close Acoustic Menu-->
 
-        <!--Brands Dropdown Menu-->
+        <!--LeftHanded Dropdown Menu-->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <h4 class="mb-0">Brands</h4>
+                <h4 class="mb-0">Lefties</h4>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{% url 'guitars' %}?sort=brand&direction=asc">All Brands</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?handed=Left">All Left-Handed Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
-                {% for guitar in guitars %}
-                <li><a class="dropdown-item" href="{% url 'guitars' %}?brand={{ guitar.brand }}">{{ guitar.brand }}</a></li>
-                {% endfor %}
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric&handed=Left">Electric</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Bass&handed=Left">Bass</a></li>
+                <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Acoustic&handed=Left">Acoustic</a></li>
+               
             </ul>
         </li> <!--Close Brands Menu-->
 

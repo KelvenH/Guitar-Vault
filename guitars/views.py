@@ -17,10 +17,9 @@ def all_guitars(request):
 
     if request.GET:
 
-        if 'brand' in request.GET:
-            query_brand = request.GET['brand']
-            guitars = guitars.filter(brand=query_brand)
-            print('brand=', query_brand) 
+        if 'handed' in request.GET:
+            query_handed = request.GET['handed']
+            guitars = guitars.filter(handed=query_handed)
 
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
