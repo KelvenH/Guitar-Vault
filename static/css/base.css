@@ -224,6 +224,12 @@ body {
 
 /*---Index.html-------------------------------------------*/
 
+.main-left-img {
+    background: url('/media/Guitar_background-50px.png') no-repeat center left fixed; 
+    width:20vw;
+    overflow:none;
+}
+
 .main-content {
 
     min-height:20vh;
