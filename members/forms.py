@@ -34,6 +34,6 @@ class MemberProfileForm(forms.ModelForm):
             # Set fields to user friendly names defined above
             self.fields[field].widget.attrs['placeholder'] = placeholder
             # Applies class to all inout fields for consistant styles across form (inc. Stripe fields)
-            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].widget.attrs['class'] = 'profile-style-input'
             # Remove default fields labels as placeholders will be used
             self.fields[field].label = False

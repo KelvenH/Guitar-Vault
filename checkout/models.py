@@ -17,8 +17,6 @@ class Order(models.Model):
                                           blank=False, on_delete=models.PROTECT)
     subscription_price = models.DecimalField(max_digits=4, decimal_places=2,
                                              null=False, default=0)
-    # user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
-    # null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -29,8 +27,6 @@ class Order(models.Model):
     county = models.CharField(max_length=80, null=True, blank=True)
     country = CountryField(blank_label='Country *', null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
-    # stripe_pid = models.CharField(max_length=254, null=False,
-    # blank=False, default='')
 
     def _generate_order_number(self):
         """

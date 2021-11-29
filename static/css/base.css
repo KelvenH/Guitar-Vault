@@ -397,9 +397,10 @@ body {
 }
 
 
-/* Stripe Elements */
+/* Stripe & Profile Form Elements */
 .StripeElement,
-.stripe-style-input {
+.stripe-style-input,
+.profile-style-input {
     font-family:var(--standard-text);
     box-sizing: border-box;
     height: 40px;
@@ -413,8 +414,11 @@ body {
 }
 
 .StripeElement--focus,
+.profile-style-input--focus, 
 .stripe-style-input:focus,
-.stripe-style-input:active {
+.profile-style-input--focus, 
+.stripe-style-input:active,
+.profile-style-input:active  {
   box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
@@ -422,7 +426,8 @@ body {
   background-color: #fefde5 !important;
 }
 
-.stripe-style-input::placeholder {
+.stripe-style-input::placeholder,
+.profile-style-input::placeholder  {
     color: #aab7c4;
 }
 
@@ -435,6 +440,8 @@ select:invalid,
 select option[value=""] {
     color: #aab7c4 !important;
 }
+
+
 
 /*--Allauth forms ---------*/
 

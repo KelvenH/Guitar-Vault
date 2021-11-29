@@ -17,12 +17,10 @@ def bag_contents(request):
             'subscription': subscription
         })
     
-    total_VAT = bag_total * Decimal(settings.VAT_PERCENTAGE/100)
 
     context = {
         'bag_items': bag_items,
         'bag_total': bag_total,
-        'total_VAT': total_VAT,
     }
 
     return context

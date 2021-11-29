@@ -34,13 +34,11 @@ def checkout(request):
             'country': request.POST['country'],
         }
         order_form = OrderForm(form_data)
-        print("Order before save", order_form)
-        print("errors", order_form.errors)
+       
         
         if order_form.is_valid():
             order = order_form.save()
-            print("Order after save", order_form)
-            
+                        
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form \
