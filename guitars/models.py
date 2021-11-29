@@ -24,7 +24,7 @@ class Guitar(models.Model):
     
     # Brand & Model
     brand = models.CharField(max_length=25)
-    guitar_model = models.CharField(max_length=25)
+    guitar_model = models.CharField(max_length=50)
 
     # Tier
     PLATINUM = 'Platinum'
@@ -40,9 +40,8 @@ class Guitar(models.Model):
     ]
     tier = models.CharField(max_length=10, choices=TIER_CHOICES, default=BRONZE)
     
-    # Tier and Owner
+    # Tier
     status = models.CharField(max_length=25, null=True, blank=True)
-    owner = models.CharField(max_length=25, null=True, blank=True)
     
     # Right / Left Handed
     RIGHT = 'Right'
@@ -69,11 +68,11 @@ class Guitar(models.Model):
         (COSMETIC, 'Well Used (displays cosmetic signs of use only)'),
         (DEFECTIVE, 'Some form of damage / wear which affects performance. (No guitars can be added to the vault if defective. Existing guitars rated by users as defective will be marked as "unavailable" until inspected by Guitar Vault'),
         ]
-    condition = models.CharField(max_length=25, choices=CONDITION_CHOICES, default=GOOD)
+    condition = models.CharField(max_length=250, choices=CONDITION_CHOICES, default=GOOD)
     construction = models.CharField(max_length=25, null=True, blank=True)
-    body_wood = models.CharField(max_length=25, null=True, blank=True)
-    body_top = models.CharField(max_length=25, null=True, blank=True)
-    tuners = models.CharField(max_length=25, null=True, blank=True)
+    body_wood = models.CharField(max_length=50, null=True, blank=True)
+    body_top = models.CharField(max_length=50, null=True, blank=True)
+    tuners = models.CharField(max_length=50, null=True, blank=True)
     
     # No. Frets
     FRETS_20 = 20

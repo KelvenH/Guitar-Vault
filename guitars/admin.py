@@ -9,7 +9,6 @@ class GuitarAdmin(admin.ModelAdmin):
         'category',
         'tier',
         'status',
-        'owner',
         'condition',
         'rating_condition',
         'rating_overall',
