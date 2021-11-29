@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'subscriptions',
     'bag',
     'checkout',
+    'members',
     # Third Party apps
     'crispy_forms',
     'crispy_bootstrap5',
