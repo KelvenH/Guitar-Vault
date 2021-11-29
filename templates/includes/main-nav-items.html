@@ -22,6 +22,7 @@
                 <h4 class="mb-0">View All Guitars</h4>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'guitars' %}">All Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?sort=tier&direction=asc">By Tier</a></li>
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?sort=rating_overall&direction=desc">By Overall Rating</a></li>

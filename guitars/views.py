@@ -11,7 +11,7 @@ def all_guitars(request):
     categories = None
     tier = None
     query_tier = None
-    query_brand = None
+    query_handed = None
     sort = None
     direction = None
 
@@ -63,7 +63,7 @@ def all_guitars(request):
         'search_term': query,
         'current_categories': categories,
         'tier': query_tier,
-        'brand': query_brand,
+        'handed': query_handed,
         'current_sorting': current_sorting,
     }
 
