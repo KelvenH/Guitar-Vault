@@ -435,3 +435,13 @@ select:invalid,
 select option[value=""] {
     color: #aab7c4 !important;
 }
+
+/*--Allauth forms ---------*/
+
+.allauth-form-inner-content input{
+    border-color: var(--off-black);
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: var(--ivory);
+}

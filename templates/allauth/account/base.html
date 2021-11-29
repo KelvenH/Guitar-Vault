@@ -1,1 +1,15 @@
 {% extends "base.html" %}
+
+{% block content %}
+      <!--Empty container to push body content below nav bars-->
+      <div class="container header-container">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="allauth-form-inner-content mt-5">
+                    {% block inner_content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+      </div>
+{% endblock %}

@@ -90,7 +90,7 @@
                           <li><a class="dropdown-item gold-accent-txt" href="">
                             Site Admin</a></li>
                         {% endif %}  
-                        <li><a class="dropdown-item gold-accent-txt" href="">
+                        <li><a class="dropdown-item gold-accent-txt" href="{% url 'profile' %}">
                           My Profile</a></li>
                         <li><a class="dropdown-item gold-accent-txt" href="{% url 'account_logout' %}">
                           Log Out</a></li>
@@ -176,12 +176,6 @@
     {% endif %}
 
     {% block page_header %}
-        <!--Empty container to push body content below nav bars-->
-        <div class="container header-container">
-          <div class="row">
-              <div class="col"></div>
-          </div>
-      </div>
     {% endblock %}
 
     {% block content %}
