@@ -11,7 +11,7 @@ from members.models import MemberProfile
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    user_profile = models.ForeignKey(MemberProfile, on_delete=models.SET_NULL,
+    member_profile = models.ForeignKey(MemberProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
     subscription_plan = models.ForeignKey(Subscription, null=False,
                                           blank=False, on_delete=models.PROTECT)

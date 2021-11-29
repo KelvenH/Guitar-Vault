@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'members/css/profile.css' %}"
+{% endblock %}
+
+{% block page_header %}
+    <!--Empty container to push body content below nav bars-->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="row">
+            <div class="col mt-2">
+                <h1 class="gold-special-txt text-center mb-3">Member Profile</h1> 
+            </div>      
+        </div>                         
+    </div> <!--close main container-->
+{% endblock %}
