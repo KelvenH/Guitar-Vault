@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-b#hp&$c%k^!xwuna#bm1otcvg29+-*a%72-rr*@^h1r5**ts2&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['guitar-vault.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -112,17 +112,21 @@ WSGI_APPLICATION = 'guitar_vault.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+# Heroku Config to postgres for production environ
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
-# Heroku Config 
-DATABASES = {
-    'default': dj_database_url.parse('postgres://fhfoyrlkdgoocp:4b0658998084b6c6bcf4a71cb065b8159e0245a94c7cddad0908412ead61952a@ec2-34-255-134-200.eu-west-1.compute.amazonaws.com:5432/deuahoeepnmj7a')
-}
+# SQL config for development environ
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

@@ -1,0 +1,1 @@
+web: gunicorn guitar_vault.wsgi:application
