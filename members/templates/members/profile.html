@@ -21,7 +21,7 @@
             <div class="col mt-2">
                 <h1 class="gold-special-txt text-center mb-3">Member Profile</h1> 
             </div>
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-12 col-md-6">
                     <h4>Address</h4>
                     <form class="mt-4" action="{% url 'profile' %}" method="POST" id="member-profile-form">
@@ -30,13 +30,17 @@
                         <button class="btn btn-gold-outline">Update</button>
                     </form>
                 </div>
-                <div class="col-12 col-md-6">
-                    {% for order in orders %}
-                        <div class="d-flex flex-row">
-                            <p class="col-3 text-end">Subscription Tier:</p>
-                            <p class="col-9 text-start ps-2">{{ order.subscription_plan | upper }}</p>
-                        </div>
-                    {% endfor %}
+                <!--Outstanding : This section of the profile has not been completed - please refer to README -->
+                <div class="col-12 col-md-6 ps-4">
+                    <div class="row">
+                        <h4>Subscription Plan</h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="mt-5">Guitar Rack</h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="mt-5">Favourited Guitars</h4>
+                    </div>
                 </div>
             </div>
         </div>                         

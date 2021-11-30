@@ -10,8 +10,7 @@ def profile(request):
     Display user's profile
     """
     profile = get_object_or_404(MemberProfile, user=request.user)
-    order = get_object_or_404(Order, pk=order_id)
-    subscription_plan = order.subscription_plan
+    
 
     if request.method == 'POST':
         form = MemberProfileForm(request.POST, instance=profile)
@@ -26,7 +25,6 @@ def profile(request):
     context = {
         'form': form,
         'orders': orders,
-        'subscription_plan': subscription_plan,
     }
 
     return render(request, template, context)

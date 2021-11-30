@@ -8,6 +8,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Guitar Vault: A Guitar Hire Service">
+        <meta name="keywords" content="guitar hire">
+        <meta name="author" content="Kelven Hughes">
         <!-- favicon -->
         <link rel="shortcut icon" type="image/png" href="{{ MEDIA_URL }}favicon.ico"/>
     {% endblock %}
@@ -47,7 +50,7 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Guitar Vault {% block extra_title %}{% endblock %}</title>
+    <title>Guitar Vault</title>
 
   </head>
 
@@ -128,7 +131,9 @@
                     </li>
 
                     {% if request.user.is_authenticated %}
-                      <!--Picks to Spend (logged in users)-->
+                    <!--Outstanding : Functionality relating to 'picks to spend' has not been completed  - please refer to README -->
+                      
+                    <!--Picks to Spend (logged in users)-->
                       <li class="list-inline-item text-center">
                         <a class="ivory-txt gold-accent-txt" href="">
                           <div class="text-center">

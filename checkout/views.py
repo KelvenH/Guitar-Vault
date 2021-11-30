@@ -5,6 +5,8 @@ from django.conf import settings
 from .forms import OrderForm
 from .models import Order
 from subscriptions.models import Subscription
+from members.forms import MemberProfileForm
+from members.models import MemberProfile
 from bag.contexts import bag_contents
 
 import stripe
@@ -83,6 +85,27 @@ def checkout_success(request, order_number):
     View to confirm successful checkout
     """
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+        profile = MemberProfile.objects.get(user=request.user)
+        order.user_profile = profile
+        order.save()
+        profile_data = {
+            'default_phone_number' : order.phone_number,
+            'default_street_address1' : order.street_address1,
+            'default_street_address2' : order.street_address2,
+            'default_town_or_city' : order.town_or_city,
+            'default_county' : order.county,
+            'default_postcode' : order.postcode,
+            'default_country' : order.country,
+        }
+        user_profile_form = MemberProfileForm(profile_data, instance=profile)
+        if user_profile_form.is_valid():
+            user_profile_form.save()
+
+
+
+
     messages.success(request, f'Your order has been successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')

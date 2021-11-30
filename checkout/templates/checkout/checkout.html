@@ -26,8 +26,8 @@
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2 main-content mt-2 my-auto py-2">
                 {% if request.user.is_authenticated %}
-                    <!--REMINDER: After creating profile add section to offer change subscription plan if existing user-->
-                    <h4 class="gold-txt">Welcome back [USERNAME]<!--REMINDER: insert django tag to insert username here-->!</h4>
+                    <!--Outstanding: Option to show a change subscription plan if user has existing subscription plan-->
+                    
 
                     <!-- Payment Form -->
                     <form action="{% url 'checkout' %}" method="POST" id="payment-form">
@@ -35,8 +35,7 @@
                     
                         <!--Subscription Plan-->
                         <div class="row">
-                            <div class="col-12">
-                                <hr>
+                            <div class="col-12  mt-4">
                                 <div class="row">
                                     <div class="col-4">
                                         <p class="checkout-label">Your Order</p>
