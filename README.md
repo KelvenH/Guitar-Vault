@@ -30,10 +30,8 @@
     - [WIREFRAMES](#wireframes)
 
 - [SURFACE](#surface)
-    - [MOOD BOARD](#mood-board)
-    - [TYPOGRAPHY](#typography)
-    - [COLOR SCHEMES](#color-schemes)
-    - [IMAGERY](#imagery)
+    - [INFLUENCES](#influences)
+
 
 - [FEATURES](#features)
 
@@ -128,7 +126,7 @@ In summary;
 - Member Profiles - users personal information (delivery address, contact details), active subscription plan and guitar rack* (past, current and 'favourited guitars) * *not implemented*
 - Orders - information on subscription plans purchased through the site
 
-*insert db schema here*
+![Planned DB Structure](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Planned%20db%20structure.png)
 
 ------
 ## SKELETON
@@ -172,13 +170,43 @@ Members Profile (desktop) *planned but not yet implemented*
 
 
 ## SURFACE
-### MOOD BOARD
+### Influences
+Inspiration for the site layout was taken from on-line music retailers. An example is shown below which has a bootstrap style responsive grid layout.
 
-### TYPOGRAPHY
+Example guitar retailer:
 
-### COLOR SCHEMES
+![retailer](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/ExampleRetailer.png)
 
-### IMAGERY
+The intention was to have a dark theme for the site, with simple visual styling with gold accents. The site logo took great influence from the 'serif' style logos of some of the greatest known guitar and amp brands (i.e. Marshall, Gibson and Fender). A font was found which paid homage to these world famous logos, yet remained extremely legible.
+
+Inspiration for site logo:
+
+![logos](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Logos.png)
+
+The site logo was achieved by applying the Google Font 'lobster' font-family over a textured 'rust' background which due to the zoom level actually provides a slight 'aged leather' look. A font mask* was then applied using another 'gold' texture image (both texture images were licensed from Adobe Stock). * *see acknowledgements for font-mask*
+The layering was achieved in CSS using a combination of text-fill and background-clip with a back-up gold font (declared in the root variable as was the font-family). The CSS is shown here;
+
+
+``` 
+    .gold-special-txt {
+        color:var(--off-gold); /*- backup font color if text mask fails -*/  
+        background: url('/media/gold-texture.jpg');  
+        background-size: cover;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -moz-background-clip:text;
+        background-clip:text;
+        }
+``` 
+
+The final result achieved;
+
+![site logo](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar-Vault_banner.png)
+
+It was important to use a 'simple' sans-serif font elsehwere on the site, for which another Google Font was used 'Varta'.
+
+
+
 ------
 # FEATURES
 ------
