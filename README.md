@@ -133,7 +133,44 @@ In summary;
 ------
 ## SKELETON
 ### WIREFRAMES
-------
+
+Wireframes were developed in Adobe XD, png exports are attached below. Initial designs were produced for desktop view with the intention of columns being condensed (via Bootstrap responsive grid). An example mobile screen was produced for the home screen but not for the other html pages.
+
+Homepage (desktop)
+
+![Homepage desktop](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Homepage-Desktop.png)
+
+
+Homepage (mobile)
+
+![Homepage mobile](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Homepage-Mobile.png)
+
+
+Login/Out (desktop)
+
+![Login out](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Login_Out.png)
+
+
+Guitars List View (desktop)
+
+![Guitar List View](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/GuitarList.png)
+
+
+Guitar Detail View (desktop)
+
+![Guitar Detail View](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/GuitarDetail.png)
+
+
+Sign-Up / Payment (desktop) *note these were split into 2 seperate screens in the final development to leverage django allauth for sign-up independently from payments*
+
+![SignUp Payment](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Sign-upForm.png)
+
+
+Members Profile (desktop) *planned but not yet implemented*
+
+![Profile](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Profile.png)
+
+
 ## SURFACE
 ### MOOD BOARD
 
