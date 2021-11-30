@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -111,13 +112,17 @@ WSGI_APPLICATION = 'guitar_vault.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
+# Heroku Config 
+DATABASES = {
+    'default': dj_database_url.parse('postgres://fhfoyrlkdgoocp:4b0658998084b6c6bcf4a71cb065b8159e0245a94c7cddad0908412ead61952a@ec2-34-255-134-200.eu-west-1.compute.amazonaws.com:5432/deuahoeepnmj7a')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

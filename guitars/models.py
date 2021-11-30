@@ -91,7 +91,7 @@ class Guitar(models.Model):
     neck_profile = models.CharField(max_length=25, null=True, blank=True)
     no_pickups = models.DecimalField(max_digits=1, decimal_places=0, null=True, blank=True)
     pickups_desc = models.TextField()
-    controls = models.CharField(max_length=25, null=True, blank=True)
+    controls = models.CharField(max_length=250, null=True, blank=True)
     owners_additional_comments = models.TextField()
     rating_condition = models.DecimalField(max_digits=2, decimal_places=0, null=True, blank=True)
     rating_overall = models.DecimalField(max_digits=2, decimal_places=0, null=True, blank=True)
