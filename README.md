@@ -52,7 +52,7 @@
 ***
 
 # OVERVIEW
-The site offers a subscription service for guitarist. Members enjoy access to a range of guitars (electric, acoustic and bass). Tiered subscription plans provide access to higher value instruments as well as provision of additional services (incluing express delivery and full guitar set-up). Members receive a 'plectrum' in exchange for their subscription fee which is used to grab a :guitar: from the vault. 
+The site offers a subscription service for guitarist. Members enjoy access to a range of guitars (electric, acoustic and bass). Tiered subscription plans provide access to higher value instruments as well as provision of additional services (including express delivery and full guitar set-up). Members receive a 'plectrum' in exchange for their subscription fee which is used to grab a :guitar: from the vault. 
 
 Guitar Vault has been built using <img valign="middle" height="50" src="https://github.com/devicons/devicon/blob/master/icons/django/django-original.svg"/> a <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg"/> framework, and also employs <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-plain-wordmark.svg"/> <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"/> <img valign="middle" height="30"  src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-plain.svg"/> and <img valign="middle" height="35" src="https://github.com/devicons/devicon/blob/master/icons/jquery/jquery-plain-wordmark.svg"/>. The deployed site is hosted on <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/heroku/heroku-original-wordmark.svg"/>, the static and media images are hosted in the :cloud:  with <img valign="middle" height="75" src="https://github.com/devicons/devicon/blob/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"/>, whilst payments are processed through <img valign="middle" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/cc-stripe.png"/>. A fully responsive site layout is handled through <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/bootstrap/bootstrap-plain-wordmark.svg"/>.
 
@@ -86,7 +86,7 @@ The business goals of Guitar Vault are;
 | registered user | Save particular guitars as favourites| For future choices                                     |
 | registered user | See a list of the guitars I've had with my rating| For future choices                         |
 | registered user | See ratings given by other users   | To inform my decisions                                   |
-| site administrator | View and mamange guitars        | Ensuring items are available to view / loan              |
+| site administrator | View and manage guitars         | Ensuring items are available to view / loan              |
 | site administrator | View / manage registered members| Visibility of subscribed members                         |
 | site administrator | View / manage subscription plans| Ensure correct prices are displayed / charged            |
 | site administrator | View / manage subscription orders| Visibility of members who have signed up                |
@@ -100,7 +100,7 @@ The scope of this activity includes;
 - enable payments to be made and recorded.
 
 Out of scope;
-- additional activities which in a real business would be required, such as; handling of guitar loan requests, scheduling of on-going monthly payments (only the initial payment is demonstrated, inventory management systems such as scheduling of guitar bookings, delivery & collection processes, etc).
+- additional activities which in a real business would be required, such as; scheduling of on-going monthly payments (only the initial payment is demonstrated), inventory management systems relating to the handling / scheduling of guitar loan bookings, delivery & collection processes, etc.
 
 ------
 ## STRUCTURE
@@ -117,7 +117,7 @@ An initial schematic of the front end screen screen flow (please note that there
 ### DATABASE STRUCTURE
 *Please note comments above re aspects not delivered in this build as well as some deviations from the original design*
 
-This build will leverage django's SQLite databse during development. Upon deployment this will migrate to POSTGRES (once hosted on HEROKU).
+This build will leverage django's SQLite database during development. Upon deployment this will migrate to POSTGRES (once hosted on HEROKU).
 
 The diagram below outlines the core components of the database - the individual tables, their expected fields and relationships between them. Most tables will be structured within their own django app with some exceptions (e.g. guitars and categories will both be held in the same model).
 
