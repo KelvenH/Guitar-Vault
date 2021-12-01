@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* Root variables & imports */
 @import url('https://fonts.googleapis.com/css2?family=Varta&family=Lobster&display=swap');
 
@@ -99,7 +106,8 @@ body {
     background-size: cover;
     border-bottom: 5px solid transparent;
     /*--border-color: var(--off-gold);--*/
-    border-image: url('/media/gold-texture.jpg') 30% stretch;
+    -o-border-image: url('/media/gold-texture.jpg') 30% stretch;
+       border-image: url('/media/gold-texture.jpg') 30% stretch;
 }
 
 .navbar-logo {
@@ -237,8 +245,10 @@ body {
 }
 
 .carousel-item img {
-    object-position: center;
-    object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+    -o-object-fit: cover;
+       object-fit: cover;
     height:25vh;
 }
 
@@ -280,13 +290,15 @@ body {
 .card-img-top {
     max-height: 35vh;
     display: block;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     aspect-ratio: 3 / 2;
     overflow: hidden;
     
 }
 .card-img-top> img {
-    box-shadow: 0 0 8px 8px white inset;
+    -webkit-box-shadow: 0 0 8px 8px white inset;
+            box-shadow: 0 0 8px 8px white inset;
 }
 
 .tp-text {
@@ -301,7 +313,9 @@ body {
 
 .tp-platinum {
     color: var(--purple);
-    transform: translateY(1.5rem) scale(1,1.5);
+    -webkit-transform: translateY(1.5rem) scale(1,1.5);
+        -ms-transform: translateY(1.5rem) scale(1,1.5);
+            transform: translateY(1.5rem) scale(1,1.5);
 }
 
 .tp-gold {
@@ -331,7 +345,8 @@ body {
 
 .guitar-detail-image { 
     display: block;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     
     overflow: hidden;
     width: 100%;
@@ -367,7 +382,8 @@ body {
 
 .subs-card:hover {
     color: var(--off-gold);
-    box-shadow: 0 0 5px 5px var(--off-gold);
+    -webkit-box-shadow: 0 0 5px 5px var(--off-gold);
+            box-shadow: 0 0 5px 5px var(--off-gold);
 }
 
 .plat-subs-card {
@@ -427,15 +443,21 @@ body {
 .stripe-style-input,
 .profile-style-input {
     font-family:var(--standard-text);
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     height: 40px;
     padding: 10px 12px;
     border: 1px solid transparent;
     border-radius: 0px;
     background-color: white;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-box-shadow: 0 1px 3px 0 #e6ebf1;
+            box-shadow: 0 1px 3px 0 #e6ebf1;
     -webkit-transition: box-shadow 150ms ease;
+    -webkit-transition: -webkit-box-shadow 150ms ease;
+    transition: -webkit-box-shadow 150ms ease;
+    -o-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease, -webkit-box-shadow 150ms ease;
 }
 
 .StripeElement--focus,
@@ -444,11 +466,28 @@ body {
 .profile-style-input--focus, 
 .stripe-style-input:active,
 .profile-style-input:active  {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+  -webkit-box-shadow: 0 1px 3px 0 #cfd7df;
+          box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.stripe-style-input::-webkit-input-placeholder, .profile-style-input::-webkit-input-placeholder  {
+    color: #aab7c4;
+}
+
+.stripe-style-input::-moz-placeholder, .profile-style-input::-moz-placeholder  {
+    color: #aab7c4;
+}
+
+.stripe-style-input:-ms-input-placeholder, .profile-style-input:-ms-input-placeholder  {
+    color: #aab7c4;
+}
+
+.stripe-style-input::-ms-input-placeholder, .profile-style-input::-ms-input-placeholder  {
+    color: #aab7c4;
 }
 
 .stripe-style-input::placeholder,
@@ -472,6 +511,22 @@ select option[value=""] {
 
 .allauth-form-inner-content input{
     border-color: var(--off-black);
+}
+
+.allauth-form-inner-content input::-webkit-input-placeholder {
+    color: var(--ivory);
+}
+
+.allauth-form-inner-content input::-moz-placeholder {
+    color: var(--ivory);
+}
+
+.allauth-form-inner-content input:-ms-input-placeholder {
+    color: var(--ivory);
+}
+
+.allauth-form-inner-content input::-ms-input-placeholder {
+    color: var(--ivory);
 }
 
 .allauth-form-inner-content input::placeholder {
