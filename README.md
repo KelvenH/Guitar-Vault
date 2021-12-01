@@ -8,7 +8,8 @@
 <img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/GV-Logo.png" align="left" width="100px">
 <h1 align="center"> Welcome to the Guitar Vault! </h1>
 <h4 align="center"> A subscription service for guitarists</h4>
-<h4 align="center"> Sign-up for the opportunity to play high quality instruments for a small monthly fee </h4>
+<h4 align="center"> Keep your G.A.S.* turned down and your amp turned up! </h4>
+<p align="center"><sup><i>*G.A.S. Gear Acquisition Syndrome - affects many guitarists with an all consuming desire to expand your collection of gear</i></sup></p>
 <h1 align="center" height="100" width="100">:guitar: :notes: :metal:</h1>
 <br clear="left"/>
 
@@ -55,6 +56,8 @@
 The site offers a subscription service for guitarist. Members enjoy access to a range of guitars (electric, acoustic and bass). Tiered subscription plans provide access to higher value instruments as well as provision of additional services (including express delivery and full guitar set-up). Members receive a 'plectrum' in exchange for their subscription fee which is used to grab a :guitar: from the vault. 
 
 Guitar Vault has been built using <img valign="middle" height="50" src="https://github.com/devicons/devicon/blob/master/icons/django/django-original.svg"/> a <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg"/> framework, and also employs <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-plain-wordmark.svg"/> <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"/> <img valign="middle" height="30"  src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-plain.svg"/> and <img valign="middle" height="35" src="https://github.com/devicons/devicon/blob/master/icons/jquery/jquery-plain-wordmark.svg"/>. The deployed site is hosted on <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/heroku/heroku-original-wordmark.svg"/>, the static and media images are hosted in the :cloud:  with <img valign="middle" height="75" src="https://github.com/devicons/devicon/blob/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"/>, whilst payments are processed through <img valign="middle" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/cc-stripe.png"/>. A fully responsive site layout is handled through <img valign="middle" height="40" src="https://github.com/devicons/devicon/blob/master/icons/bootstrap/bootstrap-plain-wordmark.svg"/>.
+
+Many guitarists suffer from G.A.S. (Gear Acquisition Syndrome) - a desire to accrue a range of guitars (as well as amps and pedals) to expand their tonal possibilities. There are many downsides to this, principally the bank balance battering and the need for space for all these instruments. And of course, you can only play 1 guitar at a time. Often the G.A.S. niggle is only temporarily quelled with a new purchase, before the urge for the next guitar takes over! This is where Guitar Vault comes in. Through this service, members get the chance to get their hands on a high end instrument and although these will only be in your possession for a month, the remedy comes from another guitar of your choosing to keep your playing rocking on and G.A.S. levels tuned down!    
 
 ------
 # USER EXPERIENCE (UX)
