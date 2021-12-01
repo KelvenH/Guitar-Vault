@@ -693,6 +693,24 @@ Only a small amount of cutom JS resides in the construction, there were only 4 i
 
 <details>
     <summary>Responsiveness</summary>
+During development, signficant checking for responsiveness was performed via Google Inspector. This allowed breakpoint corrections, media queries to be developed at the time of content creation.
+    
+Post deployment, the site was viewed through lambdatest.com for a selection of screen sizes, browsers and operating systems. Free acount limits to 6 tests so a mix of broadening the possible ranges were chosen. The configurations checked are shown in the table below. There was 1 instance of unexpected behaviour encountered affecting Apple devices running iOS (whereby the nav banner 'scrolled' as content below the nav was navigated. However I also checked this manually on an iPhone (X) and Ipad (2019 Pro) and neither of these experienced the same issue. The CSS was also checked and confirmed as having a fixed position. 
+    
+The CSS was also run through auto-prefixer (as referrenced under CSS validation) to ensure any additional vendor pre-fixers were applied.
+    
+Table of responsive configurations checked;
+    
+ | Browser      | Device                   | OS        | Resolution | Outcome          |
+ |--------------|--------------------------|-----------|------------|------------------|
+ |Firefox       |  Mobile - samsung        | Android   | N/A        |:white_check_mark:|
+ |Chrome        |  Mobile - Google Pixel 4A| N/A       | N/A        |:white_check_mark:|
+ |Safari        |  Mobile - iPhone 12      | iOS       | N/A        |:heavy_exclamation_mark:|
+ |Edge          |  Desktop                 | Windows 10| 1280 x 800 |:white_check_mark:|
+ |Chrome        |  Desktop                 | Windows 8.1|1600 x 1200|:white_check_mark:|
+ |Safari        |  Desktop                 | macOS Mojave| 1024 x 768|:white_check_mark:|
+ 
+    
 
 </details>
 
