@@ -9,7 +9,8 @@
 <h1 align="center"> Welcome to the Guitar Vault! </h1>
 <h4 align="center"> A subscription service for guitarists</h4>
 <h4 align="center"> Keep your G.A.S.* turned down and your amp turned up! </h4>
-<p align="center"><sup><i>*G.A.S. Gear Acquisition Syndrome - affects many guitarists with an all consuming desire to expand your collection of gear</i></sup></p>
+<p align="center"><sup><i>*G.A.S. Gear Acquisition Syndrome - affects many guitarists with an all consuming desire to expand your collection of gear</i></sup></p> 
+<p align="center">Link to deployed site: https://guitar-vault.herokuapp.com/</p>
 <h1 align="center" height="100" width="100">:guitar: :notes: :metal:</h1>
 <br clear="left"/>
 
@@ -41,8 +42,6 @@
 - [TESTING](#testing)
 
 - [BUGS](#bugs)
-
-- [FUTURE FEATURES](#future-features)
 
 - [DEPLOYMENT](#deployment)
 
@@ -526,7 +525,7 @@ FINAL MOCK-UP
 ------
 # FEATURES
 
-## Planned Features 
+## PLANNED FEATURES 
 
 All planned features were achieved with the exception of those which relate to or have a dependency on the member profile aspects which are not yet complete and marked for future enhancement.
 
@@ -547,7 +546,7 @@ All planned features were achieved with the exception of those which relate to o
 | Non-registered visitors see feedback on home screen | Applied through JS to switch comments        |:white_check_mark:      |
 
 
-## Future Enhancements
+## FUTURE ENHANCEMENTS
 
 This list summarises the components not yet implemented
 
