@@ -519,6 +519,9 @@ FAVICON
 
 The same guitar icon image was adjusted in Adobe Illustrator to replace the add / remove symbols with GV lettering. When converted to .ico format / sizing, the elongated icon (longer than width) resulted in squashed icon to conform to the boxed 32px x 32px favicon sizing. Retaining the ratio resulted in an icon width which was barely visible. For this reason, the icon was rotated for a corner to corner layout with a background color applied to aid appearance. This was then converted from a png format to .ico format via https://image.online-convert.com/convert-to-svg, whilst https://svgontheweb.com/ also served as a useful reference site for svg creation and site inclusion.
 
+FINAL MOCK-UP
+
+![FINAL MOCKUP](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/smartmockups.jpg)
 
 ------
 # FEATURES
@@ -769,8 +772,9 @@ Table of responsive configurations checked;
 - lamdatest.com (browser / os compatability, responsiveness testing)
 
 ## Miscellaneous
-- django secret key generator - https://miniwebtool.com/django-secret-key-generator/
-- favicon generator - converted a simple svg image created in Adobe Illustrator into .ico format https://favicon.io/
+- https://miniwebtool.com/django-secret-key-generator/ : django secret key generator
+- https://favicon.io/ : favicon converter (svg image created in Adobe Illustrator into .ico format) 
+- https://smartmockups.com/ : generated final web site 'mockup' from deployed link for inclusion in README 
 
 ------
 # ACKNOWLEDGEMENTS
@@ -784,7 +788,7 @@ Table of responsive configurations checked;
 - StackOverflow : point of referrence for number of coding queries
 - https://css-tricks.com/how-to-do-knockout-text/ : logo text font mask
 - https://svgontheweb.com/ : guidance on creation and styling of SVGS (referred to for add / remove guitar icons).
-- https://image.online-convert.com/convert-to-svg : converted image from png to favicon.ico format
+- https://docs.djangoproject.com/en/3.2/ : django documentation
 - https://getbootstrap.com/docs/5.1/getting-started/introduction/ : Bootstrap 5 docs
 - https://bringyourownlaptop.com/ - guidance on UI / UX using Adobe XD
 
@@ -792,13 +796,3 @@ Table of responsive configurations checked;
 - Adobe Stock Images - licensed for textured masks applied to navigation header and logo font
 - Andertons.com - online guitar retailer, used for most of the guitar images (some were also sourced from the manufacturers web sites) and source of the guitar specifications.
 - the guitar Vault headstock logo was self drawn in Adobe Illustrator
-
-
-
-## CONTENTS (click to expand sections
-<details>
-    <summary>show details</summary>
-  
-  ## Heading
-  content here
-</details>
