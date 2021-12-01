@@ -567,9 +567,9 @@ In response to additional testing outcomes;
 ------
 # TESTING
 
-The majority of testing is performed during the development of the project. Upon completion of the project, there were a small number of known bugs but primarily there is a number of aspects relating to content / planned functionality which was unable to accomodate by the deadline. Additional testing was also performed across the site. 
+The majority of testing is performed manually during the development of the project. Upon completion of the project, there were a small number of known bugs but primarily there is a number of aspects relating to content / planned functionality which was unable to accomodate by the deadline. Additional testing was also performed across the site. 
 A summary of the key call outs from all testing activities is summarised below, with any key oustanding matters also reflected in either the Bugs or Future Enhancement sections. 
-Further information for each of the testing activities is available in the collapsible sections below. 
+Further information for each of the testing activities is available in the collapsible sections below. Note that attempts to run the django site through django-html-validator was unsuccesful (time constraints did not permit further investigation on how to correctly install and use this package). 
 
 
 <details>
@@ -667,7 +667,8 @@ Guitars - desktop
 
 <details>
     <summary>HTML Validation</summary>
-
+Individual HTML pages were run through https://validator.w3.org/. The only errors identified (c. 30 for each page) were all identified as 'parse errors'. These seem to relate to the validators inability to recognise / handle django html templates. All tags were removed in a couple of pages and no other errors were identified providing comfort that there are no concerns with the html structure.
+    
 </details>
 
 
@@ -685,22 +686,9 @@ Prior to validation, the CSS was run through https://autoprefixer.github.io/ to 
 
 <details>
     <summary>JS Validation</summary>
-
+Only a small amount of cutom JS resides in the construction, there were only 4 issues identified when run through JShint relating to missing semi-colons which have been resolved. 
 </details>
 
-
-
-<details>
-    <summary>django / Python</summary>
-
-</details>
-
-
-
-<details>
-    <summary>Browser Compatability</summary>
-
-</details>
 
 
 <details>
