@@ -115,10 +115,6 @@ Out of scope;
 
 The structure of the site should provide a clean and clear interface for site users. Leveraging from django's app structure, there will be specific page content for each app module, yet a baseline html view will be applied consistently across all pages. Site navigation will primarily be through the navigation menu displayed in the header (and through an icon for small screen devices). The only exception to this will be the additional on-screen links (visually displayed as buttons) to proceed to the next / return to the last view (e.g. proceeding to the payment form.
 
-An initial schematic of the front end screen screen flow (please note that there are some variations to the actual end design).
-
-*insert workflow diagram here*
-
 ### DATABASE STRUCTURE
 *Please note comments above re aspects not delivered in this build as well as some deviations from the original design*
 
@@ -584,7 +580,7 @@ In summary, all user stories tests passed with the exception of those which rela
     
 | As a...         | I want to...                       | Test Review Notes                                        | Pass / Fail. |
 |-----------------|------------------------------------|----------------------------------------------------------|--------------|
-| site user (any) | Understand the purpose of the site | Failed - About US / GV Explained pages not created       | :heavy_exclamation_mark:missing about modal?|
+| site user (any) | Understand the purpose of the site | Content available but unexpected behaviour on deployed version| :heavy_exclamation_mark: see bugs for details|
 | site user (any) | Easily navigate the site           | Clear and simple navigaiton of the site with nav menu on all pages| :white_check_mark:|
 | site user (any) | Be able to view the site on any size screen | Fully responsive tested across multiple screen sizes| :white_check_mark:     |
 | site user (any) | Have clear information on pricing  | Subscription pricing provided up front and visible during payment steps| :white_check_mark: |
@@ -712,7 +708,10 @@ Guitars - desktop
 
 | Item      | Details                              | Additional Notes                                                                                       |
 |-----------|--------------------------------------|--------------------------------------------------------------------------------------------------------|
+| Image Carousel | Carousel timing issues| Initially planned to have a single carousel which showed multiple images which scrolled across the page. Bootstrap did not seem to support this so multiple carousels were created and timed to scroll, but factors influence the rendering / JS timing impacting the visual experience |
+| About Us modals | Inconsistent behaviour in deployed vs development environments | The modal content is held in a block on the base template with block tags on the main-nav items (where links to the modals reside) as well as index.html as there are also links in the About Us section. These work as planned in development, but deployed site has inconsistent behaviour with either not showing or showing but without CSS being applied. These were late additions to the site without time to investigate a fix or switch to hosting on individual html pages. |
 | JS Error  | JS 'cannot set propoerties of null'  | Self identified in console and identified by LightHouse. Cause is due to the fields JS is manipulating being intentionally only shown for non-logged in users |
+
 
 
 ------
