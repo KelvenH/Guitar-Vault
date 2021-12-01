@@ -32,7 +32,7 @@
 
 - [SURFACE](#surface)
     - [INFLUENCES](#influences)
-
+    - [KEY ELEMENT STYLES](#key-element-styles)
 
 - [FEATURES](#features)
 
@@ -175,7 +175,7 @@ Members Profile (desktop) *planned but not yet implemented*
 
 
 ## SURFACE
-### Influences
+### INFLUENCES
 Inspiration for the site layout was taken from on-line music retailers. An example is shown below which has a bootstrap style responsive grid layout.
 
 Example guitar retailer:
@@ -187,12 +187,16 @@ Inspiration for site logo text:
 
 ![logos](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Logos.png)
 
-### Logo & Typography
+### KEY ELEMENT STYLES
+
+LOGO
 
 The site logo took great influence from the 'serif' style logos of some of the greatest known guitar and amp brands (i.e. Marshall, Gibson and Fender). A font was found which paid homage to these world famous logos, yet remained extremely legible.
 
-The site logo-text was achieved by applying the Google Font 'lobster' font-family over a textured 'rust' background which due to the zoom level actually provides a slight 'aged leather' look. A font mask* was then applied using another 'gold' texture image (both texture images were licensed from Adobe Stock). * *see acknowledgements for font-mask*
-The layering was achieved in CSS using a combination of text-fill and background-clip with a back-up gold font (declared in the root variable as was the font-family). The CSS is shown here;
+The site logo-text was achieved by applying the Google Font 'lobster' font-family over a textured 'rust' background which due to the zoom level actually provides a slight 'aged leather' look. A font mask* was then applied using another 'gold' texture image (both texture images were licensed from Adobe Stock). The layering was achieved in CSS using a combination of text-fill and background-clip with a back-up gold font* (declared in the root variable as was the font-family). 
+* *see acknowledgements for referrence used for application of font/text masks*
+
+The CSS is shown here;
 
 
 ``` 
@@ -223,7 +227,11 @@ It was important to use a 'simple' sans-serif font elsehwere on the site, for wh
 
 ![Varta welcome text](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/welcome.png)
 
-### Buttons 
+---
+Navigation Bar and Menus
+
+---
+Buttons 
 
 The site buttons use the Bootstrap classes to determine sizing. Custom classes were applied to apply the colors, including hover states.
 
@@ -243,15 +251,162 @@ An example of the primary button css stlying is;
 ``` 
 
 Button Pre and Post hover
+
 ![button](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Button.png) ![button-hover](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Button-hover.png)
 
-### Tier Pendants
+---
+Guitar Cards
 
-The guitar images have a pendant displaying the tier (i.e. Platinum, Gold, Silver or Bronze). This was achieved by using a Font Awesome "fa-bookmark" icon for the pendant within an i tag, with a <span> inside containing the text. To this the following Font Awesome classes are applied;
+![guitar card](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/guitarcard.png)
+
+Guitars are displayed using the Bootstrap card class. Combination of django loop and if statements enable a card to be produced for each card which satisifes the filtered view (i.e. all or selective depending on the url view generated). The core components of the card are;
+
+- parent card element - Bootstrap .card class for a responsive card layout which handles margin and padding settings
+- image - embedded url links through to the individual card-detail page (which shows additional information)
+- .card-overlay & tier pendant - the card overlay acts as a container to position the tier outside of the card-body. The tier pendant combines Font Awesome icon and text label relating to the specific tier of the guitar (*see Tier Pendant section below for more information on the structure of this element*)
+- .card-body - container for `<div>`'s which holds flex-box rows (using Bootstrap .d-flex & .flex-row classes) which each hold a pair of `<p>` tags for a label and value with the latter populated through the django loop and template tags.
+- .card-footer - container for Add / Remove Favourite and Add / Remove to member's rack icons - note that these form aspect of the members functionality which have not yet been implemented (*see svg section below for more information on the icons*)
+
+Additionlly, the cards are held in parent Bootstrap columns so as layout provides a single card (100% screen width) for small screens, increasing through the Bootstrap breakpoints up to 4 cards for extra large screens.
+    
+<details>
+    <summary>Show HTML Extract of card</summary>
+
+    ``` 
+           <div class="row">
+                    
+                    {% for guitar in guitars %}
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+                            <div class="card bg-dark guitar-card h-100 gold-accent-outline">
+
+                                <!--card image -->
+                                {% if guitar.image_id %}
+                                <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
+                                    <img src="{{ guitar.image_id.url }}" class="card-img-top" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                </a>
+
+                                {% else %}
+                                <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
+                                    <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top " alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                </a>
+                                {% endif %}
+
+                                <!-- tier pendant (overlays image)-->
+                                <div class="card-custom-overlay pt-0">
+                                    <div class="fa-layers fa-fw tier-pendant">
+                                        {% if guitar.tier %}
+                                            {% if guitar.tier == 'Platinum' %}
+                                                <i class="fas fa-bookmark fa-6x tp-platinum"></i>
+                                                <!--Longer tier requires different transform adjustments for Platinum -->
+                                                <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27">{{ guitar.tier }}</span>
+                                            {% else %}    
+                                                {% if guitar.tier == 'Gold' %}
+                                                    <i class="fas fa-bookmark fa-6x tp-gold"></i>
+                                                    
+                                                {% elif guitar.tier == 'Silver'%}
+                                                    <i class="fas fa-bookmark fa-6x tp-silver"></i>
+                                                
+                                                {% elif guitar.tier == 'Bronze'%}
+                                                    <i class="fas fa-bookmark fa-6x tp-bronze"></i>
+                                                
+                                                {% endif %}
+                                                <span class="fa-layers-text fa-inverse tp-text" data-fa-transform="rotate--270 right-27 up-7">{{ guitar.tier }}</span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <!-- card content -->
+                                <h5 class="card-title text-center pt-2">{{ guitar.brand }} - {{ guitar.guitar_model }}</h5>
+                                <div class="row card-body">
+                                    <div class="col">
+                                        <div class="guitar-card-list">
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Category</p>
+                                                <p class="col-6">{{ guitar.category }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Status</p>
+                                                <p class="col-6">{{ guitar.status }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Handed</p>
+                                                <p class="col-6">{{ guitar.handed }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Condition</p>
+                                                <p class="col-6">{{ guitar.condition }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Condition Rating</p>
+                                                <p class="col-6">{{ guitar.rating_condition }}</p>
+                                            </div>
+                                            <div class="d-flex flex-row">
+                                                <p class="col-6">Overall Rating</p>
+                                                <p class="col-6">{{ guitar.rating_overall }}</p>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div> <!--close card body -->
+                                
+                                <!--card footer-->
+                                <div class="card-footer text-muted">
+                                    <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-baseline">
+                                        <li class="list-inline-item w-20 pb-0 ">
+                                                                                      
+                                            <!--option A : Add Favourite -->
+                                            <btn type="button" class="btn btn-sm btn-add-fav align-baseline">
+                                                <i class="far fa-heart fa-2x"></i>
+                                                <p class="pb-0"><small>Add Favourite</small></p>
+                                            </btn>
+                                            
+                                            <!--option B : Remove Favourite -->
+                                            <btn type="button" class="btn btn-sm d-none btn-remove-fav align-baseline">
+                                                <i class="fas fa-heart fa-2x"></i>
+                                                <p class="ps-2"><small>Remove Favourite</small></p>
+                                            </btn>
+                                        </li>
+
+                                        <li class="list-inline-item w-20 pb-0 align-baseline">
+                                            
+                                            <!--option A : Add to Rack -->
+                                            <btn type="button" class="btn btn-sm btn-take align-baseline">
+                                                <img src="{{ MEDIA_URL }}Guitar_gold_add.svg" class="guitar-svg add-gold">
+                                                <img src="{{ MEDIA_URL }}Guitar_black_add.svg" class="guitar-svg add-black">
+                                                <p class=""><small>Add to Rack</small></p>
+                                            </btn>
+
+                                            <!--option B : Remove from Rack -->
+                                            <btn type="button" class="btn btn-sm btn-take d-none align-baseline">
+                                                <img src="{{ MEDIA_URL }}Guitar_gold_remove.svg" class="guitar-svg add-gold">
+                                                <img src="{{ MEDIA_URL }}Guitar_black_remove.svg" class="guitar-svg add-black">
+                                                <p class="ps-2"><small>Remove from Rack</small></p>
+                                            </btn>
+                                        </li>
+                                    </ul>
+                                </div>      <!--close card footer -->
+                            </div>          <!--close card  -->
+                        </div>              <!--close card col -->
+
+                    {% endfor %}
+
+                </div>  <!--close sub-parent card row-->
+        
+    ``` 
+    
+</details>
+    
+---
+Tier Pendants
+
+![platinum](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/platinum.png)![gold](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/gold.png)![Silver](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/silver.png)![bronze](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/bronze.png)
+
+The guitar images have an overlaying pendant displaying the tier (i.e. Platinum, Gold, Silver or Bronze). This was achieved by using a Font Awesome "fa-bookmark" icon for the pendant within an `<i>` tag, with a child `<span>` containing the text. To this the following Font Awesome classes are applied;
 - "fa-layers" - applied to parent to allow stacking
 - "fa-fw" - to aid alignment
 - "fa-layers-text" - applied to span to put the text on top 
-- "fa-inverse" - 
+- "fa-inverse" - (recommendation on Font Awesome site to prevent background color bleed) although subsequent testing indicates these do not have an affect but remain applied 
 - "fa-6x" - increase overall size of the icon
 - "data-fa-transform" - attribute applied in-line to set the vertical text direction (set to rotate--270). This attribute was also used to fine tune the  horizontal alignment (centered) and the vertical alignment (top) - with a slight variation for the 'Platinum' tier due to the longer text length.
 
