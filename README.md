@@ -729,6 +729,85 @@ Table of responsive configurations checked;
 
 ------
 # DEPLOYMENT
+
+## Pre-Requisites
+
+Accounts will be required with the following service providers. Free accounts can be created, but some may require credit card authentication.
+
+- [GitHub](https://github.com) - to clone the repository
+- [Heroku](https://www.heroku.com) - to host the deployed site
+- [Stripe](https://dashboard.stripe.com/register) - payment processing
+- [AWS](https://aws.amazon.com/) - cloud based storage service for static and media files
+
+## Local Deployment
+
+1. Clone this repository;
+    - click Code
+    - copy the HTTPS address
+    - within your IDE open the GIT BASH terminal
+    - navigate to the directory where you wish the cloned directory to be made
+    - enter git clone followed by the URL copied earlier
+    ```
+    git clone https://github.com/KelvenH/Guitar-Vault.git
+    ```
+    - a clone of the repository will now be created
+  
+2. Create local variables 
+    note that you will need to create your own local variables either within an env.py file or for example set in Git Workspace applicable to your new development version of the repository for the following. These will also need to be added to Heroku as 'config vars' to enable deployment. 
+    
+    IMPORTANT: DO NOT INCLUDE THESE PASSWORDS / KEYS WITHIN YOUR GIT FILES (E.G. SETTINGS.PY) OR THEY WILL BE EXPOSED PUBLIClY - EXPOSING YOUR SITE / CONNECTED SERVICES AND IN SOME CASES (SUCH AS AWS) CAN LEAD TO MALICIOUS USE BEING CHARGED TO YOUR REGISTERED CREDIT CARD. 
+    The only exception to the above is by including them within an env.py file which is listed in a .gitignore file to prevent them being included in your commits.
+    
+        Variables;
+        -  DEVELOPMENT = TRUE (will enable debug to be set to TRUE to see django error messages which are not visible in the deployed version)
+        -  SECRET_KEY - recommend using an online django compliant password generator
+        -  STRIPE_PUBLIC_KEY - located by logging into Stripe > Dashboard > Developers tab > API Keys
+        -  STRIPE_SECRET_KEY - see Stripe comment above
+        -  STRIPE_WH_KEY - see Stripe comment to the Developers tab > Webhooks. This can only be generated once the webhook has been created 
+        -  AWS_ACCESS_KEY_ID - available from AWS once a user has been created
+        -  AWS_SECRET_ACCESS_KEY - see AWS comment above
+        -  DATABASE_URL - generated in HEROKU (located under Settings > Config Vars) once PostGres SQL has been added
+        
+3. Install the apps as listed in the requirements.txt file, this can achieved by the following git command
+    ```
+        pip3 install requirements.txt
+    ```
+    
+4.  Apply database migrations to initiate your database and admin panel structure - if no prior changes have been made you should be able to run the final command, but the previous 3 commands are recommended and will be required if changes have been made to the models prior to migration (and repeated after subsequent changes are made).
+    ```
+        python3 manage.py makemigrations --dry-run
+        python3 manage.py makemigrations 
+        python3 manage.py migrate --plan
+        python3 manage.py migrate
+    ```
+    
+5.   Create a superuser account to be able to access admin and log-in to your local version of the site (provides allauth permissions)
+   
+   ```
+        python3 manage.py create superuser
+   ```
+   
+6. You will be able to run the site on a local host by running the command 
+
+   ```
+        python3 manage.py runserver
+   ```
+
+7. After exposing port 8000 when prompted or via the git remote explorer panel you will be able to access the site
+8. Adding /admin to the home url will present you with the admin panel - you will need to enter the credentials used in step 5 to create the superuser
+
+## Heroku Deployment
+
+1. Log in to [Heroku]((https://www.heroku.com))
+2. Go to New > Create New App
+3. Provide a name and select your local region 
+4. Once in your app, go to Resources > Add Ons and enter PostGres within the input field
+5. Return to your IDE and within the CLI install the following;
+    ```
+        pip3 install dj_database_url
+        pip3 install psycopg2
+    ```
+
 ------
 # TECHNOLOGIES
 
