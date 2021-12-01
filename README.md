@@ -227,6 +227,7 @@ It was important to use a 'simple' sans-serif font elsehwere on the site, for wh
 
 ## Design; 
 - Adobe XD (UI / UX development stage, inclduing simple database structure)
+- Adobe Illustrator (headstock logo)
 
 ## Languages, frameworks, libraries and apps;
 - GitHub (host repository)
@@ -284,7 +285,7 @@ It was important to use a 'simple' sans-serif font elsehwere on the site, for wh
 ## Images
 - Adobe Stock Images - licensed for textured masks applied to navigation header and logo font
 - Andertons.com - online guitar retailer, used for most of the guitar images (some were also sourced from the manufacturers web sites) and source of the guitar specifications.
-
+- the guitar Vault headstock logo was self drawn in Adobe Illustrator
 
 
 
