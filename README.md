@@ -230,6 +230,23 @@ It was important to use a 'simple' sans-serif font elsehwere on the site, for wh
 ---
 Navigation Bar and Menus
 
+The design of the navigation bar employs bootstrap layout to ensure responsive sizing, bootstrap classes / components to create drop-down menus which collapse into an icon for small screen sizes and django template inheritence to aid structure and responsive selections. These are structured across 3 html files;
+- base.html - seen on all screens and hosts the logo and logo-text. Links to Account (i.e. sign-in/out, profile), Shopping Bag and Plectrum* are displayed here in larger screens but hidden on smaller devices.
+- mobile-nav-items.html - only displayed for smaller screens and allows for the Account / Shopping Bag & Plectrum* items to be displayed on a lower row (increasing the size available in the upper row for logo).
+- main-nav-items.html - contains a row of drop-down menus which employ django url filters to narrow the list of guitar items by category (electric/bass/acoustic) and further sub-categories (e.g. tier, left-handed).This menu is collapsed into a single icon for small screens. It also hosts a 'search bar' which looks for text matches against guitar brands and models.
+
+The elements are styled using the logo fonts 'lobster', standard font 'Varta' and color schemes described elsewhere in this section. Additional custom classes are applied in some cases to override bootstrap defaults (e.g. link styles) and / or size, color and hover state effects. 
+
+*Plectrum is the planned internal 'currency' to loan a guitar which forms part of the member profile not yet implemented.
+
+Navigation Bar - Desktops
+
+![Nav desktop](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Nav-desktop.png)
+
+Navigation Bar - Mobile
+
+![Nav mobile](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Nav-mobile.png)
+
 ---
 Buttons 
 
