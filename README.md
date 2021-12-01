@@ -35,6 +35,8 @@
     - [KEY ELEMENT STYLES](#key-element-styles)
 
 - [FEATURES](#features)
+    - [PLANNED FEATURES](#planned_features)
+    - [FUTURE ENHANCEMENTS](#future_enhancements)
 
 - [TESTING](#testing)
 
@@ -524,12 +526,167 @@ The same guitar icon image was adjusted in Adobe Illustrator to replace the add 
 
 ------
 # FEATURES
+
+## Planned Features 
+
+All planned features were achieved with the exception of those which relate to or have a dependency on the member profile aspects which are not yet complete and marked for future enhancement.
+
+| Key Feature                   | Details.                                                          | Delivered              |
+|-------------------------------|-------------------------------------------------------------------|------------------------|
+| Ability to create an account  | handled by django all-auth                                        |:white_check_mark:      |
+| Login / Out                   | handled by django all-auth                                        |:white_check_mark:      |
+| Clear site navigation         | nav shown aross screens with collapse for small screens           |:white_check_mark:      |
+| Search for guitars            | handled through nav search bar                                    |:white_check_mark:      |
+| Filtered views of guitars     | url views embedded in main nav menus                              |:white_check_mark:      |
+| Simple and clear layout of guitars | employs bootstrap .card component                            |:white_check_mark:      |
+| Detailed view of guitars      | url from card summary through to detailed card view               |:white_check_mark:      |
+| Members can favourite guitars | relates to component outstanding - future feature                 |:heavy_exclamation_mark:| 
+| Members can add guitars to rack | relates to component outstanding - future feature               |:heavy_exclamation_mark:|
+| Members can manage their subscription plans | relates to component outstanding - future feature   |:heavy_exclamation_mark:|
+| Members can provide a rating on guitars loaned | relates to component outstanding - future feature|:heavy_exclamation_mark:|
+| Site poll to get members feedback | | relates to component outstanding - future feature            |:heavy_exclamation_mark:|
+| Non-registered visitors see feedback on home screen | Applied through JS to switch comments        |:white_check_mark:      |
+
+
+## Future Enhancements
+
+This list summarises the components not yet implemented
+
+- Provide members wih the ability to and view in profile;
+    -  favourite guitars
+    -  manage subscriptions
+    -  exchange plectrum for guitar loan
+    -  rate guitars loaned
+    -  view past guitar loans
+
+- Provide Admin with;
+    - capabilities to view / manage the additional member activities above
+    - run a member feedback poll
+
+
 ------
 # TESTING
+
+The majority of testing is performed during the development of the project. Upon completion of the project, there were a small number of known bugs but primarily there is a number of aspects relating to content / planned functionality which was unable to accomodate by the deadline. Additional testing was also performed across the site. 
+A summary of the key call outs from all testing activities is summarised below, with any key oustanding matters also reflected in either the Bugs or Future Enhancement sections. 
+Further information for each of the testing activities is available in the collapsible sections below. 
+
+
+<details>
+    <summary>User Story Testing</summary>
+    
+    
+In summary, all user stories tests passed with the exception of those which relate to member profiles (add / view past guitar requests, add / remove favourites and managing subscriptions). Whilst 1 test has passed relating to guitar ratings being visible to users, the rating itself is hard-coded whereas future enhancements would switch to a calculation of average member ratings (forms part of the oustanding content). 
+    
+| As a...         | I want to...                       | Test Review Notes                                        | Pass / Fail. |
+|-----------------|------------------------------------|----------------------------------------------------------|--------------|
+| site user (any) | Understand the purpose of the site | Failed - About US / GV Explained pages not created       | :heavy_exclamation_mark:missing about modal?|
+| site user (any) | Easily navigate the site           | Clear and simple navigaiton of the site with nav menu on all pages| :white_check_mark:|
+| site user (any) | Be able to view the site on any size screen | Fully responsive tested across multiple screen sizes| :white_check_mark:     |
+| site user (any) | Have clear information on pricing  | Subscription pricing provided up front and visible during payment steps| :white_check_mark: |
+| site user (any) | Be able to filter / search guitars | Achieved through search bar and menus with filetered views| :white_check_mark:        |
+| site user (any) | Be able to see detailed information about the guitars | Summary information provided in list view with full info in detailed screen |:white_check_mark:|
+| site user (any) | Register for an account            | Through join link handled by allauth, new sign-ups captured in admin db| :white_check_mark: |
+| registered user | Pay for my subscription plan easily| Clear laid out payments form with test payments handled through stripe| :white_check_mark:|
+| registered user | Login / out easily                 | Links visible on all screens and handled through allauth  | :white_check_mark: |
+| registered user | Be able to recover/reset my password | Reset / recovery links with email linkage to generate sending of email| :white_check_mark: |
+| registered user | Be able to manage my subscription  | NOT DELIVERED - SEE FUTURE FEATURES                        | :x:       |
+| registered user | Select a guitar to receive         | NOT DELIVERED - SEE FUTURE FEATURES                        | :x:       |
+| registered user | Save particular guitars as favourites| NOT DELIVERED - SEE FUTURE FEATURES                      |  :x:      |
+| registered user | See a list of the guitars I've had with my rating| NOT DELIVERED - SEE FUTURE FEATURES          | :x:       |
+| registered user | See ratings given by other users   | A fixed rating is visible, futher enhancements would see this be generated by users ratings| :white_check_mark:|
+| site administrator | View and manage guitars         | Management of all guitars is handled through the admin & fixture files | :white_check_mark: |
+| site administrator | View / manage registered members| Managed through the admin                                  | :white_check_mark:|
+| site administrator | View / manage subscription plans| NOT DELIVERED - SEE FUTURE FEATURES                        | :x:        |
+| site administrator | View / manage subscription orders| Managed through the admin                                 | :white_check_mark:|
+
+    
+</details>
+
+<details>
+<summary>Lighthouse Performance</summary>
+
+Four key site pages were run through the Chrome Inspector Lighthouse for assessment (shown below). Desktio faired better han mobile, but both had shortcomings primarily in performnce and accessibility. Please see below for details of responsive action taken.
+
+Index - mobile
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-index-mobile.png" width="500">
+    
+Index - desktop
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-index-desktop.png" width="500">
+
+SignIn/Up - mobile
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-signin-up-mobile.png" width="500">
+    
+SignIn/Up - desktop
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-signin-up-desktop.png" width="500">
+    
+Subscriptions - mobile
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-subscriptions-mobile.png" width="500">
+    
+Subscriptions - desktop
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-subscriptions-desktop.png" width="500">
+
+Guitars - mobile
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-guitars-mobile.png" width="500"> 
+
+Guitars - desktop
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-guitars-desktop.png" width="500">
+    
+ | Aspect      | Key Causes / Recommendations                                   | Action Taken | Not Taken |
+ |-------------|----------------------------------------------------------------|--------------|-----------|
+ | Performance | Contentful paint times - switch png images to next gen formats |
+    
+</details>
+
+
+<details>
+    <summary>HTML Validation</summary>
+
+</details>
+
+
+<details>
+    <summary>CSS Validation</summary>
+
+</details>
+
+
+
+<details>
+    <summary>JS Validation</summary>
+
+</details>
+
+
+
+<details>
+    <summary>django / Python</summary>
+
+</details>
+
+
+
+<details>
+    <summary>Browser Compatability</summary>
+
+</details>
+
+
+<details>
+    <summary>Responsiveness</summary>
+
+</details>
+
 ------
 # BUGS
-------
-# FUTURE FEATURES
 ------
 # DEPLOYMENT
 ------
