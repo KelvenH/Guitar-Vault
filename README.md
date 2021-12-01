@@ -563,7 +563,11 @@ This list summarises the components not yet implemented
     - capabilities to view / manage the additional member activities above
     - run a member feedback poll
 
+In response to additional testing outcomes;
 
+- Consider switching all images to nextgen formats (webP) with fallback for unsupported browsers
+- improve color contrast ratios
+- 
 ------
 # TESTING
 
@@ -640,9 +644,27 @@ Guitars - desktop
     
 <img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/lh-guitars-desktop.png" width="500">
     
- | Aspect      | Key Causes / Recommendations                                   | Action Taken | Not Taken |
- |-------------|----------------------------------------------------------------|--------------|-----------|
- | Performance | Contentful paint times - switch png images to next gen formats |
+ | Aspect      | Key Causes              | Recommendations (not directly mapped to causes) | Outcome                                 |
+ |-------------|-------------------------|---------------------------------------|---------------------------------------------------|
+ | Performance | Contentful paint times  | switch png images to next gen formats |  Please see point 1 below                         |
+ | Performance | Time to interactivity   | eliminate render blocking resources   |  Causes identified as 3rd party libraries (bootstrap, jquery) outside of my control |                                                 |   
+ | Performance | HTTP/1.1                | serve resources over http/2           |  Files identified relate to AWS configuration - lack of knowledge to implement safe changes|
+ | Accessibility| Color Contrasts        | Switch colors used                    | This was also self-identitied as a possible issue particularly white / gold text with 'gold' coloring scheme for that tier. Some adjustments were made to the background gold to darken from the original selection and also investigated use of text shadows but these were not providing a satisfactory result. Added to future enhancements |
+ | Best Practices| Browser errors were logged to the console | Resolve errors     | This was self identified and appears on the outstanding bugs list. The cause is due to JS used to switch feedback which is not displayed if a user is logged in |   
+ | SEO          | Links not crawlable | Ensure hrefs link to appropriate destination | At the time of running these reports the 'About US' modals were incomplete but plan to be resolved by the time of project submission |
+    
+  1. Thorough review undertaken on the guidance to switch jpeg / png images to next gen formats. Steps taken;
+        - downloaded Google's Photoshop plugin to convert images to webP (format not natively supported by Adobe)
+        - converted the banner background image which reduced the file size by c.50%
+        - within the development environment swapped out the jpeg for webP version, re-running the index page for mobiles saw the score improve from 64% to 80%.
+        - at this point I was considering adopting this format for all images, however according to caniuse.com not all browsers support - chiefly Safari (only partial support for certain Op Sys).
+        - this would mean providing a fall back solution to provide both formats. The task would therefore involve;
+        - creating a webP version of all site images
+        - saving these to AWS S3 bucket
+        - switching existing image tags to a picture with source tags to serve webP or fallback
+        - updating the fixture files to have 2 versions of each image (as image links are often not hard-coded but idenfified via the django loop / tags
+        - identifying a fall-back approach where images are served as background-images from the css file.
+    For these reasons, the time remaining and the risk of causing unintended behavious so close to project submission the activity was not progressed but has been added as a future enhancement.
     
 </details>
 
@@ -687,6 +709,12 @@ Guitars - desktop
 
 ------
 # BUGS
+
+| Item      | Details                              | Additional Notes                                                                                       |
+|-----------|--------------------------------------|--------------------------------------------------------------------------------------------------------|
+| JS Error  | JS 'cannot set propoerties of null'  | Self identified in console and identified by LightHouse. Cause is due to the fields JS is manipulating being intentionally only shown for non-logged in users |
+
+
 ------
 # DEPLOYMENT
 ------
