@@ -182,13 +182,16 @@ Example guitar retailer:
 
 ![retailer](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/ExampleRetailer.png)
 
-The intention was to have a dark theme for the site, with simple visual styling with gold accents. The site logo took great influence from the 'serif' style logos of some of the greatest known guitar and amp brands (i.e. Marshall, Gibson and Fender). A font was found which paid homage to these world famous logos, yet remained extremely legible.
 
-Inspiration for site logo:
+Inspiration for site logo text:
 
 ![logos](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Logos.png)
 
-The site logo was achieved by applying the Google Font 'lobster' font-family over a textured 'rust' background which due to the zoom level actually provides a slight 'aged leather' look. A font mask* was then applied using another 'gold' texture image (both texture images were licensed from Adobe Stock). * *see acknowledgements for font-mask*
+### Logo & Typography
+
+The site logo took great influence from the 'serif' style logos of some of the greatest known guitar and amp brands (i.e. Marshall, Gibson and Fender). A font was found which paid homage to these world famous logos, yet remained extremely legible.
+
+The site logo-text was achieved by applying the Google Font 'lobster' font-family over a textured 'rust' background which due to the zoom level actually provides a slight 'aged leather' look. A font mask* was then applied using another 'gold' texture image (both texture images were licensed from Adobe Stock). * *see acknowledgements for font-mask*
 The layering was achieved in CSS using a combination of text-fill and background-clip with a back-up gold font (declared in the root variable as was the font-family). The CSS is shown here;
 
 
@@ -206,11 +209,128 @@ The layering was achieved in CSS using a combination of text-fill and background
 
 The final result achieved;
 
-![site logo](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar-Vault_banner.png)
+![site logo-text](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar-Vault_banner.png)
+
+The same styling class is then also applied to the page titles as shown below;
+
+![site text](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/subscription.png)
+
+The site logo was produced in Adobe Illustrator (achieved by tracing the outer edges of a photo of my own Gibson SG for an outline).
+
+![site logo image](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/GV-Logo.png)
 
 It was important to use a 'simple' sans-serif font elsehwere on the site, for which another Google Font was used 'Varta'.
 
+![Varta welcome text](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/welcome.png)
 
+### Buttons 
+
+The site buttons use the Bootstrap classes to determine sizing. Custom classes were applied to apply the colors, including hover states.
+
+An example of the primary button css stlying is;
+
+``` 
+    .btn-gold-outline {
+        color:var(--off-gold);
+        border: 3px solid var(--off-gold);
+        background-color: var(--transp); /* prevents default white background */
+        }
+        
+    .btn-gold-outline:hover {
+        background-color:var(--off-gold);
+        color:var(--off-black);
+        }
+``` 
+
+Button Pre and Post hover
+![button](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Button.png) ![button-hover](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Button-hover.png)
+
+### Tier Pendants
+
+The guitar images have a pendant displaying the tier (i.e. Platinum, Gold, Silver or Bronze). This was achieved by using a Font Awesome "fa-bookmark" icon for the pendant within an i tag, with a <span> inside containing the text. To this the following Font Awesome classes are applied;
+- "fa-layers" - applied to parent to allow stacking
+- "fa-fw" - to aid alignment
+- "fa-layers-text" - applied to span to put the text on top 
+- "fa-inverse" - 
+- "fa-6x" - increase overall size of the icon
+- "data-fa-transform" - attribute applied in-line to set the vertical text direction (set to rotate--270). This attribute was also used to fine tune the  horizontal alignment (centered) and the vertical alignment (top) - with a slight variation for the 'Platinum' tier due to the longer text length.
+
+    *Note:  some of these Font Awesome styles have required the additional SVG and JS version of the script file*
+``` 
+    <script defer src="https://use.fontawesome.com/releases/v5.15.0/js/all.js"></script>
+```     
+Further custom classes position the parent card-overlay object and apply the font color with additional data-tramsform propeties applied to Platinum for the sizing reasons mentioned above.  
+
+Extract of the html & CSS are available below, note the application of the django template tags which allows the correct pendant to be allocated to the guitar (held within a loop statement not shown in this extract) which enables the specific custom classes to be applied with the variations specified for 'Platinum'
+  
+<details>
+    <summary>Show HTML Extract</summary>
+
+    ``` 
+            <!-- tier pendant (overlays image)-->
+            <div class="card-custom-overlay pt-0">
+                <div class="fa-layers fa-fw tier-pendant">
+                    {% if guitar.tier %}
+                        {% if guitar.tier == 'Platinum' %}
+                            <i class="fas fa-bookmark fa-6x tp-platinum"></i>
+                            <!--Longer tier requires different transform adjustments for Platinum -->
+                            <span class="fa-layers-text tp-text" data-fa-transform="rotate--270 right-27">{{ guitar.tier }}</span>
+                        {% else %}    
+                            {% if guitar.tier == 'Gold' %}
+                                <i class="fas fa-bookmark fa-6x tp-gold"></i>
+
+                            {% elif guitar.tier == 'Silver'%}
+                                <i class="fas fa-bookmark fa-6x tp-silver"></i>
+
+                            {% elif guitar.tier == 'Bronze'%}
+                                <i class="fas fa-bookmark fa-6x tp-bronze"></i>
+
+                            {% endif %}
+                            <span class="fa-layers-text tp-text" data-fa-transform="rotate--270 right-27 ">{{ guitar.tier }}</span>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+    ``` 
+    
+</details>
+    
+
+<details>
+    <summary>Show CSS Extract</summary>
+    ```
+        
+        .tp-text {
+        font-weight:900;
+        }
+
+        .card-custom-overlay {
+        position:absolute;
+        top: 5%;
+        right: 25%;
+        }
+
+        .tp-platinum {
+        color: var(--purple);
+        transform: translateY(1.5rem) scale(1,1.5);
+        }
+
+        .tp-gold {
+        color:var(--gold);
+        }
+
+        .tp-silver {
+        color:var(--silver);
+        }
+
+        .tp-bronze {
+        color:var(--bronze);
+        }
+
+    ``` 
+ 
+</details>
+    
 
 ------
 # FEATURES
@@ -265,7 +385,7 @@ It was important to use a 'simple' sans-serif font elsehwere on the site, for wh
 
 ## Miscellaneous
 - django secret key generator - https://miniwebtool.com/django-secret-key-generator/
-
+- favicon generator - converted a simple svg image created in Adobe Illustrator into .ico format https://favicon.io/
 
 ------
 # ACKNOWLEDGEMENTS
