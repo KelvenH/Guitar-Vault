@@ -46,6 +46,8 @@
 - [TECHNOLOGIES](#technologies)
 
 - [ACKNOWLEDGEMENTS](#acknowledgements)
+    - [CODING SUPPORT](#coding-support)
+    - [IMAGES](#images)
 
 ***
 
@@ -219,9 +221,68 @@ It was important to use a 'simple' sans-serif font elsehwere on the site, for wh
 # DEPLOYMENT
 ------
 # TECHNOLOGIES
+
+## Design; 
+- Adobe XD (UI / UX development stage, inclduing simple database structure)
+
+## Languages, frameworks, libraries and apps;
+- GitHub (host repository)
+- GitPod / VS Code (development environment)
+- django (core framework which integrates the following)*
+- HTML5
+- CSS3
+- Bootstrap5 (html / css styles framework)
+- Python
+* Additional django / utility apps (referrenced in requirements.txt);
+ - django-allauth (authentication)
+ - django-countries (enables in form dropdown of country codes - required to validated stripe payments)
+ - pillow (enables use of images)
+ - crispy-forms & crispy-bootstrap5 (enable bootstrap styles in rendering form fields)
+ - django-storages (intergrate with deployed database)
+ - gunicorn (wsgi web server integration)
+ - dj-database-url (configuration with Heroku hosted database)
+ - psycopg2-binary (PostgreSQL database adapter)
+ - botocore & boto3 - (configure with AWS services)
+- Font Awesome - icons
+- Google Fonts - typography
+
+## Deployment
+- Heroku (including PostGres SQL for database)
+- AWS (media and static image hosting)
+
+## Testing
+- Lighthouse
+- W3C Markup Validation Service (HTML)
+- W3C CSS Validation Service (CSS)
+- JSHint (JS)
+- PEP8 online (Python)
+- autoprefixer (browser compatability extensions)
+- lamdatest.com (browser / os compatability, responsiveness testing)
+
+## Miscellaneous
+- django secret key generator - https://miniwebtool.com/django-secret-key-generator/
+
+
 ------
 # ACKNOWLEDGEMENTS
+
+## Coding Support
+- CI template : https://github.com/Code-Institute-Org/gitpod-full-template
+- Boutique Ado (CI Django walkthrough) : large parts of the project especially struture (django models and views) were based on this exercise.
+- Net Ninja (YouTube channel https://www.youtube.com/playlist?list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc) : additional guidance on django structures
+- Tutor Support (Sean and Igor) : aided with a couple of challenges I struggled to solve (both were due to incorrect referrencing of elements in models) 
+- Slack : primarily when encountering django obstacles
+- StackOverflow : point of referrence for number of coding queries
+- https://css-tricks.com/how-to-do-knockout-text/ : logo text font mask
 - https://svgontheweb.com/ : guidance on creation and styling of SVGS (referred to for add / remove guitar icons).
+- https://getbootstrap.com/docs/5.1/getting-started/introduction/ : Bootstrap 5 docs
+- https://bringyourownlaptop.com/ - guidance on UI / UX using Adobe XD
+
+## Images
+- Adobe Stock Images - licensed for textured masks applied to navigation header and logo font
+- Andertons.com - online guitar retailer, used for most of the guitar images (some were also sourced from the manufacturers web sites) and source of the guitar specifications.
+
+
 
 
 ## CONTENTS (click to expand sections
