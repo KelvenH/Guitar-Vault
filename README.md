@@ -673,6 +673,11 @@ Guitars - desktop
 
 <details>
     <summary>CSS Validation</summary>
+    
+Prior to validation, the CSS was run through https://autoprefixer.github.io/ to review and apply additional browser compatability extensions. This was then passed through W3C CSS validator and passed with no errors identified. There were 40 warnings identified but upon review these mainly related to the vendor pre-fixes and were of no concern.
+    
+<img src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/w3c_css_validation.png" width="500">    
+    
 
 </details>
 
