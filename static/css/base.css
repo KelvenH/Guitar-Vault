@@ -47,6 +47,10 @@ body {
     font-size:1.5rem;
 }
 
+.small-txt {
+    font-size:0.75rem;
+}
+
 .logo-txt {
     font-family: 'Lobster', cursive;
 }
@@ -241,6 +245,24 @@ body {
 .guitar-background-img {
     margin-top:10vh;
     background-size: cover;
+}
+
+/*-modals*/
+
+.modal-border {
+    border: 3px solid var(--off-gold);
+}
+
+.modal-header {
+    background-color:var(--off-gold);
+}
+
+.modal-title {
+    color:var(--black);
+}
+
+.modal-body {
+    background-color:var(--black);
 }
 
 /*----Guitar Card---------------------------------------------*/
