@@ -503,6 +503,24 @@ Extract of the html & CSS are available below, note the application of the djang
  
 </details>
     
+---
+Responsive SVG Icons
+
+<img valign="middle" height="100" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_black_add.svg"/> <img valign="middle" height="80" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_gold_add.svg"/> <img valign="middle" height="125" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_black_remove.svg"/> <img valign="middle" height="60" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_gold_remove.svg"/>
+
+
+Font Awesome is used for most of the site icons, one exception was for a guitar shaped icon to be used as a visual aid to add / remove guitars from the member's guitar rack*. The icon was drawn in Adobe Illustrator (same image created that was used for the logo icon referred to above). 4 versions were then created for an add / remove and a default and hover version. The hover version was required as the same color sceme was used for the button icon that they reside on. So when the inverse hover button styles was applied these would have hidden the icon.
+The images were exported from Adobe in svg format to preserve the crispness (initial efforts in png format resulted in pixelated / skewed images across responsive screens despite their small sizing). The icons are sized in REM (3rem) for responsive sizing. Rather than employ JS or custom SVG classes to change the hover affect colors, a simpler approach was to host all 4 images with 'display:none' set on the hover version. The hover class (applied to the parent) then alternates the display attribute to switch the visible icon held in child `<image>` tags.
+
+*note that the add / remove guitars from the member's rack forms part of the member's functionality which have not yet been implemented
+
+---
+FAVICON
+
+<img valign="middle" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/favicon.ico"/>
+
+The same guitar icon image was adjusted in Adobe Illustrator to replace the add / remove symbols with GV lettering. When converted to .ico format / sizing, the elongated icon (longer than width) resulted in squashed icon to conform to the boxed 32px x 32px favicon sizing. Retaining the ratio resulted in an icon width which was barely visible. For this reason, the icon was rotated for a corner to corner layout with a background color applied to aid appearance. This was then converted from a png format to .ico format via https://image.online-convert.com/convert-to-svg, whilst https://svgontheweb.com/ also served as a useful reference site for svg creation and site inclusion.
+
 
 ------
 # FEATURES
@@ -571,6 +589,7 @@ Extract of the html & CSS are available below, note the application of the djang
 - StackOverflow : point of referrence for number of coding queries
 - https://css-tricks.com/how-to-do-knockout-text/ : logo text font mask
 - https://svgontheweb.com/ : guidance on creation and styling of SVGS (referred to for add / remove guitar icons).
+- https://image.online-convert.com/convert-to-svg : converted image from png to favicon.ico format
 - https://getbootstrap.com/docs/5.1/getting-started/introduction/ : Bootstrap 5 docs
 - https://bringyourownlaptop.com/ - guidance on UI / UX using Adobe XD
 
