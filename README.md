@@ -746,7 +746,7 @@ Accounts will be required with the following service providers. Free accounts ca
     - copy the HTTPS address
     - within your IDE open the GIT BASH terminal
     - navigate to the directory where you wish the cloned directory to be made
-    - enter git clone followed by the URL copied earlier
+    - enter git clone followed by the URL copied earlier:
     ```
     git clone https://github.com/KelvenH/Guitar-Vault.git
     ```
@@ -763,17 +763,17 @@ Accounts will be required with the following service providers. Free accounts ca
         -  SECRET_KEY - recommend using an online django compliant password generator
         -  STRIPE_PUBLIC_KEY - located by logging into Stripe > Dashboard > Developers tab > API Keys
         -  STRIPE_SECRET_KEY - see Stripe comment above
-        -  STRIPE_WH_KEY - see Stripe comment to the Developers tab > Webhooks. This can only be generated once the webhook has been created 
+        -  STRIPE_WH_KEY - see Stripe comment to the Developers tab > Webhooks. This can only be generated once a webhook has been created 
         -  AWS_ACCESS_KEY_ID - available from AWS once a user has been created
         -  AWS_SECRET_ACCESS_KEY - see AWS comment above
         -  DATABASE_URL - generated in HEROKU (located under Settings > Config Vars) once PostGres SQL has been added
         
-3. Install the apps as listed in the requirements.txt file, this can achieved by the following git command
+3. Install the apps as listed in the requirements.txt file, this can achieved by the following git command:
     ```
         pip3 install requirements.txt
     ```
     
-4.  Apply database migrations to initiate your database and admin panel structure - if no prior changes have been made you should be able to run the final command, but the previous 3 commands are recommended and will be required if changes have been made to the models prior to migration (and repeated after subsequent changes are made).
+4.  Apply database migrations to initiate your database and admin panel structure - if no prior changes have been made you should be able to run the final command, but the previous 3 commands are recommended and will be required if changes have been made to the models prior to migration (and repeated after subsequent changes are made):
     ```
         python3 manage.py makemigrations --dry-run
         python3 manage.py makemigrations 
@@ -781,13 +781,13 @@ Accounts will be required with the following service providers. Free accounts ca
         python3 manage.py migrate
     ```
     
-5.   Create a superuser account to be able to access admin and log-in to your local version of the site (provides allauth permissions)
+5.   Create a superuser account to be able to access admin and log-in to your local version of the site (provides allauth permissions):
    
    ```
         python3 manage.py create superuser
    ```
    
-6. You will be able to run the site on a local host by running the command 
+6. You will be able to run the site on a local host by running the command:
 
    ```
         python3 manage.py runserver
@@ -801,13 +801,139 @@ Accounts will be required with the following service providers. Free accounts ca
 1. Log in to [Heroku]((https://www.heroku.com))
 2. Go to New > Create New App
 3. Provide a name and select your local region 
-4. Once in your app, go to Resources > Add Ons and enter PostGres within the input field
-5. Return to your IDE and within the CLI install the following;
+4. Once in your app, go to Resources > Add Ons and enter PostGres within the input field (selecting the free version)
+5. Return to your IDE and within the CLI install the following packages (dj_database_url enables configuration with Heroku hosted database whilst psycopg2 is a database adapter:
     ```
         pip3 install dj_database_url
-        pip3 install psycopg2
+        pip3 install psycopg2-binary
+        pip3 freeze > requirements.txt
     ```
+6. Re-run migrations (all 4 commands shown in step 4) to connect to the new Heroku database
+7. Import the data held in fixture files (in the shown order):
+     ```
+        python3 manage.py loaddata categories
+        python3 manage.py loaddata guitars
+        python3 manage.py loaddata subscriptions
+    ```
+ 
+ 8. Create a new superuser account for the Heroku database / admin:
+    ```
+        python3 manage.py createsuperuser
+    ```
+ 
+ 9. install gunicorn to handle the wsgi connection:
+    ```
+        pip3 install gunicorn
+    ```
+ 
+ 10. Create a Procfile in your repo root directory (or update if the original still exists) to ensure that the web: gunicorn address mirrors the name of your Heroku app for example:
+  ```
+        web: gunicorn guitr-vault.wsgi:application
+  ```
+ 
+ 11. Freeze the requirements.txt file to add this app (per the command shown against step 5
+    
+ 12. Log into Heroku via the CLI using the command below - note this requires you actual Heroku credentials and not the super user created in step 8   
+   ```
+        heroku login -i
+   ```
+   
+ 13. Temporarily disable the static files being sent to Heroku:
+    ```
+        heroku config:set DISABLE_COLLECTSTATIC=1 --app [your Heroku app name here]
+   ```
+ 14. Update settings.py 'Allowed Hosts' to the name of your app (likely located around line 20):
+    
+    ```
+        ALLOWED_HOSTS = ['your Heroku app name.herokuapp.com', 'localhost']
+    ```
+ 15. Return to Heroku > your app > Deploy and scroll down to Deployment Method and choose GitHub. Then under App Connected to GitHub enter your git username/git repo name and search for your Git repo. Click Connect - you can either opt to push updates manually or (recommended) select the Automatic Deploys.    
+ 16. Return to your CLI and commit / push to git. If you enabled automatic deployment in Heroku the app will now be built (or do this manually if selected).
 
+ 17. The Heroku App Overview tab will indicate that the build is in progress and when this has been completed.
+ 18. Upon build, click on the Open App icon (top left) to view the live deployed site.
+ 19. Note that as the static files were disabled you will only be able to view content unstyled (e.g. as CSS forms part of the static content). This will be available after completion of the AWS deployment.
+   
+   ```
+        git add .
+        git commit -m "your commit message here"
+        git push
+   ```
+    
+22. Create a secret key (either of your choosing or via an online django secure password generator) and within Heroku go to Settings > Reveal Config Vars and add:
+    ```
+        KEY = SECRET_KEY    VALUE = Your password
+    ```
+    
+23. If not undertaken as one of the pre-requisite tasks, add this to your environment variables so that your development environment can connect to your deployed version. Note that the settings.py file will have an empty string value and will look for this in your env settings already. DO NOT ENTER YOUR KEY INTO THE SETTINGS FILE DIRECTLY FOR THE REASONS STATED PREVIOUSLY.
+
+## AWS 
+ Amazon Web Services (AWS) is used to host image and static files in cloud storage. Assuming you have or created an AWS account in the pre-requisites;
+ 1. Log into AWS and go to the Management Console
+ 2. Through the Services menu search for 'S3'
+ 3. Create a new bucket giving an appropriate name (recommended use the same as your Heroku app name), select your region and ensure 'Block all public access' is unchecked (you may need to provide additional acknowledgement of this action).
+ 4. Upon creation, access the bucket and navigate to Properties > Static Web Hosting
+ 5. Click to Enable / 'Use this bucket to host website' entering default index.html and error.html into the respective fields (these will not be used) and Save.
+ 6. Go to Permissions > CORS Configuration and paste / save the code below to enable access between Hero and AWS:
+    ```
+        [
+          {
+          "AllowedHeaders": [
+              "Authorization"
+          ],
+          "AllowedMethods": [
+              "GET"
+          ],
+          "AllowedOrigins": [
+              "*"
+          ],
+          "ExposeHeaders": []
+          }
+        ]
+    ```
+ 7. Note / copy the ARN shown on the CORS Configuration page
+ 8. Go to Bucket Policy > Policy Generator > Policy Type and select S3 Bucket Policy, within the Principal field enter * and Action select 'Get Object'
+ 9. Paste the ARN value copied in step 7 and select Add Statement > Generate Policy
+ 10. Copy the JSON Policy Document and paste into the Bucket Policy Editor (accessed at step 8), prior to saving add ``` /* ``` at the end of the "resource value to append to your app name then Save.
+ 11. Go to Access Control Lists > Public Access and check 'List Objects', Save to grant access to everyone.
+ 12. Go to Services menu and search for IAM (Identity Access Management) > Groups > Create New Group providing a relevant name (e.g. manage-Guitar-vault)
+ 13. Click through following screens to Create Group.
+ 14. From the left panel select Policies > Create Policy > JSON > Import Managed Policy > Filter Policies and search for AmazonS3Full Access then Import
+ 15. The Create Policy field will now display the imported policy, change the value shown against "Resource" from * with your ARN (noted at step 7) as follows:
+    
+    ```
+        "Resource": [
+			                "arn:aws:s3:::your ARN",
+			                "arn:aws:s3:::your ARN/*"
+            ]
+    ```
+    
+ 17. Review Policy > provide name (e,g, guitar-vault-policy) and description (e.g. Access to S3 for guitar-vault static files) > Create Policy
+ 18. Go to Groups > select the group you created in step 12 > Permissions > Attach Policy > select the policy created in step 17 > Attach Policy
+ 19. Users > Add User > provide a username (e.g. guitar-vault-staticfiles-user) > check 'Programmatic Access' > Next
+ 20. Check the Group (to add the new user to the group created in step 13) > Next through the following screens > Create User
+ 21. Download the CSV file - note this must be saved locally as can not be re-generated
+ 22. Return to your IDE and within the CLI install boto3 and django-storages
+   ```
+            pip3 install boto3
+            pip3 install django-storages
+            pip3 freeze > requirements.txt
+   ```
+ 
+ 23. Go to settings.py and update the AWS_STORAGE_BUCKET_NAME and AWS_S3_REGION_NAME to match your AWS S3 bucket
+ 24. From the .csv file downloaded after the AWS user creation, add the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to your environment vairables (NOT WITHIN THE SETTINGS.PY FILE REASONS PREVIOUSLY STATED). The settings.py file is already configured to look for these as env variables.
+ 25. Reurn to Heroku config vars and these here alongwith a further 'USE_AWS' set to true which will indicate to the settings.py to use these when deployed to Heroku. Whilst here also delete the temporary config var to disable static files (created in step 13 of the Heroku deployment):
+    ```
+        KEY = AWS_ACCESS_KEY_ID         VALUE = from the .csv file
+        KEY = AWS_SECRET_ACCESS_KEY     VALUE = from the .csv file
+        KEY = USE_AWS                   VALUE = True
+        DISABLE_COLLECTSTATIC = 1       *Delete this variable*
+   ```
+ 26. If any changes have been made to the development since the last commit, commit and push these changes, additionally if you have not set Automatic Deployment on Heroku, go to Heroku and manually push the latest updates.
+ 26.  Return to AWS S3 bucket you should now see your static file. Alongside this create a new media/ file and upload your images.
+ 27.  Note, if using your own images ensure that the file names cross-match with the filenames per the fixture data set (these can also be viewed by navigating to the deployed Admin panel, selecting the object and seeing the image id.
+ 28.  The images (alongwith the previously added static / CSS will now be visible in the deployed site.
+ 
 ------
 # TECHNOLOGIES
 
