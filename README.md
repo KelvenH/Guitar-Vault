@@ -542,7 +542,7 @@ All planned features were achieved with the exception of those which relate to o
 | Members can add guitars to rack | relates to component outstanding - future feature               |:heavy_exclamation_mark:|
 | Members can manage their subscription plans | relates to component outstanding - future feature   |:heavy_exclamation_mark:|
 | Members can provide a rating on guitars loaned | relates to component outstanding - future feature|:heavy_exclamation_mark:|
-| Site poll to get members feedback | | relates to component outstanding - future feature            |:heavy_exclamation_mark:|
+| Site poll to get members feedback | relates to component outstanding - future feature              |:heavy_exclamation_mark:|
 | Non-registered visitors see feedback on home screen | Applied through JS to switch comments        |:white_check_mark:      |
 
 
@@ -565,7 +565,7 @@ In response to additional testing outcomes;
 
 - Consider switching all images to nextgen formats (webP) with fallback for unsupported browsers
 - improve color contrast ratios
-- 
+ 
 ------
 # TESTING
 
@@ -953,15 +953,15 @@ Accounts will be required with the following service providers. Free accounts ca
 - Bootstrap5 (html / css styles framework)
 - Python
 * Additional django / utility apps (referenced in requirements.txt);
- - django-allauth (authentication)
- - django-countries (enables in form dropdown of country codes - required to validated stripe payments)
- - pillow (enables use of images)
- - crispy-forms & crispy-bootstrap5 (enable bootstrap styles in rendering form fields)
- - django-storages (integrate with deployed database)
- - gunicorn (wsgi web server integration)
- - dj-database-url (configuration with Heroku hosted database)
- - psycopg2-binary (PostgreSQL database adapter)
- - botocore & boto3 - (configure with AWS services)
+	- django-allauth (authentication)
+ 	- django-countries (enables in form dropdown of country codes - required to validated stripe payments)
+ 	- pillow (enables use of images)
+ 	- crispy-forms & crispy-bootstrap5 (enable bootstrap styles in rendering form fields)
+ 	- django-storages (integrate with deployed database)
+ 	- gunicorn (wsgi web server integration)
+ 	- dj-database-url (configuration with Heroku hosted database)
+ 	- psycopg2-binary (PostgreSQL database adapter)
+ 	- botocore & boto3 - (configure with AWS services)
 - Font Awesome - icons
 - Google Fonts - typography
 
