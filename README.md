@@ -161,7 +161,7 @@ Guitar Detail View (desktop)
 ![Guitar Detail View](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/GuitarDetail.png)
 
 
-Sign-Up / Payment (desktop) *note these were split into 2 seperate screens in the final development to leverage django allauth for sign-up independently from payments*
+Sign-Up / Payment (desktop) *note these were split into 2 separate screens in the final development to leverage django allauth for sign-up independently from payments*
 
 ![SignUp Payment](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Sign-upForm.png)
 
@@ -191,7 +191,7 @@ LOGO
 The site logo took great influence from the 'serif' style logos of some of the greatest known guitar and amp brands (i.e. Marshall, Gibson and Fender). A font was found which paid homage to these world famous logos, yet remained extremely legible.
 
 The site logo-text was achieved by applying the Google Font 'lobster' font-family over a textured 'rust' background which due to the zoom level actually provides a slight 'aged leather' look. A font mask* was then applied using another 'gold' texture image (both texture images were licensed from Adobe Stock). The layering was achieved in CSS using a combination of text-fill and background-clip with a back-up gold font* (declared in the root variable as was the font-family). 
-* *see acknowledgements for referrence used for application of font/text masks*
+* *see acknowledgements for reference used for application of font/text masks*
 
 The CSS is shown here;
 
@@ -220,14 +220,14 @@ The site logo was produced in Adobe Illustrator (achieved by tracing the outer e
 
 ![site logo image](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/GV-Logo.png)
 
-It was important to use a 'simple' sans-serif font elsehwere on the site, for which another Google Font was used 'Varta'.
+It was important to use a 'simple' sans-serif font elsewhere on the site, for which another Google Font was used 'Varta'.
 
 ![Varta welcome text](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/welcome.png)
 
 ---
 Navigation Bar and Menus
 
-The design of the navigation bar employs bootstrap layout to ensure responsive sizing, bootstrap classes / components to create drop-down menus which collapse into an icon for small screen sizes and django template inheritence to aid structure and responsive selections. These are structured across 3 html files;
+The design of the navigation bar employs bootstrap layout to ensure responsive sizing, bootstrap classes / components to create drop-down menus which collapse into an icon for small screen sizes and django template inheritance to aid structure and responsive selections. These are structured across 3 html files;
 - base.html - seen on all screens and hosts the logo and logo-text. Links to Account (i.e. sign-in/out, profile), Shopping Bag and Plectrum* are displayed here in larger screens but hidden on smaller devices.
 - mobile-nav-items.html - only displayed for smaller screens and allows for the Account / Shopping Bag & Plectrum* items to be displayed on a lower row (increasing the size available in the upper row for logo).
 - main-nav-items.html - contains a row of drop-down menus which employ django url filters to narrow the list of guitar items by category (electric/bass/acoustic) and further sub-categories (e.g. tier, left-handed).This menu is collapsed into a single icon for small screens. It also hosts a 'search bar' which looks for text matches against guitar brands and models.
@@ -249,7 +249,7 @@ Buttons
 
 The site buttons use the Bootstrap classes to determine sizing. Custom classes were applied to apply the colors, including hover states.
 
-An example of the primary button css stlying is;
+An example of the primary button css styling is;
 
 ``` 
     .btn-gold-outline {
@@ -273,7 +273,7 @@ Guitar Cards
 
 ![guitar card](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/guitarcard.png)
 
-Guitars are displayed using the Bootstrap card class. Combination of django loop and if statements enable a card to be produced for each card which satisifes the filtered view (i.e. all or selective depending on the url view generated). The core components of the card are;
+Guitars are displayed using the Bootstrap card class. Combination of django loop and if statements enable a card to be produced for each card which satisfies the filtered view (i.e. all or selective depending on the url view generated). The core components of the card are;
 
 - parent card element - Bootstrap .card class for a responsive card layout which handles margin and padding settings
 - image - embedded url links through to the individual card-detail page (which shows additional information)
@@ -281,7 +281,7 @@ Guitars are displayed using the Bootstrap card class. Combination of django loop
 - .card-body - container for `<div>`'s which holds flex-box rows (using Bootstrap .d-flex & .flex-row classes) which each hold a pair of `<p>` tags for a label and value with the latter populated through the django loop and template tags.
 - .card-footer - container for Add / Remove Favourite and Add / Remove to member's rack icons - note that these form aspect of the members functionality which have not yet been implemented (*see svg section below for more information on the icons*)
 
-Additionlly, the cards are held in parent Bootstrap columns so as layout provides a single card (100% screen width) for small screens, increasing through the Bootstrap breakpoints up to 4 cards for extra large screens.
+Additionally, the cards are held in parent Bootstrap columns so as layout provides a single card (100% screen width) for small screens, increasing through the Bootstrap breakpoints up to 4 cards for extra large screens.
     
 <details>
     <summary>Show HTML Extract of card</summary>
@@ -428,7 +428,7 @@ The guitar images have an overlaying pendant displaying the tier (i.e. Platinum,
 ``` 
     <script defer src="https://use.fontawesome.com/releases/v5.15.0/js/all.js"></script>
 ```     
-Further custom classes position the parent card-overlay object and apply the font color with additional data-tramsform propeties applied to Platinum for the sizing reasons mentioned above.  
+Further custom classes position the parent card-overlay object and apply the font color with additional data-transform properties applied to Platinum for the sizing reasons mentioned above.  
 
 Extract of the html & CSS are available below, note the application of the django template tags which allows the correct pendant to be allocated to the guitar (held within a loop statement not shown in this extract) which enables the specific custom classes to be applied with the variations specified for 'Platinum'
   
@@ -506,7 +506,7 @@ Responsive SVG Icons
 <img valign="middle" height="100" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_black_add.svg"/> <img valign="middle" height="80" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_gold_add.svg"/> <img valign="middle" height="125" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_black_remove.svg"/> <img valign="middle" height="60" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_gold_remove.svg"/>
 
 
-Font Awesome is used for most of the site icons, one exception was for a guitar shaped icon to be used as a visual aid to add / remove guitars from the member's guitar rack*. The icon was drawn in Adobe Illustrator (same image created that was used for the logo icon referred to above). 4 versions were then created for an add / remove and a default and hover version. The hover version was required as the same color sceme was used for the button icon that they reside on. So when the inverse hover button styles was applied these would have hidden the icon.
+Font Awesome is used for most of the site icons, one exception was for a guitar shaped icon to be used as a visual aid to add / remove guitars from the member's guitar rack*. The icon was drawn in Adobe Illustrator (same image created that was used for the logo icon referred to above). 4 versions were then created for an add / remove and a default and hover version. The hover version was required as the same color scheme was used for the button icon that they reside on. So when the inverse hover button styles was applied these would have hidden the icon.
 The images were exported from Adobe in svg format to preserve the crispness (initial efforts in png format resulted in pixelated / skewed images across responsive screens despite their small sizing). The icons are sized in REM (3rem) for responsive sizing. Rather than employ JS or custom SVG classes to change the hover affect colors, a simpler approach was to host all 4 images with 'display:none' set on the hover version. The hover class (applied to the parent) then alternates the display attribute to switch the visible icon held in child `<image>` tags.
 
 *note that the add / remove guitars from the member's rack forms part of the member's functionality which have not yet been implemented
@@ -550,7 +550,7 @@ All planned features were achieved with the exception of those which relate to o
 
 This list summarises the components not yet implemented
 
-- Provide members wih the ability to and view in profile;
+- Provide members with the ability to and view in profile;
     -  favourite guitars
     -  manage subscriptions
     -  exchange plectrum for guitar loan
@@ -569,24 +569,24 @@ In response to additional testing outcomes;
 ------
 # TESTING
 
-The majority of testing is performed manually during the development of the project. Upon completion of the project, there were a small number of known bugs but primarily there is a number of aspects relating to content / planned functionality which was unable to accomodate by the deadline. Additional testing was also performed across the site. 
-A summary of the key call outs from all testing activities is summarised below, with any key oustanding matters also reflected in either the Bugs or Future Enhancement sections. 
-Further information for each of the testing activities is available in the collapsible sections below. Note that attempts to run the django site through django-html-validator was unsuccesful (time constraints did not permit further investigation on how to correctly install and use this package). 
+The majority of testing is performed manually during the development of the project. Upon completion of the project, there were a small number of known bugs but primarily there is a number of aspects relating to content / planned functionality which was unable to accommodate by the deadline. Additional testing was also performed across the site. 
+A summary of the key call outs from all testing activities is summarised below, with any key outstanding matters also reflected in either the Bugs or Future Enhancement sections. 
+Further information for each of the testing activities is available in the collapsible sections below. Note that attempts to run the django site through django-html-validator was unsuccessful (time constraints did not permit further investigation on how to correctly install and use this package). 
 
 
 <details>
     <summary>User Story Testing</summary>
     
     
-In summary, all user stories tests passed with the exception of those which relate to member profiles (add / view past guitar requests, add / remove favourites and managing subscriptions). Whilst 1 test has passed relating to guitar ratings being visible to users, the rating itself is hard-coded whereas future enhancements would switch to a calculation of average member ratings (forms part of the oustanding content). 
+In summary, all user stories tests passed with the exception of those which relate to member profiles (add / view past guitar requests, add / remove favourites and managing subscriptions). Whilst 1 test has passed relating to guitar ratings being visible to users, the rating itself is hard-coded whereas future enhancements would switch to a calculation of average member ratings (forms part of the outstanding content). 
     
 | As a...         | I want to...                       | Test Review Notes                                        | Pass / Fail. |
 |-----------------|------------------------------------|----------------------------------------------------------|--------------|
 | site user (any) | Understand the purpose of the site | Content available but unexpected behaviour on deployed version| :heavy_exclamation_mark: see bugs for details|
-| site user (any) | Easily navigate the site           | Clear and simple navigaiton of the site with nav menu on all pages| :white_check_mark:|
+| site user (any) | Easily navigate the site           | Clear and simple navigation of the site with nav menu on all pages| :white_check_mark:|
 | site user (any) | Be able to view the site on any size screen | Fully responsive tested across multiple screen sizes| :white_check_mark:     |
 | site user (any) | Have clear information on pricing  | Subscription pricing provided up front and visible during payment steps| :white_check_mark: |
-| site user (any) | Be able to filter / search guitars | Achieved through search bar and menus with filetered views| :white_check_mark:        |
+| site user (any) | Be able to filter / search guitars | Achieved through search bar and menus with filtered views| :white_check_mark:        |
 | site user (any) | Be able to see detailed information about the guitars | Summary information provided in list view with full info in detailed screen |:white_check_mark:|
 | site user (any) | Register for an account            | Through join link handled by allauth, new sign-ups captured in admin db| :white_check_mark: |
 | registered user | Pay for my subscription plan easily| Clear laid out payments form with test payments handled through stripe| :white_check_mark:|
@@ -596,7 +596,7 @@ In summary, all user stories tests passed with the exception of those which rela
 | registered user | Select a guitar to receive         | NOT DELIVERED - SEE FUTURE FEATURES                        | :x:       |
 | registered user | Save particular guitars as favourites| NOT DELIVERED - SEE FUTURE FEATURES                      |  :x:      |
 | registered user | See a list of the guitars I've had with my rating| NOT DELIVERED - SEE FUTURE FEATURES          | :x:       |
-| registered user | See ratings given by other users   | A fixed rating is visible, futher enhancements would see this be generated by users ratings| :white_check_mark:|
+| registered user | See ratings given by other users   | A fixed rating is visible, further enhancements would see this be generated by users ratings| :white_check_mark:|
 | site administrator | View and manage guitars         | Management of all guitars is handled through the admin & fixture files | :white_check_mark: |
 | site administrator | View / manage registered members| Managed through the admin                                  | :white_check_mark:|
 | site administrator | View / manage subscription plans| NOT DELIVERED - SEE FUTURE FEATURES                        | :x:        |
@@ -608,7 +608,7 @@ In summary, all user stories tests passed with the exception of those which rela
 <details>
 <summary>Lighthouse Performance</summary>
 
-Four key site pages were run through the Chrome Inspector Lighthouse for assessment (shown below). Desktio faired better han mobile, but both had shortcomings primarily in performnce and accessibility. Please see below for details of responsive action taken.
+Four key site pages were run through the Chrome Inspector Lighthouse for assessment (shown below). Desktop faired better than mobile, but both had shortcomings primarily in performance and accessibility. Please see below for details of responsive action taken.
 
 Index - mobile
     
@@ -647,7 +647,7 @@ Guitars - desktop
  | Performance | Contentful paint times  | switch png images to next gen formats |  Please see point 1 below                         |
  | Performance | Time to interactivity   | eliminate render blocking resources   |  Causes identified as 3rd party libraries (bootstrap, jquery) outside of my control |                                                 |   
  | Performance | HTTP/1.1                | serve resources over http/2           |  Files identified relate to AWS configuration - lack of knowledge to implement safe changes|
- | Accessibility| Color Contrasts        | Switch colors used                    | This was also self-identitied as a possible issue particularly white / gold text with 'gold' coloring scheme for that tier. Some adjustments were made to the background gold to darken from the original selection and also investigated use of text shadows but these were not providing a satisfactory result. Added to future enhancements |
+ | Accessibility| Color Contrasts        | Switch colors used                    | This was also self-identified as a possible issue particularly white / gold text with 'gold' coloring scheme for that tier. Some adjustments were made to the background gold to darken from the original selection and also investigated use of text shadows but these were not providing a satisfactory result. Added to future enhancements |
  | Best Practices| Browser errors were logged to the console | Resolve errors     | This was self identified and appears on the outstanding bugs list. The cause is due to JS used to switch feedback which is not displayed if a user is logged in |   
  | SEO          | Links not crawlable | Ensure hrefs link to appropriate destination | At the time of running these reports the 'About US' modals were incomplete but plan to be resolved by the time of project submission |
     
@@ -660,9 +660,9 @@ Guitars - desktop
         - creating a webP version of all site images
         - saving these to AWS S3 bucket
         - switching existing image tags to a picture with source tags to serve webP or fallback
-        - updating the fixture files to have 2 versions of each image (as image links are often not hard-coded but idenfified via the django loop / tags
+        - updating the fixture files to have 2 versions of each image (as image links are often not hard-coded but identified via the django loop / tags
         - identifying a fall-back approach where images are served as background-images from the css file.
-    For these reasons, the time remaining and the risk of causing unintended behavious so close to project submission the activity was not progressed but has been added as a future enhancement.
+    For these reasons, the time remaining and the risk of causing unintended behaviours so close to project submission the activity was not progressed but has been added as a future enhancement.
     
 </details>
 
@@ -688,18 +688,18 @@ Prior to validation, the CSS was run through https://autoprefixer.github.io/ to 
 
 <details>
     <summary>JS Validation</summary>
-Only a small amount of cutom JS resides in the construction, there were only 4 issues identified when run through JShint relating to missing semi-colons which have been resolved. 
+Only a small amount of custom JS resides in the construction, there were only 4 issues identified when run through JShint relating to missing semi-colons which have been resolved. 
 </details>
 
 
 
 <details>
     <summary>Responsiveness</summary>
-During development, signficant checking for responsiveness was performed via Google Inspector. This allowed breakpoint corrections, media queries to be developed at the time of content creation.
+During development, significant checking for responsiveness was performed via Google Inspector. This allowed breakpoint corrections, media queries to be developed at the time of content creation.
     
-Post deployment, the site was viewed through lambdatest.com for a selection of screen sizes, browsers and operating systems. Free acount limits to 6 tests so a mix of broadening the possible ranges were chosen. The configurations checked are shown in the table below. There was 1 instance of unexpected behaviour encountered affecting Apple devices running iOS (whereby the nav banner 'scrolled' as content below the nav was navigated. However I also checked this manually on an iPhone (X) and Ipad (2019 Pro) and neither of these experienced the same issue. The CSS was also checked and confirmed as having a fixed position. 
+Post deployment, the site was viewed through lambdatest.com for a selection of screen sizes, browsers and operating systems. Free account limits to 6 tests so a mix of broadening the possible ranges were chosen. The configurations checked are shown in the table below. There was 1 instance of unexpected behaviour encountered affecting Apple devices running iOS (whereby the nav banner 'scrolled' as content below the nav was navigated. However I also checked this manually on an iPhone (X) and Ipad (2019 Pro) and neither of these experienced the same issue. The CSS was also checked and confirmed as having a fixed position. 
     
-The CSS was also run through auto-prefixer (as referrenced under CSS validation) to ensure any additional vendor pre-fixers were applied.
+The CSS was also run through auto-prefixer (as referenced under CSS validation) to ensure any additional vendor pre-fixers were applied.
     
 Table of responsive configurations checked;
     
@@ -723,7 +723,7 @@ Table of responsive configurations checked;
 |-----------|--------------------------------------|--------------------------------------------------------------------------------------------------------|
 | Image Carousel | Carousel timing issues| Initially planned to have a single carousel which showed multiple images which scrolled across the page. Bootstrap did not seem to support this so multiple carousels were created and timed to scroll, but factors influence the rendering / JS timing impacting the visual experience |
 | About Us modals | Inconsistent behaviour in deployed vs development environments | The modal content is held in a block on the base template with block tags on the main-nav items (where links to the modals reside) as well as index.html as there are also links in the About Us section. These work as planned in development, but deployed site has inconsistent behaviour with either not showing or showing but without CSS being applied. These were late additions to the site without time to investigate a fix or switch to hosting on individual html pages. |
-| JS Error  | JS 'cannot set propoerties of null'  | Self identified in console and identified by LightHouse. Cause is due to the fields JS is manipulating being intentionally only shown for non-logged in users |
+| JS Error  | JS 'cannot set properties of null'  | Self identified in console and identified by LightHouse. Cause is due to the fields JS is manipulating being intentionally only shown for non-logged in users |
 
 
 
@@ -839,9 +839,10 @@ Accounts will be required with the following service providers. Free accounts ca
    ```
    
  13. Temporarily disable the static files being sent to Heroku:
+
     ```
         heroku config:set DISABLE_COLLECTSTATIC=1 --app [your Heroku app name here]
-   ```
+    ```
  14. Update settings.py 'Allowed Hosts' to the name of your app (likely located around line 20):
     
     ```
@@ -860,12 +861,12 @@ Accounts will be required with the following service providers. Free accounts ca
         git push
    ```
     
-22. Create a secret key (either of your choosing or via an online django secure password generator) and within Heroku go to Settings > Reveal Config Vars and add:
+20. Create a secret key (either of your choosing or via an online django secure password generator) and within Heroku go to Settings > Reveal Config Vars and add:
     ```
         KEY = SECRET_KEY    VALUE = Your password
     ```
     
-23. If not undertaken as one of the pre-requisite tasks, add this to your environment variables so that your development environment can connect to your deployed version. Note that the settings.py file will have an empty string value and will look for this in your env settings already. DO NOT ENTER YOUR KEY INTO THE SETTINGS FILE DIRECTLY FOR THE REASONS STATED PREVIOUSLY.
+21. If not undertaken as one of the pre-requisite tasks, add this to your environment variables so that your development environment can connect to your deployed version. Note that the settings.py file will have an empty string value and will look for this in your env settings already. DO NOT ENTER YOUR KEY INTO THE SETTINGS FILE DIRECTLY FOR THE REASONS STATED PREVIOUSLY.
 
 ## AWS 
  Amazon Web Services (AWS) is used to host image and static files in cloud storage. Assuming you have or created an AWS account in the pre-requisites;
@@ -908,37 +909,39 @@ Accounts will be required with the following service providers. Free accounts ca
             ]
     ```
     
- 17. Review Policy > provide name (e,g, guitar-vault-policy) and description (e.g. Access to S3 for guitar-vault static files) > Create Policy
- 18. Go to Groups > select the group you created in step 12 > Permissions > Attach Policy > select the policy created in step 17 > Attach Policy
- 19. Users > Add User > provide a username (e.g. guitar-vault-staticfiles-user) > check 'Programmatic Access' > Next
- 20. Check the Group (to add the new user to the group created in step 13) > Next through the following screens > Create User
- 21. Download the CSV file - note this must be saved locally as can not be re-generated
- 22. Return to your IDE and within the CLI install boto3 and django-storages
+ 16. Review Policy > provide name (e,g, guitar-vault-policy) and description (e.g. Access to S3 for guitar-vault static files) > Create Policy
+ 17. Go to Groups > select the group you created in step 12 > Permissions > Attach Policy > select the policy created in step 17 > Attach Policy
+ 18. Users > Add User > provide a username (e.g. guitar-vault-staticfiles-user) > check 'Programmatic Access' > Next
+ 19. Check the Group (to add the new user to the group created in step 13) > Next through the following screens > Create User
+ 20. Download the CSV file - note this must be saved locally as can not be re-generated
+ 21. Return to your IDE and within the CLI install boto3 and django-storages
    ```
             pip3 install boto3
             pip3 install django-storages
             pip3 freeze > requirements.txt
    ```
  
- 23. Go to settings.py and update the AWS_STORAGE_BUCKET_NAME and AWS_S3_REGION_NAME to match your AWS S3 bucket
- 24. From the .csv file downloaded after the AWS user creation, add the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to your environment vairables (NOT WITHIN THE SETTINGS.PY FILE REASONS PREVIOUSLY STATED). The settings.py file is already configured to look for these as env variables.
- 25. Reurn to Heroku config vars and these here alongwith a further 'USE_AWS' set to true which will indicate to the settings.py to use these when deployed to Heroku. Whilst here also delete the temporary config var to disable static files (created in step 13 of the Heroku deployment):
-    ```
+ 22. Go to settings.py and update the AWS_STORAGE_BUCKET_NAME and AWS_S3_REGION_NAME to match your AWS S3 bucket
+ 23. From the .csv file downloaded after the AWS user creation, add the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to your environment vairables (NOT WITHIN THE SETTINGS.PY FILE REASONS PREVIOUSLY STATED). The settings.py file is already configured to look for these as env variables.
+ 24. Reurn to Heroku config vars and these here alongwith a further 'USE_AWS' set to true which will indicate to the settings.py to use these when deployed to Heroku. Whilst here also delete the temporary config var to disable static files (created in step 13 of the Heroku deployment):
+ 
+   ```
         KEY = AWS_ACCESS_KEY_ID         VALUE = from the .csv file
         KEY = AWS_SECRET_ACCESS_KEY     VALUE = from the .csv file
         KEY = USE_AWS                   VALUE = True
         DISABLE_COLLECTSTATIC = 1       *Delete this variable*
    ```
- 26. If any changes have been made to the development since the last commit, commit and push these changes, additionally if you have not set Automatic Deployment on Heroku, go to Heroku and manually push the latest updates.
+   
+ 25. If any changes have been made to the development since the last commit, commit and push these changes, additionally if you have not set Automatic Deployment on Heroku, go to Heroku and manually push the latest updates.
  26.  Return to AWS S3 bucket you should now see your static file. Alongside this create a new media/ file and upload your images.
  27.  Note, if using your own images ensure that the file names cross-match with the filenames per the fixture data set (these can also be viewed by navigating to the deployed Admin panel, selecting the object and seeing the image id.
- 28.  The images (alongwith the previously added static / CSS will now be visible in the deployed site.
+ 28.  The images (alongwith the previously added static / CSS) will now be visible in the deployed site.
  
 ------
 # TECHNOLOGIES
 
 ## Design; 
-- Adobe XD (UI / UX development stage, inclduing simple database structure)
+- Adobe XD (UI / UX development stage, including simple database structure)
 - Adobe Illustrator (headstock logo)
 
 ## Languages, frameworks, libraries and apps;
@@ -949,12 +952,12 @@ Accounts will be required with the following service providers. Free accounts ca
 - CSS3
 - Bootstrap5 (html / css styles framework)
 - Python
-* Additional django / utility apps (referrenced in requirements.txt);
+* Additional django / utility apps (referenced in requirements.txt);
  - django-allauth (authentication)
  - django-countries (enables in form dropdown of country codes - required to validated stripe payments)
  - pillow (enables use of images)
  - crispy-forms & crispy-bootstrap5 (enable bootstrap styles in rendering form fields)
- - django-storages (intergrate with deployed database)
+ - django-storages (integrate with deployed database)
  - gunicorn (wsgi web server integration)
  - dj-database-url (configuration with Heroku hosted database)
  - psycopg2-binary (PostgreSQL database adapter)
@@ -985,11 +988,11 @@ Accounts will be required with the following service providers. Free accounts ca
 
 ## Coding Support
 - CI template : https://github.com/Code-Institute-Org/gitpod-full-template
-- Boutique Ado (CI Django walkthrough) : large parts of the project especially struture (django models and views) were based on this exercise.
+- Boutique Ado (CI Django walkthrough) : large parts of the project especially structure (django models and views) were based on this exercise.
 - Net Ninja (YouTube channel https://www.youtube.com/playlist?list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc) : additional guidance on django structures
-- Tutor Support (Sean and Igor) : aided with a couple of challenges I struggled to solve (both were due to incorrect referrencing of elements in models) 
+- Tutor Support (Sean and Igor) : aided with a couple of challenges I struggled to solve (both were due to incorrect referencing of elements in models) 
 - Slack : primarily when encountering django obstacles
-- StackOverflow : point of referrence for number of coding queries
+- StackOverflow : point of reference for number of coding queries
 - https://css-tricks.com/how-to-do-knockout-text/ : logo text font mask
 - https://svgontheweb.com/ : guidance on creation and styling of SVGS (referred to for add / remove guitar icons).
 - https://docs.djangoproject.com/en/3.2/ : django documentation
