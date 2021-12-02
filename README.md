@@ -542,7 +542,7 @@ All planned features were achieved with the exception of those which relate to o
 | Members can add guitars to rack | relates to component outstanding - future feature               |:heavy_exclamation_mark:|
 | Members can manage their subscription plans | relates to component outstanding - future feature   |:heavy_exclamation_mark:|
 | Members can provide a rating on guitars loaned | relates to component outstanding - future feature|:heavy_exclamation_mark:|
-| Site poll to get members feedback | | relates to component outstanding - future feature            |:heavy_exclamation_mark:|
+| Site poll to get members feedback | relates to component outstanding - future feature              |:heavy_exclamation_mark:|
 | Non-registered visitors see feedback on home screen | Applied through JS to switch comments        |:white_check_mark:      |
 
 
