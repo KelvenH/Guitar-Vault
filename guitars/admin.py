@@ -23,5 +23,6 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
     )
 
+
 admin.site.register(Guitar, GuitarAdmin)
 admin.site.register(Category, CategoryAdmin)

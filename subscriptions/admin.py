@@ -14,4 +14,5 @@ class SubsAdmin(admin.ModelAdmin):
 
     ordering = ('-price',)
 
+
 admin.site.register(Subscription, SubsAdmin)

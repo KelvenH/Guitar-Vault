@@ -5,8 +5,8 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('subscription_plan', 'subscription_price', 'full_name', 'email',
-                  'phone_number', 'street_address1',
+        fields = ('subscription_plan', 'subscription_price', 'full_name',
+                  'email', 'phone_number', 'street_address1',
                   'street_address2', 'town_or_city', 'postcode',
                   'county', 'country',)
 
@@ -45,7 +45,7 @@ class OrderForm(forms.ModelForm):
                 placeholder = placeholders[field]
             # Set fields to user friendly names defined above
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            # Applies class to all inout fields for consistant styles across form (inc. Stripe fields)
+            # Applies consistant styles across form (inc. Stripe fields)
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             # Remove default fields labels as placeholders will be used
             self.fields[field].label = False
