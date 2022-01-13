@@ -6,17 +6,23 @@ def index(request):
     """ View to return the index page """
     
     guitars = Guitar.objects.all()
-    display = []
+    # Identify guitars with 'Featured' flag for inclusion in image carousel
+    display_id = []
+    display_image = []
 
     for guitar in guitars:
+        id = guitar.id
         image_url = guitar.image_id.url
         featured = guitar.featured
         if featured:
-            display.append(image_url)
+            display_id.append(id)
+            display_image.append(image_url)
+
 
     context = {
         'guitars': guitars,
-        'display': display,
+        'display_id': display_id,
+        'display_image': display_image,
     }
 
     return render(request, 'home/index.html', context)

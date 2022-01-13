@@ -31,23 +31,24 @@
             <div class="row">
                 <div class="col-12 main-content mt-2">
                     <h1 class="gold-special-txt my-4">Featured Guitars</h1> 
+
                     <div id="featured-carousel" class="carousel slide" data-bs-touch="false" data-bs-ride="carousel">
                         <div class="carousel-inner py-2">
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col-12 col-md-4 d-flex justify-content-center">
-                                        <a href="" class="guitar-image-link">
-                                            <img src="{{ display.0 }}" class="rounded d-block carousel-img" alt="">
+                                        <a href="{% url 'guitar_detail' display_id.0 %}" class="guitar-image-link">
+                                            <img src="{{ display_image.0 }}" class="rounded d-block carousel-img" alt="">
                                         </a>
                                     </div>
                                     <div class="col d-none d-md-block col-md-4 d-flex justify-content-center">
-                                        <a href="" class="guitar-image-link">
-                                            <img src="{{ display.1 }}" class="rounded d-block carousel-img" alt="">
+                                        <a href="{% url 'guitar_detail' display_id.1 %}" class="guitar-image-link">
+                                            <img src="{{ display_image.1 }}" class="rounded d-block carousel-img" alt="">
                                         </a>
                                     </div>
                                     <div class="col d-none d-md-block col-md-4 d-flex justify-content-center">
-                                        <a href="" class="guitar-image-link">
-                                            <img src="{{ display.2 }}" class="rounded d-block carousel-img" alt="">
+                                        <a href="{% url 'guitar_detail' display_id.2 %}" class="guitar-image-link">
+                                            <img src="{{ display_image.2 }}" class="rounded d-block carousel-img" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -56,18 +57,18 @@
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class="col-12 col-md-4 d-flex justify-content-center">
-                                        <a href="" class="guitar-image-link">
-                                            <img src="{{ display.3 }}" class="rounded d-block carousel-img" alt="">
+                                        <a href="{% url 'guitar_detail' display_id.3 %}" class="guitar-image-link">
+                                            <img src="{{ display_image.3 }}" class="rounded d-block carousel-img" alt="">
                                         </a>
                                     </div>
                                     <div class="col d-none d-md-block col-md-4 d-flex justify-content-center">
-                                        <a href="" class="guitar-image-link">
-                                            <img src="{{ display.4 }}" class="rounded d-block carousel-img" alt="">
+                                        <a href="{% url 'guitar_detail' display_id.4 %}" class="guitar-image-link">
+                                            <img src="{{ display_image.4 }}" class="rounded d-block carousel-img" alt="">
                                         </a>
                                     </div>
                                     <div class="col d-none d-md-block col-md-4 d-flex justify-content-center">
-                                        <a href="" class="guitar-image-link">
-                                            <img src="{{ display.5 }}" class="rounded d-block carousel-img" alt="">
+                                        <a href="{% url 'guitar_detail' display_id.5 %}" class="guitar-image-link">
+                                            <img src="{{ display_image.5 }}" class="rounded d-block carousel-img" alt="">
                                         </a>
                                     </div>
                                 </div>
