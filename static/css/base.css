@@ -244,7 +244,7 @@ body {
     border:2px solid var(--off-gold);
 }
 
-.carousel-item img {
+.carousel-img {
     -o-object-position: center;
        object-position: center;
     -o-object-fit: cover;

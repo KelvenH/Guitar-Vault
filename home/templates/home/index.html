@@ -30,73 +30,55 @@
 
             <div class="row">
                 <div class="col-12 main-content mt-2">
-                    <h1 class="gold-special-txt my-4">Featured Guitars</h1>
-                    <div class="row">
-                        <div class="d-none d-md-block col-md-4">
-                            <div id="featured-carousel1" class="carousel slide" data-bs-touch="false" data-bs-ride="carousel">
-                                <div class="carousel-inner py-2">
-                                    {% for guitar in guitars %}
-                                        {% if guitar.featured %}
-                                            <!-- BUG: guitar.id hard-coded to apply 'active' class to first instance. See README Bugs for more details -->
-                                            {% if guitar.id == 3 %}
-                                                <div class="carousel-item active">
-                                            {% else %}
-                                                <div class="carousel-item">
-                                            {% endif %}
-                                                    <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
-                                                        <img src="{{ guitar.image_id.url }}" class="ms-auto rounded d-block me-0" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
-                                                    </a>
-                                                </div> <!--close carousel item-->
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>  <!--close carousel 1 inner -->
-                            </div>      <!--close carousel 1 -->
-                        </div>
+                    <h1 class="gold-special-txt my-4">Featured Guitars</h1> 
+                    <div id="featured-carousel" class="carousel slide" data-bs-touch="false" data-bs-ride="carousel">
+                        <div class="carousel-inner py-2">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <a href="" class="guitar-image-link">
+                                            <img src="{{ display.0 }}" class="ms-auto rounded d-block me-0" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col d-none d-md-block col-md-4">
+                                        <a href="" class="guitar-image-link">
+                                            <img src="{{ display.1 }}" class="ms-auto rounded d-block me-0" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col d-none d-md-block col-md-4">
+                                        <a href="" class="guitar-image-link">
+                                            <img src="{{ display.2 }}" class="ms-auto rounded d-block me-0" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>  <!--close carousel item (pane 1) -->
 
-                        <div class="col-12 col-md-4">
-                            <div id="featured-carousel2" class="carousel slide" data-bs-touch="false" data-bs-ride="carousel">
-                                <div class="carousel-inner text-center py-2">
-                                    {% for guitar in guitars %}
-                                        {% if guitar.featured %}
-                                            <!-- BUG: guitar.id hard-coded to apply 'active' class to first instance. See README Bugs for more details -->
-                                            {% if guitar.id == 5 %}
-                                                <div class="carousel-item active">
-                                            {% else %}
-                                                <div class="carousel-item">
-                                            {% endif %}
-                                                    <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
-                                                        <img src="{{ guitar.image_id.url }}" class="mx-auto rounded d-block" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
-                                                    </a>
-                                                </div> <!--close carousel item-->
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>  <!--close carousel 2 inner -->
-                            </div>      <!--close carousel 2 -->
-                        </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <a href="" class="guitar-image-link">
+                                            <img src="{{ display.3 }}" class="ms-auto rounded d-block me-0" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col d-none d-md-block col-md-4">
+                                        <a href="" class="guitar-image-link">
+                                            <img src="{{ display.4 }}" class="ms-auto rounded d-block me-0" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col d-none d-md-block col-md-4">
+                                        <a href="" class="guitar-image-link">
+                                            <img src="{{ display.5 }}" class="ms-auto rounded d-block me-0" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>  <!--close carousel item (pane 2) -->
 
-                        <div class="d-none d-md-block col-md-4">
-                            <div id="featured-carousel3" class="carousel slide" data-bs-touch="false" data-bs-ride="carousel">
-                                <div class="carousel-inner text-center py-2">
-                                    {% for guitar in guitars %}
-                                        {% if guitar.featured %}
-                                            <!-- BUG: guitar.id hard-coded to apply 'active' class to first instance. See README Bugs for more details -->
-                                            {% if guitar.id == 6 %}
-                                                <div class="carousel-item active">
-                                            {% else %}
-                                                <div class="carousel-item">
-                                            {% endif %}
-                                                    <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
-                                                        <img src="{{ guitar.image_id.url }}" class="rounded d-block" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
-                                                    </a>
-                                                </div> <!--close carousel item-->
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>  <!--close carousel 3 inner -->
-                            </div>      <!--close carousel 3 -->
-                        </div>
-                    </div>  
-                </div>      <!--close main content col -->
-            </div>          <!--close Featured row -->
+                        </div>      <!--close carousel inner -->
+                    </div>          <!--close featured carousel -->
+                </div>              <!--close main content col -->
+            </div>                  <!--close Featured row -->
+
+
 
             
             <!--Outstanding : Content for parts of this section has not been completed - please refer to README -->
