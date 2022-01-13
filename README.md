@@ -692,6 +692,29 @@ Only a small amount of custom JS resides in the construction, there were only 4 
 </details>
 
 
+<details>
+    <summary>Python PEP8 Compliance</summary>
+A singificant number of PEP8 compliance issues were identified in the pythin-linter within the development environment. All reasons for the alerts were reviewed and all were resolved where relating to;
+	
+- trailing white space
+- missing blank line at end of code
+- missing double row between class blocks
+- over / under-indentation
+- over / under use of space prior to comment
+	
+Some instances (not all) of the following were resolved (note outstanding points for why not all were resolved);
+	
+- long line lengths
+- items imported but not used
+
+The following were reviewed but not resolved;
+	
+- missing class/method/function docstring - *as per Boutique Ado walkthrough not all instances of classes seem to require a docstring only where these are required for understanding*
+- line too long - *those not resolved relate to long variables where there was no easy opportunity to break the line and / or would risk corrupting the code*
+- unused import / redirect / reverse - *some correspond with the Boutique Ado example, some relate to aspects which are not fully complete (see outstanding features) and decision made not to remove due to the possible risk posed to the deployed site*
+- avoid using null=True on string fields - *again, this corresponds with the Boutique Ado example and online research indicates that this is not a concern.*
+</details>
+
 
 <details>
     <summary>Responsiveness</summary>
