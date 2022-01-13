@@ -249,7 +249,7 @@ body {
        object-position: center;
     -o-object-fit: cover;
        object-fit: cover;
-    height:25vh;
+    height:35vh;
 }
 
 .guitar-background-img {
@@ -347,7 +347,6 @@ body {
     display: block;
     -o-object-fit: cover;
        object-fit: cover;
-    
     overflow: hidden;
     width: 100%;
 }
