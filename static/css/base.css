@@ -185,12 +185,10 @@ body {
     );
 }
 
-#footer-list li {
+#footer-external-links> a {
     text-decoration: none;
-    list-style-type: none;
-    
+    color: inherit;   
 }
-
 
 /*--Buttons & Search Field ---------------------------------*/
 
