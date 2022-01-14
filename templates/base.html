@@ -186,6 +186,37 @@
     {% block content %}
     {% endblock %}
 
+    {% block footer %}
+        <div id="footer" class="container-fluid mt-5">
+          <div class="container-lg">
+            <footer class="py-3">
+              <div class="row">
+
+                <!-- Copyright -->
+                <div class="col-4 d-flex align-items-center">
+                  <p>&copy; Guitar Vault 2022</p>
+                </div>
+                
+                <!-- Logo -->
+                <div class="col-4 d-flex align-items-center text-center">
+                  <h1 class="logo-txt gold-special-txt display-6">
+                    <a href="{% url 'home' %}">Guitar Vault</a></h1>
+                </div>
+
+                <!-- Social Media links -->
+                <div class="col-4 d-flex flex-wrap justify-content-between align-items-center">
+                  <a class="fab fa-facebook-square fa-2x" href="https://www.facebook.com/" rel="noopener" target="_blank"></a>
+                  <a class="fab fa-twitter-square fa-2x" href="https://www.twitter.com/" rel="noopener" target="_blank"></a>
+                  <a class="fab fa-instagram fa-2x" href="https://www.instagram.com/" rel="noopener" target="_blank"></a>          
+                  <a class="fab fa-youtube fa-2x" href="https://www.youtube.com/" rel="noopener" target="_blank"></a>
+                </div>
+
+              </div>
+            </footer>
+          </div>
+        </div>
+    {% endblock %}
+
     {% block modals %}
       <!-- Modals -->
       <div class="modal fade" id="gv-explained-Modal" tabindex="-1" aria-labelledby="gv-explainedModalLabel" aria-hidden="true">

@@ -45,6 +45,7 @@ body {
     color:var(--ivory);
     background-color: var(--black);
     font-family: var(--standard-text);
+    padding-bottom: 10vh; /*-- retain space for fixed footer */
 }
 
 
@@ -169,6 +170,27 @@ body {
     }
 }
 
+/*-- Footer -----------------------------------------------*/
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 7vh; /* any changes also need to align with body padding bottom */
+    padding-bottom:2vh;
+    background-image: linear-gradient(25deg,
+    var(--gold-dark),
+    var(--gold),
+    var(--off-black) 40%,
+    var(--off-gold)
+    );
+}
+
+#footer-list li {
+    text-decoration: none;
+    list-style-type: none;
+    
+}
+
 
 /*--Buttons & Search Field ---------------------------------*/
 
@@ -232,8 +254,6 @@ body {
 }
 
 
-
-
 /*---Index.html-------------------------------------------*/
 
 
@@ -274,6 +294,7 @@ body {
 .modal-body {
     background-color:var(--black);
 }
+
 
 /*----Guitar Card---------------------------------------------*/
 
