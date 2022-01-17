@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from subscriptions.models import Subscription
 from django_countries.fields import CountryField
 
 
@@ -32,3 +32,30 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         MemberProfile.objects.create(user=instance)
     #Existing users: just save the profile
     instance.memberprofile.save()
+
+
+class MembersPlans(models.Model):
+    """
+    Logs history of members subscription plans current and past
+    """
+    # match user to member profile
+    member_profile = models.ForeignKey(MemberProfile,
+                                       on_delete=models.SET_NULL,
+                                       null=True, blank=True)
+
+    # get list of subscription plans purchased
+    subscription_plan = models.ForeignKey(Subscription, null=False,
+                                          blank=False,
+                                          on_delete=models.PROTECT)
+    # capture price paid
+    subscription_price = models.DecimalField(max_digits=4, decimal_places=2,
+                                             null=False, default=0)
+
+    # date plan purchased
+    start_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    # is plan active or cancelled
+    active = models.BooleanField(default=False)
+
+    # date if plan cancelled 
+    canx_date = models.DateTimeField(auto_now=False, auto_now_add=False)

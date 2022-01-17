@@ -29,4 +29,3 @@ def profile(request):
 
     return render(request, template, context)
 
-

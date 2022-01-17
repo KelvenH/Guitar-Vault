@@ -43,7 +43,7 @@ class Guitar(models.Model):
     tier = models.CharField(max_length=10, choices=TIER_CHOICES,
                             default=BRONZE)
 
-    # Tier
+    # Status
     status = models.CharField(max_length=25, null=True, blank=True)
 
     # Right / Left Handed
