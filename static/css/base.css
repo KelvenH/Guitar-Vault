@@ -103,7 +103,7 @@ body {
 /*-----Nav Bar----------------------------------*/
 
 .nav-banner {
-    background: url('/media/Banner-img.jpeg') no-repeat center bottom fixed;
+    background: url('/media/banner-img.jpeg') no-repeat center bottom fixed;
     background-size: cover;
     border-bottom: 5px solid transparent;
     /*--border-color: var(--off-gold);--*/
