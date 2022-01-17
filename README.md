@@ -36,12 +36,14 @@
     - [KEY ELEMENT STYLES](#key-element-styles)
 
 - [FEATURES](#features)
-    - [PLANNED FEATURES](#planned_features)
-    - [FUTURE ENHANCEMENTS](#future_enhancements)
+    - [PLANNED FEATURES](#planned-features)
+    - [FUTURE ENHANCEMENTS](#future-enhancements)
 
 - [TESTING](#testing)
 
 - [BUGS](#bugs)
+    - [LIVE](#live)
+    - [FIXED](#fixed)
 
 - [DEPLOYMENT](#deployment)
 
@@ -741,13 +743,21 @@ Table of responsive configurations checked;
 
 ------
 # BUGS
+## LIVE
+
+| Item      | Details                              | Additional Notes                        | Current Status                                                |
+|-----------|--------------------------------------|-----------------------------------------|---------------------------------------------------------------|
+| JS Error  | JS 'cannot set properties of null'  | Self identified in console and identified by LightHouse. Cause is due to the fields JS is manipulating being intentionally only shown for non-logged in users | :heavy_exclamation_mark: - OPEN (logged under Issue #12)|
+
+
+## FIXED 
+Items fixed post initial deployment
 
 | Item      | Details                              | Additional Notes                        | Current Status                                                |
 |-----------|--------------------------------------|-----------------------------------------|---------------------------------------------------------------|
 | Image Carousel | Carousel timing issues| Initially planned to have a single carousel which showed multiple images which scrolled across the page. Bootstrap did not seem to support this so multiple carousels were created and timed to scroll, but factors influence the rendering / JS timing impacting the visual experience | FIXED :white_check_mark: Refer to Issues #11 |
 | About Us modals | Inconsistent behaviour in deployed vs development environments | The modal content is held in a block on the base template with block tags on the main-nav items (where links to the modals reside) as well as index.html as there are also links in the About Us section. These work as planned in development, but deployed site has inconsistent behaviour with either not showing or showing but without CSS being applied. These were late additions to the site without time to investigate a fix or switch to hosting on individual html pages. | FIXED :white_check_mark: Refer to Issues #13 |
-| JS Error  | JS 'cannot set properties of null'  | Self identified in console and identified by LightHouse. Cause is due to the fields JS is manipulating being intentionally only shown for non-logged in users | :heavy_exclamation_mark: - OPEN |
-
+| File Naming Conventions | Ensure standards for file naming conventions applied (i.e. no capitalisation for image files) | Identified in initial assessment | FIXED :white_check_mark: Refer to Issues #1 |
 
 
 ------
