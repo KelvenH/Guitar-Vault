@@ -11,6 +11,7 @@ def profile(request):
     """
     profile = get_object_or_404(MemberProfile, user=request.user)
     
+    print("profile = ", profile)
 
     if request.method == 'POST':
         form = MemberProfileForm(request.POST, instance=profile)
@@ -19,7 +20,9 @@ def profile(request):
             messages.success(request, 'Your profile has been updated')
 
     form = MemberProfileForm(instance=profile)
+    print("form = ", form)
     orders = profile.orders.all()
+    print("orders = ", orders)
 
     template = 'members/profile.html'
     context = {

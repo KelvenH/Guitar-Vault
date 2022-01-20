@@ -20,7 +20,8 @@
         <div class="row">
             <div class="col mt-2">
                 <h1 class="gold-special-txt text-center mb-3">Member Profile</h1>
-                <p>Profile for: {{ orders }}</p> 
+                <p>Profile for: {% for order in orders %} {{ order }} {% endfor %}</p>
+
             </div>
             <div class="row mt-4">
                 
