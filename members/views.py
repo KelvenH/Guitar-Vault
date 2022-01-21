@@ -22,9 +22,9 @@ def profile(request):
             messages.success(request, 'Your profile has been updated')
         else:
             messages.success(request, 'Update failed - please ensure all fields completed correctly')
-
-    form = MemberProfileForm(instance=profile)
-    print("form = ", form)
+    else:
+        form = MemberProfileForm(instance=profile)
+        print("form = ", form)
     orders = profile.orders.all()
     print("orders = ", orders)
 
@@ -32,6 +32,7 @@ def profile(request):
     context = {
         'form': form,
         'orders': orders,
+        'on_profile_page': True
     }
 
     return render(request, template, context)
