@@ -80,7 +80,7 @@ def checkout(request):
                     'postcode': profile.default_postcode,
                     'country': profile.default_country,
                 })
-            except:
+            except MemberProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
@@ -107,7 +107,8 @@ def checkout_success(request, order_number):
 
     if request.user.is_authenticated:
         profile = MemberProfile.objects.get(user=request.user)
-        order.user_profile = profile
+        # Attach user's profile to the order
+        order.member_profile = profile
         order.save()
         profile_data = {
             'default_phone_number': order.phone_number,
@@ -118,9 +119,9 @@ def checkout_success(request, order_number):
             'default_postcode': order.postcode,
             'default_country': order.country,
         }
-        user_profile_form = MemberProfileForm(profile_data, instance=profile)
-        if user_profile_form.is_valid():
-            user_profile_form.save()
+        member_profile_form = MemberProfileForm(profile_data, instance=profile)
+        if member_profile_form.is_valid():
+            member_profile_form.save()
 
     if 'bag' in request.session:
         del request.session['bag']

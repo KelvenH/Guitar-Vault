@@ -5,7 +5,7 @@ from .models import Order
 class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('order_number', 'date', 'subscription_price',)
 
-    fields = ('order_number', 'date', 'subscription_plan',
+    fields = ('order_number', 'member_profile', 'date', 'subscription_plan',
               'subscription_price', 'full_name', 'email', 'phone_number',
               'street_address1', 'street_address2', 'town_or_city',
               'postcode', 'county', 'country',)

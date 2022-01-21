@@ -20,8 +20,7 @@
         <div class="row">
             <div class="col mt-2">
                 <h1 class="gold-special-txt text-center mb-3">Member Profile</h1>
-                <p>Profile for: {% for order in orders %} {{ order }} {% endfor %}</p>
-
+                
             </div>
             <div class="row mt-4">
                 
@@ -36,10 +35,15 @@
                 </div>
                 <!-- Outstanding : This section of the profile has not been completed - please refer to README -->
                 <div class="col-12 col-md-6 ps-4">
-
+                    <h4>Subscription Plan</h4>
+                    {% for order in orders %} 
+                        <p>Order no: {{ order.order_number }}</p>
+                        <p>Profile: {{ order.member_profile }}</p>
+                        <p>Subscription Tier: {{ order.subscription_plan }}</p>
+                    {% endfor %}
                     <!-- Subscription Plan -->
                     <div class="row">
-                        <h4>Subscription Plan</h4>
+                        
                         <p>Active Plan</p>
                         
                         <p>Tier:</p>
