@@ -48,6 +48,12 @@ body {
     padding-bottom: max(80px, 10vh); /*-- retain space for fixed footer */
 }
 
+.message-container {
+    position: fixed;
+    width:100%;
+    bottom:  max(80px, 10vh);
+    z-index: 99999999999;
+}
 
 /*-- Text Classes --*/
 
