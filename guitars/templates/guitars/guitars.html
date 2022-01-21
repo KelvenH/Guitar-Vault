@@ -99,43 +99,46 @@
                                 
                                 <!--card footer-->
                                 <div class="card-footer text-muted">
-                                    <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-baseline">
-                                        <li class="list-inline-item w-20 pb-0 ">
-                                            
-                                            <!--Outstanding : Functionality relating to favourites and Add to Rack have not been completed  - please refer to README -->
+                                    <!-- icons displayed for users logged in -->
+                                    {% if request.user.is_authenticated %}
+                                        <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-baseline">
+                                            <li class="list-inline-item w-20 pb-0 ">
+                                                
+                                                <!--Outstanding : Functionality relating to favourites and Add to Rack have not been completed  - please refer to README -->
 
-                                            
-                                            <!--option A : Add Favourite -->
-                                            <btn type="button" class="btn btn-sm btn-add-fav align-baseline">
-                                                <i class="far fa-heart fa-2x"></i>
-                                                <p class="pb-0"><small>Add Favourite</small></p>
-                                            </btn>
-                                            
-                                            <!--option B : Remove Favourite -->
-                                            <btn type="button" class="btn btn-sm d-none btn-remove-fav align-baseline">
-                                                <i class="fas fa-heart fa-2x"></i>
-                                                <p class="ps-2"><small>Remove Favourite</small></p>
-                                            </btn>
-                                        </li>
+                                                
+                                                <!--option A : Add Favourite -->
+                                                <btn type="button" class="btn btn-sm btn-add-fav align-baseline">
+                                                    <i class="far fa-heart fa-2x"></i>
+                                                    <p class="pb-0"><small>Add Favourite</small></p>
+                                                </btn>
+                                                
+                                                <!--option B : Remove Favourite -->
+                                                <btn type="button" class="btn btn-sm d-none btn-remove-fav align-baseline">
+                                                    <i class="fas fa-heart fa-2x"></i>
+                                                    <p class="ps-2"><small>Remove Favourite</small></p>
+                                                </btn>
+                                            </li>
 
-                                        <li class="list-inline-item w-20 pb-0 align-baseline">
-                                            
+                                            <li class="list-inline-item w-20 pb-0 align-baseline">
+                                                
 
-                                            <!--option A : Add to Rack -->
-                                            <btn type="button" class="btn btn-sm btn-take align-baseline">
-                                                <img src="{{ MEDIA_URL }}guitar_gold_add.svg" class="guitar-svg add-gold">
-                                                <img src="{{ MEDIA_URL }}guitar_black_add.svg" class="guitar-svg add-black">
-                                                <p class=""><small>Add to Rack</small></p>
-                                            </btn>
+                                                <!--option A : Add to Rack -->
+                                                <btn type="button" class="btn btn-sm btn-take align-baseline">
+                                                    <img src="{{ MEDIA_URL }}guitar_gold_add.svg" class="guitar-svg add-gold">
+                                                    <img src="{{ MEDIA_URL }}guitar_black_add.svg" class="guitar-svg add-black">
+                                                    <p class=""><small>Add to Rack</small></p>
+                                                </btn>
 
-                                            <!--option B : Remove from Rack -->
-                                            <btn type="button" class="btn btn-sm btn-take d-none align-baseline">
-                                                <img src="{{ MEDIA_URL }}guitar_gold_remove.svg" class="guitar-svg add-gold">
-                                                <img src="{{ MEDIA_URL }}guitar_black_remove.svg" class="guitar-svg add-black">
-                                                <p class="ps-2"><small>Remove from Rack</small></p>
-                                            </btn>
-                                        </li>
-                                    </ul>
+                                                <!--option B : Remove from Rack -->
+                                                <btn type="button" class="btn btn-sm btn-take d-none align-baseline">
+                                                    <img src="{{ MEDIA_URL }}guitar_gold_remove.svg" class="guitar-svg add-gold">
+                                                    <img src="{{ MEDIA_URL }}guitar_black_remove.svg" class="guitar-svg add-black">
+                                                    <p class="ps-2"><small>Remove from Rack</small></p>
+                                                </btn>
+                                            </li>
+                                        </ul>
+                                    {% endif %}
                                 </div>      <!--close card footer -->
                             </div>          <!--close card  -->
                         </div>              <!--close card col -->
