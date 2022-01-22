@@ -64,6 +64,26 @@
                     <!-- Favourite Guitars -->
                     <div class="row">
                         <h4 class="mt-5 gold-txt">Favourited Guitars</h4>
+                        
+                        <table class="text-center mx-auto subs-table">
+                            <tr>
+                                <th>Guitar</th>
+                                <th>Tier</th>
+                                
+                            </tr>
+                        {% for guitar in guitars %}
+                            
+                            {% if request.user in guitar.favourites.all %}
+                                <tr>
+                                    <td>{{ guitar.brand }} - {{ guitar.guitar_model }}</td>
+                                    <td>{{ guitar.tier }}</td>
+                                </tr>
+                            {% endif %}
+                        
+                        <!--OUTSTANDING BUG: Empty tag is not displaying if user has no favourite guitars?-->
+                        {% empty %}
+                            <p class="text-center">You have no favourite guitars.</p>
+                        {% endfor %}
 
                     </div>
                 </div>

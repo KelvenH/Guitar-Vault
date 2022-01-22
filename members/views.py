@@ -14,9 +14,9 @@ def profile(request):
     Display user's profile
     """
     profile = get_object_or_404(MemberProfile, user=request.user)
+    orders = profile.orders.all()
+    guitars = Guitar.objects.all()
     
-    print("profile = ", profile)
-
     if request.method == 'POST':
         form = MemberProfileForm(request.POST, instance=profile)
         if form.is_valid():
@@ -25,20 +25,19 @@ def profile(request):
         else:
             messages.success(request, 'Update failed - please ensure all fields completed correctly')
     else:
-        form = MemberProfileForm(instance=profile)
-        print("form = ", form)
-    orders = profile.orders.all()
-    print("orders = ", orders)
-
+        form = MemberProfileForm(instance=profile)   
+    
     template = 'members/profile.html'
     context = {
         'form': form,
         'orders': orders,
+        'guitars': guitars,
     }
 
     return render(request, template, context)
 
 
+# function to add / remove favourite to user
 @login_required
 def favourite_add(request, id):
     guitar = get_object_or_404(Guitar, id=id)
