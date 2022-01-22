@@ -544,6 +544,21 @@ select option[value=""] {
     width:100%;
 }
 
+.guitar-mini-image-container {
+    display:inline-block;
+}
+
+.fav-img {
+    max-height: 10vh;
+    display: block;
+    -o-object-fit: contain;
+       object-fit: contain;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+}
+
+
+
 /*--Allauth forms ---------*/
 
 .allauth-form-inner-content input{
