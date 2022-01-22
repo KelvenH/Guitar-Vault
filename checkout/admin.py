@@ -10,10 +10,9 @@ class OrderAdmin(admin.ModelAdmin):
               'street_address1', 'street_address2', 'town_or_city',
               'postcode', 'county', 'country',)
 
-    list_display = ('order_number', 'date', 'full_name', 'subscription_plan',
-                    'subscription_price',)
+    list_display = ('order_number', 'date', 'member_profile', 'full_name', 'subscription_plan', 'subscription_price',)
 
-    ordering = ('full_name',)
+    ordering = ('date',)
 
 
 admin.site.register(Order, OrderAdmin)

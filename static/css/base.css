@@ -529,7 +529,11 @@ select option[value=""] {
     color: #aab7c4 !important;
 }
 
+/*-- Profile.html --*/
 
+.subs-table {
+    width:100%;
+}
 
 /*--Allauth forms ---------*/
 
