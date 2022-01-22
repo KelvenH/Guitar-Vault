@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Category(models.Model):
 
@@ -110,6 +110,10 @@ class Guitar(models.Model):
 
     # Used to identify images to appear in 'Featured' carousel
     featured = models.BooleanField(default=False)
+
+    # Used to capture user's favourited guitars
+    favourites = models.ManyToManyField(User, related_name='favourite',
+                                        default=None, blank=True)
 
     def __str__(self):
         return self.guitar_model

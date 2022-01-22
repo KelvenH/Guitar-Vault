@@ -1,10 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import MemberProfile
 from .forms import MemberProfileForm
 from checkout.models import Order
+from guitars.models import Guitar
+
 
 @login_required
 def profile(request):
@@ -36,3 +38,13 @@ def profile(request):
 
     return render(request, template, context)
 
+
+@login_required
+def favourite_add(request, id):
+    guitar = get_object_or_404(Guitar, id=id)
+    if guitar.favourites.filter(id=request.user.id).exists():
+        guitar.favourites.remove(request.user)
+    else:
+        guitar.favourites.add(request.user)
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
