@@ -16,6 +16,8 @@ def all_guitars(request):
     sort = None
     direction = None
 
+
+    # Navbar filters       
     if request.GET:
 
         if 'handed' in request.GET:

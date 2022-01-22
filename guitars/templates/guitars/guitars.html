@@ -92,6 +92,7 @@
                                             <div class="d-flex flex-row">
                                                 <p class="col-6">Overall Rating</p>
                                                 <p class="col-6">{{ guitar.rating_overall }}</p>
+                                                
                                             </div>
                                         </div>
                                     </div>    
@@ -100,25 +101,26 @@
                                 <!--card footer-->
                                 <div class="card-footer text-muted">
                                     <!-- icons displayed for users logged in -->
+                                    
                                     {% if request.user.is_authenticated %}
                                         <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-baseline">
                                             <li class="list-inline-item w-20 pb-0 ">
                                                 
-                                                <!--Outstanding : Functionality relating to favourites and Add to Rack have not been completed  - please refer to README -->
+                                                {% if request.user in guitar.favourites.all %}
+                                                    <!--option A : Remove Favourite -->
+                                                    <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm  btn-remove-fav align-baseline">
+                                                        <i class="fas fa-heart fa-2x"></i>
+                                                        <p class=""><small>Remove Favourite</small></p>
+                                                    </a>
 
+                                                {% else %}
+                                                    <!--option B : Add Favourite -->
+                                                    <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm btn-add-fav align-baseline">
+                                                        <i class="far fa-heart fa-2x"></i>
+                                                        <p class=""><small>Add Favourite</small></p>
+                                                    </a>
                                                 
-                                                <!--option A : Add Favourite -->
-                                                <btn type="button" class="btn btn-sm btn-add-fav align-baseline">
-                                                    <i class="far fa-heart fa-2x"></i>
-                                                    <p class="pb-0"><small>Add Favourite</small></p>
-                                                </btn>
-                                                
-                                                <!--option B : Remove Favourite -->
-                                                <btn type="button" class="btn btn-sm d-none btn-remove-fav align-baseline">
-                                                    <i class="fas fa-heart fa-2x"></i>
-                                                    <p class="ps-2"><small>Remove Favourite</small></p>
-                                                </btn>
-                                            </li>
+                                                {% endif %}
 
                                             <li class="list-inline-item w-20 pb-0 align-baseline">
                                                 

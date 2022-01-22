@@ -85,17 +85,22 @@
                                         <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-baseline">
                                             <li class="list-inline-item w-20 pb-0 ">
                                                 
-                                                <!--option A : Add Favourite -->
+                                                {% if request.user in guitar.favourites.all %}
+                                                <!--option A : Remove Favourite -->
+                                                <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm  btn-remove-fav align-baseline">
+                                                    <i class="fas fa-heart fa-2x"></i>
+                                                    <p class=""><small>Remove Favourite</small></p>
+                                                </a>
+
+                                                {% else %}
+                                                <!--option B : Add Favourite -->
                                                 <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm btn-add-fav align-baseline">
                                                     <i class="far fa-heart fa-2x"></i>
-                                                    <p class="pb-0"><small>Add Favourite</small></p>
+                                                    <p class=""><small>Add Favourite</small></p>
                                                 </a>
                                                 
-                                                <!--option B : Remove Favourite -->
-                                                <a href="" class="btn btn-sm d-none btn-remove-fav align-baseline">
-                                                    <i class="fas fa-heart fa-2x"></i>
-                                                    <p class="ps-2"><small>Remove Favourite</small></p>
-                                                </a>
+                                                {% endif %}
+
                                             </li>
 
                                             <li class="list-inline-item w-20 pb-0 align-baseline">

@@ -246,6 +246,15 @@ body {
     color: var(--ivory);
 }
 
+.btn-remove-fav {
+    color:var(--bronze-dark);
+}
+
+.btn-remove-fav:hover {
+    background-color:var(--bronze-dark);
+    color: var(--ivory);
+}
+
 .btn-gold-outline {
     color:var(--off-gold);
     border: 3px solid var(--off-gold);
