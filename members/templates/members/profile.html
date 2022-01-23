@@ -69,7 +69,7 @@
                         {% for guitar in guitars %}
                             
                             {% if request.user in guitar.favourites.all %}
-                            <div class="col-3">
+                            <div class="col-6 col-md-4 col-lg-3">
                                 <div class="guitar-mini-image-container">
                                     {% if guitar.image_id %}
                                     <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
@@ -81,6 +81,9 @@
                                         <img src="{{ MEDIA_URL }}noimage.png" class="fav-img" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
                                     </a>
                                     {% endif %}
+                                    <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm  btn-remove-fav align-baseline text-center d-grid">
+                                        <p class=""><small>Remove Favourite</small></p>
+                                    </a>
                                 </div>
                             </div>
                             {% endif %}
