@@ -22,11 +22,76 @@
                 <h1 class="gold-special-txt text-center mb-3">Member Profile</h1>
                 
             </div>
+
+            <div class="row my-4 profile-overview">
+                <h2 class="gold-txt text-center mb-3">Overview</h2>
+                <h5 class="text-center mb-3">Welcome to your profile, please use this page to perform the following actions:
+                </h5>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <a href="#manage-address" class="no-dec"><h5 class="text-center overview-heading p-1 align-middle">Manage Your Address<h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-8 p-1  align-middle">
+                        <p>Keep your address details up-to-date to ensure your guitar arrives with you safely!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <a href="#manage-subscriptions" class="no-dec"><h5 class="text-center overview-heading p-1 align-middle">Manage Your Active Subscription(s)<h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-8 p-1  align-middle">
+                        <p>Your active subscriptions shows the tiers you are currently subscribed to. You earn 1 plectrum per month (assigned to the respective tier). Any unspent plectrums are shown here which you can use to put a guitar on your rack. All active subscriptions will be displayed (if for example you have platinum for top end electric guitars and a bronze to try out bass for the first time!). You can also request to cancel an active subscription here. </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <a href="#manage-guitar-rack" class="no-dec"><h5 class="text-center overview-heading p-1 align-middle">Your Guitar Rack<h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-8 p-1  align-middle">
+                        <p>The rack is what it's all about! Follow these steps to grab a guitar from the vault;</p>
+                        <ol>
+                            <li>Take a look inside the vault and decide which guitar you want to get your hands on</li>
+                            <li>Click the icon 'Add to Rack' (note: this icon will be unavailable if the guitar is already with someone else, in which case be sure to add it to your favourites for next time!)</li>
+                            <li>Providing you have unused plectrums to spend (same or higher tier than the guitar requested) the guitar will then be displayed on your rack</li>
+                        </ol>
+                        <p>Guitars in your rack will have one of the following statuses:</p>
+                        <div class="row">
+                            <div class="col-4 overview-status">
+                                <p class="text-center"><u>Performing</u></p>
+                                <p>This guitar is already in your possession! Hey go play!</p>
+                            </div>
+                            
+                            <div class="col-4 overview-status">
+                                <p class="text-center"><u>Pending</u></p>
+                                <p>Your next guitar has been succesfully added to the rack and is currently with the backstage crew getting  ready for dispatch (including any re-stringing and set-up for higher tiers)</p>
+                            </div>
+                            <div class="col-4 overview-status">
+                                <p class="text-center"><u>Shipping</u></p>
+                                <p>It's on its way! If you already have a guitar please ensure this is ready to be exchanged at the handover. You should have received an email from us confirming delivery date and tracking information, but please contact us if you have any questions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <a href="#manage-favourites" class="no-dec"><h5 class="text-center overview-heading p-1 align-middle">Favourites<h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-8 p-1  align-middle">
+                        <p>Simpy click the 'Add Favourite' icon to see these guitars on your profile page and make your next selection a quicker process</p>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="row mt-4">
                 
-                <!-- Address -->
+                <!-- Address Col (left col on md+)-->
                 <div class="col-12 col-md-6 ps-4">
-                    <h4 class="gold-txt">Address</h4>
+                    <h4 class="gold-txt profile-header"><span id="manage-address"></span>Address</h4>
                     <form class="mt-4 mb-5" action="{% url 'profile' %}" method="POST" id="member-profile-form">
                         {% csrf_token %}
                         {{ form|crispy }}
@@ -34,67 +99,96 @@
                     </form>
                 </div>
 
+                <!-- Subscription Col (right col on md+)-->
                 <div class="col-12 col-md-6 ps-4">
-                <!-- Subscription Plan -->
-                    <h4 class="pb-3 gold-txt">Subscription Plans</h4>
 
-                    <table class="text-center mx-auto subs-table">
-                        <tr>
-                            <th>Order No.</th>
-                            <th>Date Started</th>
-                            <th>Tier</th>
-                            <th>Monthly Fee</th>
-                        </tr>
-                        {% for order in orders %} 
-                            <tr>
-                                <th>{{ order.order_number|truncatechars:14 }}</th>
-                                <th>{{ order.date|date:"DATE_FORMAT" }}</th>
-                                <th>{{ order.subscription_plan }}</th>
-                                <th>£{{ order.subscription_price }}</th>
+                    <!-- Active Subscription Plan -->
+                    <div class="row mb-5">
+                        <h4 class="pb-3 gold-txt profile-header"><span id="manage-subscriptions"></span>Active Subscription Plan(s)</h4>
+                        <table class="text-center mx-auto table table-dark table-striped">
+                            <tr class="table-underline">
+                                <th class="small-table-col">Tier</th>
+                                <th class="small-table-col">Unspent Plectrums</th>
+                                <th class="small-table-col">Manage Subscription(s)</th>
                             </tr>
-                        {% endfor %}
-                    </table>
-                    
-                    <!-- Guitar Rack -->
-                    <div class="row">
-                        <h4 class="mt-5 gold-txt">Guitar Rack</h4>
-
+                            {% for order in orders %} 
+                                <tr class="pt-5">
+                                    <th>{{ order.subscription_plan }}</th>
+                                    <th class="small-table-col">[display plectrum balance]</th>
+                                    <th><button type="button" class="btn btn-sm btn-outline-danger">Cancel Subscription</button></th>
+                                </tr>
+                            {% endfor %}
+                        </table>
                     </div>
 
-                    <!-- Favourite Guitars -->
+                
+                    <!-- Subscription Plan History -->
                     <div class="row">
-                        <h4 class="mt-5 gold-txt">Favourited Guitars</h4>
-                    </div>
-                    <div class="row">
-                        {% for guitar in guitars %}
-                            
-                            {% if request.user in guitar.favourites.all %}
-                            <div class="col-6 col-md-4 col-lg-3">
-                                <div class="guitar-mini-image-container">
-                                    {% if guitar.image_id %}
-                                    <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
-                                        <img src="{{ guitar.image_id.url }}" class="fav-img" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
-                                    </a>
+                        <h4 class="pb-3 gold-txt">Subscription Plans History</h4>
 
-                                    {% else %}
-                                    <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
-                                        <img src="{{ MEDIA_URL }}noimage.png" class="fav-img" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
-                                    </a>
-                                    {% endif %}
-                                    <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm  btn-remove-fav align-baseline text-center d-grid">
-                                        <p class=""><small>Remove Favourite</small></p>
-                                    </a>
-                                </div>
-                            </div>
-                            {% endif %}
-                        <!--OUTSTANDING BUG: Empty tag is not displaying if user has no favourite guitars?-->
-                        {% empty %}
-                            <p class="text-center">You have no favourite guitars.</p>
-                        {% endfor %}
-                        
-                    </div>
-                </div>
+                        <table class="text-center mx-auto subs-table">
+                            <tr>
+                                <th>Order No.</th>
+                                <th>Date Started</th>
+                                <th>Tier</th>
+                                <th>Monthly Fee</th>
+                            </tr>
+                            {% for order in orders %} 
+                                <tr>
+                                    <th>{{ order.order_number|truncatechars:14 }}</th>
+                                    <th>{{ order.date|date:"DATE_FORMAT" }}</th>
+                                    <th>{{ order.subscription_plan }}</th>
+                                    <th>£{{ order.subscription_price }}</th>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>    
+                   
+                </div> <!--close col (right col on md+)-->
+            </div> <!-- close row containing address col and subscription / rack -->
+            
+            <!-- Guitar Rack -->
+            <div class="row">
+                <h4 class="mt-5 gold-txt"><span id="manage-guitar-rack"></span>Guitar Rack</h4>
+                <p class="mb-0">Vist the vault to add a guitar to your rack.</p>
+                
             </div>
+            <div class="row">
+                <p>CONTENT HERE</p>
+            </div>
+
+            <!-- Favourite Guitars -->
+            <div class="row">
+                <h4 class="mt-5 gold-txt"><span id="manage-favourites"></span>Your Favourite Guitars</h4>
+            </div>
+            <div class="row">
+                {% for guitar in guitars %}
+                    
+                    {% if request.user in guitar.favourites.all %}
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="guitar-mini-image-container">
+                            {% if guitar.image_id %}
+                            <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
+                                <img src="{{ guitar.image_id.url }}" class="fav-img" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                            </a>
+
+                            {% else %}
+                            <a href="{% url 'guitar_detail' guitar.id %}" class="guitar-image-link">
+                                <img src="{{ MEDIA_URL }}noimage.png" class="fav-img" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                            </a>
+                            {% endif %}
+                            <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm  btn-remove-fav align-baseline text-center d-grid">
+                                <p class=""><small>Remove Favourite</small></p>
+                            </a>
+                        </div> <!--close mini-image container-->
+                    </div> <!--close favourite guitar col-->
+                    {% endif %}
+                <!--OUTSTANDING BUG: Empty tag is not displaying if user has no favourite guitars?-->
+                {% empty %}
+                    <p class="text-center">You have no favourite guitars.</p>
+                {% endfor %}    
+            </div> <!--close Favourite guitars-->
+
         </div>                         
     </div> <!--close main container-->
 {% endblock %}

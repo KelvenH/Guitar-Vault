@@ -540,8 +540,55 @@ select option[value=""] {
 
 /*-- Profile.html --*/
 
+.profile-overview {
+    background-color: var(--off-black);
+    border: 2px solid var(--off-gold);
+    border-radius:10px;
+    padding: calc(var(--bs-gutter-x) * .5) /*-reuses existing bootstrap left and right padding calc to also apply to top and bottom */ 
+
+}
+
+.overview-heading {
+    background-color: var(--black);
+    border: 1px solid var(--off-gold);
+    border-radius:5px;
+    color:var(--ivory);
+}
+
+.profile-header {
+    position:relative;
+}
+
+/*-bug fix: destination for same page links held within span wih a negative margin to off-set fixed nav which otherwise hides content as it scrolled to top of browser Acknwoledgment: https://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header --*/
+
+.profile-header span {
+    position:absolute;
+    top:-200px;
+}
+
+@media (min-width: 768px) {
+    .profile-header span {
+        position:absolute;
+        top:-280px;
+    }
+}
+
+
+.no-dec {
+    text-decoration:none;
+}
+
 .subs-table {
     width:100%;
+    table-layout: fixed;
+}
+
+.table-underline {
+    border-bottom: solid 1px;
+}
+
+.small-table-col {
+    width:150px;
 }
 
 .guitar-mini-image-container {

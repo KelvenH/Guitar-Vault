@@ -22,9 +22,6 @@ class MemberProfileForm(forms.ModelForm):
             'default_country': 'Country',
         }
 
-        
-        # On page load, cursor placed in phone number field
-        self.fields['default_phone_number'].widget.attrs['autofocus'] = True
         # Add asterisk to any fields set as required /mandatory
         for field in self.fields:
             if self.fields[field].required:
