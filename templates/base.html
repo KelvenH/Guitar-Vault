@@ -90,12 +90,12 @@
                       <!--Embedded dropdown menu-->
                       <ul class="dropdown-menu" aria-labelledby="user-profile-options">
                         {% if request.user.is_superuser %}
-                          <li><a class="dropdown-item gold-accent-txt" href="">
+                          <li><a class="dropdown-item" href="">
                             Site Admin</a></li>
                         {% endif %}  
-                        <li><a class="dropdown-item gold-accent-txt" href="{% url 'profile' %}">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">
                           My Profile</a></li>
-                        <li><a class="dropdown-item gold-accent-txt" href="{% url 'account_logout' %}">
+                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">
                           Log Out</a></li>
                       </ul>
                     </div> <!--Close Embedded dropdown menu-->

@@ -64,7 +64,9 @@
 
                 {% else %}
                     <p class="lead mt-5"> You have not added anything to your bag</p>
-                    <a href="{% url 'subscriptions' %}" class="btn btn-gold-outline">View our subscription plans</a>
+                    <a href="{% url 'subscriptions' %}" class="btn btn-lg btn-wide btn-gold-outline mb-4">View our subscription plans</a>
+                    <br>
+                    <a href="{% url 'home' %}" class="btn btn-lg btn-wide btn-gold-outline">Return to Home Page</a>
                 {% endif %}
             </div> 
         </div>                 
