@@ -421,6 +421,10 @@ body {
             box-shadow: 0 0 5px 5px var(--off-gold);
 }
 
+.subs-card-body {
+    background-color: var(--off-black);
+}
+
 .plat-subs-card {
     background-color: var(--purple);
 }
@@ -435,6 +439,17 @@ body {
 
 .bronze-subs-card {
     background-color: var(--bronze);
+}
+
+.sub-btn {
+    color:var(--ivory);
+    border: 3px solid var(--ivory);
+    background-color: var(--transp); /* prevents default white background */
+}
+
+.sub-btn:hover {
+    background-color:var(--off-gold);
+    color:var(--black);
 }
 
 /* Darker background applied to subscription button */
