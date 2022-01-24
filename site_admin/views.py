@@ -15,3 +15,4 @@ def site_admin(request):
     }
 
     return render(request, 'site_admin/site_admin.html', context)
+
