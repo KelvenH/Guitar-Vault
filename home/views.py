@@ -12,12 +12,13 @@ def index(request):
     display_image = []
 
     for guitar in guitars:
-        id = guitar.id
-        image_url = guitar.image_id.url
-        featured = guitar.featured
-        if featured:
-            display_id.append(id)
-            display_image.append(image_url)
+        if guitar.image_id:
+            id = guitar.id
+            image_url = guitar.image_id.url
+            featured = guitar.featured
+            if featured:
+                display_id.append(id)
+                display_image.append(image_url)
 
 
     context = {

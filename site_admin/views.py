@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from guitars.models import Guitar
 from .forms import GuitarForm
 
 
@@ -35,6 +36,32 @@ def add_guitar(request):
     template = 'site_admin/add_guitar.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+""" Edit guitar in the database """
+def edit_guitar(request, guitar_id):
+    guitar = get_object_or_404(Guitar, pk=guitar_id)
+    
+    if request.method == 'POST':
+        form = GuitarForm(request.POST, request.FILES, instance=guitar)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Guitar details successfully updated!')
+            return redirect(reverse('guitar_detail', args=[guitar.id]))
+
+        else:
+            messages.error(request, 'Oops, computer says NO - check the form for errors')
+    
+    else:        
+        form = GuitarForm(instance=guitar)
+    
+    template = 'site_admin/edit_guitar.html'
+    context = {
+        'form': form,
+        'guitar': guitar,
     }
 
     return render(request, template, context)

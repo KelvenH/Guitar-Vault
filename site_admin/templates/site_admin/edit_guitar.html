@@ -22,19 +22,19 @@
             <div class="main-content px-3">
                 <div class="row">
                     <div class="col-12">
-                        <h4 class="gold-special-txt text-center my-3">Add A New Guitar to the Database</h4>
+                        <h4 class="gold-special-txt text-center my-3">Edit Guitar Database Details</h4>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
                         
-                        <form method="POST" action="{% url 'add_guitar' %}" class="form" enctype="multipart/form-data">
+                        <form method="POST" action="{% url 'edit_guitar' guitar.id %}" class="form" enctype="multipart/form-data">
                             {% csrf_token%}
                             {% crispy form %}
                             <div>
                                 <a href="{% url 'site_admin' %}" class="btn btn-md btn-outline-danger mb-4">Cancel</a>
-                                <button type="submit" class="btn btn-md btn-outline-success mb-4">Add Guitar</button>
+                                <button type="submit" class="btn btn-md btn-outline-success mb-4">Update Guitar</button>
                             </div>
                         </form>
 
