@@ -23,7 +23,7 @@ def profile(request):
             form.save()
             messages.success(request, 'Your profile has been updated')
         else:
-            messages.success(request, 'Update failed - please ensure all fields completed correctly')
+            messages.error(request, 'Update failed - please ensure all fields completed correctly')
     else:
         form = MemberProfileForm(instance=profile)   
     

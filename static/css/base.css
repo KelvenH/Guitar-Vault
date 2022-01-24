@@ -269,6 +269,12 @@ body {
 .btn-wide {
     width:25vw;
 }
+
+.btn-md {
+    width:15vw;
+    min-width:150px;
+}
+
 /*---Index.html-------------------------------------------*/
 
 

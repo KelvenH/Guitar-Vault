@@ -44,7 +44,14 @@ class Guitar(models.Model):
                             default=BRONZE)
 
     # Status
-    status = models.CharField(max_length=25, null=True, blank=True)
+    AVAILABLE = 'Available'
+    IN_USE = 'In Use'
+
+    STATUS_CHOICES = [
+        (AVAILABLE, 'Available'),
+        (IN_USE, 'In Use'),
+    ]
+    status = models.CharField(max_length=25, choices=STATUS_CHOICES, default=AVAILABLE)
 
     # Right / Left Handed
     RIGHT = 'Right'
@@ -58,8 +65,7 @@ class Guitar(models.Model):
                               default=RIGHT)
 
     # No. Strings and Age
-    no_strings = models.DecimalField(max_digits=2, decimal_places=0, null=True,
-                                     blank=True)
+    no_strings = models.DecimalField(max_digits=2, decimal_places=0, default=6)
     approx_age_years = models.DecimalField(max_digits=2, decimal_places=0,
                                            null=True, blank=True)
 

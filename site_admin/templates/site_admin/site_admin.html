@@ -15,15 +15,64 @@
     <div class="container h-100">
         <div class="col-12">
             <div class="row">
-                <div class="col main-content mt-1">
-                    <h1 class="gold-special-txt my-4">Site Administration</h1>
-                    <div>
-                        <p>Please use the pre-built forms below to manage items. A link to the main admin panel has been provided should the required action not be permitted via the forms and should be used as a last resort.</p>
-                        <a href="{% url 'admin:index' %}" class="btn btn-lg btn-wide btn-gold-outline mb-4">Link to main admin console</a>
+                <h1 class="gold-special-txt my-4 text-center">Site Administration</h1>
+            </div>
+            <div class="row main-content">
+
+                <!--Manage Guitars-->
+                <div class="row mt-4 d-flex align-items-center">
+                    <div class="col-4">
+                        <h4>Manage Guitars</h4>
                     </div>
-                    
-           
-                </div> <!--close main central column-->
+
+                    <div class="col-8">
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">Edit Guitars</a>
+                            <a href="{% url 'add_guitar' %}" class="btn btn-md btn-gold-outline mb-4">Add Guitar</a>
+                    </div>
+                    <hr class="mb-0">
+                </div>
+                
+                <!--Manage Categories-->
+                <div class="row mt-4 d-flex align-items-center">
+                    <div class="col-4">
+                        <h4>Manage Categories</h4>
+                    </div>
+
+                    <div class="col-8">
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">Edit Category</a>
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">Add Category</a>
+                    </div>
+                    <hr class="mb-0">
+                </div>
+
+                <!--Manage Subscriptions-->
+                <div class="row mt-4 d-flex align-items-center">
+                    <div class="col-4">
+                        <h4>Manage Subscriptions</h4>
+                    </div>
+
+                    <div class="col-8">
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">View Orders</a>
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">View / Edit Subscriptions</a>
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">Manage Plectrums</a>
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">Manage Guitar Loan Requests</a>
+                    </div>
+                    <hr class="mb-0">
+                </div>
+                
+                <!--Admin Console-->
+                <div class="row mt-4 d-flex align-items-center">
+                    <div class="col-4">
+                        <h4>Admin Console</h4>
+                    </div>
+
+                    <div class="col-8">
+                        <p>Please use the pre-built forms above to manage items. A link to the main admin panel has been provided should the required action not be available via the forms and should be used as a last resort.</p>
+                        <a href="{% url 'admin:index' %}" class="btn btn-lg btn-wide btn-outline-danger mb-4">Link to the admin console</a>
+                    </div>
+                    <hr class="mb-0">
+                </div>
+
             </div>
         </div>
     </div>
