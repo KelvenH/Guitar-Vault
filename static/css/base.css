@@ -266,7 +266,9 @@ body {
     color:var(--off-black);
 }
 
-
+.btn-wide {
+    width:25vw;
+}
 /*---Index.html-------------------------------------------*/
 
 

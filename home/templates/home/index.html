@@ -18,11 +18,23 @@
 
             <div class="row">
                 <div class="col main-content mt-1">
-                    <h1 class="gold-special-txt my-4">Welcome to the Guitar Vault</h1>
-                    <div class="d-flex justify-content-evenly pb-2">
-                        <a href="{% url 'subscriptions' %}" class="btn btn-lg btn-gold-outline">New? View our subscription plans</a>
-                        <a href="{% url 'guitars' %}" class="btn btn-lg btn-gold-outline">Take a peek inside the vault!</a>
-                    </div>
+
+                    {% if request.user.is_authenticated %}
+                        <h1 class="gold-special-txt my-4">Welcome back to the Guitar Vault {{ request.user }}!</h1>
+                        
+                        <div class="d-flex justify-content-evenly pb-2">
+                            <a href="{% url 'guitars' %}" class="btn btn-lg btn-gold-outline btn-wide">Members Access to the  <span class="logo-txt">Guitar Vault</span></a>
+                            <a href="{% url 'profile' %}" class="btn btn-lg btn-gold-outline btn-wide">View and Manage Your Profile</a>
+                        </div>
+
+                    {% else %}
+                        <h1 class="gold-special-txt my-4">Welcome to the Guitar Vault</h1>
+
+                        <div class="d-flex justify-content-evenly pb-2">
+                            <a href="{% url 'guitars' %}" class="btn btn-lg btn-gold-outline">Take a peek inside the vault!</a>
+                            <a href="{% url 'subscriptions' %}" class="btn btn-lg btn-gold-outline">New? View our subscription plans</a>
+                        </div>
+                    {% endif %}
                 </div>      
             </div>          <!--Close Welcome row-->
 
