@@ -104,20 +104,22 @@
                                             </li>
 
                                             <li class="list-inline-item w-20 pb-0 align-baseline">
+                                                <!--Prevent 'Add to Rack' icon being displayed if already on loan-->
+                                                {% if guitar.status == 'Available' %}
+                                                    <!--option A : Add to Rack -->
+                                                    <a href="" class="btn btn-sm btn-take align-baseline">
+                                                        <img src="{{ MEDIA_URL }}guitar_gold_add.svg" class="guitar-svg add-gold">
+                                                        <img src="{{ MEDIA_URL }}guitar_black_add.svg" class="guitar-svg add-black">
+                                                        <p class=""><small>Add to Rack</small></p>
+                                                    </a>
 
-                                                <!--option A : Add to Rack -->
-                                                <a href="" class="btn btn-sm btn-take align-baseline">
-                                                    <img src="{{ MEDIA_URL }}guitar_gold_add.svg" class="guitar-svg add-gold">
-                                                    <img src="{{ MEDIA_URL }}guitar_black_add.svg" class="guitar-svg add-black">
-                                                    <p class=""><small>Add to Rack</small></p>
-                                                </a>
-
-                                                <!--option B : Remove from Rack -->
-                                                <a href="" class="btn btn-sm btn-take d-none align-baseline">
-                                                    <img src="{{ MEDIA_URL }}guitar_gold_remove.svg" class="guitar-svg add-gold">
-                                                    <img src="{{ MEDIA_URL }}guitar_black_remove.svg" class="guitar-svg add-black">
-                                                    <p class="ps-2"><small>Remove from Rack</small></p>
-                                                </a>
+                                                    <!--option B : Remove from Rack -->
+                                                    <a href="" class="btn btn-sm btn-take d-none align-baseline">
+                                                        <img src="{{ MEDIA_URL }}guitar_gold_remove.svg" class="guitar-svg add-gold">
+                                                        <img src="{{ MEDIA_URL }}guitar_black_remove.svg" class="guitar-svg add-black">
+                                                        <p class="ps-2"><small>Remove from Rack</small></p>
+                                                    </a>
+                                                {% endif %}
                                             </li>
                                         </ul>
                                     {% endif %}
