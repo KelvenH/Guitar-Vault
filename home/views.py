@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from guitars.models import Guitar
 
+
 # Create your views here.
 def index(request):
     """ View to return the index page """
@@ -26,3 +27,4 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+    
