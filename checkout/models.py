@@ -10,7 +10,7 @@ from members.models import MemberProfile
 
 
 class Order(models.Model):
-    order_number = models.CharField(max_length=32, null=False, editable=False)
+    order_number = models.CharField(max_length=32, null=False)
     member_profile = models.ForeignKey(MemberProfile,
                                        on_delete=models.SET_NULL,
                                        null=True, blank=True,
