@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+    <!--Empty container to push body content below nav bars-->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container-lg h-100">
+        <div class="col-12">
+            <div class="row">
+                <h1 class="gold-special-txt my-4 text-center">Site Administration</h1>
+            </div>
+
+            <div class="main-content px-3">
+                <div class="row p-4">
+                    <div class="col-12">
+                        <h4 class="gold-special-txt text-center my-3 mx-auto inline ">List of all Subscription Orders</h4>
+                        <a href="{% url 'site_admin' %}" class="btn  btn-gold-outline py-2 float-end">Return to Site Admin</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 p-4">
+                        <table class="text-center mx-auto table table-dark table-striped">
+                            <tr class="table-underline">
+                                <th class="">ID</th>
+                                <th class="">Order #</th>
+                                <th class="">Member</th>
+                                <th class="">Tier</th>
+                                <th class="">£ Paid</th>
+                                <th class="">Actions</th>
+                            </tr>
+                            <tr>
+                            {% for order in order_list %}
+                            </tr>
+                            <tr class="pt-5">
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.order_number }}</td>
+                                <td>{{ order.member_profile }}</td>
+                                <td>{{ order.subscription_plan }}</td>
+                                <td>{{ order.subscription_price }}</td>
+                                <td>
+                                    <a href="{% url 'edit_order' order.id %}" class="btn btn-sm btn-outline-success">Amend Order</a>
+                                    <a href="{% url 'delete_order' order.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>          
+    </div>              
+{% endblock %}

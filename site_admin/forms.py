@@ -2,7 +2,8 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
 
-from guitars.models import Guitar, Category
+from guitars.models import Guitar
+from checkout.models import Order
 
 
 class GuitarForm(forms.ModelForm):
@@ -49,26 +50,49 @@ class GuitarForm(forms.ModelForm):
                 Column('neck_wood', css_class='form-group col-6 col-lg-2'),
                 Column('neck_profile', css_class='form-group col-6 col-lg-2'),
             ),
-            Row (
+            Row(
                 Column('pickups_desc', css_class='form-group col-12 col-lg-5'),
                 Column('owners_additional_comments', css_class='form-group col-12 col-lg-5'),
                 Column('favourites', css_class='form-group col-12 col-lg-2'),
             ),
         )
 
-        
-        
-        
-        
-        
-        
-        
-         
-        
-        
-        
-        
-        
-        
-        
-        
+
+class OrderForm(forms.ModelForm):
+
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False 
+        self.helper.layout = Layout(
+            Row(
+                Column('order_number', css_class='form-group col-6 col-lg-2'),
+                Column('member_profile', css_class='form-group col-6 col-lg-2'),
+                Column('full_name', css_class='form-group col-12 col-lg-4'),
+                Column('subscription_plan', css_class='form-group col-6 col-lg-2'),
+                Column('subscription_price', css_class='form-group col-6 col-lg-2'), 
+            ),
+            Row(
+                Column('email', css_class='form-group col-6 col-lg-4'),
+                Column('phone_number', css_class='form-group col-6 col-lg-4'),
+                Column('date', css_class='form-group col-6 col-lg-2'),
+            ),
+            Row(
+                Column('street_address1', css_class='form-group col-6'),
+            ),
+            Row(
+                Column('street_address2', css_class='form-group col-6'),
+            ),
+            Row(
+                Column('town_or_city', css_class='form-group col-6 col-lg-4'),
+                Column('postcode', css_class='form-group col-6 col-lg-2'),
+            ),
+            Row(
+                Column('county', css_class='form-group col-6 col-lg-2'),
+                Column('country', css_class='form-group col-6 col-lg-2'),
+            )
+        )
