@@ -25,7 +25,7 @@
                         <h4>Manage Guitars</h4>
                     </div>
 
-                    <div class="col-8">
+                    <div class="col-8 d-flex justify-content-evenly">
                             <a href="{% url 'guitarlist' %}" class="btn btn-md btn-gold-outline mb-4">Update / Delete Existing Guitar</a>
                             <a href="{% url 'add_guitar' %}" class="btn btn-md btn-gold-outline mb-4">Add New Guitar</a>
                     </div>
@@ -36,14 +36,19 @@
                 <!--Manage Subscriptions-->
                 <div class="row mt-4 d-flex align-items-center">
                     <div class="col-4">
-                        <h4>Manage Subscriptions</h4>
+                        <h4>Manage Subscription Services</h4>
                     </div>
 
                     <div class="col-8">
-                            <a href="{% url 'orderlist' %}" class="btn btn-md btn-gold-outline mb-4">View Orders</a>
-                            <a href="" class="btn btn-md btn-gold-outline mb-4">View / Edit Subscriptions</a>
-                            <a href="" class="btn btn-md btn-gold-outline mb-4">Manage Plectrums</a>
-                            <a href="" class="btn btn-md btn-gold-outline mb-4">Manage Guitar Loan Requests</a>
+                        <div class="row d-flex justify-content-evenly">
+                            <a href="{% url 'orderlist' %}" class="btn btn-md btn-gold-outline mb-1">View & Manage Orders</a>
+                            <a href="{% url 'add_order' %}" class="btn btn-md btn-gold-outline mb-1">Add Order</a>
+                            <p class="text-danger text-end mb-4">Caution: Orders Created directly by-pass payment processes!</p>
+                        </div>
+                        <div class="row d-flex justify-content-evenly">
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">Manage Accounts</a>
+                            <a href="" class="btn btn-md btn-gold-outline mb-4">Manage Guitar Loans </a>
+                        </div>
                     </div>
                     <hr class="mb-0">
                 </div>
