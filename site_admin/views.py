@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.contrib import messages
 from guitars.models import Guitar
 from checkout.models import Order
 from .forms import GuitarForm
 from .forms import OrderForm
+
 
 
 @login_required
@@ -19,15 +21,20 @@ def site_admin(request):
     return render(request, 'site_admin/site_admin.html')
 
 
-class GuitarList(ListView):
-    """ Uses a class view to display all guitar in the database """
 
+class GuitarList(LoginRequiredMixin, ListView):
+    """ Uses a class view to display all guitar in the database """
+    
     template_name = 'site_admin/list_guitars.html'
     model = Guitar
 
 
+@login_required
 def edit_guitar(request, guitar_id):
     """ Edit guitar in the database """
+    # Redirect non-super users to home page
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
 
     guitar = get_object_or_404(Guitar, pk=guitar_id)
 
@@ -54,8 +61,12 @@ def edit_guitar(request, guitar_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_guitar(request, guitar_id):
     """ Delete guitar from the database """
+
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
 
     guitar = get_object_or_404(Guitar, pk=guitar_id)
     guitar.delete()
@@ -63,8 +74,12 @@ def delete_guitar(request, guitar_id):
     return redirect(reverse('guitarlist'))
 
 
+@login_required
 def add_guitar(request):
     """ Add new guitar to the database """
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = GuitarForm(request.POST, request.FILES)
         if form.is_valid():
@@ -84,15 +99,19 @@ def add_guitar(request):
     return render(request, template, context)
 
 
-class OrderList(ListView):
+class OrderList(LoginRequiredMixin, ListView):
     """ Uses a class view to display all orders in the database """
 
     template_name = 'site_admin/list_orders.html'
     model = Order
 
 
+@login_required
 def edit_order(request, order_id):
     """ Edit order in the database """
+
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
 
     order = get_object_or_404(Order, pk=order_id)
 
@@ -119,8 +138,12 @@ def edit_order(request, order_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_order(request, order_id):
     """ Delete order from the database """
+
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
 
     order = get_object_or_404(Order, pk=order_id)
     order.delete()
@@ -128,8 +151,13 @@ def delete_order(request, order_id):
     return redirect(reverse('orderlist'))
 
 
+@login_required
 def add_order(request):
     """ Add new order to the database """
+    
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = OrderForm(request.POST, request.FILES)
         if form.is_valid():

@@ -1,29 +1,35 @@
 from django.db import models
+from django.contrib.auth.models import User
+from checkout.models import Order
 
-"""
 class Accounts(models.Model):
-    
-    Logs history of members subscription plans current and past
-    
-    # match user to member profile
-    member_profile = models.ForeignKey(MemberProfile,
-                                       on_delete=models.SET_NULL,
-                                       null=True, blank=True)
 
-    # get list of subscription plans purchased
-    subscription_plan = models.ForeignKey(Subscription, null=False,
-                                          blank=False,
-                                          on_delete=models.PROTECT)
-    # capture price paid
-    subscription_price = models.DecimalField(max_digits=4, decimal_places=2,
-                                             null=False, default=0)
+    """
+    Members accounts used to track active subscriptions and award plectrums
+    """
+    class Meta:
+        verbose_name_plural = 'Accounts'
+
+    # match user to member profile
+    user = models.ForeignKey(Order, on_delete=models.CASCADE, null=False, blank=False, related_name='accounts_user')
+
+    # get subscription plans purchased
+    subscription_type = models.ForeignKey(Order, on_delete=models.CASCADE, null=False, blank=False, related_name='accounts_sub_type')
 
     # date plan purchased
-    start_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    start_date = models.ForeignKey(Order, on_delete=models.CASCADE, null=False, blank=False,related_name='accounts_start_date')
 
-    # is plan active or cancelled
-    active = models.BooleanField(default=False)
+    # Status (active or cancelled)
+    active = models.BooleanField(default='TRUE')
 
     # date if plan cancelled 
     canx_date = models.DateTimeField(auto_now=False, auto_now_add=False)
-    """
+
+    # Plectrums (loan exchange token)
+    Plec_Plat = models.IntegerField(null=True, blank=True, default=0)
+    Plec_Gold = models.IntegerField(null=True, blank=True, default=0)
+    Plec_Slvr = models.IntegerField(null=True, blank=True, default=0)
+    Plec_Brnz = models.IntegerField(null=True, blank=True, default=0)
+
+    def __str__(self):
+        return self.user.username
