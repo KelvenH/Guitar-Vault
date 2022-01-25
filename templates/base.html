@@ -90,7 +90,7 @@
                       <!--Embedded dropdown menu-->
                       <ul class="dropdown-menu" aria-labelledby="user-profile-options">
                         {% if request.user.is_superuser %}
-                          <li><a class="dropdown-item" href="{% url 'site_admin' %}">
+                          <li><a class="dropdown-item admin-dropdown" href="{% url 'site_admin' %}">
                             Site Admin</a></li>
                         {% endif %}  
                         <li><a class="dropdown-item" href="{% url 'profile' %}">

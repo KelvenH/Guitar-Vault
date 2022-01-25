@@ -33,6 +33,8 @@
     --purple-dark: rgb(85, 85, 170);
     --green: rgb(25, 135, 84);     /* HEX value #198754 */
     --green-dark: rgb(19, 105, 65);
+    --red: rgb(255, 0, 0);
+    --red-dark: rgb(185, 13, 13);
     --transp: rgba(0,0,0,0);
 
 }
@@ -71,6 +73,12 @@ body {
 
 .ivory-txt {
     color:var(--ivory);
+}
+
+/* Utilities */
+
+.inline {
+    display:inline;
 }
 
 /* Gold textured mask */
@@ -154,6 +162,18 @@ body {
     background-color: var(--black);
     border: 2px solid var(--off-gold);
 }
+
+.admin-dropdown {
+    color: var(--red);
+}
+
+.admin-dropdown:focus,
+.admin-dropdown:hover,
+.admin-dropdown:active {
+    color: var(--black);
+    background-color: var(--red-dark);
+}
+
 
 /*--Nav Media Queries (adjustable header container)-----------------------------*/
 

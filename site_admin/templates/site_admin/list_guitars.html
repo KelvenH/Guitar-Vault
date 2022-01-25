@@ -13,22 +13,22 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
+    <div class="container-lg h-100">
         <div class="col-12">
             <div class="row">
                 <h1 class="gold-special-txt my-4 text-center">Site Administration</h1>
             </div>
 
             <div class="main-content px-3">
-                <div class="row">
-                    <div class="col-12 d-flex flex-row justify-content-evenly my-3">
-                        <h4 class="gold-special-txt text-center my-3">List of all Guitars in the Vault</h4>
-                        <a href="{% url 'site_admin' %}" class="btn  btn-gold-outline py-4">Return to Site Admin</a>
+                <div class="row p-4">
+                    <div class="col-12">
+                        <h4 class="gold-special-txt text-center my-3 mx-auto inline ">List of all Guitars in the Vault</h4>
+                        <a href="{% url 'site_admin' %}" class="btn  btn-gold-outline py-2 float-end">Return to Site Admin</a>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 p-4">
                         <table class="text-center mx-auto table table-dark table-striped">
                             <tr class="table-underline">
                                 <th class="">ID</th>
