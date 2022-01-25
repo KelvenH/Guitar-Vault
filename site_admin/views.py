@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView, ListView
 from django.contrib import messages
 from guitars.models import Guitar
 from .forms import GuitarForm
@@ -25,9 +26,9 @@ def add_guitar(request):
     if request.method == 'POST':
         form = GuitarForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            guitar = form.save()
             messages.success(request, 'Another guitar successfully added to the vault!')
-            return redirect(reverse('add_guitar'))
+            return redirect(reverse('guitar_detail', args=[guitar.id]))
         else:
             messages.error(request, 'Oops, computer says NO - check the form for errors')
     else:        
@@ -39,6 +40,13 @@ def add_guitar(request):
     }
 
     return render(request, template, context)
+
+
+""" Uses a class view to display all guitar in the database """
+class GuitarList(ListView):
+    template_name = 'site_admin/list_guitars.html'
+    model = Guitar
+
 
 """ Edit guitar in the database """
 def edit_guitar(request, guitar_id):
@@ -65,3 +73,11 @@ def edit_guitar(request, guitar_id):
     }
 
     return render(request, template, context)
+
+
+""" Delete guitar from the database """
+def delete_guitar(request, guitar_id):
+    guitar = get_object_or_404(Guitar, pk=guitar_id)
+    guitar.delete()
+    messages.success(request, 'Guitar has been deleted from the vault!')
+    return redirect(reverse('site_admin'))

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+    <!--Empty container to push body content below nav bars-->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="col-12">
+            <div class="row">
+                <h1 class="gold-special-txt my-4 text-center">Site Administration</h1>
+            </div>
+
+            <div class="main-content px-3">
+                <div class="row">
+                    <div class="col-12 d-flex flex-row justify-content-evenly my-3">
+                        <h4 class="gold-special-txt text-center my-3">List of all Guitars in the Vault</h4>
+                        <a href="{% url 'site_admin' %}" class="btn  btn-gold-outline py-4">Return to Site Admin</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <table class="text-center mx-auto table table-dark table-striped">
+                            <tr class="table-underline">
+                                <th class="">ID</th>
+                                <th class="">Category</th>
+                                <th class="">Brand</th>
+                                <th class="">Model</th>
+                                <th class="">Tier</th>
+                                <th class="">Status</th>
+                                <th class="">Image</th>
+                                <th class="">Actions</th>
+                            </tr>
+                            <tr>
+                            {% for guitar in guitar_list %}
+                            </tr>
+                            <tr class="pt-5">
+                                <td>{{ guitar.id }}</td>
+                                <td>{{ guitar.category }}</td>
+                                <td>{{ guitar.brand }}</td>
+                                <td>{{ guitar.guitar_model }}</td>
+                                <td>{{ guitar.tier }}</td>
+                                <td>{{ guitar.status }}</td>
+                                <td>
+                                    <a href="{{ guitar.image_id.url }}" target="_blank">
+                                        <img src="{{ guitar.image_id.url }}" class="list-image">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'edit_guitar' guitar.id %}" class="btn btn-sm btn-outline-success">Update</a>
+                                    <a href="{% url 'delete_guitar' guitar.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>          
+    </div>              
+{% endblock %}
