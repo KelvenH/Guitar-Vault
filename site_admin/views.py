@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.contrib import messages
+from django.contrib.auth.models import User
 from guitars.models import Guitar
 from checkout.models import Order
+from .models import Accounts
 from .forms import GuitarForm
 from .forms import OrderForm
 
@@ -172,6 +174,24 @@ def add_order(request):
     template = 'site_admin/add_order.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+
+@login_required
+def AllAccounts(request):
+    """
+    Display Accounts
+    """
+    account = get_object_or_404(Accounts, user=request.user)
+    orders = user.orders.all()
+    
+    template = 'site_admin/accounts.html'
+    context = {
+        'orders': orders,
+        'account': account,
     }
 
     return render(request, template, context)
