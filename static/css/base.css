@@ -52,9 +52,17 @@ body {
 
 .message-container {
     position: fixed;
-    width:100%;
-    bottom:  max(80px, 10vh);
+    top:72px;
+    right:  15px;
     z-index: 99999999999;
+}
+
+.custom-toast{
+    overflow:visible;
+}
+
+.toast-capper {
+    height:2px;
 }
 
 /*-- Text Classes --*/

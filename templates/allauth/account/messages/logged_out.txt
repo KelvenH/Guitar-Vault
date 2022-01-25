@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}{% endblocktrans %}
+{% blocktrans %}You have signed out of Guitar Vault.{% endblocktrans %}

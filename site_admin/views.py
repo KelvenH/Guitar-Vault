@@ -80,4 +80,4 @@ def delete_guitar(request, guitar_id):
     guitar = get_object_or_404(Guitar, pk=guitar_id)
     guitar.delete()
     messages.success(request, 'Guitar has been deleted from the vault!')
-    return redirect(reverse('site_admin'))
+    return redirect(reverse('guitarlist'))

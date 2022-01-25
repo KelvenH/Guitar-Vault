@@ -177,7 +177,9 @@
     {% if messages %}
       <div class="message-container text-center">
         {% for message in messages %}
-          {{ message }}
+        
+          {% include 'includes/toasts/toast_success.html' %}
+          
         {% endfor %}
       </div>
     {% endif %}
@@ -361,6 +363,9 @@
     {% endblock %}
 
     {% block postloadjs %}
+      <script type="text/javascript">
+        $('.toast').toast('show');
+      </script>
     {% endblock %}
    
   </body>
