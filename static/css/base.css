@@ -39,15 +39,20 @@
 
 }
 
-html {
-    height: 100%;
-}
 
 body {
     color:var(--ivory);
     background-color: var(--black);
     font-family: var(--standard-text);
-    padding-bottom: max(80px, 10vh); /*-- retain space for fixed footer */
+}
+
+html, body {
+    height:100%;
+}
+
+body>footer {
+    position:sticky;
+    top:100vh;
 }
 
 .message-container {
@@ -205,17 +210,13 @@ body {
 }
 
 /*-- Footer -----------------------------------------------*/
-#footer {
-    position: fixed;
-    bottom: 0;
+footer {
     width: 100%;
-    height: max(75px, 9vh); /* any changes also need to align with body padding bottom */
-    padding-bottom:2vh;
     background-image: linear-gradient(25deg,
-    var(--gold-dark),
-    var(--gold),
-    var(--off-black) 40%,
-    var(--off-gold)
+        var(--gold-dark),
+        var(--gold),
+        var(--off-black) 40%,
+        var(--off-gold)
     );
 }
 
