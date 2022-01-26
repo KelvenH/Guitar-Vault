@@ -3,13 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.contrib import messages
-from django.contrib.auth.models import User
 from guitars.models import Guitar
 from checkout.models import Order
 from .models import Accounts
 from .forms import GuitarForm
 from .forms import OrderForm
-
 
 
 @login_required
@@ -21,7 +19,6 @@ def site_admin(request):
         return redirect(reverse('home'))
 
     return render(request, 'site_admin/site_admin.html')
-
 
 
 class GuitarList(LoginRequiredMixin, ListView):
@@ -179,19 +176,17 @@ def add_order(request):
     return render(request, template, context)
 
 
-
 @login_required
 def AllAccounts(request):
     """
     Display Accounts
     """
-    account = get_object_or_404(Accounts, user=request.user)
-    orders = user.orders.all()
+    accounts = Accounts.objects.all()
+
     
     template = 'site_admin/accounts.html'
     context = {
-        'orders': orders,
-        'account': account,
+        'accounts': accounts,
     }
 
     return render(request, template, context)

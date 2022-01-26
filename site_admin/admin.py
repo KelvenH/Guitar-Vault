@@ -5,14 +5,13 @@ from .models import Accounts
 class AccountsAdmin(admin.ModelAdmin):
     list_display = (
         'user',
-        'subscription_type',
-        'start_date',
+        'order',
         'active',
         'canx_date',
-        'Plec_Plat',
-        'Plec_Gold',
-        'Plec_Slvr',
-        'Plec_Brnz',
+        'plec_plat',
+        'plec_gold',
+        'plec_slvr',
+        'plec_brnz',
     )
 
     ordering = ('active', 'user')
