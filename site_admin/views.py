@@ -183,22 +183,12 @@ def AllAccounts(request):
     Display Accounts
     """
     accounts = Accounts.objects.all()
-    plec_total = 0
-    
-    # Bug this approach replaces all loop instances with the same result
-    
-    # combine all tier plectrum values into single total 
-    for account in accounts:
-        plat = account.plec_plat
-        gold = account.plec_gold
-        silver = account.plec_slvr
-        bronze = account.plec_brnz
-        plec_total = plat + gold + silver + bronze
-    
+        
+       
     template = 'site_admin/accounts.html'
     context = {
         'accounts': accounts,
-        'plec_total': plec_total,
+
     }
 
     return render(request, template, context)
@@ -220,7 +210,7 @@ def canx_account(request, id):
 @login_required
 def award_plectrums(request):
     """
-    Update Plectrum Balances; for project purposes, this function will reward 1 plectrum (internal exchange token) for the respective tier, in 'real-world' this would need to incorporate a diarised mechanism to only operate on a monthly cycle.
+    Update Plectrum Balances; for project purposes, this function will reward 1 plectrum (internal exchange token), in 'real-world' this would need to incorporate a diarised mechanism to only operate on a monthly cycle.
     """
     accounts = Accounts.objects.all()
         
@@ -229,26 +219,29 @@ def award_plectrums(request):
         active = account.active
 
         if bool(active) == True:        
-            print(bool(active))
+            account.plectrum_balance += 1
+            account.save()
 
-            if str(plan) == "Platinum":
-                account.plec_plat += 1
-                account.save()
-
-            elif str(plan) == "Gold":
-                account.plec_gold += 1
-                account.save()
-
-            elif str(plan) == "Silver":
-                account.plec_slvr += 1    
-                account.save()
-
-            elif str(plan) == "Bronze":
-                account.plec_brnz += 1
-                account.save()
-
-            else:
-                messages.error(request, 'There was an error.  \
-                    Please check plectrums updated correctly')
+        else:
+            messages.error(request, 'There was an error.  \
+                Please check plectrums updated correctly')
      
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def new_account(request):
+    """
+    Identify new orders which require an account to be created
+      orders = Order.objects.values_list('order_number', flat=True)
+    print("Orders =", orders)
+    
+    accounts = Accounts.objects.all()    
+    for account in accounts:
+        order_no = account.order    
+        print("Account order =", order_no)
+    """
+  
+    unmatched = Order.objects.filter(order_number__in=Accounts.objects.values_list('order', flat=True))
+    print(unmatched)
+    
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

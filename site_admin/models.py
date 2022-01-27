@@ -30,10 +30,8 @@ class Accounts(models.Model):
     canx_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
 
     # Plectrums (loan exchange token)
-    plec_plat = models.IntegerField(null=True, blank=True, default=0)
-    plec_gold = models.IntegerField(null=True, blank=True, default=0)
-    plec_slvr = models.IntegerField(null=True, blank=True, default=0)
-    plec_brnz = models.IntegerField(null=True, blank=True, default=0)
+    plectrum_balance = models.IntegerField(null=True, blank=True, default=0)
+
 
     def __str__(self):
         return self.user.username

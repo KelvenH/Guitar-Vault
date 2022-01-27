@@ -8,12 +8,9 @@ class AccountsAdmin(admin.ModelAdmin):
         'order',
         'active',
         'canx_date',
-        'plec_plat',
-        'plec_gold',
-        'plec_slvr',
-        'plec_brnz',
+        'plectrum_balance',
     )
 
-    ordering = ('active',)
+    ordering = ('-active', '-user',)
 
 admin.site.register(Accounts, AccountsAdmin)
