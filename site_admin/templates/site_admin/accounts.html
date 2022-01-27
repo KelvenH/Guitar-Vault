@@ -12,24 +12,72 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="col-12">
-            <div class="row">
-                <h1 class="gold-special-txt my-4 text-center">Site Administration</h1>
-            </div>
-            <div class="row main-content">
-
-                <!--Manage Guitars-->
-                <div class="row mt-4 d-flex align-items-center">
-                    <div class="col-4">
-                        <h4>Accounts</h4>
-                    </div>
-
-                    
+    <div class="container-lg">
+        {% if request.user.is_superuser %}
+            <div class="col-12">
+                <div class="row">
+                    <h1 class="gold-special-txt my-4 text-center">Site Administration</h1>
                 </div>
 
+                <div class="main-content px-3">
+                    <div class="row p-4">
+                        <div class="col-12">
+                            <h4 class="gold-special-txt text-center my-3 mx-auto inline ">Accounts</h4>
+                            <a href="{% url 'site_admin' %}" class="btn  btn-gold-outline py-2 float-end">Return to Site Admin</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 p-4">
+                            <table class="text-center mx-auto table table-dark table-striped">
+                                <tr class="table-underline">
+                                    <th class="">Member</th>
+                                    <th class="">Tier</th>
+                                    <th class="">Date Joined</th>
+                                    <th class="">Plan Status</th>
+                                    <th class="">Date Canx (if applic.)</th>
+                                    <th class="">Plectrum Balance</th>
+                                    <th class="">Actions</th>
+                                </tr>
+                                <tr>
+                                {% for account in accounts %}
+                                </tr>
+                                <tr class="pt-5">
+                                    <td>{{ account.user }}</td>
+                                    <td>{{ account.order.subscription_plan }}</td>
+                                    <td>{{ account.order.date }}</td>
+                                    <td>{{ account.active|yesno:"Active,Cancelled" }}</td>
+                                    <td>{{ account.canx_date|default_if_none:"-" }}</td>
+                                    <td>{{ plec_total }}</td>
+                                    <td>
+                                        <a href="{% url 'canx_account' account.id %}" class="btn btn-sm btn-outline-danger">Cancel</a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <p> There are no accounts!
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    <!--Button to Award Monthly Token-->
+                    <div class="row">
+                        <p>This operation is performed to increase ALL plectrum balances by 1.</p>
+                        <a href="{% url 'award_plectrums' %}" class="btn btn-sm btn-outline-success">Award Plectrums</a>
+                        <p class="text-muted">Note: this is for project purposes only, a deloped version would need to incorporate logic to limit increase once per month linked to the accounts start date</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+        <div>
+            <div class="col-12">
+                <div class="row">
+                    <h1 class="gold-special-txt my-4 text-center">Resticted Access</h1>
+                    <a href="{% url 'home' %}" class="btn btn-md btn-gold-outline mx-auto">Please Return to the Home Page</a>
+                </div>
             </div>
         </div>
-    </div>
+        {% endif %}
+    </div>              
+
   
 {% endblock %}

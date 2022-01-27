@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponseRedirect
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
@@ -182,11 +183,72 @@ def AllAccounts(request):
     Display Accounts
     """
     accounts = Accounts.objects.all()
-
+    plec_total = 0
+    
+    # Bug this approach replaces all loop instances with the same result
+    
+    # combine all tier plectrum values into single total 
+    for account in accounts:
+        plat = account.plec_plat
+        gold = account.plec_gold
+        silver = account.plec_slvr
+        bronze = account.plec_brnz
+        plec_total = plat + gold + silver + bronze
     
     template = 'site_admin/accounts.html'
     context = {
         'accounts': accounts,
+        'plec_total': plec_total,
     }
 
     return render(request, template, context)
+
+
+@login_required
+def canx_account(request, id):
+    """
+    Function to ammend account status to cancelled
+    """
+    account = get_object_or_404(Accounts, id=id)
+    account.active = False
+    account.canx_date = datetime.now()
+    account.save()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def award_plectrums(request):
+    """
+    Update Plectrum Balances; for project purposes, this function will reward 1 plectrum (internal exchange token) for the respective tier, in 'real-world' this would need to incorporate a diarised mechanism to only operate on a monthly cycle.
+    """
+    accounts = Accounts.objects.all()
+        
+    for account in accounts:
+        plan = account.order.subscription_plan
+        active = account.active
+
+        if bool(active) == True:        
+            print(bool(active))
+
+            if str(plan) == "Platinum":
+                account.plec_plat += 1
+                account.save()
+
+            elif str(plan) == "Gold":
+                account.plec_gold += 1
+                account.save()
+
+            elif str(plan) == "Silver":
+                account.plec_slvr += 1    
+                account.save()
+
+            elif str(plan) == "Bronze":
+                account.plec_brnz += 1
+                account.save()
+
+            else:
+                messages.error(request, 'There was an error.  \
+                    Please check plectrums updated correctly')
+     
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

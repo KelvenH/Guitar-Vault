@@ -45,7 +45,7 @@ def checkout(request):
         else:
             messages.error(request, 'There was an error with your form \
                 Please check your information')
-            print(order_form.errors)
+            
 
     else:
         bag = request.session.get('bag', {})

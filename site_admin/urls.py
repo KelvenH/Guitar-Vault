@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
     path('', views.site_admin, name='site_admin'),
     path('accounts/', views.AllAccounts, name='accounts'),
+    path('canx_account/<int:id>/', views.canx_account, name='canx_account'),
+    path('award_plectrums/', views.award_plectrums, name='award_plectrums'),
     path('listguitars/', views.GuitarList.as_view(), name='guitarlist'),
     path('addguitars/', views.add_guitar, name='add_guitar'),
     path('editguitars/<int:guitar_id>/', views.edit_guitar, name='edit_guitar'),

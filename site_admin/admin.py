@@ -14,6 +14,6 @@ class AccountsAdmin(admin.ModelAdmin):
         'plec_brnz',
     )
 
-    ordering = ('active', 'user')
+    ordering = ('active',)
 
 admin.site.register(Accounts, AccountsAdmin)

@@ -12,20 +12,20 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
+    <div class="container">
         <div class="row">
             <div class="col text-center logo-txt gold-special-txt display-4 mt-5 mb-5">
                 Guitars
             </div>
         </div>
-        <div class="row h-100">
+        <div class="row">
             <div class="col main-content-col my-auto">
                 <div class="row">
                     
                     {% for guitar in guitars %}
 
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                            <div class="card bg-dark guitar-card h-100 gold-accent-outline">
+                            <div id="guitar-card-{{ guitar.id }}" class="card bg-dark guitar-card gold-accent-outline">
 
                                 <!--card image -->
                                 {% if guitar.image_id %}
@@ -108,14 +108,14 @@
                                                 
                                                 {% if request.user in guitar.favourites.all %}
                                                     <!--option A : Remove Favourite -->
-                                                    <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm  btn-remove-fav align-baseline">
+                                                    <a href="{% url 'favourite_add' guitar.id %}#guitar-card-{{ guitar.id }}" class="btn btn-sm  btn-remove-fav align-baseline">
                                                         <i class="fas fa-heart fa-2x"></i>
                                                         <p class=""><small>Remove Favourite</small></p>
                                                     </a>
 
                                                 {% else %}
                                                     <!--option B : Add Favourite -->
-                                                    <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm btn-add-fav align-baseline">
+                                                    <a href="{% url 'favourite_add' guitar.id %}#guitar-card-{{ guitar.id }}" class="btn btn-sm btn-add-fav align-baseline">
                                                         <i class="far fa-heart fa-2x"></i>
                                                         <p class=""><small>Add Favourite</small></p>
                                                     </a>

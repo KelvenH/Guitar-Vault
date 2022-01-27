@@ -294,7 +294,7 @@ Additionally, the cards are held in parent Bootstrap columns so as layout provid
                     {% for guitar in guitars %}
 
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                            <div class="card bg-dark guitar-card h-100 gold-accent-outline">
+                            <div class="card bg-dark guitar-card gold-accent-outline">
 
                                 <!--card image -->
                                 {% if guitar.image_id %}

@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
+    <div class="container">
         <div class="col-12">
             <div class="row">
                 <h1 class="gold-special-txt my-4 text-center">Site Administration</h1>
@@ -42,11 +42,11 @@
                     <div class="col-8">
                         <div class="row d-flex justify-content-evenly">
                             <a href="{% url 'orderlist' %}" class="btn btn-md btn-gold-outline mb-1">View & Manage Orders</a>
-                            <a href="{% url 'add_order' %}" class="btn btn-md btn-gold-outline mb-1">Add Order</a>
-                            <p class="text-danger text-end mb-4">Caution: Orders Created directly by-pass payment processes!</p>
+                            <a href="{% url 'add_order' %}" class="btn btn-md btn-gold-outline mb-1">Add Order <small class="text-danger">[FOR TESTING ONLY]</small></a>
+                            <p class="text-danger text-end mb-4">Caution: Orders created directly by-pass payment processes!</p>
                         </div>
                         <div class="row d-flex justify-content-evenly">
-                            <a href="" class="btn btn-md btn-gold-outline mb-4">Manage Accounts</a>
+                            <a href="{% url 'accounts' %}" class="btn btn-md btn-gold-outline mb-4">Manage Accounts</a>
                             <a href="" class="btn btn-md btn-gold-outline mb-4">Manage Guitar Loans </a>
                         </div>
                     </div>
@@ -60,8 +60,9 @@
                     </div>
 
                     <div class="col-8">
-                        <p>Please use the pre-built forms above to manage items. A link to the main admin panel has been provided should the required action not be available via the forms and should be used as a last resort.</p>
-                        <a href="{% url 'admin:index' %}" class="btn btn-lg btn-wide btn-outline-danger mb-4">Link to the admin console</a>
+                        <p><strong>Please use the pre-built forms above to manage items.</strong></p>
+                        <p>A link to the main admin panel has been provided where the required action is not available via the forms (e.g. validate user's email).</p>
+                        <a href="{% url 'admin:index' %}" class="btn btn-lg btn-wide btn-outline-danger mb-4" target="_blank">Link to the admin console</a>
                     </div>
                     <hr class="mb-0">
                 </div>

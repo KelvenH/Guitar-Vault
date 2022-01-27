@@ -10,8 +10,17 @@ class Accounts(models.Model):
     class Meta:
         verbose_name_plural = 'Accounts'
 
-    # match user to member profile
+    # match account to a user
+    
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # creates error in admin console "Accounts with this User already exists."
+    
+    #user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # django error "UNIQUE constraint failed"
+
+    #user = models.ManyToManyField(User)
+    # creates error in terminal "..must not be ManyToManyField"
+
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
     
     # Status (active or cancelled)

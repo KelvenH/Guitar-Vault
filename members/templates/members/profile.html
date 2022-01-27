@@ -117,6 +117,8 @@
                                     <th class="small-table-col">[display plectrum balance]</th>
                                     <th><button type="button" class="btn btn-sm btn-outline-danger">Cancel Subscription</button></th>
                                 </tr>
+                            {% empty %}
+                            <div class="text-danger">You have not purchased any plans</div>
                             {% endfor %}
                         </table>
                     </div>
@@ -140,6 +142,8 @@
                                     <th>{{ order.subscription_plan }}</th>
                                     <th>£{{ order.subscription_price }}</th>
                                 </tr>
+                            {% empty %}
+                                <div class="text-danger">You have not purchased any plans</div>
                             {% endfor %}
                         </table>
                     </div>    
@@ -185,7 +189,7 @@
                     {% endif %}
                 <!--OUTSTANDING BUG: Empty tag is not displaying if user has no favourite guitars?-->
                 {% empty %}
-                    <p class="text-center">You have no favourite guitars.</p>
+                    <div class="text-center">You have not added any favourite guitars.</div>
                 {% endfor %}    
             </div> <!--close Favourite guitars-->
 
