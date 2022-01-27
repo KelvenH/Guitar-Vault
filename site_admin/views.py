@@ -229,19 +229,3 @@ def award_plectrums(request):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def new_account(request):
-    """
-    Identify new orders which require an account to be created
-      orders = Order.objects.values_list('order_number', flat=True)
-    print("Orders =", orders)
-    
-    accounts = Accounts.objects.all()    
-    for account in accounts:
-        order_no = account.order    
-        print("Account order =", order_no)
-    """
-  
-    unmatched = Order.objects.filter(order_number__in=Accounts.objects.values_list('order', flat=True))
-    print(unmatched)
-    
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

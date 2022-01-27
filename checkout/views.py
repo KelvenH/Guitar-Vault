@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
-
 import stripe
 from subscriptions.models import Subscription
 from members.forms import MemberProfileForm
 from members.models import MemberProfile
+from site_admin.models import Accounts
 from bag.contexts import bag_contents
 from .models import Order
 from .forms import OrderForm
@@ -106,8 +106,8 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
-        profile = MemberProfile.objects.get(user=request.user)
         # Attach user's profile to the order
+        profile = MemberProfile.objects.get(user=request.user)
         order.member_profile = profile
         order.save()
         profile_data = {
@@ -121,8 +121,8 @@ def checkout_success(request, order_number):
         }
         member_profile_form = MemberProfileForm(profile_data, instance=profile)
         if member_profile_form.is_valid():
-            member_profile_form.save()
-
+            member_profile_form.save() 
+        
     if 'bag' in request.session:
         del request.session['bag']
 
@@ -132,3 +132,5 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
