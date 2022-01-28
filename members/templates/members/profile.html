@@ -117,7 +117,13 @@
                                     <tr class="pt-5">
                                         <td>{{ account.order.subscription_plan }}</td>
                                         <td class="small-table-col">{{ account.plectrum_balance }}</td>
-                                        <td><a href="{% url 'user_canx_request' account.id %}" class="btn btn-sm btn-outline-danger">Cancel Subscription</a></td> 
+                                        <td>
+                                        {% if account.canx_requested %}
+                                            <a href="{% url 'user_canx_request' account.id %}" class="btn btn-sm btn-outline-warning">Cancellation  Pending<br>(re-click to undo)</a>
+                                        {% else %}
+                                            <a href="{% url 'user_canx_request' account.id %}" class="btn btn-sm btn-outline-info">Cancel Subscription</a>
+                                        {% endif %}
+                                        </td> 
                                     </tr>
                                 {% endif %}
                             {% empty %}

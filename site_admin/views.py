@@ -220,11 +220,13 @@ def user_canx_request(request, id):
     Enable user to send a cancellation request for action by admin, button
     acts as a toggle should user change mind prior admin cancelling account
     """
-    account = get_object_or_404(Accounts, id=id)
-    if account.canx_requested == False:
-        account.canx_requested == True
+    account = get_object_or_404(Accounts, pk=id)
+    # if user has not already requested cancellation, set status to True
+    if not account.canx_requested:
+        account.canx_requested=True
+    # if already True, revert to False
     else:
-        account.canx_requested == False
+        account.canx_requested=False
     account.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
