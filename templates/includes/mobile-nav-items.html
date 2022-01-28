@@ -64,11 +64,8 @@
                   <img src="{{ MEDIA_URL }}guitarpick.svg" class="guitar-svg add-gold">
                 </div>
                 <p class="my-0 text-center">
-                  {% if picks_total %}
-                    {{ picks_total }}
-                  {% else %}
-                    0
-                  {% endif %}
+                  <!-- note, plectrum calculation at members/contexts.py -->
+                  {{ user_plec_balance }}
                 </p>
               </a>
             </li>
@@ -77,16 +74,3 @@
       </li>
     </ul> <!-- close all Profile and Shopping / Pick list items -->
   </div> <!--close Profile col-->
-
-
-
-
-
-
-  
-  
-  
- 
- 
-
-  
