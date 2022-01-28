@@ -14,7 +14,7 @@ class Accounts(models.Model):
     class Meta:
         verbose_name_plural = 'Accounts'
 
-    # match account to a user
+    # match order for account 
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
 
     # Status (active or cancelled)

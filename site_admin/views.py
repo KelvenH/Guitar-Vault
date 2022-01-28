@@ -178,7 +178,7 @@ def add_order(request):
 
 
 @login_required
-def AllAccounts(request):
+def list_accounts(request):
     """
     Display Accounts
     """
@@ -188,7 +188,6 @@ def AllAccounts(request):
     template = 'site_admin/accounts.html'
     context = {
         'accounts': accounts,
-
     }
 
     return render(request, template, context)

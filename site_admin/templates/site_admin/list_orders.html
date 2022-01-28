@@ -53,6 +53,8 @@
                                         <a href="{% url 'delete_order' order.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
                                     </td>
                                 </tr>
+                                {% empty %}
+                                <h4 class="text-danger text center"> There are no orders!</h4>
                                 {% endfor %}
                             </table>
                         
