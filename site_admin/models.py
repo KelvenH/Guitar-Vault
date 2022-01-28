@@ -15,7 +15,7 @@ class Accounts(models.Model):
         verbose_name_plural = 'Accounts'
 
     # match order for account 
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True, related_name='accounts')
 
     # Status (active or cancelled)
     active = models.BooleanField(default=True)

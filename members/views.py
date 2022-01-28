@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import MemberProfile
 from .forms import MemberProfileForm
+from site_admin.models import Accounts
 from checkout.models import Order
 from guitars.models import Guitar
 
@@ -15,6 +16,7 @@ def profile(request):
     """
     profile = get_object_or_404(MemberProfile, user=request.user)
     orders = profile.orders.all()
+    accounts = Accounts.objects.all()
     guitars = Guitar.objects.all()
     
     if request.method == 'POST':
@@ -31,6 +33,7 @@ def profile(request):
     context = {
         'form': form,
         'orders': orders,
+        'accounts': accounts,
         'guitars': guitars,
     }
 

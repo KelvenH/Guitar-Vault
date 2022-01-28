@@ -102,21 +102,24 @@
                 <!-- Subscription Col (right col on md+)-->
                 <div class="col-12 col-md-6 ps-4">
 
-                    <!-- Active Subscription Plan -->
+                    <!-- Active Subscription Plans -->
                     <div class="row mb-5">
                         <h4 class="pb-3 gold-txt profile-header"><span id="manage-subscriptions"></span>Active Subscription Plan(s)</h4>
+                          
                         <table class="text-center mx-auto table table-dark table-striped">
                             <tr class="table-underline">
                                 <th class="small-table-col">Tier</th>
-                                <th class="small-table-col">Unspent Plectrums</th>
+                                <th class="small-table-col">Plectrums Available</th>
                                 <th class="small-table-col">Manage Subscription(s)</th>
                             </tr>
-                            {% for order in orders %} 
-                                <tr class="pt-5">
-                                    <th>{{ order.subscription_plan }}</th>
-                                    <th class="small-table-col">[display plectrum balance]</th>
-                                    <th><button type="button" class="btn btn-sm btn-outline-danger">Cancel Subscription</button></th>
-                                </tr>
+                            {% for account in accounts %}
+                                {% if account.order.member_profile.user == request.user and account.active %}
+                                    <tr class="pt-5">
+                                        <th>{{ account.order.subscription_plan }}</th>
+                                        <th class="small-table-col">{{ account.plectrum_balance }}</th>
+                                        <th><button type="button" class="btn btn-sm btn-outline-danger">Cancel Subscription</button></th>
+                                    </tr>
+                                {% endif %}
                             {% empty %}
                             <div class="text-danger">You have not purchased any plans</div>
                             {% endfor %}
@@ -130,18 +133,22 @@
 
                         <table class="text-center mx-auto subs-table">
                             <tr>
-                                <th>Order No.</th>
-                                <th>Date Started</th>
-                                <th>Tier</th>
-                                <th>Monthly Fee</th>
+                                <th class="gold-txt">Order No.</th>
+                                <th class="gold-txt">Date Started</th>
+                                <th class="gold-txt">Tier</th>
+                                <th class="gold-txt">Monthly Fee</th>
+                                <th class="gold-txt">Status</th>
                             </tr>
-                            {% for order in orders %} 
-                                <tr>
-                                    <th>{{ order.order_number|truncatechars:14 }}</th>
-                                    <th>{{ order.date|date:"DATE_FORMAT" }}</th>
-                                    <th>{{ order.subscription_plan }}</th>
-                                    <th>£{{ order.subscription_price }}</th>
-                                </tr>
+                            {% for account in accounts %}
+                                {% if account.order.member_profile.user == request.user %} 
+                                    <tr>
+                                        <th>{{ account.order.order_number|truncatechars:14 }}</th>
+                                        <th>{{ account.order.date|date:"DATE_FORMAT" }}</th>
+                                        <th>{{ account.order.subscription_plan }}</th>
+                                        <th>£{{ account.order.subscription_price }}</th>
+                                        <th class="{% if account.active %}text-success{% else %}text-danger{% endif %}">{{ account.active|yesno:"Active,Cancelled" }}</th>
+                                    </tr>
+                                {% endif %}
                             {% empty %}
                                 <div class="text-danger">You have not purchased any plans</div>
                             {% endfor %}
