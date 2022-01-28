@@ -43,7 +43,7 @@
                                 {% for account in accounts %}
                                 </tr>
                                 <tr class="pt-5">
-                                    <td>{{ account.user }}</td>
+                                    <td>{{ account.order.member_profile }}</td>
                                     <td>{{ account.order.subscription_plan }}</td>
                                     <td>{{ account.order.date }}</td>
                                     <td>{{ account.active|yesno:"Active,Cancelled" }}</td>
