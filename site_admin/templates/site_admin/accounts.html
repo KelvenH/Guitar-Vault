@@ -36,6 +36,7 @@
                                     <th class="">Tier</th>
                                     <th class="">Date Joined</th>
                                     <th class="">Plan Status</th>
+                                    <th class="">Cancellation Requested</th>
                                     <th class="">Date Canx (if applic.)</th>
                                     <th class="">Plectrum Balance</th>
                                     <th class="">Actions</th>
@@ -49,6 +50,15 @@
                                     <td>{{ account.order.subscription_plan }}</td>
                                     <td>{{ account.order.date }}</td>
                                     <td>{{ account.active|yesno:"Active,Cancelled" }}</td>
+                                    <td class="
+                                        {% if account.canx_requested %}
+                                            {% if account.active %}
+                                                text-danger
+                                            {% else %}
+                                                text-success
+                                            {% endif %}
+                                        {% endif %}">
+                                        {{ account.canx_requested|yesno:"YES!, " }}</td>
                                     <td>{{ account.canx_date|default_if_none:"-" }}</td>
                                     <td>{{ account.plectrum_balance }}</td>
                                     <td>

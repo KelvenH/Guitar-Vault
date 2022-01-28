@@ -13,7 +13,9 @@ from .forms import OrderForm
 
 @login_required
 def site_admin(request):
-    """ View to display the admin page """
+    """ 
+    View to display the admin page
+    """
 
     # Redirect non-super users to home page
     if not request.user.is_superuser:
@@ -23,15 +25,20 @@ def site_admin(request):
 
 
 class GuitarList(LoginRequiredMixin, ListView):
-    """ Uses a class view to display all guitar in the database """
-    
+    """
+    Uses a class view to display all guitar in the database
+    """
+
     template_name = 'site_admin/list_guitars.html'
     model = Guitar
 
 
 @login_required
 def edit_guitar(request, guitar_id):
-    """ Edit guitar in the database """
+    """ 
+    Edit guitar in the database
+    """
+
     # Redirect non-super users to home page
     if not request.user.is_superuser:
         return redirect(reverse('home'))
@@ -63,7 +70,9 @@ def edit_guitar(request, guitar_id):
 
 @login_required
 def delete_guitar(request, guitar_id):
-    """ Delete guitar from the database """
+    """
+    Delete guitar from the database
+    """
 
     if not request.user.is_superuser:
         return redirect(reverse('home'))
@@ -76,7 +85,10 @@ def delete_guitar(request, guitar_id):
 
 @login_required
 def add_guitar(request):
-    """ Add new guitar to the database """
+    """
+    Add new guitar to the database
+    """
+
     if not request.user.is_superuser:
         return redirect(reverse('home'))
 
@@ -100,7 +112,9 @@ def add_guitar(request):
 
 
 class OrderList(LoginRequiredMixin, ListView):
-    """ Uses a class view to display all orders in the database """
+    """
+    Uses a class view to display all orders in the database
+    """
 
     template_name = 'site_admin/list_orders.html'
     model = Order
@@ -108,7 +122,9 @@ class OrderList(LoginRequiredMixin, ListView):
 
 @login_required
 def edit_order(request, order_id):
-    """ Edit order in the database """
+    """
+    Edit order in the database
+    """
 
     if not request.user.is_superuser:
         return redirect(reverse('home'))
@@ -140,7 +156,9 @@ def edit_order(request, order_id):
 
 @login_required
 def delete_order(request, order_id):
-    """ Delete order from the database """
+    """
+    Delete order from the database
+    """
 
     if not request.user.is_superuser:
         return redirect(reverse('home'))
@@ -153,8 +171,11 @@ def delete_order(request, order_id):
 
 @login_required
 def add_order(request):
-    """ Add new order to the database """
-    
+    """
+    Add new order to the database - note only included for project admin 
+    testing purposes as directly creating orders bypass payment processes
+    """
+
     if not request.user.is_superuser:
         return redirect(reverse('home'))
 
@@ -194,6 +215,22 @@ def list_accounts(request):
 
 
 @login_required
+def user_canx_request(request, id):
+    """
+    Enable user to send a cancellation request for action by admin, button
+    acts as a toggle should user change mind prior admin cancelling account
+    """
+    account = get_object_or_404(Accounts, id=id)
+    if account.canx_requested == False:
+        account.canx_requested == True
+    else:
+        account.canx_requested == False
+    account.save()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
 def canx_account(request, id):
     """
     Function to ammend account status to cancelled
@@ -209,7 +246,9 @@ def canx_account(request, id):
 @login_required
 def award_plectrums(request):
     """
-    Update Plectrum Balances; for project purposes, this function will reward 1 plectrum (internal exchange token), in 'real-world' this would need to incorporate a diarised mechanism to only operate on a monthly cycle.
+    Update Plectrum Balances; for project purposes, this function will reward
+    1 plectrum (internal exchange token), in 'real-world' this would need to
+    incorporate a diarised mechanism to only operate on a monthly cycle.
     """
     accounts = Accounts.objects.all()
         

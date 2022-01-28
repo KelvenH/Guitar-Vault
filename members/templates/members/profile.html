@@ -115,9 +115,9 @@
                             {% for account in accounts %}
                                 {% if account.order.member_profile.user == request.user and account.active %}
                                     <tr class="pt-5">
-                                        <th>{{ account.order.subscription_plan }}</th>
-                                        <th class="small-table-col">{{ account.plectrum_balance }}</th>
-                                        <th><button type="button" class="btn btn-sm btn-outline-danger">Cancel Subscription</button></th>
+                                        <td>{{ account.order.subscription_plan }}</td>
+                                        <td class="small-table-col">{{ account.plectrum_balance }}</td>
+                                        <td><a href="{% url 'user_canx_request' account.id %}" class="btn btn-sm btn-outline-danger">Cancel Subscription</a></td> 
                                     </tr>
                                 {% endif %}
                             {% empty %}
@@ -142,11 +142,11 @@
                             {% for account in accounts %}
                                 {% if account.order.member_profile.user == request.user %} 
                                     <tr>
-                                        <th>{{ account.order.order_number|truncatechars:14 }}</th>
-                                        <th>{{ account.order.date|date:"DATE_FORMAT" }}</th>
-                                        <th>{{ account.order.subscription_plan }}</th>
-                                        <th>£{{ account.order.subscription_price }}</th>
-                                        <th class="{% if account.active %}text-success{% else %}text-danger{% endif %}">{{ account.active|yesno:"Active,Cancelled" }}</th>
+                                        <td>{{ account.order.order_number|truncatechars:14 }}</td>
+                                        <td>{{ account.order.date|date:"DATE_FORMAT" }}</td>
+                                        <td>{{ account.order.subscription_plan }}</td>
+                                        <td>£{{ account.order.subscription_price }}</td>
+                                        <td class="{% if account.active %}text-success{% else %}text-danger{% endif %}">{{ account.active|yesno:"Active,Cancelled" }}</td>
                                     </tr>
                                 {% endif %}
                             {% empty %}

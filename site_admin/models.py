@@ -14,13 +14,16 @@ class Accounts(models.Model):
     class Meta:
         verbose_name_plural = 'Accounts'
 
-    # match order for account 
+    # match order for account
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True, related_name='accounts')
 
     # Status (active or cancelled)
     active = models.BooleanField(default=True)
 
-    # date if plan cancelled 
+    # Canx Requested by user
+    canx_requested = models.BooleanField(default=False)
+
+    # date if plan cancelled
     canx_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
 
     # Plectrums (loan exchange token)

@@ -6,6 +6,7 @@ class AccountsAdmin(admin.ModelAdmin):
     list_display = (
         'order',
         'active',
+        'canx_requested',
         'canx_date',
         'plectrum_balance',
     )

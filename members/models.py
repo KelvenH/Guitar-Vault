@@ -8,7 +8,7 @@ from django_countries.fields import CountryField
 
 class MemberProfile(models.Model):
     """
-    Member profile page holding personal information
+    Member profile page holding personal information with 1to1 relationship with user model
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone_number = models.CharField(max_length=20, null=True, blank=True)
@@ -26,9 +26,10 @@ class MemberProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
-    Create or update the user profile
+    Create or update the user profile following a save to the User model 
     """
     if created:
+        # Create a new profile instance for new user registrations
         MemberProfile.objects.create(user=instance)
-    # Existing users: just save the profile
+    # Update existing profile for existing users
     instance.memberprofile.save()
