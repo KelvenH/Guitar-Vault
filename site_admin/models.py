@@ -31,9 +31,8 @@ class Accounts(models.Model):
     # Plectrums (loan exchange token)
     plectrum_balance = models.IntegerField(null=True, blank=True, default=1)
 
-
     def __str__(self):
-        return self.order
+        return str(self.order)
 
 # Reciver listens for new orders and creates new account
 @receiver(post_save, sender=Order)
@@ -80,5 +79,5 @@ class Guitar_Loans(models.Model):
     returned_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
 
     def __str__(self):
-        return self.guitar.id
+        return str(self.guitar.id)
 
