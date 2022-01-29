@@ -304,6 +304,11 @@ footer {
     min-width:150px;
 }
 
+/*-- retains overall guitar card height when Add to Rack icon not rendered --*/
+.not-available-spacer{
+    min-height:3.5rem;
+}
+
 /*---Index.html-------------------------------------------*/
 
 
