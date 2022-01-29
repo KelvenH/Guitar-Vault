@@ -106,25 +106,8 @@
                                             <li class="list-inline-item w-20 pb-0 align-bottom">
                                                 <!--Prevent 'Add to Rack' icon being displayed if already on loan-->
                                                 {% if guitar.status == 'Available' %}
-                                                    
-                                                    <!--BUG DUAL FILTER NOT WORKING-->
-                                                    {% if guitar.id == loans.guitar and request.user == loans.user %}
-
-                                                    <!--option B : Remove from Rack -->
-                                                    <form method="POST" action="{% url 'request_guitar' guitar.id %}">
-                                                        {% csrf_token %}
-                                                        <button class="btn btn-sm btn-take d-none align-bottom" type="submit">
-                                                            <!--Pre-hover state-->
-                                                            <img src="{{ MEDIA_URL }}guitar_gold_remove.svg" class="guitar-svg add-gold">
-                                                            <!--Hover state-->
-                                                            <img src="{{ MEDIA_URL }}guitar_black_remove.svg" class="guitar-svg add-black">
-                                                            <p class="ps-2"><small>Remove from Rack</small></p>
-                                                        </button>
-                                                    </form>
-
-                                                    {% else %}
-                                                    
-                                                    <!--option A : Add to Rack -->
+                                                                                                
+                                                    <!-- Add to Rack -->
                                                     <form method="POST" action="{% url 'request_guitar' guitar.id %}">
                                                         {% csrf_token %}
                                                         <button class="btn btn-sm btn-take align-bottom" type="submit">
@@ -136,8 +119,6 @@
                                                         </button>
                                                     </form>
 
-                                                    
-                                                    {% endif %}
                                                 {% endif %}
                                             </li>
                                         </ul>

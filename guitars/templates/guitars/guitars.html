@@ -103,7 +103,7 @@
                                     <!-- icons displayed for users logged in -->
                                     
                                     {% if request.user.is_authenticated %}
-                                        <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-baseline">
+                                        <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-middle mb-0">
                                             <li class="list-inline-item w-20 pb-0 ">
                                                 
                                                 {% if request.user in guitar.favourites.all %}
@@ -121,25 +121,27 @@
                                                     </a>
                                                 
                                                 {% endif %}
-
                                             
-                                                <li class="list-inline-item w-20 pb-0 align-baseline">
-                                                    {% if guitar.status == 'Available' %}
-                                                        <!--option A : Add to Rack -->
-                                                        <btn type="button" class="btn btn-sm btn-take align-baseline">
+                                            <li class="list-inline-item w-20 pb-0 align-baseline">
+                                                
+                                                {% if guitar.status == 'Available' %}
+                                                                                            
+                                                    <!-- Add to Rack -->
+                                                    <form method="POST" action="{% url 'request_guitar' guitar.id %}">
+                                                        {% csrf_token %}
+                                                        <button class="btn btn-sm btn-take align-middle" type="submit">
+                                                            <!--Pre-hover state-->
                                                             <img src="{{ MEDIA_URL }}guitar_gold_add.svg" class="guitar-svg add-gold">
+                                                            <!--Hover state-->
                                                             <img src="{{ MEDIA_URL }}guitar_black_add.svg" class="guitar-svg add-black">
-                                                            <p class=""><small>Add to Rack</small></p>
-                                                        </btn>
-
-                                                        <!--option B : Remove from Rack -->
-                                                        <btn type="button" class="btn btn-sm btn-take d-none align-baseline">
-                                                            <img src="{{ MEDIA_URL }}guitar_gold_remove.svg" class="guitar-svg add-gold">
-                                                            <img src="{{ MEDIA_URL }}guitar_black_remove.svg" class="guitar-svg add-black">
-                                                            <p class="ps-2"><small>Remove from Rack</small></p>
-                                                        </btn>
-                                                    {% endif %}
-                                                </li>
+                                                            <p class="p0"><small>Add to Rack</small></p>
+                                                        </button>
+                                                    </form>
+                                                {% else %}
+                                                    <div class="not_available_spacer">
+                                                    </div>
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                     {% endif %}
                                 </div>      <!--close card footer -->
