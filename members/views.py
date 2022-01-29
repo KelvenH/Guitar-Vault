@@ -61,6 +61,14 @@ def request_guitar(request, id):
     """
     guitar = get_object_or_404(Guitar, pk=id)
     user = request.user
+
+    """
+    ADD CHECK USER HAS TIER AND PLECTRUM FOR GUITAR TIER
+    DEDUCT PLECTRUM
+    ADD TO GUITAR IMAGE RACK
+    CREATE REMOVE FROM RACK VERSION
+    """
+
     if request.method == 'POST':
         instance = Guitar_Loans(guitar=guitar, user=user)
         instance.save()

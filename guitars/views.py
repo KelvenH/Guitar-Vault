@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from site_admin.models import Guitar_Loans
 from .models import Guitar, Category
 
 
@@ -75,9 +76,11 @@ def guitar_detail(request, guitar_id):
     """ A view to show guitar details """
 
     guitar = get_object_or_404(Guitar, pk=guitar_id)
+    loans = Guitar_Loans.objects.all()
 
     context = {
         'guitar': guitar,
+        'loans': loans,
     }
 
     return render(request, 'guitars/guitar_detail.html', context)

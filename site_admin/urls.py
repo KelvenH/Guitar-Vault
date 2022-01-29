@@ -7,6 +7,7 @@ urlpatterns = [
     path('user_canx_request/<int:id>/', views.user_canx_request, name='user_canx_request'),
     path('canx_account/<int:id>/', views.canx_account, name='canx_account'),
     path('award_plectrums/', views.award_plectrums, name='award_plectrums'),
+    path('list_guitar_loans/', views.list_guitar_loans, name='list_guitar_loans'),
     path('listguitars/', views.GuitarList.as_view(), name='guitarlist'),
     path('addguitars/', views.add_guitar, name='add_guitar'),
     path('editguitars/<int:guitar_id>/', views.edit_guitar, name='edit_guitar'),

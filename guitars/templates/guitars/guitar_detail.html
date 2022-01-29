@@ -82,19 +82,19 @@
                             <div class="col-6">
                                 <div class="row">
                                     {% if request.user.is_authenticated %}
-                                        <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-baseline">
-                                            <li class="list-inline-item w-20 pb-0 ">
+                                        <ul class="list-inline list-unstyled d-flex justify-content-evenly align-items-bottom">
+                                            <li class="list-inline-item w-20 pb-0 align-bottom">
                                                 
                                                 {% if request.user in guitar.favourites.all %}
                                                 <!--option A : Remove Favourite -->
-                                                <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm  btn-remove-fav align-baseline">
+                                                <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm  btn-remove-fav align-bottom">
                                                     <i class="fas fa-heart fa-2x"></i>
                                                     <p class=""><small>Remove Favourite</small></p>
                                                 </a>
 
                                                 {% else %}
                                                 <!--option B : Add Favourite -->
-                                                <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm btn-add-fav align-baseline">
+                                                <a href="{% url 'favourite_add' guitar.id %}" class="btn btn-sm btn-add-fav align-bottom">
                                                     <i class="far fa-heart fa-2x"></i>
                                                     <p class=""><small>Add Favourite</small></p>
                                                 </a>
@@ -103,27 +103,41 @@
 
                                             </li>
 
-                                            <li class="list-inline-item w-20 pb-0 align-baseline">
+                                            <li class="list-inline-item w-20 pb-0 align-bottom">
                                                 <!--Prevent 'Add to Rack' icon being displayed if already on loan-->
                                                 {% if guitar.status == 'Available' %}
+                                                    
+                                                    <!--BUG DUAL FILTER NOT WORKING-->
+                                                    {% if guitar.id == loans.guitar and request.user == loans.user %}
+
+                                                    <!--option B : Remove from Rack -->
+                                                    <form method="POST" action="{% url 'request_guitar' guitar.id %}">
+                                                        {% csrf_token %}
+                                                        <button class="btn btn-sm btn-take d-none align-bottom" type="submit">
+                                                            <!--Pre-hover state-->
+                                                            <img src="{{ MEDIA_URL }}guitar_gold_remove.svg" class="guitar-svg add-gold">
+                                                            <!--Hover state-->
+                                                            <img src="{{ MEDIA_URL }}guitar_black_remove.svg" class="guitar-svg add-black">
+                                                            <p class="ps-2"><small>Remove from Rack</small></p>
+                                                        </button>
+                                                    </form>
+
+                                                    {% else %}
+                                                    
                                                     <!--option A : Add to Rack -->
                                                     <form method="POST" action="{% url 'request_guitar' guitar.id %}">
                                                         {% csrf_token %}
-                                                        <button class="btn btn-sm btn-take align-baseline" type="submit">
+                                                        <button class="btn btn-sm btn-take align-bottom" type="submit">
                                                             <!--Pre-hover state-->
                                                             <img src="{{ MEDIA_URL }}guitar_gold_add.svg" class="guitar-svg add-gold">
                                                             <!--Hover state-->
                                                             <img src="{{ MEDIA_URL }}guitar_black_add.svg" class="guitar-svg add-black">
-                                                            <p class=""><small>Add to Rack</small></p>
+                                                            <p class="ps-2"><small>Add to Rack</small></p>
                                                         </button>
                                                     </form>
 
-                                                    <!--option B : Remove from Rack -->
-                                                    <a href="" class="btn btn-sm btn-take d-none align-baseline">
-                                                        <img src="{{ MEDIA_URL }}guitar_gold_remove.svg" class="guitar-svg add-gold">
-                                                        <img src="{{ MEDIA_URL }}guitar_black_remove.svg" class="guitar-svg add-black">
-                                                        <p class="ps-2"><small>Remove from Rack</small></p>
-                                                    </a>
+                                                    
+                                                    {% endif %}
                                                 {% endif %}
                                             </li>
                                         </ul>

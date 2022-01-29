@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <!--Empty container to push body content below nav bars-->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container-lg">
+        {% if request.user.is_superuser %}
+            <div class="col-12">
+                <div class="row">
+                    <h1 class="gold-special-txt my-4 text-center">Site Administration</h1>
+                </div>
+
+                <div class="main-content px-3">
+                    <div class="row p-4">
+                        <div class="col-12">
+                            <h4 class="gold-special-txt text-center my-3 mx-auto inline ">Guitar Loans</h4>
+                            <a href="{% url 'site_admin' %}" class="btn  btn-gold-outline py-2 float-end">Return to Site Admin</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 p-4">
+                            <table class="text-center mx-auto table table-dark table-striped">
+                                <tr class="table-underline">
+                                    <th class="">Member</th>
+                                    <th class="">Guitar ID</th>
+                                    <th class="">Guitar</th>
+                                    <th class="">Status</th>
+                                    <th class="">Date Requested</th>
+                                    <th class="">Shipped Date</th>
+                                    <th class="">Returned Date</th>
+                                    <th class="">Actions</th>
+                                </tr>
+                                <tr>
+                                {% for loan in guitar_loans %}
+                                </tr>
+                                <tr class="pt-5">
+                                    <td>{{ loan.user }}</td>
+                                    <td>{{ loan.guitar.id }}</td>
+                                    <td>{{ loan.guitar.brand }} - {{ loans.guitar.guitar_model }}</td>
+                                    <td>{{ loan.loan_status }}</td>
+                                    <td>{{ loan.requested_date }}</td>
+                                    <td>{{ loan.shipped_date }}</td>
+                                    <td>{{ loan.returned_date }}</td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-outline-info">Update Status</a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <h4 class="text-danger text center"> There are no loan requests!</h4>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        {% else %}
+        <div>
+            <div class="col-12">
+                <div class="row">
+                    <h1 class="gold-special-txt my-4 text-center">Resticted Access</h1>
+                    <a href="{% url 'home' %}" class="btn btn-md btn-gold-outline mx-auto">Please Return to the Home Page</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>              
+
+  
+{% endblock %}

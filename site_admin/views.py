@@ -6,7 +6,7 @@ from django.views.generic import ListView
 from django.contrib import messages
 from guitars.models import Guitar
 from checkout.models import Order
-from .models import Accounts
+from .models import Accounts, Guitar_Loans
 from .forms import GuitarForm
 from .forms import OrderForm
 
@@ -269,3 +269,17 @@ def award_plectrums(request):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required
+def list_guitar_loans(request):
+    """
+    Display guitar loan requests
+    """
+    guitar_loans = Guitar_Loans.objects.all()
+        
+       
+    template = 'site_admin/guitar_loans.html'
+    context = {
+        'guitar_loans': guitar_loans,
+    }
+
+    return render(request, template, context)
