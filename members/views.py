@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import MemberProfile
 from .forms import MemberProfileForm
-from site_admin.models import Accounts
+from site_admin.models import Accounts, Guitar_Loans
 from checkout.models import Order
 from guitars.models import Guitar
 
@@ -40,13 +40,29 @@ def profile(request):
     return render(request, template, context)
 
 
-# function to add / remove favourite to user
 @login_required
 def favourite_add(request, id):
+    """
+    function to add / remove favourite to user
+    """
     guitar = get_object_or_404(Guitar, id=id)
     if guitar.favourites.filter(id=request.user.id).exists():
         guitar.favourites.remove(request.user)
     else:
         guitar.favourites.add(request.user)
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def request_guitar(request, id):
+    """
+    function to request guitar loan
+    """
+    guitar = get_object_or_404(Guitar, pk=id)
+    user = request.user
+    if request.method == 'POST':
+        instance = Guitar_Loans(guitar=guitar, user=user)
+        instance.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
