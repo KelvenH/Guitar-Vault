@@ -19,6 +19,7 @@ def profile(request):
     orders = profile.orders.all()
     accounts = Accounts.objects.all()
     guitars = Guitar.objects.all()
+    loans = Guitar_Loans.objects.all()
     
     if request.method == 'POST':
         form = MemberProfileForm(request.POST, instance=profile)
@@ -36,6 +37,7 @@ def profile(request):
         'orders': orders,
         'accounts': accounts,
         'guitars': guitars,
+        'loans': loans,
     }
 
     return render(request, template, context)

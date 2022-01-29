@@ -44,7 +44,6 @@ def create_account(sender, instance, created, **kwargs):
 
 
 class Guitar_Loans(models.Model):
-
     """
     Track user guitar loans
     """

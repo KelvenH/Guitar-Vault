@@ -167,11 +167,33 @@
             <!-- Guitar Rack -->
             <div class="row">
                 <h4 class="mt-5 gold-txt"><span id="manage-guitar-rack"></span>Guitar Rack</h4>
-                <p class="mb-0">Vist the vault to add a guitar to your rack.</p>
-                
+                <p class="mb-0"></p>
             </div>
             <div class="row">
-                <p>CONTENT HERE</p>
+                {% for loan in loans %}
+                    {% if request.user == loan.user %}
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="guitar-mini-image-container">
+                            <h6 class="gold-txt">Status: {{ loan.loan_status }}</h6>
+                            {% if loan.guitar.image_id %}
+                                <a href="{% url 'guitar_detail' loan.guitar.id %}" class="guitar-image-link">
+                                    <img src="{{ loan.guitar.image_id.url }}" class="fav-img" alt="{{ loan.guitar.brand }} {{ loan.guitar.guitar_model }}">
+                                </a>
+
+                            {% else %}
+                                <a href="{% url 'guitar_detail' loan.guitar.id %}" class="guitar-image-link">
+                                    <img src="{{ MEDIA_URL }}noimage.png" class="fav-img" alt="{{ guitar.brand }} {{ guitar.guitar_model }}">
+                                </a>
+                            {% endif %}
+                            
+                        </div> <!--close mini-image container-->
+                    </div> <!--close favourite guitar col-->
+                    {% endif %}
+                <!--OUTSTANDING BUG: Empty tag is not displaying if user has no favourite guitars?-->
+                {% empty %}
+                    <div class="text-center">Vist the vault to add a guitar to your rack.</div>
+                {% endfor %}   
+                
             </div>
 
             <!-- Favourite Guitars -->
