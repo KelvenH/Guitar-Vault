@@ -688,6 +688,14 @@ select option[value=""] {
     overflow: hidden;
 }
 
+/* Reduce font-size for admin tables on small devices to enabe table to fit on screen */
+@media (max-width: 690px) {
+    .admin-table {
+        font-size:0.75rem;
+    }
+}
+
+
 /*--Allauth forms ---------*/
 
 .allauth-form-inner-content input{
