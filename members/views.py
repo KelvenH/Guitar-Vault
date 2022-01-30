@@ -1,12 +1,10 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.contrib import messages
-from django.db.models import Sum, Count
+from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from .models import MemberProfile
 from .forms import MemberProfileForm
 from site_admin.models import Accounts, Guitar_Loans
-from checkout.models import Order
 from guitars.models import Guitar
 
 
@@ -20,7 +18,7 @@ def profile(request):
     accounts = Accounts.objects.all()
     guitars = Guitar.objects.all()
     loans = Guitar_Loans.objects.all()
-    
+
     if request.method == 'POST':
         form = MemberProfileForm(request.POST, instance=profile)
         if form.is_valid():
@@ -29,8 +27,8 @@ def profile(request):
         else:
             messages.error(request, 'Update failed - please ensure all fields completed correctly')
     else:
-        form = MemberProfileForm(instance=profile)   
-    
+        form = MemberProfileForm(instance=profile)
+
     template = 'members/profile.html'
     context = {
         'form': form,
@@ -69,7 +67,7 @@ def request_guitar(request, id):
     6 - deduct token from balance (out of scope as admin task)
     """
     if request.method == 'POST':
-        
+
         # identify selected guitar (single object)
         guitar = Guitar.objects.get(pk=id)
 
@@ -77,34 +75,34 @@ def request_guitar(request, id):
         guitar_tier = guitar.tier
 
         # identify if user has active subscription and plectrum available (note sum needed in case user has multiple subscriptions at same tier)
-        thisuser=request.user
-        
+        thisuser = request.user
+
         plat_accept = False
         gold_accept = False
         silver_accept = False
         bronze_accept = False
 
-        # check for platinum 
-        user_plat_tokens = Accounts.objects.filter(order__subscription_plan__name='Platinum',active=True,order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
-        
+        # check for platinum
+        user_plat_tokens = Accounts.objects.filter(order__subscription_plan__name='Platinum', active=True, order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
+
         if user_plat_tokens is not None or (user_plat_tokens == 0):
             plat_accept = True
-        
+
         # check for gold
-        user_gold_tokens = Accounts.objects.filter(order__subscription_plan__name='Gold',active=True,order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
-        
+        user_gold_tokens = Accounts.objects.filter(order__subscription_plan__name='Gold', active=True, order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
+
         if user_gold_tokens is not None or (user_gold_tokens == 0):
             gold_accept = True
 
         # check for silver
-        user_silver_tokens = Accounts.objects.filter(order__subscription_plan__name='Silver',active=True,order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
-        
+        user_silver_tokens = Accounts.objects.filter(order__subscription_plan__name='Silver', active=True, order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
+
         if user_silver_tokens is not None or (user_silver_tokens == 0):
             silver_accept = True
 
         # check for bronze
-        user_bronze_tokens = Accounts.objects.filter(order__subscription_plan__name='Bronze',active=True,order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
-        
+        user_bronze_tokens = Accounts.objects.filter(order__subscription_plan__name='Bronze', active=True, order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
+
         if user_bronze_tokens is not None or (user_bronze_tokens == 0):
             bronze_accept = True
 
@@ -119,11 +117,11 @@ def request_guitar(request, id):
         if guitar_tier == 'Platinum':
             if plat_accept:
                 authorise_loan = True
-        
+
         elif guitar_tier == 'Gold':
             if plat_accept or gold_accept:
                 authorise_loan = True
-        
+
         elif guitar_tier == 'Silver':
             if plat_accept or gold_accept or silver_accept:
                 authorise_loan = True

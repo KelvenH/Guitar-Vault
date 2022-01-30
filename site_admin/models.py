@@ -1,11 +1,9 @@
 from django.db import models
-from django.shortcuts import get_object_or_404
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from checkout.models import Order
 from guitars.models import Guitar
-from members.models import MemberProfile
 
 
 class Accounts(models.Model):
@@ -72,10 +70,10 @@ class Guitar_Loans(models.Model):
     # date user requested
     requested_date = models.DateField(auto_now=False, auto_now_add=True)
 
-    # date shipped 
+    # date shipped
     shipped_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
 
-    # date shipped 
+    # date shipped
     returned_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
 
     def __str__(self):

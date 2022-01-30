@@ -18,7 +18,7 @@ def all_guitars(request):
     direction = None
 
 
-    # Navbar filters       
+    # Navbar filters
     if request.GET:
 
         if 'handed' in request.GET:
@@ -28,7 +28,7 @@ def all_guitars(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-    
+
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 guitars = guitars.annotate(lower_name=lower('name'))
@@ -47,14 +47,14 @@ def all_guitars(request):
             if 'tier' in request.GET:
                 query_tier = request.GET['tier']
                 guitars = guitars.filter(tier=query_tier)
-                print('tier=', query_tier)   
+                print('tier=', query_tier)
 
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, "Provide a guitar brand or model to search")
                 return redirect(reverse('guitars'))
-      
+
             queries = Q(brand__icontains=query) | Q(guitar_model__icontains=query)
             guitars = guitars.filter(queries)
 

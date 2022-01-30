@@ -29,7 +29,7 @@ class OrderForm(forms.ModelForm):
             'country': 'Country',
         }
 
-        """ 
+        """
         Subscription plan and price set as hidden fields, these will take
         their input values from the bag in the front end
         """

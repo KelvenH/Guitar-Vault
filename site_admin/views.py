@@ -13,7 +13,7 @@ from .forms import OrderForm
 
 @login_required
 def site_admin(request):
-    """ 
+    """
     View to display the admin page
     """
 
@@ -35,7 +35,7 @@ class GuitarList(LoginRequiredMixin, ListView):
 
 @login_required
 def edit_guitar(request, guitar_id):
-    """ 
+    """
     Edit guitar in the database
     """
 
@@ -172,7 +172,7 @@ def delete_order(request, order_id):
 @login_required
 def add_order(request):
     """
-    Add new order to the database - note only included for project admin 
+    Add new order to the database - note only included for project admin
     testing purposes as directly creating orders bypass payment processes
     """
 
@@ -204,8 +204,8 @@ def list_accounts(request):
     Display Accounts
     """
     accounts = Accounts.objects.all()
-        
-       
+
+
     template = 'site_admin/accounts.html'
     context = {
         'accounts': accounts,
@@ -223,10 +223,10 @@ def user_canx_request(request, id):
     account = get_object_or_404(Accounts, pk=id)
     # if user has not already requested cancellation, set status to True
     if not account.canx_requested:
-        account.canx_requested=True
+        account.canx_requested = True
     # if already True, revert to False
     else:
-        account.canx_requested=False
+        account.canx_requested = False
     account.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -253,19 +253,19 @@ def award_plectrums(request):
     incorporate a diarised mechanism to only operate on a monthly cycle.
     """
     accounts = Accounts.objects.all()
-        
+
     for account in accounts:
         plan = account.order.subscription_plan
         active = account.active
 
-        if bool(active) == True:        
+        if bool(active) == True:
             account.plectrum_balance += 1
             account.save()
 
         else:
             messages.error(request, 'There was an error.  \
                 Please check plectrums updated correctly')
-     
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -275,7 +275,7 @@ def list_guitar_loans(request):
     Display guitar loan requests
     """
     guitar_loans = Guitar_Loans.objects.all()
-        
+
     template = 'site_admin/guitar_loans.html'
     context = {
         'guitar_loans': guitar_loans,

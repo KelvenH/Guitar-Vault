@@ -5,7 +5,7 @@ from guitars.models import Guitar
 # Create your views here.
 def index(request):
     """ View to return the index page """
-    
+
     guitars = Guitar.objects.all()
     # Identify guitars with 'Featured' flag for inclusion in image carousel
     display_id = []
@@ -28,4 +28,3 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
-    

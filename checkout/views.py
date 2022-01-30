@@ -2,10 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 import stripe
-from subscriptions.models import Subscription
 from members.forms import MemberProfileForm
 from members.models import MemberProfile
-from site_admin.models import Accounts
 from bag.contexts import bag_contents
 from .models import Order
 from .forms import OrderForm
@@ -45,7 +43,6 @@ def checkout(request):
         else:
             messages.error(request, 'There was an error with your form \
                 Please check your information')
-            
 
     else:
         bag = request.session.get('bag', {})
@@ -121,8 +118,8 @@ def checkout_success(request, order_number):
         }
         member_profile_form = MemberProfileForm(profile_data, instance=profile)
         if member_profile_form.is_valid():
-            member_profile_form.save() 
-        
+            member_profile_form.save()
+
     if 'bag' in request.session:
         del request.session['bag']
 

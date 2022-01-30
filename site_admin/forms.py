@@ -1,6 +1,6 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column
+from crispy_forms.layout import Layout, Row, Column
 
 from guitars.models import Guitar
 from checkout.models import Order
@@ -11,9 +11,11 @@ class GuitarForm(forms.ModelForm):
     class Meta:
         model = Guitar
         fields = '__all__'
-    
-    """ Crispy Form Layout Helper used to custom place fields on form as opposed to single column layout. 
-    Acknowledgement: https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html#basic-form-rendering"""
+
+    """
+    Crispy Form Layout Helper used to custom place fields on form as opposed to single column layout.
+    Acknowledgement: https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html#basic-form-rendering
+    """
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -67,14 +69,14 @@ class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_tag = False 
+        self.helper.form_tag = False
         self.helper.layout = Layout(
             Row(
                 Column('order_number', css_class='form-group col-6 col-lg-2'),
                 Column('member_profile', css_class='form-group col-6 col-lg-2'),
                 Column('full_name', css_class='form-group col-12 col-lg-4'),
                 Column('subscription_plan', css_class='form-group col-6 col-lg-2'),
-                Column('subscription_price', css_class='form-group col-6 col-lg-2'), 
+                Column('subscription_price', css_class='form-group col-6 col-lg-2'),
             ),
             Row(
                 Column('email', css_class='form-group col-6 col-lg-4'),
