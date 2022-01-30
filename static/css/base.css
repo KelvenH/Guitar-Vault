@@ -721,3 +721,13 @@ select option[value=""] {
 .allauth-form-inner-content input::placeholder {
     color: var(--ivory);
 }
+
+/* 404 & 500 Page */
+
+.page-404 {
+    background-image: url('/media/404.png');
+    background-size: 25vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}

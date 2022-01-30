@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_title %} - 500 error{% endblock %}
+{% block page_header %}
+    <!--Empty container to push body content below nav bars-->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block content %}
+<div class="container-lg text-center">
+    <div class="page-404">    
+            <h1 class="mt-5">Oops! Something broke!</h1>
+            <div>
+                <a href="{% url 'home' %}" class="btn btn-md btn-gold-outline mx-auto float-center"> Return to the Home Page</a>
+            </div>
+    </div>
+</div>
+
+{% endblock %}
