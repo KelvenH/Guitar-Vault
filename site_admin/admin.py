@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Accounts
 from .models import Guitar_Loans
 
+
 class AccountsAdmin(admin.ModelAdmin):
     list_display = (
         'order',

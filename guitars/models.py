@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
 
     name = models.CharField(max_length=50)
-    friendly_name = models.CharField(max_length=50, null=True, blank=True)
+    friendly_name = models.CharField(max_length=50, blank=True, default="")
 
     # String method
     def __str__(self):
@@ -51,7 +52,8 @@ class Guitar(models.Model):
         (AVAILABLE, 'Available'),
         (IN_USE, 'In Use'),
     ]
-    status = models.CharField(max_length=25, choices=STATUS_CHOICES, default=AVAILABLE)
+    status = models.CharField(max_length=25, choices=STATUS_CHOICES,
+                              default=AVAILABLE)
 
     # Right / Left Handed
     RIGHT = 'Right'
@@ -67,7 +69,7 @@ class Guitar(models.Model):
     # No. Strings and Age
     no_strings = models.DecimalField(max_digits=2, decimal_places=0, default=6)
     approx_age_years = models.DecimalField(max_digits=2, decimal_places=0,
-                                           null=True, blank=True)
+                                           blank=True, default=0)
 
     # Condition
     EXCELLENT = 'Excellent'
@@ -82,10 +84,10 @@ class Guitar(models.Model):
         ]
     condition = models.CharField(max_length=250, choices=CONDITION_CHOICES,
                                  default=GOOD)
-    construction = models.CharField(max_length=25, null=True, blank=True)
-    body_wood = models.CharField(max_length=50, null=True, blank=True)
-    body_top = models.CharField(max_length=50, null=True, blank=True)
-    tuners = models.CharField(max_length=50, null=True, blank=True)
+    construction = models.CharField(max_length=25, blank=True, default="")
+    body_wood = models.CharField(max_length=50, blank=True, default="")
+    body_top = models.CharField(max_length=50, blank=True, default="")
+    tuners = models.CharField(max_length=50, blank=True, default="")
 
     # No. Frets
     FRETS_20 = 20
@@ -100,13 +102,13 @@ class Guitar(models.Model):
                                 choices=FRETS_CHOICES, default=FRETS_22)
 
     # Additional Info
-    scale_length = models.CharField(max_length=25, null=True, blank=True)
-    neck_wood = models.CharField(max_length=25, null=True, blank=True)
-    neck_profile = models.CharField(max_length=25, null=True, blank=True)
+    scale_length = models.CharField(max_length=25, blank=True, default="")
+    neck_wood = models.CharField(max_length=25, blank=True, default="")
+    neck_profile = models.CharField(max_length=25, blank=True, default="")
     no_pickups = models.DecimalField(max_digits=1, decimal_places=0,
                                      null=True, blank=True)
     pickups_desc = models.TextField()
-    controls = models.CharField(max_length=250, null=True, blank=True)
+    controls = models.CharField(max_length=250, blank=True, default="")
     owners_additional_comments = models.TextField()
     rating_condition = models.DecimalField(max_digits=2, decimal_places=0,
                                            null=True, blank=True)

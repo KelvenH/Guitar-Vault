@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
-from .models import MemberProfile
-from .forms import MemberProfileForm
 from site_admin.models import Accounts, Guitar_Loans
 from guitars.models import Guitar
+from .models import MemberProfile
+from .forms import MemberProfileForm
 
 
 @login_required
@@ -25,7 +25,9 @@ def profile(request):
             form.save()
             messages.success(request, 'Your profile has been updated')
         else:
-            messages.error(request, 'Update failed - please ensure all fields completed correctly')
+            messages.error(
+                request,
+                'Update failed - please ensure all fields completed correctly')
     else:
         form = MemberProfileForm(instance=profile)
 
@@ -60,7 +62,7 @@ def request_guitar(request, id):
     """
     function to request guitar loan
     1 - identify guitar tier
-    2 - identify if user has plectrums to exchange matching or of a higher tier than guitar
+    2 - check user has plectrums matching or higher tier of guitar
     3 - if passes, create new guitar loan request
     4 - add guitar to users guitar rack
     5 - change guitar status to prevent other user selecting
@@ -74,7 +76,7 @@ def request_guitar(request, id):
         # get tier of guitar
         guitar_tier = guitar.tier
 
-        # identify if user has active subscription and plectrum available (note sum needed in case user has multiple subscriptions at same tier)
+        # identify if user has active subscription and plectrum available
         thisuser = request.user
 
         plat_accept = False
@@ -83,25 +85,37 @@ def request_guitar(request, id):
         bronze_accept = False
 
         # check for platinum
-        user_plat_tokens = Accounts.objects.filter(order__subscription_plan__name='Platinum', active=True, order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
+        user_plat_tokens = Accounts.objects.filter(
+            order__subscription_plan__name='Platinum', active=True,
+            order__member_profile__user__username=thisuser
+            ).aggregate(tokens=Sum('plectrum_balance'))['tokens']
 
         if user_plat_tokens is not None or (user_plat_tokens == 0):
             plat_accept = True
 
         # check for gold
-        user_gold_tokens = Accounts.objects.filter(order__subscription_plan__name='Gold', active=True, order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
+        user_gold_tokens = Accounts.objects.filter(
+            order__subscription_plan__name='Gold', active=True,
+            order__member_profile__user__username=thisuser
+            ).aggregate(tokens=Sum('plectrum_balance'))['tokens']
 
         if user_gold_tokens is not None or (user_gold_tokens == 0):
             gold_accept = True
 
         # check for silver
-        user_silver_tokens = Accounts.objects.filter(order__subscription_plan__name='Silver', active=True, order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
+        user_silver_tokens = Accounts.objects.filter(
+            order__subscription_plan__name='Silver', active=True,
+            order__member_profile__user__username=thisuser
+            ).aggregate(tokens=Sum('plectrum_balance'))['tokens']
 
         if user_silver_tokens is not None or (user_silver_tokens == 0):
             silver_accept = True
 
         # check for bronze
-        user_bronze_tokens = Accounts.objects.filter(order__subscription_plan__name='Bronze', active=True, order__member_profile__user__username=thisuser).aggregate(tokens=Sum('plectrum_balance'))['tokens']
+        user_bronze_tokens = Accounts.objects.filter(
+            order__subscription_plan__name='Bronze', active=True,
+            order__member_profile__user__username=thisuser
+            ).aggregate(tokens=Sum('plectrum_balance'))['tokens']
 
         if user_bronze_tokens is not None or (user_bronze_tokens == 0):
             bronze_accept = True
@@ -111,7 +125,7 @@ def request_guitar(request, id):
         print("silver result", silver_accept)
         print("bronze result", bronze_accept)
 
-        # authorise if user has pass for tier matching or higher tier than guitar
+        # authorise if user has matching or higher tier than guitar
         authorise_loan = False
 
         if guitar_tier == 'Platinum':
@@ -132,16 +146,23 @@ def request_guitar(request, id):
 
         print("authorise_loan", authorise_loan)
 
-        if authorise_loan == True:
+        if authorise_loan:
 
             instance = Guitar_Loans(guitar=guitar, user=thisuser)
-            messages.success(request, 'Great choice! Your guitar has successfully been added to your guitar rack and will be with you soon')
+            messages.success(
+                request,
+                'Great choice! Your guitar has successfully been added to your \
+                    guitar rack and will be with you soon')
             instance.save()
             # Update guiar's status to prevent other user selecting
-            guitar.status="In Use"
+            guitar.status = "In Use"
             guitar.save()
 
         else:
-            messages.warning(request, 'Sorry, either you do not have a subscription plan for that tier or any remaining plectrums to exchange this month. Please refer to your profile page to see which tiers and how many plectrums you have available to exchange')
+            messages.warning(request, 'Sorry, either you do not have a \
+                subscription plan for that tier and / or plectrums to \
+                    exchange this month. Please refer to your profile \
+                        page to see which tiers and how many plectrums you \
+                            have available to exchange')
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

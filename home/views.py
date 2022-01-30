@@ -20,7 +20,6 @@ def index(request):
                 display_id.append(id)
                 display_image.append(image_url)
 
-
     context = {
         'guitars': guitars,
         'display_id': display_id,

@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponseRedirect
+)
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -50,11 +52,15 @@ def edit_guitar(request, guitar_id):
 
         if form.is_valid():
             form.save()
-            messages.success(request, f'Details for {guitar.brand} {guitar.guitar_model} successfully updated!')
+            messages.success(
+                request, f'Details for {guitar.brand} {guitar.guitar_model} \
+                    successfully updated!')
             return redirect(reverse('guitar_detail', args=[guitar.id]))
 
         else:
-            messages.error(request, 'Oops, computer says NO! Please check the form for errors')
+            messages.error(
+                request, 'Oops, computer says NO! \
+                    Please check the form for errors')
 
     else:
         form = GuitarForm(instance=guitar)
@@ -96,10 +102,12 @@ def add_guitar(request):
         form = GuitarForm(request.POST, request.FILES)
         if form.is_valid():
             guitar = form.save()
-            messages.success(request, 'Another guitar successfully added to the vault!')
+            messages.success(
+                request, 'Another guitar successfully added to the vault!')
             return redirect(reverse('guitar_detail', args=[guitar.id]))
         else:
-            messages.error(request, 'Oops, computer says NO - check the form for errors')
+            messages.error(
+                request, 'Oops, computer says NO - check the form for errors')
     else:
         form = GuitarForm()
 
@@ -140,7 +148,8 @@ def edit_order(request, order_id):
             return redirect(reverse('orderlist'))
 
         else:
-            messages.error(request, 'Oops, computer says NO - check the form for errors')
+            messages.error(
+                request, 'Oops, computer says NO - check the form for errors')
 
     else:
         form = OrderForm(instance=order)
@@ -165,7 +174,9 @@ def delete_order(request, order_id):
 
     order = get_object_or_404(Order, pk=order_id)
     order.delete()
-    messages.success(request, f'Order {order.order_number} has been deleted from the vault!')
+    messages.success(
+        request, f'Order {order.order_number} \
+            has been deleted from the vault!')
     return redirect(reverse('orderlist'))
 
 
@@ -183,10 +194,12 @@ def add_order(request):
         form = OrderForm(request.POST, request.FILES)
         if form.is_valid():
             order = form.save()
-            messages.success(request, f'Order {order.order_number} successfully added!')
+            messages.success(
+                request, f'Order {order.order_number} successfully added!')
             return redirect(reverse('orderlist'))
         else:
-            messages.error(request, 'Oops, computer says NO - check the form for errors')
+            messages.error(
+                request, 'Oops, computer says NO - check the form for errors')
     else:
         form = OrderForm()
 
@@ -204,7 +217,6 @@ def list_accounts(request):
     Display Accounts
     """
     accounts = Accounts.objects.all()
-
 
     template = 'site_admin/accounts.html'
     context = {
@@ -255,10 +267,9 @@ def award_plectrums(request):
     accounts = Accounts.objects.all()
 
     for account in accounts:
-        plan = account.order.subscription_plan
         active = account.active
 
-        if bool(active) == True:
+        if bool(active):
             account.plectrum_balance += 1
             account.save()
 

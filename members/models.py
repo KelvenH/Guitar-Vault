@@ -7,16 +7,22 @@ from django_countries.fields import CountryField
 
 class MemberProfile(models.Model):
     """
-    Member profile page holding personal information with 1to1 relationship with user model
+    Member profile page holding personal information with 1to1
+    relationship with user model
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    default_phone_number = models.CharField(max_length=20, null=True, blank=True)
-    default_street_address1 = models.CharField(max_length=80, null=True, blank=True)
-    default_street_address2 = models.CharField(max_length=80, null=True, blank=True)
-    default_town_or_city = models.CharField(max_length=40, null=True, blank=True)
-    default_county = models.CharField(max_length=80, null=True, blank=True)
-    default_postcode = models.CharField(max_length=20, null=True, blank=True)
-    default_country = CountryField(blank_label='Country', null=True, blank=True)
+    default_phone_number = models.CharField(max_length=20,
+                                            null=False, blank=False)
+    default_street_address1 = models.CharField(max_length=80, null=False,
+                                               blank=False)
+    default_street_address2 = models.CharField(max_length=80, blank=True,
+                                               default="")
+    default_town_or_city = models.CharField(max_length=40, null=False,
+                                            blank=False)
+    default_county = models.CharField(max_length=80, blank=True, default="")
+    default_postcode = models.CharField(max_length=20, blank=True, default="")
+    default_country = CountryField(blank_label='Country', null=False,
+                                   blank=False)
 
     def __str__(self):
         return self.user.username

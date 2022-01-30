@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 from site_admin.models import Guitar_Loans
 from .models import Guitar, Category
 
@@ -11,12 +12,10 @@ def all_guitars(request):
     guitars = Guitar.objects.all()
     query = None
     categories = None
-    tier = None
     query_tier = None
     query_handed = None
     sort = None
     direction = None
-
 
     # Navbar filters
     if request.GET:
@@ -31,7 +30,7 @@ def all_guitars(request):
 
             if sortkey == 'name':
                 sortkey = 'lower_name'
-                guitars = guitars.annotate(lower_name=lower('name'))
+                guitars = guitars.annotate(lower_name=Lower('name'))
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
@@ -52,10 +51,15 @@ def all_guitars(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "Provide a guitar brand or model to search")
+                messages.error(request, "Provide a guitar brand or \
+                    model to search")
                 return redirect(reverse('guitars'))
 
-            queries = Q(brand__icontains=query) | Q(guitar_model__icontains=query)
+            queries = (
+                Q(brand__icontains=query) |
+                Q(guitar_model__icontains=query)
+                )
+
             guitars = guitars.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
