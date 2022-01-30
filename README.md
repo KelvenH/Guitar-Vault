@@ -110,14 +110,13 @@ Out of scope;
 
 ------
 ## STRUCTURE
-*Please note; not all planned content was able to be completed in time. Some aspects of these feature in the user stories and in the planned wireframes, database schema. These are clearly indicated in the testing (against user stories) and within the planned future enhancements table.*
+
 
 ### FRONT END STRUCTURE & SCREEN FLOW
 
 The structure of the site should provide a clean and clear interface for site users. Leveraging from django's app structure, there will be specific page content for each app module, yet a baseline html view will be applied consistently across all pages. Site navigation will primarily be through the navigation menu displayed in the header (and through an icon for small screen devices). The only exception to this will be the additional on-screen links (visually displayed as buttons) to proceed to the next / return to the last view (e.g. proceeding to the payment form.
 
 ### DATABASE STRUCTURE
-*Please note comments above re aspects not delivered in this build as well as some deviations from the original design*
 
 This build will leverage django's SQLite database during development. Upon deployment this will migrate to POSTGRES (once hosted on HEROKU).
 
@@ -127,8 +126,9 @@ In summary;
 - Categories - classifies guitars (Electric, Bass or Acoustic)
 - Guitars - houses all information relating to each guitar including the image ID
 - Subscription Plans - contains the tier (Platinum, Gold, Silver and Bronze) their price and details of any additional features
-- Member Profiles - users personal information (delivery address, contact details), active subscription plan and guitar rack* (past, current and 'favourited guitars) * *not implemented*
+- Member Profiles - users personal information (delivery address, contact details), active subscription plan, guitar rack (guitar which has been requested to loan) and favourites
 - Orders - information on subscription plans purchased through the site
+- Accounts - model available to admin to manage accounts (e.g. cancel active subscriptions) and award plectrums monthly NOTE: the need for the accounts model was identified during development to seperate ongoing management from the original order and does not feature in the original diagram).
 
 ![Planned DB Structure](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Planned%20db%20structure.png)
 
@@ -508,10 +508,9 @@ Responsive SVG Icons
 <img valign="middle" height="100" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_black_add.svg"/> <img valign="middle" height="80" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_gold_add.svg"/> <img valign="middle" height="125" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_black_remove.svg"/> <img valign="middle" height="60" src="https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/Guitar_gold_remove.svg"/>
 
 
-Font Awesome is used for most of the site icons, one exception was for a guitar shaped icon to be used as a visual aid to add / remove guitars from the member's guitar rack*. The icon was drawn in Adobe Illustrator (same image created that was used for the logo icon referred to above). 4 versions were then created for an add / remove and a default and hover version. The hover version was required as the same color scheme was used for the button icon that they reside on. So when the inverse hover button styles was applied these would have hidden the icon.
+Font Awesome is used for most of the site icons, one exception was for a guitar shaped icon to be used as a visual aid to add / remove guitars from the member's guitar rack. The icon was drawn in Adobe Illustrator (same image created that was used for the logo icon referred to above). 4 versions were then created for an add / remove and a default and hover version. The hover version was required as the same color scheme was used for the button icon that they reside on. So when the inverse hover button styles was applied these would have hidden the icon.
 The images were exported from Adobe in svg format to preserve the crispness (initial efforts in png format resulted in pixelated / skewed images across responsive screens despite their small sizing). The icons are sized in REM (3rem) for responsive sizing. Rather than employ JS or custom SVG classes to change the hover affect colors, a simpler approach was to host all 4 images with 'display:none' set on the hover version. The hover class (applied to the parent) then alternates the display attribute to switch the visible icon held in child `<image>` tags.
 
-*note that the add / remove guitars from the member's rack forms part of the member's functionality which have not yet been implemented
 
 ---
 FAVICON
@@ -529,7 +528,6 @@ FINAL MOCK-UP
 
 ## PLANNED FEATURES 
 
-All planned features were achieved with the exception of those which relate to or have a dependency on the member profile aspects which are not yet complete and marked for future enhancement.
 
 | Key Feature                   | Details.                                                          | Delivered              |
 |-------------------------------|-------------------------------------------------------------------|------------------------|
@@ -540,38 +538,37 @@ All planned features were achieved with the exception of those which relate to o
 | Filtered views of guitars     | url views embedded in main nav menus                              |:white_check_mark:      |
 | Simple and clear layout of guitars | employs bootstrap .card component                            |:white_check_mark:      |
 | Detailed view of guitars      | url from card summary through to detailed card view               |:white_check_mark:      |
-| Members can favourite guitars | relates to component outstanding - future feature                 |:heavy_exclamation_mark:| 
-| Members can add guitars to rack | relates to component outstanding - future feature               |:heavy_exclamation_mark:|
-| Members can manage their subscription plans | relates to component outstanding - future feature   |:heavy_exclamation_mark:|
-| Members can provide a rating on guitars loaned | relates to component outstanding - future feature|:heavy_exclamation_mark:|
-| Site poll to get members feedback | relates to component outstanding - future feature              |:heavy_exclamation_mark:|
-| Non-registered visitors see feedback on home screen | Applied through JS to switch comments        |:white_check_mark:      |
-
+| Members can favourite guitars | Via icon on guitar card and can also be removed via profile page  |:white_check_mark:      | 
+| Members can add guitars to rack | via icon on guitar card                			    |:white_check_mark:      |
+| Members can manage their subscription plans | members can request to cancel via profile page      |:white_check_mark:      |
+| Members can provide a rating on guitars loaned | De-scoped - moved to future feature              |:heavy_exclamation_mark:|
+| Site poll to get members feedback | Descoped - moved to future feature             		    |:heavy_exclamation_mark:|
+| Non-registered visitors see feedback on home screen | Applied through JS to switch comments       |:white_check_mark:      |
+| Admin can manage / add guitars | Custom Admin panel includes ability to add/edit/delete guitars   |:white_check_mark:      |
+| Admin can manage / add orders  | Custom Admin panel includes ability to add/edit/delete orders    |:white_check_mark:      |
+| Admin can manage accounts      | Custom Admin panel includes ability to award plectrums and cancel active accounts|:white_check_mark:|
+| Admin can manage guitar loan requests | Custom Admin panel includes ability to view requests (further capabilities are out of scope) |:white_check_mark:      |
 
 ## FUTURE ENHANCEMENTS
 
-This list summarises the components not yet implemented
+This list summarises features which were de-scoped from this project and could be implemented as future enhancements.
 
-- Provide members with the ability to and view in profile;
-    -  favourite guitars
-    -  manage subscriptions
-    -  exchange plectrum for guitar loan
-    -  rate guitars loaned
-    -  view past guitar loans
+- Provide members with the ability to rate guitars loaned
+  (ratings are hard-coded and can be edited but a fully functional rating would require a history of active users and deemed beyond scope for project purposes)
 
 - Provide Admin with;
-    - capabilities to view / manage the additional member activities above
-    - run a member feedback poll
+    - run a member feedback poll (de-scoped from project)
+    - award plectrums through a diarised mechanism (functionality has been added to award plectrums to all active accounts, but more complex / date driven functionality is deemed beyond the scope of this project)
 
 In response to additional testing outcomes;
 
 - Consider switching all images to nextgen formats (webP) with fallback for unsupported browsers
-- improve color contrast ratios
+
  
 ------
 # TESTING
 
-The majority of testing is performed manually during the development of the project. Upon completion of the project, there were a small number of known bugs but primarily there is a number of aspects relating to content / planned functionality which was unable to accommodate by the deadline. Additional testing was also performed across the site. 
+The majority of testing is performed manually during the development of the project. Upon completion of the project, there were a small number of known bugs. Additional testing was also performed across the site. 
 A summary of the key call outs from all testing activities is summarised below, with any key outstanding matters also reflected in either the Bugs or Future Enhancement sections. 
 Further information for each of the testing activities is available in the collapsible sections below. Note that attempts to run the django site through django-html-validator was unsuccessful (time constraints did not permit further investigation on how to correctly install and use this package). 
 
@@ -580,11 +577,11 @@ Further information for each of the testing activities is available in the colla
     <summary>User Story Testing</summary>
     
     
-In summary, all user stories tests passed with the exception of those which relate to member profiles (add / view past guitar requests, add / remove favourites and managing subscriptions). Whilst 1 test has passed relating to guitar ratings being visible to users, the rating itself is hard-coded whereas future enhancements would switch to a calculation of average member ratings (forms part of the outstanding content). 
+In summary, all user stories tests passed (aside from those de-scoped from the original plan - deemed as being beyond the scope of requirement for the project.
     
 | As a...         | I want to...                       | Test Review Notes                                        | Pass / Fail. |
 |-----------------|------------------------------------|----------------------------------------------------------|--------------|
-| site user (any) | Understand the purpose of the site | Content available but unexpected behaviour on deployed version| :heavy_exclamation_mark: see bugs for details|
+| site user (any) | Understand the purpose of the site | Information available from the 'About Us' links 	  |:white_check_mark:|
 | site user (any) | Easily navigate the site           | Clear and simple navigation of the site with nav menu on all pages| :white_check_mark:|
 | site user (any) | Be able to view the site on any size screen | Fully responsive tested across multiple screen sizes| :white_check_mark:     |
 | site user (any) | Have clear information on pricing  | Subscription pricing provided up front and visible during payment steps| :white_check_mark: |
@@ -594,16 +591,14 @@ In summary, all user stories tests passed with the exception of those which rela
 | registered user | Pay for my subscription plan easily| Clear laid out payments form with test payments handled through stripe| :white_check_mark:|
 | registered user | Login / out easily                 | Links visible on all screens and handled through allauth  | :white_check_mark: |
 | registered user | Be able to recover/reset my password | Reset / recovery links with email linkage to generate sending of email| :white_check_mark: |
-| registered user | Be able to manage my subscription  | NOT DELIVERED - SEE FUTURE FEATURES                        | :x:       |
-| registered user | Select a guitar to receive         | NOT DELIVERED - SEE FUTURE FEATURES                        | :x:       |
-| registered user | Save particular guitars as favourites| NOT DELIVERED - SEE FUTURE FEATURES                      |  :x:      |
-| registered user | See a list of the guitars I've had with my rating| NOT DELIVERED - SEE FUTURE FEATURES          | :x:       |
+| registered user | Be able to manage my subscription  | Managed via member's profile page.                         |:white_check_mark:|
+| registered user | Select a guitar to loan            | Requested via Add to Rack icon                       	    |:white_check_mark:|
+| registered user | Save particular guitars as favourites| Added via favourite icon on guitar card and can also be removed via icon on profile page|:white_check_mark:|
 | registered user | See ratings given by other users   | A fixed rating is visible, further enhancements would see this be generated by users ratings| :white_check_mark:|
-| site administrator | View and manage guitars         | Management of all guitars is handled through the admin & fixture files | :white_check_mark: |
-| site administrator | View / manage registered members| Managed through the admin                                  | :white_check_mark:|
-| site administrator | View / manage subscription plans| NOT DELIVERED - SEE FUTURE FEATURES                        | :x:        |
-| site administrator | View / manage subscription orders| Managed through the admin                                 | :white_check_mark:|
-
+| site administrator | View and manage guitars         | Managed through the custom site_admin.html page (Guitars)  | :white_check_mark: |
+| site administrator | View / manage orders            | Managed through the custom site_admin.html page (Orders)   | :white_check_mark: |
+| site administrator | View / manage subscriptions     | Managed through the custom site_admin.html page (Accounts) | :white_check_mark: |
+| site administrator | View / manage guitar loans      | Requests can be viewed through the custom site_admin.html page (Guitar Requests), further activity is deemed outside scope of project) | :white_check_mark: |
     
 </details>
 
@@ -696,26 +691,22 @@ Only a small amount of custom JS resides in the construction, there were only 4 
 
 <details>
     <summary>Python PEP8 Compliance</summary>
-A singificant number of PEP8 compliance issues were identified in the pythin-linter within the development environment. All reasons for the alerts were reviewed and all were resolved where relating to;
-	
+A singificant number of PEP8 compliance issues were identified in the python-linter within the development environment. All reasons for the alerts were reviewed and all were resolved where relating to;
+
+- long line lengths
 - trailing white space
 - missing blank line at end of code
 - missing double row between class blocks
 - over / under-indentation
 - over / under use of space prior to comment
-	
-Some instances (not all) of the following were resolved (note outstanding points for why not all were resolved);
-	
-- long line lengths
-- items imported but not used
+- items imported but not used	
+- use of Null=True on CharFields	
 
-The following were reviewed but not resolved;
+A further 139 remain which were reviewed but not resolved as;
 	
-- missing class/method/function docstring - *as per Boutique Ado walkthrough not all instances of classes seem to require a docstring only where these are required for understanding*
-- line too long - *those not resolved relate to long variables where there was no easy opportunity to break the line and / or would risk corrupting the code*
-- unused import / redirect / reverse - *some correspond with the Boutique Ado example, some relate to aspects which are not fully complete (see outstanding features) and decision made not to remove due to the possible risk posed to the deployed site*
-- avoid using null=True on string fields - *again, this corresponds with the Boutique Ado example and online research indicates that this is not a concern.*
-</details>
+- 120 relate to migration files (ignored)
+- 15 relate to files not visible in workspace (14 - VS Code, 1 custom_storages.py)
+- 4 relate to line lenths in settings.py which investigations suggest to leave as unconfirmed method to split lines
 
 
 <details>
@@ -737,7 +728,7 @@ Table of responsive configurations checked;
  |Chrome        |  Desktop                 | Windows 8.1|1600 x 1200|:white_check_mark:|
  |Safari        |  Desktop                 | macOS Mojave| 1024 x 768|:white_check_mark:|
  
-    
+ Note: Tables within the site_admin model (used by administrators to view / manage lists of guitars, orders, accounts and guitar requests) have a media query to reduce font-size on small screens but can on mobile devices still require horizontal scrolling. As it would be unlikely that the business would manage these tasks via a mobile device this has been accepted.
 
 </details>
 
@@ -745,9 +736,10 @@ Table of responsive configurations checked;
 # BUGS
 ## LIVE
 
-| Item      | Details                              | Additional Notes                        | Current Status                                                |
-|-----------|--------------------------------------|-----------------------------------------|---------------------------------------------------------------|
-| JS Error  | JS 'cannot set properties of null'  | Self identified in console and identified by LightHouse. Cause is due to the fields JS is manipulating being intentionally only shown for non-logged in users | :heavy_exclamation_mark: - OPEN (logged under Issue #12)|
+| Item      | Details                              | Additional Notes                                                                    | Current Status    |
+|-----------|--------------------------------------|-------------------------------------------------------------------------------------|-------------------|
+| Some {{empty}} sections not rendering | Some messages not displaying where there are no values  | In most cases the use of {{empty}} works as intended (e.g. filtering guitars where there are no results, but there are instances (e.g. profile) if a user has not favourited a guitar the <p> message is not displayed  | OPEN | 
+
 
 
 ## FIXED 
@@ -1021,6 +1013,7 @@ Accounts will be required with the following service providers. Free accounts ca
 
 ## Coding Support
 - CI template : https://github.com/Code-Institute-Org/gitpod-full-template
+- Tim Nelson (Mentor): Assigned for project resubmission to whom I'm extremely grateful for his guidance. 
 - Boutique Ado (CI Django walkthrough) : large parts of the project especially structure (django models and views) were based on this exercise.
 - Net Ninja (YouTube channel https://www.youtube.com/playlist?list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc) : additional guidance on django structures
 - Tutor Support (Sean and Igor) : aided with a couple of challenges I struggled to solve (both were due to incorrect referencing of elements in models) 
