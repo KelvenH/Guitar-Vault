@@ -137,13 +137,13 @@ def request_guitar(request, id):
         if authorise_loan == True:
 
             instance = Guitar_Loans(guitar=guitar, user=thisuser)
-            messages.success(request, 'Your guitar has successfully been added to the rack!')
+            messages.success(request, 'Great choice! Your guitar has successfully been added to your guitar rack and will be with you soon')
             instance.save()
             # Update guiar's status to prevent other user selecting
             guitar.status="In Use"
             guitar.save()
 
         else:
-            messages.error(request, 'Sorry, you do not have a subscription plan for that tier or any plectrums to exchange this month')
+            messages.warning(request, 'Sorry, either you do not have a subscription plan for that tier or any remaining plectrums to exchange this month. Please refer to your profile page to see which tiers and how many plectrums you have available to exchange')
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

@@ -50,11 +50,11 @@ def edit_guitar(request, guitar_id):
 
         if form.is_valid():
             form.save()
-            messages.success(request, 'Guitar details successfully updated!')
+            messages.success(request, f'Details for {guitar.brand} {guitar.guitar_model} successfully updated!')
             return redirect(reverse('guitar_detail', args=[guitar.id]))
 
         else:
-            messages.error(request, 'Oops, computer says NO - check the form for errors')
+            messages.error(request, 'Oops, computer says NO! Please check the form for errors')
 
     else:
         form = GuitarForm(instance=guitar)
@@ -165,7 +165,7 @@ def delete_order(request, order_id):
 
     order = get_object_or_404(Order, pk=order_id)
     order.delete()
-    messages.success(request, 'Order has been deleted from the vault!')
+    messages.success(request, f'Order {order.order_number} has been deleted from the vault!')
     return redirect(reverse('orderlist'))
 
 
@@ -183,7 +183,7 @@ def add_order(request):
         form = OrderForm(request.POST, request.FILES)
         if form.is_valid():
             order = form.save()
-            messages.success(request, 'Order successfully added!')
+            messages.success(request, f'Order {order.order_number} successfully added!')
             return redirect(reverse('orderlist'))
         else:
             messages.error(request, 'Oops, computer says NO - check the form for errors')
@@ -276,7 +276,6 @@ def list_guitar_loans(request):
     """
     guitar_loans = Guitar_Loans.objects.all()
         
-       
     template = 'site_admin/guitar_loans.html'
     context = {
         'guitar_loans': guitar_loans,

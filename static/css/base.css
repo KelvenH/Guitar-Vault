@@ -55,20 +55,7 @@ body>footer {
     top:100vh;
 }
 
-.message-container {
-    position: fixed;
-    top:10vh;
-    right:  15px;
-    z-index: 99999999999;
-}
 
-.custom-toast{
-    overflow:visible;
-}
-
-.toast-capper {
-    height:2px;
-}
 
 /*-- Text Classes --*/
 
@@ -92,6 +79,35 @@ body>footer {
 
 .inline {
     display:inline;
+}
+
+/* Toast Messages */
+
+.message-container {
+    position: fixed;
+    top:175px;
+    right:  15px;
+    z-index: 99999999999;
+}
+
+/* media queries to adjust top position of messages due to expanding nav height */
+@media (min-width: 768px) {
+    .message-container {
+        top:276px;
+    }
+}
+
+.custom-toast{
+    overflow:visible;
+}
+
+.toast-capper {
+    height:5px;
+}
+
+.toast-body {
+    background-color:rgba(255,255,255,0.7);
+    color:var(--off-black);
 }
 
 /* Gold textured mask */
