@@ -102,7 +102,7 @@ The business goals of Guitar Vault are;
 ## SCOPE
 The scope of this activity includes;
 - provision of a site which satisfies user stories in being able to view, interact through the front-end.
-- manage site content (guitars, categories, orders and subscription plans) through back-end technologies (in some cases through Admin).
+- manage site content (guitars, categories, orders and subscription plans) through custom CRUD forms.
 - enable payments to be made and recorded.
 
 Out of scope;
