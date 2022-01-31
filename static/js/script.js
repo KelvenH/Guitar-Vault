@@ -1,3 +1,4 @@
+/* jshint esversion: 8, jquery: true */
 document.addEventListener("DOMContentLoaded", function() {
     /*-- BUG FIX: feedback cycle added within if check to prevent script attempting to run if user is not on index.html or the fields are hidden as only visible to non-logged in users  --*/
     if($("#members-feedback").is(":visible")){
