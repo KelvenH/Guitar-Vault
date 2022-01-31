@@ -4,10 +4,10 @@
         
         <!--About Dropdown Menu-->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">About</h4>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#gv-explained-Modal">Guitar Vault Explained</a></li>
                 <li><a class="dropdown-item" href="{% url 'subscriptions' %}">Our Subscription Plans</a></li>
@@ -18,10 +18,10 @@
 
             <!--View All Guitars -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{% url 'guitars' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="{% url 'guitars' %}" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">View All Guitars</h4>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
                 <li><a class="dropdown-item" href="{% url 'guitars' %}">All Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?sort=tier&direction=asc">By Tier</a></li>
@@ -34,10 +34,10 @@
 
         <!--Electric Guitars Dropdown Menu-->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">Electric</h4>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric">All Electric Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric&tier=Platinum">Platinum</a></li>
@@ -49,10 +49,10 @@
  
         <!--Bass Guitars Dropdown Menu-->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">Bass</h4>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Bass">All Bass Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Bass&tier=Platinum">Platinum</a></li>
@@ -64,10 +64,10 @@
 
         <!--Acoustic Guitars Dropdown Menu-->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">Acoustic</h4>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Acoustic">All Acoustic Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Acoustic&tier=Platinum">Platinum</a></li>
@@ -79,10 +79,10 @@
 
         <!--LeftHanded Dropdown Menu-->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown6" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 class="mb-0">Lefties</h4>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown6">
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?handed=Left">All Left-Handed Guitars</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'guitars' %}?category=Electric&handed=Left">Electric</a></li>
