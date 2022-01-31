@@ -865,15 +865,15 @@ Accounts will be required with the following service providers. Free accounts ca
    ```
    
  13. Temporarily disable the static files being sent to Heroku:
-
-    ```
+   ```
         heroku config:set DISABLE_COLLECTSTATIC=1 --app [your Heroku app name here]
-    ```
+   ```
+
  14. Update settings.py 'Allowed Hosts' to the name of your app (likely located around line 20):
-    
-    ```
+   ```
         ALLOWED_HOSTS = ['your Heroku app name.herokuapp.com', 'localhost']
-    ```
+   ```
+
  15. Return to Heroku > your app > Deploy and scroll down to Deployment Method and choose GitHub. Then under App Connected to GitHub enter your git username/git repo name and search for your Git repo. Click Connect - you can either opt to push updates manually or (recommended) select the Automatic Deploys.    
  16. Return to your CLI and commit / push to git. If you enabled automatic deployment in Heroku the app will now be built (or do this manually if selected).
 
@@ -928,12 +928,12 @@ Accounts will be required with the following service providers. Free accounts ca
  14. From the left panel select Policies > Create Policy > JSON > Import Managed Policy > Filter Policies and search for AmazonS3Full Access then Import
  15. The Create Policy field will now display the imported policy, change the value shown against "Resource" from * with your ARN (noted at step 7) as follows:
     
-    ```
+   ```
         "Resource": [
 			                "arn:aws:s3:::your ARN",
 			                "arn:aws:s3:::your ARN/*"
             ]
-    ```
+   ```
     
  16. Review Policy > provide name (e,g, guitar-vault-policy) and description (e.g. Access to S3 for guitar-vault static files) > Create Policy
  17. Go to Groups > select the group you created in step 12 > Permissions > Attach Policy > select the policy created in step 17 > Attach Policy
