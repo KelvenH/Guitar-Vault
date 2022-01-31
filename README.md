@@ -114,7 +114,8 @@ Out of scope;
 
 ### FRONT END STRUCTURE & SCREEN FLOW
 
-The structure of the site should provide a clean and clear interface for site users. Leveraging from django's app structure, there will be specific page content for each app module, yet a baseline html view will be applied consistently across all pages. Site navigation will primarily be through the navigation menu displayed in the header (and through an icon for small screen devices). The only exception to this will be the additional on-screen links (visually displayed as buttons) to proceed to the next / return to the last view (e.g. proceeding to the payment form.
+The structure of the site should provide a clean and clear interface for site users. Leveraging from django's app structure, there will be specific page content for each app module, yet a baseline html view will be applied consistently across all pages. Site navigation will primarily be through the navigation menu displayed in the header (and through an icon for small screen devices). The only exception to this will be the additional on-screen links (visually displayed as buttons) to proceed to the next / return to the last view (e.g. proceeding to the payment form).
+![ScreenFlow](https://github.com/KelvenH/Guitar-Vault/blob/main/README_FILES/screenflow.png)
 
 ### DATABASE STRUCTURE
 
@@ -707,7 +708,7 @@ A further 139 remain which were reviewed but not resolved as;
 - 120 relate to migration files (ignored)
 - 15 relate to files not visible in workspace (14 - VS Code, 1 custom_storages.py)
 - 4 relate to line lenths in settings.py which investigations suggest to leave as unconfirmed method to split lines
-
+</details>
 
 <details>
     <summary>Responsiveness</summary>
